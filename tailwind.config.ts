@@ -4,47 +4,41 @@ const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
         bg: {
-          primary: '#0A0A0A',
-          secondary: '#111111',
-          card: '#161616',
-          elevated: '#1C1C1C',
+          primary: '#F7F7F5',
+          secondary: '#EFEFED',
+          card: '#FFFFFF',
+          navbar: 'rgba(247, 247, 245, 0.92)',
         },
         text: {
-          primary: '#FFFFFF',
-          secondary: '#A0A0A0',
-          muted: '#666666',
+          primary: '#111111',
+          secondary: '#555555',
+          muted: '#999999',
         },
         accent: {
-          green: '#7BFF6A',
-          'green-dim': '#4ACC3A',
+          green: '#1DB954',
+          purple: '#7B5EA7',
         },
         border: {
-          DEFAULT: '#222222',
-          subtle: '#1A1A1A',
+          DEFAULT: '#E5E5E3',
+          subtle: '#F0F0EE',
         },
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-editorial)', 'ui-serif', 'Georgia', 'serif'],
-        mono: ['var(--font-fragment-mono)', 'var(--font-geist-mono)', 'monospace'],
       },
       borderRadius: {
         pill: '999px',
       },
-      boxShadow: {
-        glow: '0 0 40px rgba(123, 255, 106, 0.15)',
-        panel: '0 24px 64px rgba(0, 0, 0, 0.28)',
-      },
       animation: {
-        marquee: 'marquee 30s linear infinite',
-        'marquee-reverse': 'marquee-reverse 30s linear infinite',
-        'fade-up': 'fadeUp 0.6s ease forwards',
+        marquee: 'marquee 35s linear infinite',
+        'marquee-reverse': 'marquee-reverse 35s linear infinite',
+        'fade-up': 'fadeUp 0.5s ease forwards',
+        float: 'float 6s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
@@ -56,8 +50,12 @@ const config: Config = {
           '100%': { transform: 'translateX(0%)' },
         },
         fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+          from: { opacity: '0', transform: 'translateY(16px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-12px)' },
         },
       },
     },

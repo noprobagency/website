@@ -19,17 +19,16 @@ type ButtonProps = {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    'bg-accent-green text-bg-primary shadow-glow hover:bg-accent-green-dim focus-visible:ring-accent-green',
+  primary: 'bg-[#111111] text-white hover:bg-[#333333] focus-visible:ring-[#111111]',
   secondary:
-    'border border-border bg-transparent text-text-primary hover:border-accent-green/40 hover:bg-bg-elevated focus-visible:ring-accent-green',
-  ghost: 'bg-transparent text-text-secondary hover:text-text-primary focus-visible:ring-accent-green',
+    'border border-[#cccccc] bg-transparent text-text-primary hover:border-[#999999] hover:bg-white focus-visible:ring-[#111111]',
+  ghost: 'bg-transparent text-text-secondary hover:text-text-primary focus-visible:ring-[#111111]',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-sm',
+  sm: 'px-5 py-2.5 text-sm',
   md: 'px-6 py-3 text-sm',
-  lg: 'px-8 py-4 text-base',
+  lg: 'px-6 py-3.5 text-[15px]',
 }
 
 export default function Button({
@@ -45,7 +44,7 @@ export default function Button({
   trackingLabel,
 }: ButtonProps) {
   const classes = cn(
-    'inline-flex items-center justify-center rounded-pill font-medium tracking-[-0.02em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary disabled:cursor-not-allowed disabled:opacity-50',
+    'inline-flex items-center justify-center rounded-pill font-medium tracking-[-0.01em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary disabled:cursor-not-allowed disabled:opacity-50',
     'active:scale-[0.98]',
     variantClasses[variant],
     sizeClasses[size],

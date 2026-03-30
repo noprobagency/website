@@ -6,10 +6,5 @@ type SectionLabelProps = {
 }
 
 export default function SectionLabel({ children, className }: SectionLabelProps) {
-  return (
-    <span className={cn('eyebrow', className)}>
-      <span className="h-2 w-2 rounded-full bg-accent-green" aria-hidden />
-      {children}
-    </span>
-  )
+  return <span className={cn('text-xs font-medium uppercase tracking-[0.1em] text-accent-green', className)}>{children}</span>
 }

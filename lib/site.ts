@@ -8,11 +8,12 @@ export const siteConfig = {
   url: 'https://noprob.agency',
   defaultTitle: 'noprob agency™ – Your eCommerce Technical & Growth Partner',
   description:
-    'Technical partner that makes eCommerce simple. A 7/7 team of developers, designers, and strategists combining code, data, and creativity to help Shopify and WooCommerce brands scale without stress.',
+    'Your eCommerce Technical & Growth Partner. We rebuild Shopify and WooCommerce stores from the ground up for Fashion, Supplements, and DTC brands.',
   keywords: [
     'ecommerce agency',
     'shopify development',
-    'woocommerce development',
+    'woocommerce',
+    'ecommerce partner',
     'technical ecommerce partner',
     'growth partner',
     'fashion ecommerce',
@@ -21,34 +22,46 @@ export const siteConfig = {
   ],
 } as const
 
-export const liveAssets = {
-  logo: 'https://framerusercontent.com/images/AY6rjj8ZVUbD4McJGHwEF1x9L08.svg?width=541&height=244',
-  heroBackdrop:
-    'https://framerusercontent.com/images/sTppB2IVM0xacjy14dgUESIfmsE.png?width=2912&height=1632',
-  heroBackdropMobile:
-    'https://framerusercontent.com/images/922LPrLT3JS7JXQbJxraBeoo8I.png?width=3072&height=2048',
-  caseStudyCover:
-    'https://framerusercontent.com/images/2QNUkNFRX0OUC0qTVjeplIvlFS0.jpg?width=2668&height=4000',
-  caseStudyBrand: 'https://framerusercontent.com/images/T1UW1kS41RaUauBrmK5dUj0txA.png?width=500&height=108',
-  testimonialAntonio:
-    'https://framerusercontent.com/images/5ZClDWRqPVst2zJqghXyG33cMY0.png?width=73&height=73',
-  testimonialCamilla:
-    'https://framerusercontent.com/images/btYlkzRXpOBFU8seMDbnX8BY8.jpeg?width=200&height=200',
-  trustpilotBadge:
-    'https://framerusercontent.com/images/sbAOhlGVa6UCdyPY5GQVN73U.svg?width=1132&height=278',
+export const siteAssets = {
+  logo: '/images/logo.svg',
+  trustpilotStars: '/images/originals/sbAOhlGVa6UCdyPY5GQVN73U.svg',
+  trustpilotWordmark: '/images/originals/EHy98QvA9z6tzzIid9n0yt58zU.svg',
+  heroAntonio: '/images/originals/7jMr2bJ1E0BHUjGZvEWpbOHZ0.png',
+  heroPartners: [
+    '/images/clients/shopify-partners.svg',
+    '/images/clients/woocommerce.png',
+    '/images/clients/google-partner.svg',
+    '/images/clients/meta-partner.svg',
+    '/images/clients/klaviyo-partners.png',
+  ],
+  problemIcons: [
+    '/images/originals/BwTYAhLAepLBYZo2TxC9P40G5aU.png',
+    '/images/originals/p6hRcI15hP2jkD7fjTm3I0v15WI.png',
+    '/images/originals/vea64dgdN9StI4fAs6PXXKFyE.png',
+  ],
+  solutionIcons: [
+    '/images/originals/mLxRO32RYdrkA8A3LeYtI1YsShQ.png',
+    '/images/originals/VsUV6XwKbarU0lTCxeyHOgrVaCU.png',
+    '/images/originals/Vcll2J5RvsXWeyROzs7IjM4yiY.png',
+  ],
+  caseStudyCover: '/images/originals/2QNUkNFRX0OUC0qTVjeplIvlFS0.jpg',
+  caseStudyBrand: '/images/originals/iWbz1XLCfNQ5rbC2z8HrFO8.png',
+  caseStudyCheck: '/images/originals/UKOEHbiYnbExoWnbKlr4yrGf8.svg',
+  testimonialAntonio: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
+  testimonialCamilla: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
   logoWall: [
-    'https://framerusercontent.com/images/RWVPFhFtXLH5J1UMr53qg3AEzL8.svg?width=71&height=61',
-    'https://framerusercontent.com/images/N0Tx01aMkN7R9VRqxvyyVyhYwQk.png?width=188&height=87',
-    'https://framerusercontent.com/images/vN14wZ29u2zUpcqrMSGkycbAUf0.svg?width=165&height=32',
-    'https://framerusercontent.com/images/TkZPz7oSBvfmLnhfuoopRtZMGOg.svg?width=363&height=52',
-    'https://framerusercontent.com/images/4WXTDogs69o24LfYlTlhkJwFNis.svg?width=169&height=70',
-    'https://framerusercontent.com/images/dKDeBQLhklB2IlsixCrTFByIQ1w.svg?width=146&height=52',
-    'https://framerusercontent.com/images/qwWohvBrgJlSHfTWtvnnrKMguM.svg?width=188&height=68',
-    'https://framerusercontent.com/images/HFB669NKhBu4jn7AhQ5uvYL0cY.svg?width=327&height=60',
-    'https://framerusercontent.com/images/43oBOi4PKxtyVmYCQkDgPI.svg?width=418&height=118',
-    'https://framerusercontent.com/images/SewUzXcHAaqioXr7g1lRajka5Mc.svg?width=162&height=28',
-    'https://framerusercontent.com/images/HvA5aLVjEBt6fJXZIKt8YOmWX30.svg?width=765&height=361',
-    'https://framerusercontent.com/images/8occchv7EZ1XL94VC9bEoysJDPU.svg?width=584&height=431',
+    '/images/originals/RWVPFhFtXLH5J1UMr53qg3AEzL8.svg',
+    '/images/originals/N0Tx01aMkN7R9VRqxvyyVyhYwQk.png',
+    '/images/originals/vN14wZ29u2zUpcqrMSGkycbAUf0.svg',
+    '/images/originals/TkZPz7oSBvfmLnhfuoopRtZMGOg.svg',
+    '/images/originals/4WXTDogs69o24LfYlTlhkJwFNis.svg',
+    '/images/originals/dKDeBQLhklB2IlsixCrTFByIQ1w.svg',
+    '/images/originals/qwWohvBrgJlSHfTWtvnnrKMguM.svg',
+    '/images/originals/HFB669NKhBu4jn7AhQ5uvYL0cY.svg',
+    '/images/originals/43oBOi4PKxtyVmYCQkDgPI.svg',
+    '/images/originals/SewUzXcHAaqioXr7g1lRajka5Mc.svg',
+    '/images/originals/HvA5aLVjEBt6fJXZIKt8YOmWX30.svg',
+    '/images/originals/8occchv7EZ1XL94VC9bEoysJDPU.svg',
   ],
 } as const
 
@@ -121,7 +134,7 @@ export const organizationJsonLd = {
   name: siteConfig.name,
   legalName: siteConfig.companyName,
   url: siteConfig.url,
-  logo: absoluteUrl('/og-image.svg'),
+  logo: absoluteUrl('/images/logo.svg'),
   description: siteConfig.description,
   address: {
     '@type': 'PostalAddress',

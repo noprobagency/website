@@ -9,7 +9,6 @@ import Pricing from '@/components/sections/Pricing'
 import ProblemSection from '@/components/sections/ProblemSection'
 import SolutionSection from '@/components/sections/SolutionSection'
 import Testimonials from '@/components/sections/Testimonials'
-import TrustBar from '@/components/sections/TrustBar'
 import { buildMetadata, siteConfig } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,7 +24,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustBar />
       <ProblemSection />
       <SolutionSection />
       <CaseStudies />

@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-import '@fontsource/source-serif-4/600-italic.css'
-import '@fontsource/fragment-mono/400.css'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
 import Footer from '@/components/layout/Footer'
@@ -72,13 +69,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0A0A0A',
-  colorScheme: 'dark',
+  themeColor: '#F7F7F5',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={GeistSans.variable}>
       <body className="bg-bg-primary text-text-primary font-sans antialiased">
         <JsonLd data={organizationJsonLd} />
         <GoogleAnalytics />

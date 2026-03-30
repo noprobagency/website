@@ -69,19 +69,19 @@ export default function FAQ() {
   }
 
   return (
-    <section className="section-padding bg-bg-primary">
+    <section className="section-padding bg-bg-secondary">
       <div className="container-custom">
         <div className="mx-auto max-w-3xl text-center">
           <SectionLabel>FAQs</SectionLabel>
-          <h2 className="mt-6 text-4xl font-semibold tracking-[-0.06em] text-text-primary md:text-5xl">
-            Everything you <span className="font-serif italic text-accent-green">need</span> to know
+          <h2 className="mt-5 text-4xl font-bold tracking-[-0.05em] text-text-primary md:text-5xl">
+            Everything you <span className="italic text-accent-green">need</span> to know
           </h2>
           <p className="mt-5 text-base leading-relaxed text-text-secondary">
             The Agency that turns data and vision into high-performing eCommerce.
           </p>
         </div>
 
-        <div className="mx-auto mt-14 max-w-4xl">
+        <div className="mx-auto mt-14 max-w-4xl rounded-[24px] border border-border bg-white px-6 py-2 shadow-[0_18px_45px_rgba(17,17,17,0.04)] md:px-8">
           <Accordion items={faqs} />
         </div>
 

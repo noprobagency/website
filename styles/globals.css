@@ -4,29 +4,34 @@
 
 @layer base {
   :root {
-    --font-editorial: 'Source Serif 4';
-    --font-fragment-mono: 'Fragment Mono';
-    --hero-grid: rgba(255, 255, 255, 0.04);
+    --font-geist-sans: 'Geist';
+    --color-bg-primary: #f7f7f5;
+    --color-bg-secondary: #efefed;
+    --color-bg-card: #ffffff;
+    --color-bg-navbar: rgba(247, 247, 245, 0.92);
+    --color-text-primary: #111111;
+    --color-text-secondary: #555555;
+    --color-text-muted: #999999;
+    --color-accent-green: #1db954;
+    --color-accent-purple: #7b5ea7;
+    --color-border: #e5e5e3;
+    --color-border-subtle: #f0f0ee;
   }
 
   * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
   }
 
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #0a0a0a;
   }
 
   body {
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: #0a0a0a;
-    color: #ffffff;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
     font-family: var(--font-geist-sans), system-ui, sans-serif;
     text-rendering: optimizeLegibility;
   }
@@ -42,69 +47,59 @@
   }
 
   ::selection {
-    background-color: #7bff6a;
-    color: #0a0a0a;
+    background-color: #111111;
+    color: #f7f7f5;
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: #efefed;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #2a2a2a;
+    background: #d0d0cb;
     border-radius: 999px;
   }
 }
 
 @layer components {
   .surface-panel {
-    @apply rounded-[28px] border border-border bg-bg-card/80 shadow-panel backdrop-blur-sm;
-  }
-
-  .section-grid {
-    background-image:
-      linear-gradient(to right, var(--hero-grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--hero-grid) 1px, transparent 1px);
-    background-size: 120px 120px;
+    @apply rounded-[24px] border border-border bg-bg-card shadow-[0_18px_50px_rgba(17,17,17,0.06)];
   }
 
   .section-divider {
-    @apply border-t border-border/80;
+    @apply border-t border-border;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .text-hero {
-    @apply text-5xl font-semibold leading-[0.92] tracking-[-0.06em] md:text-6xl lg:text-7xl xl:text-[5.75rem];
-  }
-
   .section-padding {
-    @apply py-24 md:py-32 lg:py-36;
+    @apply py-20 md:py-28 lg:py-36;
   }
 
   .container-custom {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
-  }
-
-  .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-pill border border-border bg-bg-card px-4 py-2 font-serif text-sm font-semibold italic tracking-[-0.03em] text-accent-green;
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
   .noise-mask {
     background-image:
-      radial-gradient(circle at top, rgba(123, 255, 106, 0.18), transparent 36%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%);
+      radial-gradient(circle at top right, rgba(123, 94, 167, 0.08), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(29, 185, 84, 0.06), transparent 28%);
+  }
+
+  .hero-blob {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(155, 120, 220, 0.6) 0%,
+      rgba(100, 180, 150, 0.4) 40%,
+      rgba(80, 160, 200, 0.2) 70%,
+      transparent 100%
+    );
+    filter: blur(40px);
+    border-radius: 50%;
   }
 }
 
@@ -116,8 +111,10 @@
 #cc-main .cm,
 #cc-main .pm,
 #cc-main .pm__section {
-  background: #111111;
-  color: #ffffff;
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid #e5e5e3;
+  box-shadow: 0 18px 50px rgba(17, 17, 17, 0.08);
 }
 
 #cc-main .cm__btn,
@@ -126,9 +123,15 @@
   font-weight: 500;
 }
 
+#cc-main .cm__btn--primary,
+#cc-main .pm__btn--primary {
+  background: #111111;
+  color: #ffffff;
+}
+
 #cc-main .cm__btn--secondary,
 #cc-main .pm__btn--secondary {
-  border: 1px solid #222222;
+  border: 1px solid #cccccc;
   background: transparent;
-  color: #ffffff;
+  color: #111111;
 }

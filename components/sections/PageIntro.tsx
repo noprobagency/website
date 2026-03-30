@@ -14,7 +14,7 @@ export default function PageIntro({ eyebrow, title, description }: PageIntroProp
       <div className="container-custom relative">
         <div className="surface-panel mx-auto max-w-4xl px-8 py-16 text-center md:px-14">
           <SectionLabel>{eyebrow}</SectionLabel>
-          <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-[-0.06em] text-text-primary md:text-6xl">
+          <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold tracking-[-0.05em] text-text-primary md:text-6xl">
             {title}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
