@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { siteAssets } from '@/lib/site'
+import { siteAssets, siteConfig } from '@/lib/site'
 
 const footerLinks = [
   { label: 'About', href: '/about' },
@@ -80,8 +80,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-border pt-6 text-xs text-text-muted">
-          © {new Date().getFullYear()} noprob agency™. All rights reserved.
+        <div className="mt-14 flex flex-col gap-2 border-t border-border pt-6 text-xs text-text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} noprob agency™. All rights reserved.</p>
+          <p className="text-[11px] uppercase tracking-[0.12em] text-text-muted/90">
+            Version {siteConfig.version}
+          </p>
         </div>
       </div>
     </footer>

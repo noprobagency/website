@@ -6,6 +6,7 @@ export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
+  version: 'v0.2.1',
   defaultTitle: 'noprob agency™ – Your eCommerce Technical & Growth Partner',
   description:
     'Your eCommerce Technical & Growth Partner. We rebuild Shopify and WooCommerce stores from the ground up for Fashion, Supplements, and DTC brands.',
