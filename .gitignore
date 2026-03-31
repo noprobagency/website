@@ -42,6 +42,8 @@ next-env.d.ts
 
 # local bootstrap / scratch
 .codex-bootstrap/
+.framer-snapshots/
+.legacy-site/
 tmp-*/
 tmp-*
 pnpm

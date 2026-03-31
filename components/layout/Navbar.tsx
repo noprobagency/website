@@ -3,8 +3,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import Button from '@/components/ui/Button'
+import { isLegacyBackedPath } from '@/lib/legacy-routes'
 import { siteAssets } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -18,6 +20,11 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const pathname = usePathname()
+
+  if (isLegacyBackedPath(pathname)) {
+    return null
+  }
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)]">

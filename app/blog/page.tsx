@@ -1,23 +1,12 @@
 import type { Metadata } from 'next'
 
-import PageIntro from '@/components/sections/PageIntro'
-import { buildMetadata } from '@/lib/site'
+import LegacyStaticPage from '@/components/legacy/LegacyStaticPage'
+import { buildLegacyMetadata } from '@/lib/legacy-site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Blog',
-    description:
-      'Technical, data, and growth insights for Shopify and WooCommerce operators.',
-    path: '/blog',
-  })
+  return buildLegacyMetadata('blog')
 }
 
 export default function BlogPage() {
-  return (
-    <PageIntro
-      eyebrow="Blog"
-      title="Technical and growth notes for eCommerce operators."
-      description="Editorial content is not part of this first homepage sprint, but the blog route is already configured with production-ready metadata and design scaffolding."
-    />
-  )
+  return <LegacyStaticPage pageKey="blog" />
 }

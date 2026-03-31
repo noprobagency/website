@@ -1,23 +1,12 @@
 import type { Metadata } from 'next'
 
-import PageIntro from '@/components/sections/PageIntro'
-import { buildMetadata } from '@/lib/site'
+import LegacyStaticPage from '@/components/legacy/LegacyStaticPage'
+import { buildLegacyMetadata } from '@/lib/legacy-site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'eCommerce Rebuild',
-    description:
-      'Understand the scope, pace, and technical outcomes of the eCommerce Rebuild offer.',
-    path: '/ecommerce-rebuild',
-  })
+  return buildLegacyMetadata('ecommerceRebuild')
 }
 
 export default function EcommerceRebuildPage() {
-  return (
-    <PageIntro
-      eyebrow="Plan"
-      title="eCommerce Rebuild."
-      description="This route is prepared for the full sales page that will explain the rebuild offer end to end. Metadata, navigation, and link targets are already wired."
-    />
-  )
+  return <LegacyStaticPage pageKey="ecommerceRebuild" />
 }

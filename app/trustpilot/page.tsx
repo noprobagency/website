@@ -4,9 +4,9 @@ import LegacyStaticPage from '@/components/legacy/LegacyStaticPage'
 import { buildLegacyMetadata } from '@/lib/legacy-site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildLegacyMetadata('useCases')
+  return buildLegacyMetadata('trustpilot')
 }
 
-export default function UseCasesPage() {
-  return <LegacyStaticPage pageKey="useCases" />
+export default function TrustpilotPage() {
+  return <LegacyStaticPage pageKey="trustpilot" />
 }
