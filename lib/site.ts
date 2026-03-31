@@ -6,7 +6,7 @@ export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.4.2',
+  version: 'v0.4.3',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'noprob agency™ – Your eCommerce Technical & Growth Partner',
@@ -28,6 +28,7 @@ export const siteConfig = {
 export const siteAssets = {
   logo: '/images/logo.svg',
   heroBlob: '/images/originals/sTppB2IVM0xacjy14dgUESIfmsE.png',
+  heroBlobMobile: '/images/originals/922LPrLT3JS7JXQbJxraBeoo8I.png',
   heroChart: '/images/originals/hero-profit-chart.svg',
   trustpilotStars: '/images/originals/sbAOhlGVa6UCdyPY5GQVN73U.svg',
   trustpilotWordmark: '/images/originals/EHy98QvA9z6tzzIid9n0yt58zU.svg',

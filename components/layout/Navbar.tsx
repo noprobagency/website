@@ -21,19 +21,19 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)]">
-      <nav className="container-noprob flex h-[60px] items-center justify-between py-2">
-        <Link href="/" className="flex items-center" aria-label="noprob agency home">
+      <nav className="mx-auto flex h-[60px] w-full max-w-[1200px] items-center justify-between px-6 py-2 min-[810px]:px-9">
+        <Link href="/" className="relative flex h-10 w-20 items-center" aria-label="noprob agency home">
           <Image
             src={siteAssets.logo}
             alt="noprob agency™"
             width={541}
             height={244}
             priority
-            className="h-[30px] w-auto"
+            className="h-auto w-full object-contain"
           />
         </Link>
 
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul className="hidden items-center gap-7 min-[810px]:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -47,7 +47,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 min-[810px]:flex">
           <Link
             href="/it"
             className="inline-flex items-center gap-1 rounded-pill bg-noprob-card px-2 py-1.5 font-sans text-tiny font-medium uppercase tracking-[-0.04em] text-noprob-dark mix-blend-difference"
@@ -61,63 +61,49 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-noprob-dark bg-noprob-card text-noprob-dark lg:hidden"
+          className="inline-flex items-center justify-center rounded-pill bg-noprob-card px-3 py-2 font-sans text-[16px] font-semibold leading-none tracking-[-0.04em] text-black backdrop-blur-[5px] [-webkit-backdrop-filter:blur(5px)] min-[810px]:hidden"
           aria-label="Toggle menu"
           aria-expanded={isMobileOpen}
           onClick={() => setIsMobileOpen((current) => !current)}
         >
-          <span className="relative h-4 w-4">
-            <span
-              className={cn(
-                'absolute left-0 top-1/2 h-px w-4 -translate-y-[6px] bg-current transition-transform',
-                isMobileOpen && 'translate-y-0 rotate-45',
-              )}
-            />
-            <span
-              className={cn(
-                'absolute left-0 top-1/2 h-px w-4 bg-current transition-opacity',
-                isMobileOpen && 'opacity-0',
-              )}
-            />
-            <span
-              className={cn(
-                'absolute left-0 top-1/2 h-px w-4 translate-y-[6px] bg-current transition-transform',
-                isMobileOpen && 'translate-y-0 -rotate-45',
-              )}
-            />
-          </span>
+          {isMobileOpen ? 'Close' : 'Menu'}
         </button>
       </nav>
 
       <div
         className={cn(
-          'overflow-hidden border-b border-noprob-border bg-noprob-card transition-all duration-300 lg:hidden',
+          'overflow-hidden transition-all duration-300 min-[810px]:hidden',
           isMobileOpen ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0',
         )}
       >
-        <div className="container-noprob flex flex-col gap-4 py-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="inline-flex items-center gap-1 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-noprob-dark"
-              onClick={() => setIsMobileOpen(false)}
-            >
-              {link.label}
-              {'hasChevron' in link && link.hasChevron ? <span className="text-sm">▾</span> : null}
-            </Link>
-          ))}
-          <div className="mt-2 flex items-center gap-3">
-            <Link
-              href="/it"
-              className="inline-flex items-center gap-1 rounded-pill bg-noprob-card-soft px-2 py-1.5 font-sans text-tiny font-medium uppercase tracking-[-0.04em] text-noprob-dark"
-              onClick={() => setIsMobileOpen(false)}
-            >
-              IT <span className="text-[10px]">▾</span>
-            </Link>
-            <Button href="/contacts" variant="primary" trackingLabel="navbar_mobile_cta">
-              Reserve Your Sprint
-            </Button>
+        <div className="px-6 pb-4">
+          <div className="mx-auto max-w-[342px] rounded-[20px] border border-white/70 bg-white/90 p-5 shadow-card backdrop-blur-[10px]">
+            <div className="flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center justify-between gap-1 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-noprob-dark"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  <span>{link.label}</span>
+                  {'hasChevron' in link && link.hasChevron ? <span className="text-sm">▾</span> : null}
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-5 flex items-center gap-3">
+              <Link
+                href="/it"
+                className="inline-flex items-center gap-1 rounded-pill bg-noprob-card px-2 py-1.5 font-sans text-tiny font-medium uppercase tracking-[-0.04em] text-noprob-dark"
+                onClick={() => setIsMobileOpen(false)}
+              >
+                IT <span className="text-[10px]">▾</span>
+              </Link>
+              <Button href="/contacts" variant="primary" trackingLabel="navbar_mobile_cta">
+                Reserve Your Sprint
+              </Button>
+            </div>
           </div>
         </div>
       </div>

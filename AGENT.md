@@ -50,6 +50,7 @@
 - [x] Rebuild logo wall, FAQ card, final orbit CTA, and black footer
 - [x] Run a screenshot-based fidelity pass on hero and results carousel details
 - [x] Import the original hero chart SVG as a local asset and wire it into the hero card
+- [x] Remap the above-the-fold desktop and mobile variants directly from the Framer export
 
 ## Decisions
 
@@ -66,6 +67,7 @@
 - The homepage footer is not rendered in `app/layout.tsx`; it remains part of the homepage composition to match the live landing structure.
 - The latest polish pass focuses on screenshot fidelity: hero headline breaks, integrated chart/quote card, partner logo scale, and results-carousel badge placement.
 - The hero chart now uses the imported original SVG asset `public/images/originals/hero-profit-chart.svg` instead of a hand-drawn approximation.
+- The above-the-fold now follows the pasted Framer DOM more literally, including the mobile `Menu` pill, centered mobile hero copy, and the graphic card rendered below the partner logos on phone.
 
 ## Notes
 

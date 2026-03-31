@@ -1,21 +1,48 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-import Button from '@/components/ui/Button'
 import { siteAssets } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const heroPartners = [
-  { name: 'Shopify Partners', src: siteAssets.heroPartners[0], className: 'h-[23px] w-auto' },
-  { name: 'WooCommerce', src: siteAssets.heroPartners[1], className: 'h-[28px] w-auto' },
-  { name: 'Google Partner', src: siteAssets.heroPartners[2], className: 'h-[32px] w-auto' },
-  { name: 'Meta Business Partner', src: siteAssets.heroPartners[3], className: 'h-[31px] w-auto' },
-  { name: 'Klaviyo Partners', src: siteAssets.heroPartners[4], className: 'h-[38px] w-auto' },
-]
+  {
+    name: 'Shopify Partners',
+    src: siteAssets.heroPartners[0],
+    className: 'h-[16px] w-auto min-[810px]:h-[23px]',
+  },
+  {
+    name: 'WooCommerce',
+    src: siteAssets.heroPartners[1],
+    className: 'h-[20px] w-auto min-[810px]:h-[28px]',
+  },
+  {
+    name: 'Google Partner',
+    src: siteAssets.heroPartners[2],
+    className: 'h-[22px] w-auto min-[810px]:h-[32px]',
+  },
+  {
+    name: 'Meta Business Partner',
+    src: siteAssets.heroPartners[3],
+    className: 'h-[21px] w-auto min-[810px]:h-[31px]',
+  },
+  {
+    name: 'Klaviyo Partners',
+    src: siteAssets.heroPartners[4],
+    className: 'h-[25px] w-auto min-[810px]:h-[38px]',
+  },
+] as const
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-noprob-bg">
-      <div className="pointer-events-none absolute -right-[571px] -top-[76px] -bottom-[77px] hidden w-[1344px] aspect-[1.48636] -rotate-[240deg] lg:block">
+    <section
+      id="hero"
+      className="relative flex w-full justify-center overflow-hidden bg-noprob-bg px-6 pb-20 pt-[63px] min-[810px]:h-[751px] min-[810px]:items-center min-[810px]:px-9 min-[810px]:pb-40 min-[810px]:pt-[250px] min-[810px]:max-[1199px]:h-auto min-[810px]:max-[1199px]:items-start min-[810px]:max-[1199px]:pb-[50px] min-[810px]:max-[1199px]:pt-[100px]"
+    >
+      <div className="pointer-events-none absolute inset-x-0 bottom-[-24px] block h-[262px] rotate-[-75deg] overflow-hidden min-[810px]:hidden">
+        <Image src={siteAssets.heroBlobMobile} alt="" fill priority className="object-cover" aria-hidden />
+      </div>
+
+      <div className="pointer-events-none absolute hidden overflow-hidden min-[810px]:block min-[810px]:max-[1199px]:bottom-[-90px] min-[810px]:max-[1199px]:right-[-720px] min-[810px]:max-[1199px]:top-auto min-[810px]:max-[1199px]:h-[904px] min-[810px]:max-[1199px]:w-[1343px] min-[810px]:max-[1199px]:-rotate-[200deg] min-[1200px]:-bottom-[77px] min-[1200px]:-right-[571px] min-[1200px]:-top-[76px] min-[1200px]:w-[1344px] min-[1200px]:aspect-[1.48636] min-[1200px]:-rotate-[240deg]">
         <Image
           src={siteAssets.heroBlob}
           alt=""
@@ -25,123 +52,111 @@ export default function Hero() {
           aria-hidden
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 z-[5] [mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] [-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] bg-noprob-bg" />
 
-      <div className="relative z-10">
-        <div className="container-noprob grid min-h-screen grid-cols-1 items-center gap-14 pb-10 pt-[132px] lg:grid-cols-[1.06fr_0.94fr] lg:gap-10 lg:pb-0">
-          <div className="space-y-8 lg:-mt-2">
-            <div className="flex max-w-md flex-col gap-1">
+      <div className="pointer-events-none absolute inset-0 z-[5] bg-noprob-bg [mask-image:linear-gradient(rgba(0,0,0,0)_88%,#000_97%)] [-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_88%,#000_97%)] min-[810px]:[mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] min-[810px]:[-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)]" />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col gap-5 min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-[29px] min-[810px]:max-[1199px]:items-center min-[810px]:max-[1199px]:gap-6">
+        <div className="flex w-full flex-col items-center gap-[18px] min-[810px]:w-px min-[810px]:flex-[1.2_0_0] min-[810px]:items-start min-[810px]:gap-7">
+          <div className="flex w-full flex-col items-center gap-[10px] min-[810px]:items-start">
+            <div className="flex max-w-[280px] flex-col items-center gap-1 min-[810px]:max-w-none min-[810px]:items-start">
               <div className="flex items-center gap-[5px]">
                 <Image
                   src={siteAssets.trustpilotStars}
                   alt="Trustpilot stars"
                   width={16}
                   height={16}
-                  className="h-4 w-4"
+                  className="h-[14px] w-[14px] min-[810px]:h-4 min-[810px]:w-4"
                 />
-                <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                <span className="font-sans text-[9.6px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)] min-[810px]:text-[12px]">
                   4,9
                 </span>
-                <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                <span className="font-sans text-[9.6px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)] min-[810px]:text-[12px]">
                   Trustpilot
                 </span>
               </div>
-              <p className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-dark">
+              <p className="max-w-[280px] text-center font-sans text-[12.8px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-dark min-[810px]:max-w-none min-[810px]:text-left min-[810px]:text-[12px]">
                 Trusted by Fashion, Supplements, and DTC eCommerce brands
               </p>
             </div>
-
-            <h1 className="max-w-[10.8ch] font-display text-[3.9rem] font-semibold leading-[0.94em] tracking-[-0.058em] text-noprob-text lg:text-[4.65rem]">
-              Your Brand is premium.
-              <br />
-              Your eCommerce
-              <br />
-              partner should be <em className="font-serif italic">too.</em>
-            </h1>
-
-            <p className="max-w-[610px] font-sans text-body-lg font-medium text-noprob-text">
-              We rebuild your store from the ground up and offer a dedicated team in Development,
-              Marketing, and Strategy, available together or separately based on your needs.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-3">
-              <Button
-                href="/contacts"
-                className="!rounded-[14px] !px-[30px] !py-[10px]"
-                trackingLabel="hero_cta_primary"
-              >
-                Reserve your sprint
-              </Button>
-              <Button
-                href="/#pricing"
-                variant="secondary"
-                className="!rounded-[14px] !px-[30px] !py-[10px] shadow-[0_1px_0_rgba(0,0,0,0.02)]"
-                trackingLabel="hero_cta_secondary"
-              >
-                Explore what we do
-              </Button>
-            </div>
-
-            <div className="grid max-w-[720px] grid-cols-2 items-center gap-x-8 gap-y-5 pt-3 sm:grid-cols-3 lg:grid-cols-5">
-              {heroPartners.map((partner) => (
-                <div key={partner.name} className="flex h-10 items-center">
-                  <Image
-                    src={partner.src}
-                    alt={partner.name}
-                    width={220}
-                    height={84}
-                    className={cn(partner.className, 'w-auto opacity-100')}
-                  />
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div className="relative hidden min-h-[620px] items-center justify-center lg:flex">
-            <div className="relative z-10 w-[372px] rounded-[22px] border border-[#d4d4d4] bg-white/85 p-4 shadow-[0_12px_24px_rgba(0,0,0,0.08)] backdrop-blur-md">
-              <div className="rounded-[18px] bg-white/70 p-5">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
-                    Profit
-                  </p>
-                  <div className="flex items-center gap-4 font-sans text-[10px] font-medium tracking-[-0.04em] text-noprob-grey">
-                    <span className="inline-flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-[#7a35f0]" />
-                      With NoProb®
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-[#b6b6b6]" />
-                      Without NoProb®
-                    </span>
-                  </div>
-                </div>
+          <h1 className="max-w-[650px] text-center font-display text-[2.3rem] font-semibold leading-[1em] tracking-[-0.06em] text-noprob-text min-[810px]:text-left min-[810px]:text-[3.8rem] min-[810px]:tracking-[-0.05em]">
+            <span className="block">Your Brand is premium.</span>
+            <span className="block">Your eCommerce</span>
+            <span className="block">
+              partner should be <em className="font-serif italic">too</em>.
+            </span>
+          </h1>
 
-                <div className="mt-3 rounded-[16px] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(246,238,255,0.9))] p-3">
-                  <Image
-                    src={siteAssets.heroChart}
-                    alt="With NoProb versus Without NoProb chart"
-                    width={235}
-                    height={175}
-                    className="h-auto w-full"
-                  />
-                </div>
+          <p className="max-w-[550px] text-center font-sans text-[16px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text min-[810px]:text-left min-[810px]:text-[18px]">
+            We rebuild your store from the ground up and offer a dedicated team in Development,
+            Marketing, and Strategy, available together or separately based on your needs.
+          </p>
+
+          <div className="flex flex-col items-center gap-[9px] min-[810px]:w-min min-[810px]:flex-row min-[810px]:items-center min-[810px]:gap-2">
+            <Link
+              href="/contacts"
+              data-tracking="hero_cta_primary"
+              className="inline-flex items-center justify-center rounded-[12px] bg-noprob-dark px-5 py-[7px] font-sans text-[16px] font-semibold leading-[1.2] tracking-[-0.04em] text-noprob-bg shadow-btn transition-colors hover:bg-[#2a2a2a] min-[810px]:text-[18px]"
+            >
+              Reserve your sprint
+            </Link>
+            <Link
+              href="/#pricing"
+              data-tracking="hero_cta_secondary"
+              className="font-sans text-[14.4px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-text underline decoration-current underline-offset-[2px] transition-opacity hover:opacity-70 min-[810px]:inline-flex min-[810px]:items-center min-[810px]:justify-center min-[810px]:rounded-[12px] min-[810px]:bg-white min-[810px]:px-7 min-[810px]:py-2 min-[810px]:text-[18px] min-[810px]:no-underline"
+            >
+              Explore what we do
+            </Link>
+          </div>
+
+          <div className="grid w-full grid-cols-5 gap-0 pt-[2px] min-[810px]:pt-0">
+            {heroPartners.map((partner) => (
+              <div
+                key={partner.name}
+                className="relative flex h-[30px] items-center justify-center min-[810px]:h-10 min-[810px]:justify-start"
+              >
+                <Image
+                  src={partner.src}
+                  alt={partner.name}
+                  width={500}
+                  height={233}
+                  className={cn(partner.className, 'w-auto object-contain')}
+                />
               </div>
+            ))}
+          </div>
+        </div>
 
-              <div className="mt-3 flex items-start gap-3 border-t border-[#dcdcdc] pt-3">
+        <div className="flex w-full flex-col items-center min-[810px]:w-px min-[810px]:flex-[1_0_0] min-[810px]:self-stretch min-[810px]:justify-center">
+          <div className="w-full rounded-card border-2 border-noprob-border bg-[rgba(255,255,255,0.79)] px-6 py-[10px] backdrop-blur-[10px] min-[810px]:w-min min-[810px]:px-6 min-[810px]:py-3">
+            <div className="mx-auto aspect-[1.3428571428571427] w-[89%] max-w-[235px] min-[810px]:mx-0 min-[810px]:h-[244px] min-[810px]:w-[353px] min-[810px]:max-w-none">
+              <Image
+                src={siteAssets.heroChart}
+                alt="With NoProb versus Without NoProb chart"
+                width={235}
+                height={175}
+                className="h-full w-full object-contain object-left"
+              />
+            </div>
+
+            <div className="mt-2 w-full min-[810px]:mt-0 min-[810px]:max-w-[349px] min-[810px]:min-w-[349px]">
+              <div className="flex items-start gap-3">
                 <Image
                   src={siteAssets.heroAntonio}
                   alt="Antonio Manitta"
-                  width={40}
-                  height={40}
-                  className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
+                  width={42}
+                  height={42}
+                  className="mt-0.5 h-[30px] w-[30px] flex-shrink-0 rounded-full object-cover min-[810px]:h-[42px] min-[810px]:w-[42px]"
                 />
                 <div>
-                  <p className="font-sans text-[12px] font-medium italic leading-[1.35em] tracking-[-0.02em] text-noprob-text">
+                  <p className="font-sans text-[12px] font-medium italic leading-[1.2] tracking-[-0.04em] text-noprob-dark">
                     Success comes from long-term thinking and a team that truly knows your
                     industry and each other
                   </p>
-                  <p className="mt-1 font-sans text-[9.6px] font-medium tracking-[-0.04em] text-noprob-muted">
-                    Antonio Manitta - noprob.agency eCommerce Manager
+                  <p className="mt-1 font-sans text-[9.6px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-muted">
+                    Antonio Manitta - <em className="font-serif italic">noprob.agency</em>{' '}
+                    eCommerce Manager
                   </p>
                 </div>
               </div>
