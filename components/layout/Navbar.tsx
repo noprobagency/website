@@ -1,23 +1,32 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
-import { colors, logoText } from '@/lib/design-tokens'
+import { colors, dropdown, logoText } from '@/lib/design-tokens'
 
 type NavLink = {
   label: string
   href: string
-  hasChevron?: boolean
 }
 
 const NAV_LINKS: NavLink[] = [
-  { label: 'Services', href: '/#pricing', hasChevron: true },
   { label: 'About', href: '/about' },
   { label: 'Use Case', href: '/use-cases' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contacts', href: '/contacts' },
 ]
+
+const SERVICE_ITEMS = [
+  { label: 'eCommerce ReBuild', href: '/ecommerce-rebuild' },
+  { label: 'Data Drive Team', href: '/data-driven-team' },
+  { label: 'MVP Sprint', href: '/contacts' },
+] as const
+
+const MOBILE_NAV = [
+  ...SERVICE_ITEMS,
+  ...NAV_LINKS,
+] as const
 
 function ChevronDown({ size = 14, color = colors.textDark }: { size?: number; color?: string }) {
   return (
@@ -56,11 +65,83 @@ function Logo({ size = logoText.navSize }: { size?: string }) {
         style={{ fontSize: size, fontWeight: logoText.weight }}
       >
         {logoText.text}
-        <sup className="relative -top-[0.4em] ml-px font-sans text-[0.55em] font-semibold not-italic leading-none tracking-normal">
+        <sup className="relative -top-[0.45em] ml-px font-sans text-[0.55em] font-semibold not-italic leading-none tracking-normal">
           {logoText.trademark}
         </sup>
       </span>
     </Link>
+  )
+}
+
+function ServicesDropdown() {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleMouseDown = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleMouseDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handleMouseDown)
+    }
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((current) => !current)}
+        className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
+        style={{ backgroundColor: open ? dropdown.itemHoverBg : 'transparent' }}
+      >
+        <span>Services</span>
+        <span
+          className="transition-transform duration-150"
+          style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
+        >
+          <ChevronDown size={14} />
+        </span>
+      </button>
+
+      {open ? (
+        <div
+          role="menu"
+          aria-label="Servizi"
+          className="absolute left-0 z-[100] bg-white"
+          style={{
+            top: `calc(100% + ${dropdown.gap})`,
+            borderRadius: dropdown.radius,
+            padding: dropdown.padding,
+            minWidth: dropdown.minWidth,
+            boxShadow: dropdown.shadow,
+          }}
+        >
+          {SERVICE_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="block whitespace-nowrap rounded-[8px] px-4 py-[10px] font-sans text-[16px] font-medium tracking-[-0.03em] text-np-text transition-colors hover:bg-black/5"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      ) : null}
+    </div>
   )
 }
 
@@ -93,12 +174,13 @@ export default function Navbar() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)]">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-6 py-2 min-[810px]:px-9">
-          <Logo />
+          <Logo size={logoText.navSize} />
 
           <nav
             aria-label="Navigazione principale"
             className="np-nav-desktop items-center gap-0"
           >
+            <ServicesDropdown />
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -106,7 +188,6 @@ export default function Navbar() {
                 className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
               >
                 {link.label}
-                {link.hasChevron ? <ChevronDown size={14} /> : null}
               </Link>
             ))}
           </nav>
@@ -167,9 +248,9 @@ export default function Navbar() {
         </div>
 
         <nav aria-label="Navigazione mobile" className="flex-1">
-          {NAV_LINKS.map((link) => (
+          {MOBILE_NAV.map((link) => (
             <Link
-              key={link.href}
+              key={`${link.href}-${link.label}`}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               className="flex items-center justify-between border-b border-black/5 py-[18px] font-sans text-[28px] font-semibold leading-[1.2em] tracking-[-0.05em] text-np-text"

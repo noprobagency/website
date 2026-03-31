@@ -124,8 +124,26 @@ export const logoText = {
   style: 'italic' as const,
   weight: 600,
   tracking: '-0.08em',
-  navSize: '1.5rem',
+  navSize: '1.625rem',
   footerSize: '1.875rem',
+} as const
+
+export const dropdown = {
+  bg: '#ffffff',
+  radius: '12px',
+  padding: '8px',
+  minWidth: '220px',
+  gap: '8px',
+  itemPadding: '10px 16px',
+  itemRadius: '8px',
+  itemFont: { size: '16px', weight: 500, tracking: '-0.03em' },
+  itemHoverBg: 'rgba(0,0,0,0.04)',
+  shadow: [
+    'rgba(108,113,128,0.08) 0px 2px 4px 0px',
+    'rgba(108,113,128,0.07) 0px 7px 7px 0px',
+    'rgba(108,113,128,0.04) 0px 17px 10px 0px',
+    'rgba(108,113,128,0.01) 0px 29px 12px 0px',
+  ].join(', '),
 } as const
 
 export const components = {

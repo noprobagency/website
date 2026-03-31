@@ -56,6 +56,7 @@
 - [x] Remove Framer CDN dependencies and serve local assets/fonts only
 - [x] Add `lib/design-tokens.ts` as a centralized design-source file
 - [x] Rebuild the navbar with semantic HTML, text logo, and responsive drawer behavior
+- [x] Add the desktop `Services` dropdown and expand service links in the mobile drawer
 
 ## Decisions
 
@@ -78,6 +79,7 @@
 - Local `@font-face` declarations are used from `public/fonts` to avoid shipping Google Fonts or Framer-hosted font dependencies.
 - `lib/design-tokens.ts` is now the canonical token reference for palette, type scale, spacing, radius, and reusable component values; new UI work should pull from it instead of hardcoding raw values first.
 - The navbar now uses semantic HTML, a text-based `noprob®` logo, responsive desktop/mobile visibility helpers, ESC-to-close mobile behavior, and no HTTP logo asset dependency.
+- The navbar logo size has been nudged up to `1.625rem`, and the desktop `Services` item now opens a token-driven hover/click dropdown with direct links to the key service pages.
 
 ## Notes
 

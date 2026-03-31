@@ -6,7 +6,7 @@ export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.5.2',
+  version: 'v0.5.3',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'noprob agency™ – Your eCommerce Technical & Growth Partner',
