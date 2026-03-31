@@ -46,7 +46,7 @@ export const type = {
   bodyLg: { size: '1.125rem', weight: 500, tracking: '-0.02em', leading: '1.4em', font: fonts.sans },
   body: { size: '1rem', weight: 400, tracking: '-0.02em', leading: '1.5em', font: fonts.sans },
   bodySm: { size: '0.9rem', weight: 500, tracking: '-0.02em', leading: '1.6em', font: fonts.sans },
-  nav: { size: '1.125rem', weight: 600, tracking: '-0.04em', leading: '120%', font: fonts.sans },
+  nav: { size: '1rem', weight: 400, tracking: '-0.04em', leading: '120%', font: fonts.sans },
   label: { size: '0.875rem', weight: 600, tracking: '-0.04em', leading: '1.4em', font: fonts.sans },
   small: { size: '0.875rem', weight: 500, tracking: '-0.04em', leading: '1.4em', font: fonts.sans },
   tiny: { size: '0.75rem', weight: 500, tracking: '-0.04em', leading: '1.2em', font: fonts.sans },
@@ -136,7 +136,7 @@ export const dropdown = {
   gap: '8px',
   itemPadding: '10px 16px',
   itemRadius: '8px',
-  itemFont: { size: '16px', weight: 500, tracking: '-0.03em' },
+  itemFont: { size: '16px', weight: 400, tracking: '-0.03em' },
   itemHoverBg: 'rgba(0,0,0,0.04)',
   shadow: [
     'rgba(108,113,128,0.08) 0px 2px 4px 0px',

@@ -103,7 +103,7 @@ function ServicesDropdown() {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
+        className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[16px] font-normal leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
         style={{ backgroundColor: open ? dropdown.itemHoverBg : 'transparent' }}
       >
         <span>Services</span>
@@ -134,7 +134,7 @@ function ServicesDropdown() {
               href={item.href}
               role="menuitem"
               onClick={() => setOpen(false)}
-              className="block whitespace-nowrap rounded-[8px] px-4 py-[10px] font-sans text-[16px] font-medium tracking-[-0.03em] text-np-text transition-colors hover:bg-black/5"
+              className="block whitespace-nowrap rounded-[8px] px-4 py-[10px] font-sans text-[16px] font-normal tracking-[-0.03em] text-np-text transition-colors hover:bg-black/5"
             >
               {item.label}
             </Link>
@@ -185,7 +185,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
+                className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[16px] font-normal leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
               >
                 {link.label}
               </Link>
@@ -253,7 +253,7 @@ export default function Navbar() {
               key={`${link.href}-${link.label}`}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-between border-b border-black/5 py-[18px] font-sans text-[28px] font-semibold leading-[1.2em] tracking-[-0.05em] text-np-text"
+              className="flex items-center justify-between border-b border-black/5 py-[18px] font-sans text-[16px] font-normal leading-[120%] tracking-[-0.04em] text-np-text"
             >
               <span>{link.label}</span>
               <ChevronDown size={20} />
