@@ -55,6 +55,11 @@ function sanitizeLegacyBody(markup: string): string {
     .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, '')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
     .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<div class="framer-1kp2ozz-container">[\s\S]*?<main\b/gi, '<main')
+    .replace(/<div id="template-overlay"><\/div>/gi, '')
+    .replace(/<link\b[^>]*rel=["']modulepreload["'][^>]*>/gi, '')
+    .replace(/opacity:0\.001;?/gi, 'opacity:1;')
+    .replace(/rotateY\(90deg\)/gi, 'rotateY(0deg)')
     .replace(/\b(href|src|action)=("|')\.\/(.*?)\2/gi, (_match, attr: string, quote: string, value: string) => {
       return `${attr}=${quote}/${value}${quote}`
     })

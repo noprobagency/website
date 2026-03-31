@@ -52,6 +52,7 @@
 - [x] Import the original hero chart SVG as a local asset and wire it into the hero card
 - [x] Remap the above-the-fold desktop and mobile variants directly from the Framer export
 - [x] Import the exported static legacy site and mount the available pages directly inside Next
+- [x] Remove the legacy Framer preloader and static animation blockers from the imported markup
 
 ## Decisions
 
@@ -71,6 +72,7 @@
 - The above-the-fold now follows the pasted Framer DOM more literally, including the mobile `Menu` pill, centered mobile hero copy, and the graphic card rendered below the partner logos on phone.
 - The zipped static export is now treated as the highest-fidelity source of truth for the pages it contains; those routes render the exported body and styles directly from `content/legacy-site` inside Next.
 - Legacy-backed pages append a minimal black version strip after the exported footer so release visibility remains intact even when the original static footer markup is rendered verbatim.
+- The legacy renderer now strips the Framer preloader overlay, template overlay, modulepreload tags, and non-executing appear-animation starter styles so static pages render immediately without waiting for Framer runtime JS.
 
 ## Notes
 
