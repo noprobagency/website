@@ -65,7 +65,7 @@ export default function FinalCTA() {
             <div className="mt-8 flex justify-center">
               <a
                 href="/contacts"
-                className="inline-flex items-center gap-3 rounded-pill border-2 border-noprob-text bg-noprob-dark px-3 py-2 text-[#f0f0f0] shadow-btn transition-opacity hover:opacity-90"
+                className="np-btn-primary flex-wrap justify-center gap-3 px-4 text-center sm:flex-nowrap sm:px-5"
                 data-tracking="final_cta"
               >
                 <Image
@@ -75,7 +75,7 @@ export default function FinalCTA() {
                   height={40}
                   className="h-10 w-10 rounded-full object-cover"
                 />
-                <span className="font-sans text-[18px] font-semibold tracking-[-0.04em]">
+                <span className="font-sans text-[16px] font-normal tracking-[-0.04em]">
                   Reserve Your Sprint
                 </span>
                 <span className="h-2 w-2 rounded-full bg-noprob-green" aria-hidden />

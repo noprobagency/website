@@ -60,6 +60,7 @@
 - [x] Reduce navbar menu typography to `16px / 400` on both desktop and mobile
 - [x] Stabilize the desktop `Services` dropdown hover so it does not close while moving into the panel
 - [x] Refine hero CTA sizing, replace the broken Trustpilot icon with an inline star, and normalize partner logo sizing/alignment
+- [x] Standardize CTA styling site-wide around a shared black/white responsive pattern
 
 ## Decisions
 
@@ -86,6 +87,7 @@
 - Menu typography has been softened to `16px / 400` for desktop links, dropdown items, and mobile drawer links to better match the latest visual direction.
 - The `Services` dropdown now keeps a small hover buffer and delayed close behavior so the panel remains stable while moving the cursor from the trigger into the menu.
 - The hero CTA pair now uses the larger `14px` radius / `14x28` padding treatment, the Trustpilot badge no longer depends on the broken external SVG icon, and the partner logo row is normalized to a constrained `480px` grid with fixed visual heights.
+- CTA buttons now share a unified responsive system: black/white variants, `10px` radius, `16px / 400` desktop typography, and proportionally reduced mobile padding/text sizing defined once in the global button utilities.
 
 ## Notes
 

@@ -111,14 +111,14 @@ export default function Hero() {
             <Link
               href="/contacts"
               data-tracking="hero_cta_primary"
-              className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-[14px] bg-noprob-dark px-7 py-[14px] font-sans text-[18px] font-semibold leading-[1.2] tracking-[-0.04em] text-noprob-bg shadow-btn transition-colors hover:bg-[#2a2a2a]"
+              className="np-btn-primary"
             >
               Reserve your sprint
             </Link>
             <Link
               href="/#pricing"
               data-tracking="hero_cta_secondary"
-              className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-[14px] bg-white px-7 py-[14px] font-sans text-[18px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-text transition-opacity hover:opacity-70"
+              className="np-btn-secondary"
             >
               Explore what we do
             </Link>

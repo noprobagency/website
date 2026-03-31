@@ -231,7 +231,7 @@ export default function Navbar() {
 
             <Link
               href="/contacts"
-              className="np-nav-desktop inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-np-dark px-5 py-[7px] font-sans text-[14px] font-medium leading-[120%] tracking-[-0.04em] text-np-bg shadow-btn transition-colors hover:bg-[#333333]"
+              className="np-nav-desktop np-btn-primary"
             >
               Reserve Your Sprint
             </Link>
@@ -291,7 +291,7 @@ export default function Navbar() {
         <Link
           href="/contacts"
           onClick={() => setMobileOpen(false)}
-          className="mt-6 inline-flex items-center justify-center rounded-xl bg-np-dark px-6 py-4 font-sans text-[18px] font-semibold tracking-[-0.04em] text-np-bg shadow-btn transition-colors hover:bg-[#333333]"
+          className="np-btn-primary mt-6"
         >
           Reserve Your Sprint
         </Link>

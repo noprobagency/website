@@ -117,7 +117,7 @@ export default function Pricing() {
                   <Link
                     href={plan.href}
                     data-tracking={`pricing_primary_${index}`}
-                    className="np-btn-primary w-full justify-center rounded-xl py-3"
+                    className="np-btn-primary w-full"
                   >
                     {plan.cta}
                   </Link>
