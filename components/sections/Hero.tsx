@@ -2,33 +2,42 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { siteAssets } from '@/lib/site'
-import { cn } from '@/lib/utils'
 
 const heroPartners = [
   {
     name: 'Shopify Partners',
     src: siteAssets.heroPartners[0],
-    className: 'h-[16px] w-auto min-[810px]:h-[23px]',
+    width: 288,
+    height: 76,
+    className: 'block h-[18px] w-auto object-contain opacity-[0.85]',
   },
   {
     name: 'WooCommerce',
     src: siteAssets.heroPartners[1],
-    className: 'h-[20px] w-auto min-[810px]:h-[28px]',
+    width: 300,
+    height: 300,
+    className: 'block h-[22px] w-auto object-contain opacity-[0.85]',
   },
   {
     name: 'Google Partner',
     src: siteAssets.heroPartners[2],
-    className: 'h-[22px] w-auto min-[810px]:h-[32px]',
+    width: 288,
+    height: 76,
+    className: 'block h-[32px] w-auto object-contain opacity-[0.85]',
   },
   {
     name: 'Meta Business Partner',
     src: siteAssets.heroPartners[3],
-    className: 'h-[21px] w-auto min-[810px]:h-[31px]',
+    width: 288,
+    height: 76,
+    className: 'block h-[22px] w-auto object-contain opacity-[0.85]',
   },
   {
     name: 'Klaviyo Partners',
     src: siteAssets.heroPartners[4],
-    className: 'h-[25px] w-auto min-[810px]:h-[38px]',
+    width: 500,
+    height: 233,
+    className: 'block h-[24px] w-auto object-contain opacity-[0.85]',
   },
 ] as const
 
@@ -59,24 +68,29 @@ export default function Hero() {
         <div className="flex w-full flex-col items-center gap-[18px] min-[810px]:w-px min-[810px]:flex-[1.2_0_0] min-[810px]:items-start min-[810px]:gap-7">
           <div className="flex w-full flex-col items-center gap-[10px] min-[810px]:items-start">
             <div className="flex max-w-[280px] flex-col items-center gap-1 min-[810px]:max-w-none min-[810px]:items-start">
-              <div className="flex items-center gap-[5px]">
-                <Image
-                  src={siteAssets.trustpilotStars}
-                  alt="Trustpilot stars"
-                  width={16}
-                  height={16}
-                  className="h-[14px] w-[14px] min-[810px]:h-4 min-[810px]:w-4"
-                />
-                <span className="font-sans text-[9.6px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)] min-[810px]:text-[12px]">
-                  4,9
-                </span>
-                <span className="font-sans text-[9.6px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)] min-[810px]:text-[12px]">
-                  Trustpilot
-                </span>
+              <div className="flex flex-col items-center gap-[3px] min-[810px]:items-start">
+                <div className="flex items-center gap-[5px]">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="rgb(36,143,98)"
+                    aria-hidden="true"
+                    className="h-[14px] w-[14px] shrink-0"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <span className="font-sans text-[13px] font-semibold tracking-[-0.03em] text-[rgb(36,143,98)]">
+                    4,9
+                  </span>
+                  <span className="font-sans text-[13px] font-medium tracking-[-0.03em] text-[rgb(36,143,98)]">
+                    Trustpilot
+                  </span>
+                </div>
+                <p className="max-w-[280px] text-center font-sans text-[12px] font-medium leading-[1.4em] tracking-[-0.04em] text-noprob-dark min-[810px]:max-w-none min-[810px]:text-left">
+                  Trusted by Fashion, Supplements, and DTC eCommerce brands
+                </p>
               </div>
-              <p className="max-w-[280px] text-center font-sans text-[12.8px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-dark min-[810px]:max-w-none min-[810px]:text-left min-[810px]:text-[12px]">
-                Trusted by Fashion, Supplements, and DTC eCommerce brands
-              </p>
             </div>
           </div>
 
@@ -93,35 +107,32 @@ export default function Hero() {
             Marketing, and Strategy, available together or separately based on your needs.
           </p>
 
-          <div className="flex flex-col items-center gap-[9px] min-[810px]:w-min min-[810px]:flex-row min-[810px]:items-center min-[810px]:gap-2">
+          <div className="flex flex-col items-center gap-[9px] min-[810px]:w-auto min-[810px]:flex-row min-[810px]:flex-nowrap min-[810px]:items-center min-[810px]:gap-2">
             <Link
               href="/contacts"
               data-tracking="hero_cta_primary"
-              className="inline-flex items-center justify-center rounded-[12px] bg-noprob-dark px-5 py-[7px] font-sans text-[16px] font-semibold leading-[1.2] tracking-[-0.04em] text-noprob-bg shadow-btn transition-colors hover:bg-[#2a2a2a] min-[810px]:text-[18px]"
+              className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-[14px] bg-noprob-dark px-7 py-[14px] font-sans text-[18px] font-semibold leading-[1.2] tracking-[-0.04em] text-noprob-bg shadow-btn transition-colors hover:bg-[#2a2a2a]"
             >
               Reserve your sprint
             </Link>
             <Link
               href="/#pricing"
               data-tracking="hero_cta_secondary"
-              className="font-sans text-[14.4px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-text underline decoration-current underline-offset-[2px] transition-opacity hover:opacity-70 min-[810px]:inline-flex min-[810px]:items-center min-[810px]:justify-center min-[810px]:rounded-[12px] min-[810px]:bg-white min-[810px]:px-7 min-[810px]:py-2 min-[810px]:text-[18px] min-[810px]:no-underline"
+              className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-[14px] bg-white px-7 py-[14px] font-sans text-[18px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-text transition-opacity hover:opacity-70"
             >
               Explore what we do
             </Link>
           </div>
 
-          <div className="grid w-full grid-cols-5 gap-0 pt-[2px] min-[810px]:pt-0">
+          <div className="grid w-full max-w-[480px] grid-cols-5 items-center gap-0 pt-[2px] min-[810px]:pt-0">
             {heroPartners.map((partner) => (
-              <div
-                key={partner.name}
-                className="relative flex h-[30px] items-center justify-center min-[810px]:h-10 min-[810px]:justify-start"
-              >
+              <div key={partner.name} className="relative flex h-10 items-center justify-center">
                 <Image
                   src={partner.src}
                   alt={partner.name}
-                  width={500}
-                  height={233}
-                  className={cn(partner.className, 'w-auto object-contain')}
+                  width={partner.width}
+                  height={partner.height}
+                  className={partner.className}
                 />
               </div>
             ))}

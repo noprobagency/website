@@ -166,6 +166,23 @@ export const components = {
       font: type.btnLg,
       hoverBg: '#333333',
     },
+    heroPrimary: {
+      bg: '#121212',
+      color: '#f0f0f0',
+      radius: '14px',
+      padding: '14px 28px',
+      fontSize: '18px',
+      weight: 600,
+      shadow: shadows.btn,
+    },
+    heroSecondary: {
+      bg: '#ffffff',
+      color: '#181818',
+      radius: '14px',
+      padding: '14px 28px',
+      fontSize: '18px',
+      weight: 500,
+    },
     pill: {
       bg: colors.textDark,
       color: colors.textLight,

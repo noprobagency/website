@@ -59,6 +59,7 @@
 - [x] Add the desktop `Services` dropdown and expand service links in the mobile drawer
 - [x] Reduce navbar menu typography to `16px / 400` on both desktop and mobile
 - [x] Stabilize the desktop `Services` dropdown hover so it does not close while moving into the panel
+- [x] Refine hero CTA sizing, replace the broken Trustpilot icon with an inline star, and normalize partner logo sizing/alignment
 
 ## Decisions
 
@@ -84,6 +85,7 @@
 - The navbar logo size has been nudged up to `1.625rem`, and the desktop `Services` item now opens a token-driven hover/click dropdown with direct links to the key service pages.
 - Menu typography has been softened to `16px / 400` for desktop links, dropdown items, and mobile drawer links to better match the latest visual direction.
 - The `Services` dropdown now keeps a small hover buffer and delayed close behavior so the panel remains stable while moving the cursor from the trigger into the menu.
+- The hero CTA pair now uses the larger `14px` radius / `14x28` padding treatment, the Trustpilot badge no longer depends on the broken external SVG icon, and the partner logo row is normalized to a constrained `480px` grid with fixed visual heights.
 
 ## Notes
 
