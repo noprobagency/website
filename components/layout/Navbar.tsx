@@ -1,14 +1,17 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import Button from '@/components/ui/Button'
-import { siteAssets } from '@/lib/site'
-import { cn } from '@/lib/utils'
+import { colors, logoText } from '@/lib/design-tokens'
 
-const navLinks = [
+type NavLink = {
+  label: string
+  href: string
+  hasChevron?: boolean
+}
+
+const NAV_LINKS: NavLink[] = [
   { label: 'Services', href: '/#pricing', hasChevron: true },
   { label: 'About', href: '/about' },
   { label: 'Use Case', href: '/use-cases' },
@@ -16,97 +19,175 @@ const navLinks = [
   { label: 'Contacts', href: '/contacts' },
 ]
 
+function ChevronDown({ size = 14, color = colors.textDark }: { size?: number; color?: string }) {
+  return (
+    <svg
+      viewBox="0 0 256 256"
+      width={size}
+      height={size}
+      aria-hidden="true"
+      focusable="false"
+      className="shrink-0"
+    >
+      <path
+        fill={color}
+        d="m213.66 101.66-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"
+      />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 256 256" width={18} height={18} aria-hidden="true" focusable="false">
+      <path
+        fill={colors.textDark}
+        d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128 50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z"
+      />
+    </svg>
+  )
+}
+
+function Logo({ size = logoText.navSize }: { size?: string }) {
+  return (
+    <Link href="/" aria-label="noprob agency — torna alla home" className="inline-flex items-baseline">
+      <span
+        className="inline-flex select-none items-baseline font-serif italic leading-none tracking-[-0.08em] text-np-text"
+        style={{ fontSize: size, fontWeight: logoText.weight }}
+      >
+        {logoText.text}
+        <sup className="relative -top-[0.4em] ml-px font-sans text-[0.55em] font-semibold not-italic leading-none tracking-normal">
+          {logoText.trademark}
+        </sup>
+      </span>
+    </Link>
+  )
+}
+
 export default function Navbar() {
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)]">
-      <nav className="mx-auto flex h-[60px] w-full max-w-[1200px] items-center justify-between px-6 py-2 min-[810px]:px-9">
-        <Link href="/" className="relative flex h-10 w-20 items-center" aria-label="noprob agency home">
-          <Image
-            src={siteAssets.logo}
-            alt="noprob agency™"
-            width={541}
-            height={244}
-            priority
-            className="h-auto w-full object-contain"
-          />
-        </Link>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)]">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-6 py-2 min-[810px]:px-9">
+          <Logo />
 
-        <ul className="hidden items-center gap-7 min-[810px]:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
+          <nav
+            aria-label="Navigazione principale"
+            className="np-nav-desktop items-center gap-0"
+          >
+            {NAV_LINKS.map((link) => (
               <Link
+                key={link.href}
                 href={link.href}
-                className="inline-flex items-center gap-1 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-noprob-dark transition-opacity hover:opacity-70"
+                className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
               >
                 {link.label}
-                {'hasChevron' in link && link.hasChevron ? <span className="text-sm">▾</span> : null}
+                {link.hasChevron ? <ChevronDown size={14} /> : null}
               </Link>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </nav>
 
-        <div className="hidden items-center gap-3 min-[810px]:flex">
-          <Link
-            href="/it"
-            className="inline-flex items-center gap-1 rounded-pill bg-np-card px-2 py-1.5 font-sans text-np-tiny font-medium uppercase tracking-[-0.04em] text-np-dark mix-blend-difference"
-          >
-            IT <span className="text-[10px]">▾</span>
-          </Link>
-          <Button href="/contacts" variant="primary" trackingLabel="navbar_cta">
-            Reserve Your Sprint
-          </Button>
-        </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <button
+              type="button"
+              aria-label="Cambia lingua in italiano"
+              className="np-nav-desktop items-center gap-1 rounded-pill bg-white px-[10px] py-[6px] font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text"
+            >
+              <span>IT</span>
+              <ChevronDown size={12} color={colors.textPrimary} />
+            </button>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-pill bg-np-card px-3 py-2 font-sans text-[16px] font-semibold leading-none tracking-[-0.04em] text-black backdrop-blur-[5px] [-webkit-backdrop-filter:blur(5px)] min-[810px]:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={isMobileOpen}
-          onClick={() => setIsMobileOpen((current) => !current)}
-        >
-          {isMobileOpen ? 'Close' : 'Menu'}
-        </button>
-      </nav>
+            <Link
+              href="/contacts"
+              className="np-nav-desktop inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-np-dark px-5 py-[7px] font-sans text-[14px] font-medium leading-[120%] tracking-[-0.04em] text-np-bg shadow-btn transition-colors hover:bg-[#333333]"
+            >
+              Reserve Your Sprint
+            </Link>
 
-      <div
-        className={cn(
-          'overflow-hidden transition-all duration-300 min-[810px]:hidden',
-          isMobileOpen ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0',
-        )}
-      >
-        <div className="px-6 pb-4">
-          <div className="mx-auto max-w-[342px] rounded-[20px] border border-white/70 bg-white/90 p-5 shadow-card backdrop-blur-[10px]">
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="inline-flex items-center justify-between gap-1 font-sans text-[18px] font-semibold leading-[120%] tracking-[-0.04em] text-noprob-dark"
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  <span>{link.label}</span>
-                  {'hasChevron' in link && link.hasChevron ? <span className="text-sm">▾</span> : null}
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-5 flex items-center gap-3">
-              <Link
-                href="/it"
-                className="inline-flex items-center gap-1 rounded-pill bg-np-card px-2 py-1.5 font-sans text-np-tiny font-medium uppercase tracking-[-0.04em] text-np-dark"
-                onClick={() => setIsMobileOpen(false)}
-              >
-                IT <span className="text-[10px]">▾</span>
-              </Link>
-              <Button href="/contacts" variant="primary" trackingLabel="navbar_mobile_cta">
-                Reserve Your Sprint
-              </Button>
-            </div>
+            <button
+              type="button"
+              aria-label="Apri menu di navigazione"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileOpen(true)}
+              className="np-nav-mobile items-center justify-center rounded-pill border border-black/10 bg-white px-4 py-2 font-sans text-[14px] font-semibold tracking-[-0.04em] text-np-text"
+            >
+              Menu
+            </button>
           </div>
         </div>
+      </header>
+
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-label="Menu di navigazione mobile"
+        aria-modal="true"
+        aria-hidden={!mobileOpen}
+        className={[
+          'fixed inset-0 z-[100] flex flex-col bg-np-bg px-6 pb-9 pt-0 transition-opacity duration-200 min-[810px]:hidden',
+          mobileOpen ? 'visible opacity-100 pointer-events-auto' : 'invisible opacity-0 pointer-events-none',
+        ].join(' ')}
+      >
+        <div className="mb-8 flex items-center justify-between border-b border-black/5 py-2">
+          <Logo />
+          <button
+            type="button"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Chiudi menu"
+            className="inline-flex items-center gap-1 rounded-pill border border-black/10 bg-white px-[14px] py-2 font-sans text-[14px] font-semibold tracking-[-0.04em] text-np-text"
+          >
+            <CloseIcon />
+            <span>Chiudi</span>
+          </button>
+        </div>
+
+        <nav aria-label="Navigazione mobile" className="flex-1">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-between border-b border-black/5 py-[18px] font-sans text-[28px] font-semibold leading-[1.2em] tracking-[-0.05em] text-np-text"
+            >
+              <span>{link.label}</span>
+              <ChevronDown size={20} />
+            </Link>
+          ))}
+        </nav>
+
+        <Link
+          href="/contacts"
+          onClick={() => setMobileOpen(false)}
+          className="mt-6 inline-flex items-center justify-center rounded-xl bg-np-dark px-6 py-4 font-sans text-[18px] font-semibold tracking-[-0.04em] text-np-bg shadow-btn transition-colors hover:bg-[#333333]"
+        >
+          Reserve Your Sprint
+        </Link>
       </div>
-    </header>
+    </>
   )
 }

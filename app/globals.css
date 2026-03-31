@@ -319,6 +319,26 @@
   box-shadow: 0 18px 50px rgba(17, 17, 17, 0.08);
 }
 
+@media (max-width: 809.98px) {
+  .np-nav-desktop {
+    display: none !important;
+  }
+
+  .np-nav-mobile {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 810px) {
+  .np-nav-desktop {
+    display: inline-flex !important;
+  }
+
+  .np-nav-mobile {
+    display: none !important;
+  }
+}
+
 #cc-main .cm__btn,
 #cc-main .pm__btn {
   border-radius: 999px;

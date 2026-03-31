@@ -1,0 +1,208 @@
+export const colors = {
+  bgPage: '#f0f0f0',
+  bgCard: '#ffffff',
+  bgCardSoft: '#f8f8f8',
+  bgCardOff: '#f9f9f9',
+  bgFooter: '#000000',
+  bgPricing: '#000000',
+  textPrimary: '#181818',
+  textDark: '#121212',
+  textMuted: '#a9a9a9',
+  textGrey: '#7c7c7c',
+  textLight: '#f0f0f0',
+  textEyebrow: 'rgb(201,197,197)',
+  borderCard: '#f8f8f8',
+  borderResult: '#d6d6d6',
+  borderDark: '#363636',
+  borderNav: '#181818',
+  green: '#1dcc5d',
+  greenTrust: 'rgb(36,143,98)',
+  markGreen: 'rgb(206,232,204)',
+  markPurple: 'rgb(219,204,232)',
+  navBg: 'rgba(0,0,0,0)',
+  drawerBg: '#f0f0f0',
+} as const
+
+export const fonts = {
+  sans: 'Inter, system-ui, sans-serif',
+  display: '"Inter Display", Inter, sans-serif',
+  serif: '"Source Serif 4", Georgia, serif',
+} as const
+
+export const type = {
+  hero: { size: '3.8rem', weight: 600, tracking: '-0.05em', leading: '1em', font: fonts.display },
+  h2: { size: '2.8rem', weight: 600, tracking: '-0.05em', leading: '1.2em', font: fonts.display },
+  h3: { size: '2rem', weight: 700, tracking: '-0.04em', leading: '1.2em', font: fonts.sans },
+  h4: { size: '1.5rem', weight: 600, tracking: '-0.04em', leading: '1.3em', font: fonts.sans },
+  pricingTitle: {
+    size: '2.5rem',
+    weight: 600,
+    tracking: '-0.05em',
+    leading: '1.1em',
+    font: fonts.serif,
+    style: 'italic' as const,
+  },
+  footerTitle: { size: '4rem', weight: 600, tracking: '-0.05em', leading: '1em', font: fonts.display },
+  bodyLg: { size: '1.125rem', weight: 500, tracking: '-0.02em', leading: '1.4em', font: fonts.sans },
+  body: { size: '1rem', weight: 400, tracking: '-0.02em', leading: '1.5em', font: fonts.sans },
+  bodySm: { size: '0.9rem', weight: 500, tracking: '-0.02em', leading: '1.6em', font: fonts.sans },
+  nav: { size: '1.125rem', weight: 600, tracking: '-0.04em', leading: '120%', font: fonts.sans },
+  label: { size: '0.875rem', weight: 600, tracking: '-0.04em', leading: '1.4em', font: fonts.sans },
+  small: { size: '0.875rem', weight: 500, tracking: '-0.04em', leading: '1.4em', font: fonts.sans },
+  tiny: { size: '0.75rem', weight: 500, tracking: '-0.04em', leading: '1.2em', font: fonts.sans },
+  micro: { size: '0.6rem', weight: 500, tracking: '-0.04em', leading: '1.2em', font: fonts.sans },
+  eyebrow: {
+    size: '0.875rem',
+    weight: 600,
+    tracking: '-0.06em',
+    leading: '100%',
+    font: fonts.serif,
+    style: 'italic' as const,
+  },
+  cardH: { size: '1.13rem', weight: 600, tracking: '-0.02em', leading: '1.3em', font: fonts.sans },
+  price: { size: '1.8rem', weight: 700, tracking: '-0.04em', leading: '1em', font: fonts.sans },
+  btnSm: { size: '0.875rem', weight: 500, tracking: '-0.04em', leading: '120%', font: fonts.sans },
+  btnLg: { size: '1.125rem', weight: 600, tracking: '-0.04em', leading: '120%', font: fonts.sans },
+} as const
+
+export const spacing = {
+  containerMaxW: '1200px',
+  containerPx: '36px',
+  containerPxSm: '16px',
+  sectionHero: '250px 36px 160px',
+  sectionStd: '80px 36px 0',
+  sectionProblem: '60px 16px 0',
+  sectionFooter: '40px 36px',
+  gapSection: '64px',
+  gapCards: '16px',
+  gapCarousel: '24px',
+  gapNav: '0',
+  gapHero: '29px',
+  gapHeroCol: '28px',
+  cardPad: '24px',
+  cardPadFaq: '48px',
+  cardPadInner: '32px',
+  navPadding: '8px 36px',
+  navLinkPad: '8px 14px',
+} as const
+
+export const radius = {
+  pill: '50px',
+  cardLg: '24px',
+  card: '16px',
+  cardInner: '20px',
+  btn: '6px',
+  btnPricing: '12px',
+  navLink: '8px',
+  faqItem: '8px',
+  eyebrowCat: '5px',
+  avatar: '999px',
+} as const
+
+export const shadows = {
+  card: [
+    'rgba(108,113,128,0.08) 0px 2px 4px 0px',
+    'rgba(108,113,128,0.07) 0px 7px 7px 0px',
+    'rgba(108,113,128,0.04) 0px 17px 10px 0px',
+    'rgba(108,113,128,0.01) 0px 29px 12px 0px',
+    'rgba(108,113,128,0) 0px 46px 13px 0px',
+  ].join(', '),
+  btn: 'rgba(26,26,26,0.25) 0px 0px 4px 2px',
+  pricingInner: 'rgba(0,0,0,0.25) 0px 1px 2px 0px inset',
+} as const
+
+export const breakpoints = {
+  mobile: '809.98px',
+  tablet: '1199.98px',
+  desktop: '1200px',
+} as const
+
+export const logoText = {
+  text: 'noprob',
+  trademark: '®',
+  font: fonts.serif,
+  style: 'italic' as const,
+  weight: 600,
+  tracking: '-0.08em',
+  navSize: '1.5rem',
+  footerSize: '1.875rem',
+} as const
+
+export const components = {
+  btn: {
+    primary: {
+      bg: colors.textDark,
+      color: colors.textLight,
+      radius: radius.btn,
+      shadow: shadows.btn,
+      padding: '7px 20px',
+      font: type.btnSm,
+      hoverBg: '#333333',
+    },
+    primaryLg: {
+      bg: colors.textDark,
+      color: colors.textLight,
+      radius: radius.btnPricing,
+      shadow: shadows.btn,
+      padding: '14px 28px',
+      font: type.btnLg,
+      hoverBg: '#333333',
+    },
+    pill: {
+      bg: colors.textDark,
+      color: colors.textLight,
+      radius: radius.pill,
+      border: `2px solid ${colors.textPrimary}`,
+      padding: '8px 24px',
+      font: type.btnLg,
+      hoverBg: '#333333',
+    },
+    secondary: {
+      bg: colors.bgCard,
+      color: colors.textPrimary,
+      radius: '12px',
+      border: 'none',
+      padding: '8px 28px',
+      font: type.bodyLg,
+      hoverOpacity: 0.8,
+    },
+  },
+  eyebrow: {
+    bg: colors.bgCardOff,
+    border: `1px solid ${colors.borderNav}`,
+    radius: radius.pill,
+    padding: '8px 12px',
+    blur: 'blur(24px)',
+    font: type.eyebrow,
+    color: colors.textEyebrow,
+  },
+  eyebrowCat: {
+    radius: radius.eyebrowCat,
+    padding: '5px 8px',
+    font: type.eyebrow,
+    color: colors.textEyebrow,
+    variants: {
+      green: { bg: colors.markGreen },
+      purple: { bg: colors.markPurple },
+    },
+  },
+  card: {
+    bg: colors.bgCard,
+    border: `6px solid ${colors.borderCard}`,
+    radius: radius.card,
+    padding: spacing.cardPad,
+    shadow: shadows.card,
+  },
+  cardFaq: {
+    bg: colors.bgCard,
+    border: `6px solid ${colors.borderCard}`,
+    radius: radius.cardLg,
+    padding: spacing.cardPadFaq,
+    shadow: shadows.card,
+  },
+  itSwitcher: {
+    bg: colors.bgCard,
+    radius: radius.pill,
+    padding: '6px 10px',
+  },
+} as const
