@@ -58,6 +58,7 @@
 - [x] Rebuild the navbar with semantic HTML, text logo, and responsive drawer behavior
 - [x] Add the desktop `Services` dropdown and expand service links in the mobile drawer
 - [x] Reduce navbar menu typography to `16px / 400` on both desktop and mobile
+- [x] Stabilize the desktop `Services` dropdown hover so it does not close while moving into the panel
 
 ## Decisions
 
@@ -82,6 +83,7 @@
 - The navbar now uses semantic HTML, a text-based `noprob®` logo, responsive desktop/mobile visibility helpers, ESC-to-close mobile behavior, and no HTTP logo asset dependency.
 - The navbar logo size has been nudged up to `1.625rem`, and the desktop `Services` item now opens a token-driven hover/click dropdown with direct links to the key service pages.
 - Menu typography has been softened to `16px / 400` for desktop links, dropdown items, and mobile drawer links to better match the latest visual direction.
+- The `Services` dropdown now keeps a small hover buffer and delayed close behavior so the panel remains stable while moving the cursor from the trigger into the menu.
 
 ## Notes
 

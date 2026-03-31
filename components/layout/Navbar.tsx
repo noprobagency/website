@@ -76,6 +76,27 @@ function Logo({ size = logoText.navSize }: { size?: string }) {
 function ServicesDropdown() {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+  const closeTimeoutRef = useRef<number | null>(null)
+
+  const clearCloseTimeout = () => {
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }
+
+  const openDropdown = () => {
+    clearCloseTimeout()
+    setOpen(true)
+  }
+
+  const scheduleClose = () => {
+    clearCloseTimeout()
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setOpen(false)
+      closeTimeoutRef.current = null
+    }, 140)
+  }
 
   useEffect(() => {
     const handleMouseDown = (event: MouseEvent) => {
@@ -88,21 +109,25 @@ function ServicesDropdown() {
 
     return () => {
       document.removeEventListener('mousedown', handleMouseDown)
+      clearCloseTimeout()
     }
   }, [])
 
   return (
     <div
       ref={ref}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      className="relative after:absolute after:left-0 after:top-full after:h-2 after:w-[220px] after:content-['']"
+      onMouseEnter={openDropdown}
+      onMouseLeave={scheduleClose}
     >
       <button
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        onClick={() => setOpen((current) => !current)}
+        onClick={() => {
+          clearCloseTimeout()
+          setOpen((current) => !current)
+        }}
         className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[16px] font-normal leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
         style={{ backgroundColor: open ? dropdown.itemHoverBg : 'transparent' }}
       >
@@ -127,6 +152,8 @@ function ServicesDropdown() {
             minWidth: dropdown.minWidth,
             boxShadow: dropdown.shadow,
           }}
+          onMouseEnter={openDropdown}
+          onMouseLeave={scheduleClose}
         >
           {SERVICE_ITEMS.map((item) => (
             <Link
