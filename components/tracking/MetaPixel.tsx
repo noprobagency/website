@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react'
 import Script from 'next/script'
 
 import { CONSENT_UPDATE_EVENT, hasConsent } from '@/lib/consent'
+import { siteConfig } from '@/lib/site'
 
 export default function MetaPixel() {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || siteConfig.metaPixelId
   const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {

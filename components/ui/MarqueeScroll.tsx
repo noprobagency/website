@@ -11,7 +11,7 @@ type MarqueeScrollProps = {
 
 const speedMap = {
   slow: '[animation-duration:50s]',
-  normal: '[animation-duration:30s]',
+  normal: '[animation-duration:35s]',
   fast: '[animation-duration:20s]',
 } as const
 
@@ -26,7 +26,8 @@ export default function MarqueeScroll({
       <div
         className={cn(
           'flex w-max',
-          reverse ? 'animate-marquee-reverse' : 'animate-marquee',
+          'animate-marquee',
+          reverse && '[animation-direction:reverse]',
           speedMap[speed],
         )}
       >

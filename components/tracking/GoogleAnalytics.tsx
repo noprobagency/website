@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react'
 import { GoogleAnalytics as NextGoogleAnalytics } from '@next/third-parties/google'
 
 import { CONSENT_UPDATE_EVENT, hasConsent } from '@/lib/consent'
+import { siteConfig } from '@/lib/site'
 
 export default function GoogleAnalytics() {
-  const gaId = process.env.NEXT_PUBLIC_GA4_ID
+  const gaId = process.env.NEXT_PUBLIC_GA4_ID || siteConfig.ga4Id
   const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {

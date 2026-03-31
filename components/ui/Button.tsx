@@ -19,16 +19,15 @@ type ButtonProps = {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-[#111111] text-white hover:bg-[#333333] focus-visible:ring-[#111111]',
-  secondary:
-    'border border-[#cccccc] bg-transparent text-text-primary hover:border-[#999999] hover:bg-white focus-visible:ring-[#111111]',
-  ghost: 'bg-transparent text-text-secondary hover:text-text-primary focus-visible:ring-[#111111]',
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  ghost: 'inline-flex items-center justify-center text-[18px] font-semibold tracking-[-0.04em] text-noprob-dark transition-opacity hover:opacity-70',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-5 py-2.5 text-sm',
-  md: 'px-6 py-3 text-sm',
-  lg: 'px-6 py-3.5 text-[15px]',
+  sm: '',
+  md: '',
+  lg: '',
 }
 
 export default function Button({
@@ -44,8 +43,7 @@ export default function Button({
   trackingLabel,
 }: ButtonProps) {
   const classes = cn(
-    'inline-flex items-center justify-center rounded-pill font-medium tracking-[-0.01em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary disabled:cursor-not-allowed disabled:opacity-50',
-    'active:scale-[0.98]',
+    'transition-all duration-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
     variantClasses[variant],
     sizeClasses[size],
     className,

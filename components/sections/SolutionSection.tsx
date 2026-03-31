@@ -1,91 +1,65 @@
 import Image from 'next/image'
 
 import SectionLabel from '@/components/ui/SectionLabel'
-import { siteAssets } from '@/lib/site'
 
 const solutions = [
   {
     title: 'Tech Integration Zero Chaos',
     description:
-      'All-in-one partner. Full-stack team: development, design, data and strategy. Everything managed for you.',
-    image: siteAssets.solutionIcons[0],
+      'All-in-one partner. Full-stack team—development, design, data and strategy. Everything managed for you.',
+    image: '/images/originals/mLxRO32RYdrkA8A3LeYtI1YsShQ.png',
   },
   {
     title: 'Real Support Real Results',
     description:
-      'Response in minutes, not days. Proactive problem-solvers in Branding and Dev. We support your growth.',
-    image: siteAssets.solutionIcons[1],
+      'Response in minutes, not days. Proactive problem-solvers in Branding & Dev. We support your growth',
+    image: '/images/originals/VsUV6XwKbarU0lTCxeyHOgrVaCU.png',
   },
   {
     title: 'Clean Data That Drives Growth',
     description:
       'Professional tracking, complete analytics, actionable dashboards. Decisions on real numbers, not hope.',
-    image: siteAssets.solutionIcons[2],
+    image: '/images/originals/Vcll2J5RvsXWeyROzs7IjM4yiY.png',
   },
-]
-
-const checkItems = [
-  'One accountable team for development, design, data and strategy.',
-  'Fast support that moves in minutes instead of days.',
-  'Tracking and reporting you can actually trust before scaling.',
 ]
 
 export default function SolutionSection() {
   return (
-    <section className="section-padding bg-bg-primary">
-      <div className="container-custom grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-        <div className="max-w-xl">
+    <section className="px-4 pb-0 pt-[80px]">
+      <div className="container-noprob">
+        <div className="max-w-[780px] text-center lg:text-left">
           <SectionLabel>Solution</SectionLabel>
-          <h2 className="mt-5 text-4xl font-bold tracking-[-0.05em] text-text-primary md:text-5xl">
-            Stop settling. Your eCommerce deserves a true technical partner.
+          <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-noprob-text">
+            Stop settling. Your eCommerce deserves a{' '}
+            <mark className="bg-[rgb(206,232,204)] px-2 font-serif italic text-noprob-text">
+              true technical partner
+            </mark>
+            .
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-text-secondary md:text-lg">
-            We combine code, data, and strategic execution into one accountable team, so growth
-            decisions stop depending on guesswork and scattered freelancers.
-          </p>
-
-          <ul className="mt-8 space-y-4">
-            {checkItems.map((item) => (
-              <li key={item} className="flex items-start gap-4">
-                <span className="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-accent-green text-sm font-semibold text-white">
-                  ✓
-                </span>
-                <span className="text-base leading-relaxed text-text-secondary">{item}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
-        <div className="surface-panel noise-mask overflow-hidden p-6 md:p-8">
-          <div className="grid gap-4">
-            {solutions.map((solution) => (
-              <article
-                key={solution.title}
-                className="rounded-[22px] border border-border bg-white p-5 shadow-[0_16px_36px_rgba(17,17,17,0.04)]"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-[18px] bg-bg-secondary">
-                    <Image
-                      src={solution.image}
-                      alt=""
-                      width={60}
-                      height={60}
-                      className="h-12 w-12 object-contain"
-                      aria-hidden
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold tracking-[-0.03em] text-text-primary">
-                      {solution.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-text-secondary md:text-[15px]">
-                      {solution.description}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {solutions.map((solution) => (
+            <article
+              key={solution.title}
+              className="border-card-thick shadow-card rounded-card bg-noprob-card p-6"
+            >
+              <Image
+                src={solution.image}
+                alt=""
+                width={55}
+                height={55}
+                className="h-[55px] w-[55px] object-cover"
+                aria-hidden
+              />
+              <h3 className="mt-5 font-sans text-[18px] font-semibold leading-[1.3em] tracking-[-0.02em] text-noprob-text">
+                {solution.title}
+              </h3>
+              <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+                {solution.description}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

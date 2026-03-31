@@ -1,20 +1,19 @@
 import Image from 'next/image'
 
-import SectionLabel from '@/components/ui/SectionLabel'
 import { siteAssets } from '@/lib/site'
 
 const testimonials = [
   {
     name: 'Antonio Cali',
     role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
-    image: siteAssets.testimonialAntonio,
+    image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
     quote:
       'Collaborating with NoProb Agency for the development of our e-commerce was an extremely positive experience. From the very first stages of the project, the team stood out for its clear communication, technical expertise, and listening skills.',
   },
   {
     name: 'Camilla Dudine',
     role: 'DDglobal Store - B2B eCommerce Owner',
-    image: siteAssets.testimonialCamilla,
+    image: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
     quote:
       'Collaborating with Antonio on the creation of our e-commerce website was an extremely positive experience. He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing e-commerce website.',
   },
@@ -22,54 +21,53 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="section-padding bg-bg-secondary">
-      <div className="container-custom">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionLabel>Testimonials</SectionLabel>
-          <h2 className="mt-5 text-4xl font-bold tracking-[-0.05em] text-text-primary md:text-5xl">
-            Trusted by established business owners
-          </h2>
-        </div>
-
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          {testimonials.map((testimonial) => (
-            <article
-              key={testimonial.name}
-              className="flex h-full flex-col rounded-[22px] border border-border bg-white p-8 shadow-[0_18px_45px_rgba(17,17,17,0.05)]"
-            >
-              <Image
-                src={siteAssets.trustpilotStars}
-                alt="Trustpilot stars"
-                width={92}
-                height={20}
-                className="h-4 w-auto"
-              />
-
-              <p className="mt-6 text-base leading-relaxed text-text-secondary md:text-lg">
-                “{testimonial.quote}”
-              </p>
-
-              <div className="mt-8 flex items-center gap-4 border-t border-border pt-6">
-                <div className="relative h-16 w-16 overflow-hidden rounded-full border border-border bg-bg-secondary">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    sizes="64px"
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold tracking-[-0.04em] text-text-primary">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-text-muted">{testimonial.role}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+    <div className="mt-16">
+      <div className="max-w-[760px]">
+        <h3 className="font-sans text-[32px] font-bold leading-[1.15em] tracking-[-0.04em] text-[#f9f9f9]">
+          Trusted by established business owners
+        </h3>
       </div>
-    </section>
+
+      <div className="mt-6 grid gap-3 lg:grid-cols-2">
+        {testimonials.map((testimonial) => (
+          <article
+            key={testimonial.name}
+            className="border-card-thick shadow-card flex h-full flex-col rounded-card bg-noprob-card p-6"
+          >
+            <Image
+              src={siteAssets.trustpilotStars}
+              alt="Trustpilot stars"
+              width={303}
+              height={20}
+              className="h-5 w-auto"
+            />
+
+            <p className="mt-5 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+              {testimonial.quote}
+            </p>
+
+            <div className="mt-6 flex items-center gap-3">
+              <div className="relative h-9 w-9 overflow-hidden rounded-full">
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  fill
+                  sizes="36px"
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <p className="font-sans text-[18px] font-semibold leading-[1.3em] tracking-[-0.02em] text-noprob-text">
+                  {testimonial.name}
+                </p>
+                <p className="font-sans text-body-sm font-medium text-noprob-grey">
+                  {testimonial.role}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
   )
 }

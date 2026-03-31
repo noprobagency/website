@@ -14,65 +14,65 @@ const heroPartners = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-bg-primary">
-      <div className="absolute right-0 top-0 hidden h-full w-[55%] pointer-events-none lg:block">
-        <div className="hero-blob absolute right-[-10%] top-[6%] h-[620px] w-[620px] opacity-90" />
-        <div className="absolute right-[7%] top-[20%] h-[240px] w-[240px] rounded-full bg-accent-green/10 blur-[90px]" />
+    <section className="relative min-h-screen overflow-hidden bg-noprob-bg">
+      <div className="pointer-events-none absolute -right-[571px] -top-[76px] -bottom-[77px] hidden w-[1344px] aspect-[1.48636] -rotate-[240deg] lg:block">
+        <Image
+          src={siteAssets.heroBlob}
+          alt=""
+          fill
+          priority
+          className="object-contain"
+          aria-hidden
+        />
       </div>
+      <div className="pointer-events-none absolute inset-0 z-[5] [mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] [-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] bg-noprob-bg" />
 
-      <div className="container-custom relative pt-28 md:pt-32">
-        <div className="grid min-h-[85vh] grid-cols-1 items-center gap-16 pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-20">
+      <div className="relative z-10">
+        <div className="container-noprob grid min-h-screen grid-cols-1 items-center gap-16 pb-[160px] pt-[250px] lg:grid-cols-[1.2fr_1fr]">
           <div className="space-y-8">
             <div className="flex max-w-md flex-col gap-1">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-[5px]">
                 <Image
                   src={siteAssets.trustpilotStars}
-                  alt=""
-                  width={94}
-                  height={20}
-                  className="h-4 w-auto"
-                  aria-hidden
+                  alt="Trustpilot stars"
+                  width={16}
+                  height={16}
+                  className="h-4 w-4"
                 />
-                <span className="text-sm font-semibold text-accent-green">4,9</span>
-                <span className="text-sm font-semibold text-accent-green">Trustpilot</span>
+                <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                  4,9
+                </span>
+                <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                  Trustpilot
+                </span>
               </div>
-              <p className="text-sm text-text-muted">
+              <p className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-dark">
                 Trusted by Fashion, Supplements, and DTC eCommerce brands
               </p>
             </div>
 
-            <h1 className="max-w-[12ch] text-[3.7rem] font-[750] leading-[0.98] tracking-[-0.045em] text-text-primary sm:text-[4.6rem] lg:text-[5.2rem] xl:text-[5.85rem]">
-              Your Brand is
-              <br />
-              premium.
-              <br />
-              Your eCommerce
-              <br />
-              partner should be <em className="italic">too.</em>
+            <h1 className="max-w-[12ch] font-display text-[3.8rem] font-semibold leading-[1em] tracking-[-0.05em] text-noprob-text lg:text-hero">
+              Your Brand is premium. Your eCommerce partner should be{' '}
+              <em className="font-serif italic">too</em>.
             </h1>
 
-            <p className="max-w-[34rem] text-base leading-relaxed text-text-secondary md:text-lg">
+            <p className="max-w-[662px] font-sans text-body-lg font-medium text-noprob-text">
               We rebuild your store from the ground up and offer a dedicated team in Development,
               Marketing, and Strategy, available together or separately based on your needs.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Button href="/contacts" size="lg" trackingLabel="hero_cta_primary">
+              <Button href="/contacts" trackingLabel="hero_cta_primary">
                 Reserve your sprint
               </Button>
-              <Button
-                href="/#pricing"
-                variant="secondary"
-                size="lg"
-                trackingLabel="hero_cta_secondary"
-              >
+              <Button href="/#pricing" variant="secondary" trackingLabel="hero_cta_secondary">
                 Explore what we do
               </Button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-7 gap-y-5 pt-2">
+            <div className="grid max-w-[720px] grid-cols-2 items-center gap-x-5 gap-y-5 pt-2 sm:grid-cols-3 lg:grid-cols-5">
               {heroPartners.map((partner) => (
-                <div key={partner.name} className="flex items-center">
+                <div key={partner.name} className="flex h-10 items-center">
                   <Image
                     src={partner.src}
                     alt={partner.name}
@@ -80,7 +80,7 @@ export default function Hero() {
                     height={84}
                     className={cn(
                       partner.className,
-                      'opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0',
+                      'w-auto opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0',
                     )}
                   />
                 </div>
@@ -88,86 +88,80 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative hidden min-h-[640px] items-center justify-center lg:flex">
-            <div className="absolute inset-0 rounded-[48px] bg-gradient-to-br from-white/50 via-transparent to-accent-purple/5" />
-            <div className="absolute right-[10%] top-[8%] h-[520px] w-[520px] rounded-full border border-white/30 bg-white/20 blur-3xl" />
-
-            <div className="animate-float relative z-10 w-[390px] rounded-[28px] border border-border bg-white p-6 shadow-[0_24px_70px_rgba(17,17,17,0.12)]">
-              <div className="mb-5 flex items-center justify-between">
+          <div className="relative hidden min-h-[680px] items-center justify-center lg:flex">
+            <div className="animate-float hero-float-card relative z-10">
+              <div className="rounded-[10px] bg-white/70 p-4">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.12em] text-text-muted">
+                  <p className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
                     Profit
                   </p>
-                  <p className="mt-1 text-sm font-medium text-text-primary">
+                  <p className="mt-1 font-sans text-body-sm font-medium text-noprob-text">
                     With NoProb® vs Without NoProb®
                   </p>
                 </div>
-                <span className="rounded-pill bg-bg-secondary px-3 py-1 text-xs font-medium text-text-secondary">
-                  36 months
-                </span>
-              </div>
 
-              <div className="rounded-[24px] border border-border-subtle bg-[#fafaf8] p-4">
-                <div className="mb-4 flex items-center gap-4 text-xs text-text-secondary">
-                  <span className="inline-flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-accent-green" />
-                    With NoProb®
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-[#c7c7c3]" />
-                    Without NoProb®
-                  </span>
+                <div className="mt-4 rounded-[10px] bg-[#f9f9f9] p-4">
+                  <div className="mb-4 flex items-center gap-4 font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-grey">
+                    <span className="inline-flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#121212]" />
+                      With NoProb®
+                    </span>
+                    <span className="inline-flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#d6d6d6]" />
+                      Without NoProb®
+                    </span>
+                  </div>
+
+                  <svg viewBox="0 0 320 180" className="h-auto w-full" aria-label="Profit chart">
+                    <path
+                      d="M12 148H308"
+                      fill="none"
+                      stroke="#d6d6d6"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M60 26V148M140 26V148M220 26V148"
+                      fill="none"
+                      stroke="#ececec"
+                      strokeWidth="1"
+                      strokeDasharray="4 8"
+                    />
+                    <path
+                      d="M20 136C58 138 90 131 124 121C158 111 188 99 220 74C246 54 270 34 300 24"
+                      fill="none"
+                      stroke="#121212"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M20 142C60 141 96 139 128 136C166 132 202 128 236 122C260 118 279 115 300 111"
+                      fill="none"
+                      stroke="#bdbdbd"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeDasharray="7 8"
+                    />
+                  </svg>
                 </div>
-
-                <svg viewBox="0 0 320 180" className="h-auto w-full" aria-label="Profit growth chart">
-                  <path
-                    d="M20 138C64 132 88 122 120 115C156 106 174 102 206 88C238 74 256 42 300 28"
-                    fill="none"
-                    stroke="#1DB954"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M20 142C66 140 89 136 124 134C160 132 182 129 211 126C243 123 266 119 300 113"
-                    fill="none"
-                    stroke="#D0D0CB"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    strokeDasharray="7 8"
-                  />
-                  <path
-                    d="M20 154H300"
-                    fill="none"
-                    stroke="#E5E5E3"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M60 24V154M140 24V154M220 24V154"
-                    fill="none"
-                    stroke="#ECECE8"
-                    strokeWidth="1"
-                    strokeDasharray="4 8"
-                  />
-                </svg>
               </div>
             </div>
 
-            <div className="absolute bottom-[7%] left-[4%] z-20 max-w-[305px] rounded-[24px] border border-border bg-white p-4 shadow-[0_18px_45px_rgba(17,17,17,0.12)]">
-              <div className="flex items-start gap-4">
+            <div className="hero-float-card absolute -bottom-8 left-6 z-20 w-[280px]">
+              <div className="flex items-start gap-3">
                 <Image
                   src={siteAssets.heroAntonio}
                   alt="Antonio Manitta"
-                  width={64}
-                  height={64}
-                  className="h-16 w-16 rounded-2xl object-cover"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
                 />
                 <div>
-                  <p className="text-sm leading-relaxed text-text-primary">
+                  <p className="font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-text">
                     Success comes from long-term thinking and a team that truly knows your
                     industry and each other
                   </p>
-                  <p className="mt-2 text-xs text-text-muted">
+                  <p className="mt-1 font-sans text-[9.6px] font-medium tracking-[-0.04em] text-noprob-muted">
                     Antonio Manitta - noprob.agency eCommerce Manager
                   </p>
                 </div>

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Button from '@/components/ui/Button'
 import SectionLabel from '@/components/ui/SectionLabel'
 import { siteAssets } from '@/lib/site'
+import Testimonials from '@/components/sections/Testimonials'
 
 const plans = [
   {
@@ -35,84 +36,117 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="section-padding bg-bg-primary">
-      <div className="container-custom">
-        <div className="mx-auto max-w-3xl text-center">
+    <section id="pricing" className="scroll-mt-40 bg-black px-9 py-[80px]">
+      <div className="container-noprob">
+        <div className="mx-auto max-w-[760px] text-center">
           <SectionLabel>Pricing</SectionLabel>
-          <h2 className="mt-5 text-4xl font-bold tracking-[-0.05em] text-text-primary md:text-5xl">
+          <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-[#f9f9f9]">
             Smart plans for serious eCommerce brands
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-text-secondary md:text-lg">
+          <p className="mt-5 font-sans text-body-lg font-medium text-[#f9f9f9]">
             Whether your eCommerce is running and growing or needs a complete rebuild, our tech
             team will guide you every step of the way.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 xl:grid-cols-2">
+        <div className="mt-10 grid gap-3 xl:grid-cols-2">
           {plans.map((plan, index) => (
-            <article key={plan.name} className="flex flex-col rounded-[20px] border border-border bg-white p-8">
-              <div className="flex items-center justify-between gap-4">
-                <span className="rounded-pill border border-border px-3 py-1 text-xs text-text-muted">
-                  {plan.badge}
-                </span>
-              </div>
-
-              <h3 className="mt-8 text-[2rem] font-bold tracking-[-0.05em] text-text-primary">
-                {plan.name}
-              </h3>
-              <div className="mt-5">
-                <span className="text-sm text-text-muted">From</span>
-                <div className="mt-1 flex items-end gap-2">
-                  <span className="text-5xl font-extrabold tracking-[-0.07em] text-text-primary">
-                    {plan.price}
-                  </span>
-                  {plan.period ? <span className="pb-1 text-text-muted">{plan.period}</span> : null}
-                </div>
-              </div>
-
-              <p className="mt-6 text-sm leading-relaxed text-text-secondary md:text-[15px]">
-                {plan.description}
-              </p>
-
-              <ul className="mt-8 space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm text-text-secondary">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#eef8f1] text-accent-green">
-                      ✓
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10 flex flex-col gap-3">
-                <Button
-                  href={plan.href}
-                  className="w-full"
-                  trackingLabel={`pricing_primary_${index}`}
+            <article
+              key={plan.name}
+              className="rounded-card-lg border border-noprob-border-dk bg-noprob-text p-2"
+            >
+              <div className="rounded-[20px] bg-noprob-card p-8 shadow-pricing-inner">
+                <div
+                  className={
+                    index === 0
+                      ? 'inline-flex rounded-[5px] bg-[rgb(206,232,204)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
+                      : 'inline-flex rounded-[5px] bg-[rgb(219,204,232)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
+                  }
                 >
-                  {plan.cta}
-                </Button>
-                <Button href={plan.secondaryHref} variant="secondary" className="w-full">
-                  {plan.secondary}
-                </Button>
-              </div>
+                  {plan.badge}
+                </div>
 
-              <div className="mt-8 flex items-center gap-3 border-t border-border pt-6">
-                <Image
-                  src={siteAssets.trustpilotStars}
-                  alt="Trustpilot stars"
-                  width={90}
-                  height={20}
-                  className="h-4 w-auto"
-                />
-                <span className="text-sm text-text-muted">
-                  <span className="font-medium text-accent-green">4,9</span> Trustpilot
-                </span>
+                <h3 className="mt-8 font-serif text-[2.5rem] font-semibold italic leading-[1.1em] tracking-[-0.05em] text-noprob-text">
+                  {plan.name}
+                </h3>
+
+                <div className="mt-6">
+                  <span className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
+                    From
+                  </span>
+                  <div className="mt-2 flex items-end gap-2">
+                    <span className="font-sans text-[1.8rem] font-bold leading-[1em] tracking-[-0.04em] text-noprob-text">
+                      {plan.price}
+                    </span>
+                    {plan.period ? (
+                      <span className="font-sans text-body-sm font-medium text-noprob-grey">
+                        {plan.period}
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
+
+                <p className="mt-6 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+                  {plan.description}
+                </p>
+
+                <ul className="mt-6 space-y-3">
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
+                    >
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#121212] text-[#f0f0f0]">
+                        ✓
+                      </span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 flex flex-col gap-3">
+                  <Button
+                    href={plan.href}
+                    className="w-full !justify-center !rounded-xl !py-3"
+                    trackingLabel={`pricing_primary_${index}`}
+                  >
+                    {plan.cta}
+                  </Button>
+                  <Button
+                    href={plan.secondaryHref}
+                    variant="secondary"
+                    className="w-full !justify-center rounded-xl border border-[#e5e5e5]"
+                  >
+                    {plan.secondary}
+                  </Button>
+                </div>
+
+                <div className="mt-8 flex flex-col gap-1">
+                  <div className="flex items-center gap-[5px]">
+                    <Image
+                      src={siteAssets.trustpilotStars}
+                      alt="Trustpilot stars"
+                      width={16}
+                      height={16}
+                      className="h-4 w-4"
+                    />
+                    <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                      4,9
+                    </span>
+                    <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                      Trustpilot
+                    </span>
+                  </div>
+                  <p className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-dark">
+                    Trusted by Fashion, Supplements, and DTC eCommerce brands
+                  </p>
+                </div>
               </div>
             </article>
           ))}
         </div>
+
+        <Testimonials />
       </div>
     </section>
   )

@@ -5,7 +5,7 @@
 - Project: `noprob.agency`
 - Stack target: Next.js 15, TypeScript, Tailwind CSS, App Router
 - Priority: replicate the current `https://noprob.agency` homepage as faithfully as possible while setting up strong SEO and tracking foundations
-- Current session goal: rebuild the homepage to the correct light theme, match the live visual hierarchy more closely, and keep `pnpm tsc --noEmit` and `pnpm build` passing
+- Current session goal: rebuild the homepage from the extracted Framer HTML/CSS so the live result matches noprob.agency as closely as possible, using the exact light theme, typography, spacing, and asset mapping while keeping `pnpm tsc --noEmit` and `pnpm build` passing
 
 ## Working Rules
 
@@ -14,11 +14,11 @@
 - Avoid inline styles whenever a Tailwind or CSS-variable solution is practical.
 - Keep the visual language consistent with the live site:
   - light theme
-  - warm off-white backgrounds
-  - black primary actions
-  - green Trustpilot accents
-  - rounded pill actions
-  - modern Geist typography
+  - `#f0f0f0` page background with white and off-white cards
+  - black primary actions and black footer/pricing section
+  - green Trustpilot/status accents
+  - Source Serif 4 italic for emphasis and section personality
+  - Inter / Inter Display typographic hierarchy from the Framer export
 - Increment `siteConfig.version` in `lib/site.ts` on every content or code change so the footer always exposes the latest shipped version.
 - End each completed change with `pnpm tsc --noEmit`, `pnpm build`, a clear conventional-style git commit, and `git push`.
 - Do not commit `.env.local`
@@ -43,6 +43,11 @@
 - [x] Remap the design system to the light theme
 - [x] Switch the homepage to local assets instead of Framer-hosted dependencies
 - [x] Rebuild the hero, pricing, proof sections, and footer around the live light-theme structure
+- [x] Replace the homepage tokens with the exact Framer-extracted light design system
+- [x] Rebuild navbar and hero from the Framer layout and asset mapping
+- [x] Add results carousel, revised problem/solution sections, and case study card
+- [x] Rebuild black pricing section with embedded testimonials
+- [x] Rebuild logo wall, FAQ card, final orbit CTA, and black footer
 
 ## Decisions
 
@@ -55,8 +60,10 @@
 - The earlier dark-theme draft was intentionally replaced with a light system based on the live site’s warm off-white backgrounds and dark text.
 - Footer versioning is now sourced from `siteConfig.version` in `lib/site.ts`; future edits must bump that value before shipping.
 - GA4 and Meta are wired behind GDPR consent via `vanilla-cookieconsent`; IDs remain environment-driven through `.env.example`.
+- The current homepage refactor is aligned to Framer-export tokens and structure: `#f0f0f0` page background, black pricing/footer blocks, Inter-led typography, and Source Serif 4 italic emphasis.
+- The homepage footer is not rendered in `app/layout.tsx`; it remains part of the homepage composition to match the live landing structure.
 
 ## Notes
 
 - The Sanity CLI syntax has changed from the one in the brief, so a local Sanity scaffold was created manually with `sanity.config.ts`, `sanity.cli.ts`, and an empty schema entrypoint to keep the codebase ready without blocking the homepage sprint.
-- Visual reference for this redesign was taken from the live `https://noprob.agency` homepage plus the user-provided screenshots of the correct light-theme layout.
+- Visual reference for this redesign was taken from the live `https://noprob.agency` homepage plus the Framer-extracted CSS/HTML values provided in the brief.

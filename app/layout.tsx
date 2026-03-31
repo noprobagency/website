@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { GeistSans } from 'geist/font/sans'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
-import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 import JsonLd from '@/components/seo/JsonLd'
 import ConsentBanner from '@/components/tracking/ConsentBanner'
@@ -69,21 +67,18 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#F7F7F5',
+  themeColor: '#f0f0f0',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={GeistSans.variable}>
-      <body className="bg-bg-primary text-text-primary font-sans antialiased">
+    <html lang="en">
+      <body className="bg-noprob-bg text-noprob-text font-sans antialiased">
         <JsonLd data={organizationJsonLd} />
         <GoogleAnalytics />
         <MetaPixel />
         <Navbar />
-        <div className="relative flex min-h-screen flex-col">
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <main>{children}</main>
         <ConsentBanner />
         <Analytics />
         <SpeedInsights />

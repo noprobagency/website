@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
 
-import CaseStudies from '@/components/sections/CaseStudies'
+import CaseStudy from '@/components/sections/CaseStudy'
 import FAQ from '@/components/sections/FAQ'
 import FinalCTA from '@/components/sections/FinalCTA'
 import Hero from '@/components/sections/Hero'
 import LogoWall from '@/components/sections/LogoWall'
 import Pricing from '@/components/sections/Pricing'
 import ProblemSection from '@/components/sections/ProblemSection'
+import ResultsCarousel from '@/components/sections/ResultsCarousel'
 import SolutionSection from '@/components/sections/SolutionSection'
-import Testimonials from '@/components/sections/Testimonials'
+import Footer from '@/components/layout/Footer'
 import { buildMetadata, siteConfig } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,14 +25,15 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <ResultsCarousel />
       <ProblemSection />
       <SolutionSection />
-      <CaseStudies />
+      <CaseStudy />
       <Pricing />
-      <Testimonials />
       <LogoWall />
       <FAQ />
       <FinalCTA />
+      <Footer />
     </>
   )
 }
