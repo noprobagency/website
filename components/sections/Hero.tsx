@@ -5,11 +5,11 @@ import { siteAssets } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const heroPartners = [
-  { name: 'Shopify Partners', src: siteAssets.heroPartners[0], className: 'h-5 w-auto' },
-  { name: 'WooCommerce', src: siteAssets.heroPartners[1], className: 'h-8 w-auto' },
-  { name: 'Google Partner', src: siteAssets.heroPartners[2], className: 'h-6 w-auto' },
-  { name: 'Meta Business Partner', src: siteAssets.heroPartners[3], className: 'h-7 w-auto' },
-  { name: 'Klaviyo Partners', src: siteAssets.heroPartners[4], className: 'h-7 w-auto' },
+  { name: 'Shopify Partners', src: siteAssets.heroPartners[0], className: 'h-[23px] w-auto' },
+  { name: 'WooCommerce', src: siteAssets.heroPartners[1], className: 'h-[28px] w-auto' },
+  { name: 'Google Partner', src: siteAssets.heroPartners[2], className: 'h-[32px] w-auto' },
+  { name: 'Meta Business Partner', src: siteAssets.heroPartners[3], className: 'h-[31px] w-auto' },
+  { name: 'Klaviyo Partners', src: siteAssets.heroPartners[4], className: 'h-[38px] w-auto' },
 ]
 
 export default function Hero() {
@@ -28,8 +28,8 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-[5] [mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] [-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] bg-noprob-bg" />
 
       <div className="relative z-10">
-        <div className="container-noprob grid min-h-screen grid-cols-1 items-center gap-16 pb-[160px] pt-[250px] lg:grid-cols-[1.2fr_1fr]">
-          <div className="space-y-8">
+        <div className="container-noprob grid min-h-screen grid-cols-1 items-center gap-14 pb-10 pt-[132px] lg:grid-cols-[1.06fr_0.94fr] lg:gap-10 lg:pb-0">
+          <div className="space-y-8 lg:-mt-2">
             <div className="flex max-w-md flex-col gap-1">
               <div className="flex items-center gap-[5px]">
                 <Image
@@ -51,26 +51,38 @@ export default function Hero() {
               </p>
             </div>
 
-            <h1 className="max-w-[12ch] font-display text-[3.8rem] font-semibold leading-[1em] tracking-[-0.05em] text-noprob-text lg:text-hero">
-              Your Brand is premium. Your eCommerce partner should be{' '}
-              <em className="font-serif italic">too</em>.
+            <h1 className="max-w-[10.8ch] font-display text-[3.9rem] font-semibold leading-[0.94em] tracking-[-0.058em] text-noprob-text lg:text-[4.65rem]">
+              Your Brand is premium.
+              <br />
+              Your eCommerce
+              <br />
+              partner should be <em className="font-serif italic">too.</em>
             </h1>
 
-            <p className="max-w-[662px] font-sans text-body-lg font-medium text-noprob-text">
+            <p className="max-w-[610px] font-sans text-body-lg font-medium text-noprob-text">
               We rebuild your store from the ground up and offer a dedicated team in Development,
               Marketing, and Strategy, available together or separately based on your needs.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Button href="/contacts" trackingLabel="hero_cta_primary">
+              <Button
+                href="/contacts"
+                className="!rounded-[14px] !px-[30px] !py-[10px]"
+                trackingLabel="hero_cta_primary"
+              >
                 Reserve your sprint
               </Button>
-              <Button href="/#pricing" variant="secondary" trackingLabel="hero_cta_secondary">
+              <Button
+                href="/#pricing"
+                variant="secondary"
+                className="!rounded-[14px] !px-[30px] !py-[10px] shadow-[0_1px_0_rgba(0,0,0,0.02)]"
+                trackingLabel="hero_cta_secondary"
+              >
                 Explore what we do
               </Button>
             </div>
 
-            <div className="grid max-w-[720px] grid-cols-2 items-center gap-x-5 gap-y-5 pt-2 sm:grid-cols-3 lg:grid-cols-5">
+            <div className="grid max-w-[720px] grid-cols-2 items-center gap-x-8 gap-y-5 pt-3 sm:grid-cols-3 lg:grid-cols-5">
               {heroPartners.map((partner) => (
                 <div key={partner.name} className="flex h-10 items-center">
                   <Image
@@ -78,77 +90,44 @@ export default function Hero() {
                     alt={partner.name}
                     width={220}
                     height={84}
-                    className={cn(
-                      partner.className,
-                      'w-auto opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0',
-                    )}
+                    className={cn(partner.className, 'w-auto opacity-100')}
                   />
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="relative hidden min-h-[680px] items-center justify-center lg:flex">
-            <div className="animate-float hero-float-card relative z-10">
-              <div className="rounded-[10px] bg-white/70 p-4">
-                <div>
+          <div className="relative hidden min-h-[620px] items-center justify-center lg:flex">
+            <div className="relative z-10 w-[372px] rounded-[22px] border border-[#d4d4d4] bg-white/85 p-4 shadow-[0_12px_24px_rgba(0,0,0,0.08)] backdrop-blur-md">
+              <div className="rounded-[18px] bg-white/70 p-5">
+                <div className="flex items-center justify-between gap-4">
                   <p className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
                     Profit
                   </p>
-                  <p className="mt-1 font-sans text-body-sm font-medium text-noprob-text">
-                    With NoProb® vs Without NoProb®
-                  </p>
-                </div>
-
-                <div className="mt-4 rounded-[10px] bg-[#f9f9f9] p-4">
-                  <div className="mb-4 flex items-center gap-4 font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-grey">
-                    <span className="inline-flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#121212]" />
+                  <div className="flex items-center gap-4 font-sans text-[10px] font-medium tracking-[-0.04em] text-noprob-grey">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-[#7a35f0]" />
                       With NoProb®
                     </span>
-                    <span className="inline-flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#d6d6d6]" />
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-[#b6b6b6]" />
                       Without NoProb®
                     </span>
                   </div>
+                </div>
 
-                  <svg viewBox="0 0 320 180" className="h-auto w-full" aria-label="Profit chart">
-                    <path
-                      d="M12 148H308"
-                      fill="none"
-                      stroke="#d6d6d6"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M60 26V148M140 26V148M220 26V148"
-                      fill="none"
-                      stroke="#ececec"
-                      strokeWidth="1"
-                      strokeDasharray="4 8"
-                    />
-                    <path
-                      d="M20 136C58 138 90 131 124 121C158 111 188 99 220 74C246 54 270 34 300 24"
-                      fill="none"
-                      stroke="#121212"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M20 142C60 141 96 139 128 136C166 132 202 128 236 122C260 118 279 115 300 111"
-                      fill="none"
-                      stroke="#bdbdbd"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeDasharray="7 8"
-                    />
-                  </svg>
+                <div className="mt-3 rounded-[16px] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(246,238,255,0.9))] p-3">
+                  <Image
+                    src={siteAssets.heroChart}
+                    alt="With NoProb versus Without NoProb chart"
+                    width={235}
+                    height={175}
+                    className="h-auto w-full"
+                  />
                 </div>
               </div>
-            </div>
 
-            <div className="hero-float-card absolute -bottom-8 left-6 z-20 w-[280px]">
-              <div className="flex items-start gap-3">
+              <div className="mt-3 flex items-start gap-3 border-t border-[#dcdcdc] pt-3">
                 <Image
                   src={siteAssets.heroAntonio}
                   alt="Antonio Manitta"
@@ -157,7 +136,7 @@ export default function Hero() {
                   className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
                 />
                 <div>
-                  <p className="font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-text">
+                  <p className="font-sans text-[12px] font-medium italic leading-[1.35em] tracking-[-0.02em] text-noprob-text">
                     Success comes from long-term thinking and a team that truly knows your
                     industry and each other
                   </p>

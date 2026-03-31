@@ -4,33 +4,38 @@ const resultCards = [
   {
     image: '/images/originals/lXYpLfNsEJ0igk2CBCTjY1Irqw.png',
     logo: '/images/originals/iWbz1XLCfNQ5rbC2z8HrFO8.png',
-    metrics: ['+347% revenue', '+38% MER'],
+    logoClass: 'h-[48px] w-auto',
+    metrics: ['+347% revenue growth', '+38% MER Improvement'],
   },
   {
     image: '/images/originals/i9Ht9Hdb61eYmBH3DZyKGjIm6s.webp',
     logo: '/images/originals/RWVPFhFtXLH5J1UMr53qg3AEzL8.svg',
-    metrics: ['-14% CPA', '+9% MER'],
+    logoClass: 'h-[80px] w-auto',
+    metrics: ['-14% Cost per Acquisition', '+9% MER Improvement'],
   },
   {
     image: '/images/originals/HACWQoGOAZHSLqcFjpYb1fb90wk.jpg',
     logo: '/images/originals/UR9tJ9ihRaU7gaL1jcgl0kwQY5g.svg',
-    metrics: ['57% Retention', '+7% AOV'],
+    logoClass: 'h-[56px] w-auto',
+    metrics: ['57% Retention Cost Reduction', '+7% AOV Growth'],
   },
   {
     image: '/images/originals/xikMpaXW3G0T00o5bsdB5bWnpuU.png',
     logo: '/images/originals/3D4Ji7c6LSsawGoOucoTS6dFA.png',
-    metrics: ['€9.03 CPA', '32% YoY'],
+    logoClass: 'h-[52px] w-auto',
+    metrics: ['€9.03 Cost per Acquisition', '32% Avg. YoY Revenue Growth'],
   },
   {
     image: '/images/originals/cOnThGiudnDZv0DuLTLxFgBBoc.webp',
     logo: '/images/originals/8GgYF2twbCK7Wa70vrBTzBY7kg.svg',
-    metrics: ['+2% MER', '+13% LTV'],
+    logoClass: 'h-[44px] w-auto',
+    metrics: ['+2% MER Improvement', '+13% LTV'],
   },
 ] as const
 
 export default function ResultsCarousel() {
   return (
-    <section id="results" className="scroll-mt-[150px] px-0 py-0">
+    <section id="results" className="-mt-1 scroll-mt-[150px] px-0 py-0 lg:-mt-6">
       <div className="px-9">
         <div className="overflow-hidden [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_10%,rgb(0,0,0)_90%,rgba(0,0,0,0)_100%)]">
           <div className="flex w-max animate-marquee gap-4 [animation-duration:35s]">
@@ -50,19 +55,19 @@ export default function ResultsCarousel() {
                 />
 
                 <div className="absolute inset-x-0 bottom-0 p-5">
-                  <div className="flex items-end justify-between gap-4">
+                  <div className="flex min-h-[112px] flex-col items-center justify-end gap-5">
                     <Image
                       src={card.logo}
                       alt="Client logo"
-                      width={180}
-                      height={70}
-                      className="max-h-10 w-auto object-contain"
+                      width={220}
+                      height={90}
+                      className={card.logoClass}
                     />
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-wrap items-center justify-center gap-2">
                       {card.metrics.map((metric) => (
                         <span
                           key={metric}
-                          className="inline-flex items-center rounded-xl border border-noprob-border-dk bg-noprob-dark px-3 py-2 font-sans text-tiny font-medium tracking-[-0.04em] text-[#f0f0f0]"
+                          className="inline-flex items-center rounded-xl border border-noprob-border-dk bg-noprob-dark px-3 py-2 font-sans text-[12px] font-medium tracking-[-0.04em] text-[#f0f0f0]"
                         >
                           {metric}
                         </span>

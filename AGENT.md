@@ -48,6 +48,8 @@
 - [x] Add results carousel, revised problem/solution sections, and case study card
 - [x] Rebuild black pricing section with embedded testimonials
 - [x] Rebuild logo wall, FAQ card, final orbit CTA, and black footer
+- [x] Run a screenshot-based fidelity pass on hero and results carousel details
+- [x] Import the original hero chart SVG as a local asset and wire it into the hero card
 
 ## Decisions
 
@@ -62,6 +64,8 @@
 - GA4 and Meta are wired behind GDPR consent via `vanilla-cookieconsent`; IDs remain environment-driven through `.env.example`.
 - The current homepage refactor is aligned to Framer-export tokens and structure: `#f0f0f0` page background, black pricing/footer blocks, Inter-led typography, and Source Serif 4 italic emphasis.
 - The homepage footer is not rendered in `app/layout.tsx`; it remains part of the homepage composition to match the live landing structure.
+- The latest polish pass focuses on screenshot fidelity: hero headline breaks, integrated chart/quote card, partner logo scale, and results-carousel badge placement.
+- The hero chart now uses the imported original SVG asset `public/images/originals/hero-profit-chart.svg` instead of a hand-drawn approximation.
 
 ## Notes
 
