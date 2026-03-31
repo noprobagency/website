@@ -19,9 +19,9 @@ type ButtonProps = {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'btn-primary',
-  secondary: 'btn-secondary',
-  ghost: 'inline-flex items-center justify-center text-[18px] font-semibold tracking-[-0.04em] text-noprob-dark transition-opacity hover:opacity-70',
+  primary: 'np-btn-primary',
+  secondary: 'np-btn-secondary',
+  ghost: 'inline-flex items-center justify-center text-[18px] font-semibold tracking-[-0.04em] text-np-dark transition-opacity hover:opacity-70',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {

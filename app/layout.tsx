@@ -10,7 +10,8 @@ import ConsentBanner from '@/components/tracking/ConsentBanner'
 import GoogleAnalytics from '@/components/tracking/GoogleAnalytics'
 import MetaPixel from '@/components/tracking/MetaPixel'
 import { organizationJsonLd, siteConfig } from '@/lib/site'
-import '@/styles/globals.css'
+import Preloader from '@/components/ui/Preloader'
+import '@/app/globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -73,8 +74,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="bg-noprob-bg text-noprob-text font-sans antialiased">
+      <body className="bg-np-bg text-np-text font-sans antialiased">
         <JsonLd data={organizationJsonLd} />
+        <Preloader />
         <GoogleAnalytics />
         <MetaPixel />
         <Navbar />

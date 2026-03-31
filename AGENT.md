@@ -5,7 +5,7 @@
 - Project: `noprob.agency`
 - Stack target: Next.js 15, TypeScript, Tailwind CSS, App Router
 - Priority: replicate the current `https://noprob.agency` homepage as faithfully as possible while setting up strong SEO and tracking foundations
-- Current session goal: rebuild the homepage from the extracted Framer HTML/CSS so the live result matches noprob.agency as closely as possible, using the exact light theme, typography, spacing, and asset mapping while keeping `pnpm tsc --noEmit` and `pnpm build` passing
+- Current session goal: remove all remaining legacy Framer-export rendering and ship the homepage as pure React + Tailwind using only local assets, while keeping `pnpm tsc --noEmit` and `pnpm build` passing
 
 ## Working Rules
 
@@ -51,8 +51,9 @@
 - [x] Run a screenshot-based fidelity pass on hero and results carousel details
 - [x] Import the original hero chart SVG as a local asset and wire it into the hero card
 - [x] Remap the above-the-fold desktop and mobile variants directly from the Framer export
-- [x] Import the exported static legacy site and mount the available pages directly inside Next
-- [x] Remove the legacy Framer preloader and static animation blockers from the imported markup
+- [x] Remove the temporary static-export / legacy Framer renderer from the Next app
+- [x] Restore homepage and supporting routes to pure React/Tailwind components only
+- [x] Remove Framer CDN dependencies and serve local assets/fonts only
 
 ## Decisions
 
@@ -70,12 +71,12 @@
 - The latest polish pass focuses on screenshot fidelity: hero headline breaks, integrated chart/quote card, partner logo scale, and results-carousel badge placement.
 - The hero chart now uses the imported original SVG asset `public/images/originals/hero-profit-chart.svg` instead of a hand-drawn approximation.
 - The above-the-fold now follows the pasted Framer DOM more literally, including the mobile `Menu` pill, centered mobile hero copy, and the graphic card rendered below the partner logos on phone.
-- The zipped static export is now treated as the highest-fidelity source of truth for the pages it contains; those routes render the exported body and styles directly from `content/legacy-site` inside Next.
-- Legacy-backed pages append a minimal black version strip after the exported footer so release visibility remains intact even when the original static footer markup is rendered verbatim.
-- The legacy renderer now strips the Framer preloader overlay, template overlay, modulepreload tags, and non-executing appear-animation starter styles so static pages render immediately without waiting for Framer runtime JS.
+- The temporary static-export fallback has now been removed; the app is back to pure React/Tailwind rendering with local assets only.
+- Framer-hosted runtime dependencies are no longer used in the app code or image configuration.
+- Local `@font-face` declarations are used from `public/fonts` to avoid shipping Google Fonts or Framer-hosted font dependencies.
 
 ## Notes
 
 - The Sanity CLI syntax has changed from the one in the brief, so a local Sanity scaffold was created manually with `sanity.config.ts`, `sanity.cli.ts`, and an empty schema entrypoint to keep the codebase ready without blocking the homepage sprint.
 - Visual reference for this redesign was taken from the live `https://noprob.agency` homepage plus the Framer-extracted CSS/HTML values provided in the brief.
-- The provided zip currently contains unique exports for `/`, `/blog`, `/ecommerce-rebuild`, and `/trustpilot`; the `/use-cases` export is also mounted from the zip even though its metadata appears blog-like and may need a source sanity check in a later pass.
+- The temporary zip-export mounting phase has been fully rolled back in favor of a local pure-component build, so future work should extend the React sections/routes directly rather than reintroducing static Framer exports.

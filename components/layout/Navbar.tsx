@@ -3,15 +3,13 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 import Button from '@/components/ui/Button'
-import { isLegacyBackedPath } from '@/lib/legacy-routes'
 import { siteAssets } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { label: 'Services', href: '/#results', hasChevron: true },
+  { label: 'Services', href: '/#pricing', hasChevron: true },
   { label: 'About', href: '/about' },
   { label: 'Use Case', href: '/use-cases' },
   { label: 'Blog', href: '/blog' },
@@ -20,11 +18,6 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const pathname = usePathname()
-
-  if (isLegacyBackedPath(pathname)) {
-    return null
-  }
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)]">
@@ -57,7 +50,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-3 min-[810px]:flex">
           <Link
             href="/it"
-            className="inline-flex items-center gap-1 rounded-pill bg-noprob-card px-2 py-1.5 font-sans text-tiny font-medium uppercase tracking-[-0.04em] text-noprob-dark mix-blend-difference"
+            className="inline-flex items-center gap-1 rounded-pill bg-np-card px-2 py-1.5 font-sans text-np-tiny font-medium uppercase tracking-[-0.04em] text-np-dark mix-blend-difference"
           >
             IT <span className="text-[10px]">▾</span>
           </Link>
@@ -68,7 +61,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-pill bg-noprob-card px-3 py-2 font-sans text-[16px] font-semibold leading-none tracking-[-0.04em] text-black backdrop-blur-[5px] [-webkit-backdrop-filter:blur(5px)] min-[810px]:hidden"
+          className="inline-flex items-center justify-center rounded-pill bg-np-card px-3 py-2 font-sans text-[16px] font-semibold leading-none tracking-[-0.04em] text-black backdrop-blur-[5px] [-webkit-backdrop-filter:blur(5px)] min-[810px]:hidden"
           aria-label="Toggle menu"
           aria-expanded={isMobileOpen}
           onClick={() => setIsMobileOpen((current) => !current)}
@@ -102,7 +95,7 @@ export default function Navbar() {
             <div className="mt-5 flex items-center gap-3">
               <Link
                 href="/it"
-                className="inline-flex items-center gap-1 rounded-pill bg-noprob-card px-2 py-1.5 font-sans text-tiny font-medium uppercase tracking-[-0.04em] text-noprob-dark"
+                className="inline-flex items-center gap-1 rounded-pill bg-np-card px-2 py-1.5 font-sans text-np-tiny font-medium uppercase tracking-[-0.04em] text-np-dark"
                 onClick={() => setIsMobileOpen(false)}
               >
                 IT <span className="text-[10px]">▾</span>

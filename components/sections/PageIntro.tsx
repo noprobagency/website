@@ -9,14 +9,14 @@ type PageIntroProps = {
 
 export default function PageIntro({ eyebrow, title, description }: PageIntroProps) {
   return (
-    <section className="bg-noprob-bg px-0 pb-20 pt-[180px]">
+    <section className="bg-np-bg px-0 pb-20 pt-[180px]">
       <div className="container-noprob">
-        <div className="rounded-card border-card-thick shadow-card mx-auto max-w-4xl bg-noprob-card-white px-8 py-16 text-center md:px-14">
+        <div className="mx-auto max-w-4xl rounded-card bg-np-card px-8 py-16 text-center shadow-card np-border-card md:px-14">
           <SectionLabel>{eyebrow}</SectionLabel>
-          <h1 className="mx-auto mt-6 max-w-3xl font-display text-h2-xl text-noprob-text md:text-[56px]">
+          <h1 className="mx-auto mt-6 max-w-3xl font-display text-[2.8rem] font-semibold tracking-[-0.05em] text-np-text md:text-[56px]">
             {title}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl font-sans text-body-lg font-medium text-noprob-text">
+          <p className="mx-auto mt-6 max-w-2xl font-sans text-[1.125rem] font-medium leading-[1.4em] tracking-[-0.02em] text-np-text">
             {description}
           </p>
           <div className="mt-10 flex justify-center">

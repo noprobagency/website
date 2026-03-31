@@ -1,6 +1,5 @@
 import Accordion from '@/components/ui/Accordion'
 import SectionLabel from '@/components/ui/SectionLabel'
-import Button from '@/components/ui/Button'
 
 const faqs = [
   {
@@ -82,13 +81,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <Button href="/contacts" className="rounded-pill !px-6" trackingLabel="faq_contact_cta">
-            Contact Us
-          </Button>
-        </div>
-
-        <div className="border-card-thick shadow-card animate-fade-up mx-auto mt-8 max-w-[1080px] rounded-card-lg bg-noprob-card px-6 py-8 md:px-12">
+        <div className="border-card-thick shadow-card animate-fade-up mx-auto mt-8 max-w-[800px] rounded-card-lg bg-noprob-card p-12">
           <Accordion items={faqs} />
         </div>
 

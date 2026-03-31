@@ -6,12 +6,12 @@ export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.4.5',
+  version: 'v0.5.1',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'noprob agency™ – Your eCommerce Technical & Growth Partner',
   description:
-    'Your eCommerce Technical & Growth Partner. We rebuild Shopify and WooCommerce stores from the ground up for Fashion, Supplements, and DTC brands.',
+    'Technical partner that makes eCommerce simple. A 7/7 team of developers, designers, and strategists combining code, data, and creativity to help Shopify and WooCommerce brands scale without stress.',
   keywords: [
     'ecommerce agency',
     'shopify development',
@@ -26,10 +26,10 @@ export const siteConfig = {
 } as const
 
 export const siteAssets = {
-  logo: '/images/logo.svg',
+  logo: '/images/originals/AY6rjj8ZVUbD4McJGHwEF1x9L08.svg',
   heroBlob: '/images/originals/sTppB2IVM0xacjy14dgUESIfmsE.png',
   heroBlobMobile: '/images/originals/922LPrLT3JS7JXQbJxraBeoo8I.png',
-  heroChart: '/images/originals/hero-profit-chart.svg',
+  heroChart: '/images/originals/HijMCqLZAt650eXmAVvyaUjhCCs.svg',
   trustpilotStars: '/images/originals/sbAOhlGVa6UCdyPY5GQVN73U.svg',
   trustpilotWordmark: '/images/originals/EHy98QvA9z6tzzIid9n0yt58zU.svg',
   heroAntonio: '/images/originals/7jMr2bJ1E0BHUjGZvEWpbOHZ0.png',
@@ -111,7 +111,7 @@ export const organizationJsonLd = {
   name: siteConfig.name,
   legalName: siteConfig.companyName,
   url: siteConfig.url,
-  logo: absoluteUrl('/images/logo.svg'),
+  logo: absoluteUrl(siteAssets.logo),
   description: siteConfig.description,
   address: {
     '@type': 'PostalAddress',

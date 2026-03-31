@@ -35,14 +35,14 @@ export default function Testimonials() {
             className="border-card-thick shadow-card flex h-full flex-col rounded-card bg-noprob-card p-6"
           >
             <Image
-              src={siteAssets.trustpilotStars}
-              alt="Trustpilot stars"
-              width={303}
+              src={siteAssets.trustpilotWordmark}
+              alt="Trustpilot"
+              width={200}
               height={20}
               className="h-5 w-auto"
             />
 
-            <p className="mt-5 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+            <p className="mt-5 font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
               {testimonial.quote}
             </p>
 
@@ -57,10 +57,10 @@ export default function Testimonials() {
                 />
               </div>
               <div>
-                <p className="font-sans text-[18px] font-semibold leading-[1.3em] tracking-[-0.02em] text-noprob-text">
+                <p className="font-sans text-[18px] font-medium leading-[1.3em] tracking-[-0.02em] text-[#363636]">
                   {testimonial.name}
                 </p>
-                <p className="font-sans text-body-sm font-medium text-noprob-grey">
+                <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted">
                   {testimonial.role}
                 </p>
               </div>
