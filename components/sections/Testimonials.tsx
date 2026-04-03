@@ -8,7 +8,7 @@ const testimonials = [
     role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
     image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
     quote:
-      'Collaborating with NoProb Agency for the development of our e-commerce was an extremely positive experience. From the very first stages of the project, the team stood out for its clear communication, technical expertise, and listening skills.',
+      'Collaborating with NoProb Agency for the development of our e-commerce was an extremely positive experience. From the very first stages of the project, the team stood out for its clear communication, technical expertise, and listening skills. Every step, from graphic design to going live, was handled with professionalism…',
   },
   {
     name: 'Camilla Dudine',
@@ -21,48 +21,54 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <div className="mt-16">
-      <div className="max-w-[760px]">
-        <h3 className="font-sans text-[32px] font-bold leading-[1.15em] tracking-[-0.04em] text-[#f9f9f9]">
+    <div className="mx-auto mt-16 max-w-[850px]">
+      <div className="text-center">
+        <h3 className="font-sans text-[1.6rem] font-bold leading-[1.4em] tracking-[-0.04em] text-[#f9f9f9]">
           Trusted by established business owners
         </h3>
       </div>
 
-      <div className="mt-6 grid gap-3 lg:grid-cols-2">
+      <div className="mt-6 grid gap-3 xl:grid-cols-2">
         {testimonials.map((testimonial) => (
           <article
             key={testimonial.name}
-            className="border-card-thick shadow-card flex h-full flex-col rounded-card bg-noprob-card p-6"
+            className="border-card-thick shadow-card flex h-auto flex-col items-start justify-between rounded-card bg-noprob-card p-6 overflow-visible"
           >
-            <Image
-              src={siteAssets.trustpilotWordmark}
-              alt="Trustpilot"
-              width={200}
-              height={20}
-              className="h-5 w-auto"
-            />
-
-            <p className="mt-5 font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
+            <p className="font-sans text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-noprob-text">
               {testimonial.quote}
             </p>
 
-            <div className="mt-6 flex items-center gap-3">
-              <div className="relative h-9 w-9 overflow-hidden rounded-full">
+            <div className="flex-1" />
+
+            <div className="mt-[10px]">
+              <div className="h-5 w-auto">
                 <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  fill
-                  sizes="36px"
-                  className="object-cover"
+                  src={siteAssets.trustpilotWordmark}
+                  alt="Trustpilot rating"
+                  width={100}
+                  height={20}
+                  className="h-full w-auto object-contain object-left"
                 />
               </div>
-              <div>
-                <p className="font-sans text-[18px] font-medium leading-[1.3em] tracking-[-0.02em] text-[#363636]">
-                  {testimonial.name}
-                </p>
-                <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted">
-                  {testimonial.role}
-                </p>
+
+              <div className="mt-[10px] flex items-center gap-3">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full border border-black/5">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <p className="font-sans text-[18px] font-medium leading-[1.3em] tracking-[-0.02em] text-[#363636]">
+                    {testimonial.name}
+                  </p>
+                  <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted">
+                    {testimonial.role}
+                  </p>
+                </div>
               </div>
             </div>
           </article>

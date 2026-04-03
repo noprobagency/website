@@ -15,8 +15,8 @@ export default function CaseStudy() {
           </h2>
         </div>
 
-        <article className="shadow-card flex w-full max-w-[800px] flex-col overflow-hidden rounded-card bg-np-card-off np-border-card lg:flex-row">
-          <div className="relative min-h-[420px] flex-1">
+        <article className="shadow-card flex w-full max-w-[850px] flex-col overflow-hidden rounded-card bg-np-card-off np-border-card lg:flex-row">
+          <div className="relative flex-1">
             <Image
               src="/images/originals/2QNUkNFRX0OUC0qTVjeplIvlFS0.jpg"
               alt="Cumini fashion case study"
@@ -26,19 +26,21 @@ export default function CaseStudy() {
             />
           </div>
 
-          <div className="flex flex-1 flex-col gap-[25px] p-5 lg:pr-5">
-            <div className="space-y-5">
-              <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text">
-                eCommerce Luxury Fashion Retail
-              </p>
+          <div className="flex flex-1 flex-col gap-5 pt-5 px-8 pb-5 lg:pr-8">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text">
+                  eCommerce Luxury Fashion Retail
+                </p>
 
-              <Image
-                src="/images/originals/T1UW1kS41RaUauBrmK5dUj0txA.png"
-                alt="Cumini logo"
-                width={228}
-                height={36}
-                className="h-9 w-auto object-contain object-left"
-              />
+                <Image
+                  src="/images/originals/T1UW1kS41RaUauBrmK5dUj0txA.png"
+                  alt="Cumini logo"
+                  width={228}
+                  height={36}
+                  className="h-9 w-auto object-contain object-left"
+                />
+              </div>
 
               <p className="max-w-[480px] font-sans text-body-sm font-medium leading-[1.5em] text-np-text">
                 Started with no tech team or structure. Built, launched, and scaled eCommerce
@@ -60,11 +62,11 @@ export default function CaseStudy() {
             <div className="flex flex-wrap gap-2">
               {serviceTags.map((tag) => (
                 <span
-                  key={tag}
-                  className="inline-flex rounded-pill bg-white px-3 py-[2px] font-sans text-[14px] font-semibold tracking-[-0.04em] text-white [mix-blend-mode:difference]"
-                >
-                  {tag}
-                </span>
+                   key={tag}
+                   className="inline-flex rounded-pill bg-white px-3 py-[2px] font-sans text-[14px] font-semibold tracking-[-0.04em] text-[#121212]"
+                 >
+                   {tag}
+                 </span>
               ))}
             </div>
           </div>

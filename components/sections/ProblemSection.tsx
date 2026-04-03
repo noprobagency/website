@@ -27,10 +27,10 @@ export default function ProblemSection() {
   return (
     <section className="px-4 pb-0 pt-[60px]">
       <div className="container-noprob">
-        <div className="mx-auto max-w-[780px] text-center">
+        <div className="mx-auto max-w-[800px] text-center">
           <SectionLabel>Problem</SectionLabel>
           <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-noprob-text">
-            Forget the <span className="line-through">All in one marketing agency</span>
+            Forget the <br /> <span className="line-through">All in one marketing agency</span>
           </h2>
           <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">
             Sure, everyone wants a killer eCommerce. But if you trust the hype, you end up
@@ -39,7 +39,7 @@ export default function ProblemSection() {
           </p>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 lg:flex-row">
+        <div className="mx-auto mt-8 flex max-w-[800px] flex-col gap-4 lg:flex-row">
           {problems.map((problem) => (
             <article
               key={problem.title}

@@ -35,9 +35,9 @@ const resultCards = [
 
 export default function ResultsCarousel() {
   return (
-    <section id="results" className="-mt-1 scroll-mt-[150px] px-0 py-0 lg:-mt-6">
-      <div className="px-9">
-        <div className="overflow-hidden [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_10%,rgb(0,0,0)_90%,rgba(0,0,0,0)_100%)]">
+    <section id="results" className="scroll-mt-[150px] px-0 py-0">
+      <div className="px-9 lg:px-0">
+        <div className="overflow-hidden py-4 lg:py-6 [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_10%,rgb(0,0,0)_90%,rgba(0,0,0,0)_100%)]">
           <div className="flex w-max animate-marquee gap-4 [animation-duration:35s]">
             {[...resultCards, ...resultCards].map((card, index) => (
               <article

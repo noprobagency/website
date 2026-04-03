@@ -27,10 +27,10 @@ export default function SolutionSection() {
   return (
     <section className="px-4 pb-0 pt-[80px]">
       <div className="container-noprob">
-        <div className="max-w-[780px] text-center lg:text-left">
+        <div className="mx-auto max-w-[800px] text-center">
           <SectionLabel>Solution</SectionLabel>
           <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-noprob-text">
-            Stop settling. Your eCommerce deserves a{' '}
+            Stop settling. <br /> Your eCommerce deserves a <br />{' '}
             <mark className="bg-[rgb(206,232,204)] px-2 font-serif italic text-noprob-text">
               true technical partner
             </mark>
@@ -38,7 +38,7 @@ export default function SolutionSection() {
           </h2>
         </div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-[800px] gap-4 lg:grid-cols-3">
           {solutions.map((solution) => (
             <article
               key={solution.title}

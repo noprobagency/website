@@ -49,112 +49,119 @@ export default function Pricing() {
   return (
     <section id="pricing" className="scroll-mt-40 bg-black px-9 py-[80px]">
       <div className="container-noprob">
-        <div className="mx-auto max-w-[760px] text-center">
-          <SectionLabel>Pricing</SectionLabel>
-          <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-[#f9f9f9]">
-            Smart plans for serious eCommerce brands
-          </h2>
-          <p className="mt-5 font-sans text-body-lg font-medium text-[#f9f9f9]">
-            Whether your eCommerce is running and growing or needs a complete rebuild, our tech
-            team will guide you every step of the way.
-          </p>
-        </div>
+        <div className="mx-auto max-w-[850px]">
+          <div className="mx-auto max-w-[650px] text-center">
+            <SectionLabel>Pricing</SectionLabel>
+            <h2 className="mt-5 font-display text-np-h2-md font-semibold text-[#f9f9f9]">
+              Smart plans for serious eCommerce brands
+            </h2>
+            <p className="mt-5 font-sans text-body-lg font-medium text-[#f9f9f9]">
+              Whether your eCommerce is running and growing or needs a complete rebuild, our tech
+              team will guide you every step of the way.
+            </p>
+          </div>
 
-        <div className="mt-10 grid gap-3 xl:grid-cols-2">
-          {plans.map((plan, index) => (
-            <article
-              key={plan.name}
-              className="rounded-card-lg border border-noprob-border-dk bg-noprob-text p-2"
-            >
-              <div className="rounded-[20px] bg-noprob-card p-8 shadow-pricing-inner">
-                <div
-                  className={
-                    index === 0
-                      ? 'inline-flex rounded-[5px] bg-[rgb(206,232,204)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
-                      : 'inline-flex rounded-[5px] bg-[rgb(219,204,232)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
-                  }
-                >
-                  {plan.badge}
-                </div>
-
-                <h3 className="mt-8 font-serif text-[2.5rem] font-semibold italic leading-[1.1em] tracking-[-0.05em] text-noprob-text">
-                  {plan.name}
-                </h3>
-
-                <div className="mt-6">
-                  <span className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
-                    From
-                  </span>
-                  <div className="mt-2 flex items-end gap-2">
-                    <span className="font-sans text-[1.8rem] font-bold leading-[1em] tracking-[-0.04em] text-noprob-text">
-                      {plan.price}
-                    </span>
-                    {plan.period ? (
-                      <span className="font-sans text-body-sm font-medium text-noprob-grey">
-                        {plan.period}
-                      </span>
-                    ) : null}
-                  </div>
-                </div>
-
-                <p className="mt-6 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
-                  {plan.description}
-                </p>
-
-                <ul className="mt-6 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
+          <div className="mt-10 grid gap-3 xl:grid-cols-2">
+            {plans.map((plan, index) => (
+              <article
+                key={plan.name}
+                className="rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
+              >
+                <div className="rounded-[20px] bg-white p-8 shadow-pricing-inner">
+                  <div className="flex flex-col gap-3">
+                    <div
+                      className={
+                        index === 0
+                          ? 'inline-flex self-start rounded-[5px] bg-[rgb(206,232,204)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
+                          : 'inline-flex self-start rounded-[5px] bg-[rgb(219,204,232)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
+                      }
                     >
-                      <CheckIcon />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                      {plan.badge}
+                    </div>
 
-                <div className="mt-8 flex flex-col gap-3">
-                  <Link
-                    href={plan.href}
-                    data-tracking={`pricing_primary_${index}`}
-                    className="np-btn-primary w-full"
-                  >
-                    {plan.cta}
-                  </Link>
-                  <Link
-                    href={plan.secondaryHref}
-                    className="text-center font-sans text-[12.8px] font-medium leading-[1.6em] tracking-[-0.02em] text-noprob-text transition-opacity hover:opacity-70"
-                  >
-                    {plan.secondary}
-                  </Link>
-                </div>
+                    <h3 className="font-serif text-[2.5rem] font-semibold italic leading-[1.1em] tracking-[-0.05em] text-noprob-text whitespace-nowrap">
+                      {plan.name}
+                    </h3>
 
-                <div className="mt-8 flex flex-col gap-1">
-                  <div className="flex items-center gap-[5px]">
-                    <Image
-                      src={siteAssets.trustpilotStars}
-                      alt="Trustpilot stars"
-                      width={16}
-                      height={16}
-                      className="h-4 w-4"
-                    />
-                    <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
-                      4,9
-                    </span>
-                    <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
-                      Trustpilot
-                    </span>
+                    <div className="flex items-end gap-[9px]">
+                      <span className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
+                        From
+                      </span>
+                      <div className="flex items-end gap-1">
+                        <span className="font-sans text-[1.8rem] font-bold leading-[1em] tracking-[-0.04em] text-noprob-text">
+                          {plan.price}
+                        </span>
+                        {plan.period ? (
+                          <span className="font-sans text-body-sm font-medium text-noprob-grey">
+                            {plan.period}
+                          </span>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+                      {plan.description}
+                    </p>
+
+                    <ul className="flex flex-col gap-2">
+                      {plan.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
+                        >
+                          <CheckIcon />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-dark">
-                    Trusted by Fashion, Supplements, and DTC eCommerce brands
-                  </p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
 
-        <Testimonials />
+                  <div className="mt-8 flex flex-col gap-3">
+                    <div className="flex flex-col gap-3">
+                      <Link
+                        href={plan.href}
+                        data-tracking={`pricing_primary_${index}`}
+                        className="np-btn-primary w-full"
+                      >
+                        {plan.cta}
+                      </Link>
+                      <Link
+                        href={plan.secondaryHref}
+                        className="text-center font-sans text-[12.8px] font-medium leading-[1.6em] tracking-[-0.02em] text-[#121212] underline transition-opacity hover:opacity-70"
+                      >
+                        {plan.secondary}
+                      </Link>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-[10px]">
+                      <div className="flex items-center gap-[5px]">
+                        <div className="relative h-4 w-12">
+                          <Image
+                            src={siteAssets.trustpilotWordmark}
+                            alt="Trustpilot logo"
+                            fill
+                            className="object-contain object-left"
+                          />
+                        </div>
+                        <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                          4,9
+                        </span>
+                        <span className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[rgb(36,143,98)]">
+                          Trustpilot
+                        </span>
+                      </div>
+                      <p className="max-w-[200px] text-center font-sans text-[12px] font-medium leading-[1.3em] tracking-[-0.04em] text-[#121212]">
+                        Trusted by Fashion, Supplements, and DTC eCommerce brands
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <Testimonials />
+        </div>
       </div>
     </section>
   )
