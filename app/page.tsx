@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import CaseStudy from '@/components/sections/CaseStudy'
 import FAQ from '@/components/sections/FAQ'
+import CTA from '@/components/sections/CTA'
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/sections/Hero'
 import LogoWall from '@/components/sections/LogoWall'
@@ -30,6 +31,7 @@ export default function HomePage() {
       <Pricing />
       <LogoWall />
       <FAQ />
+      <CTA />
       <Footer />
     </>
   )

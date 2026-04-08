@@ -9,9 +9,9 @@ export const siteConfig = {
   version: 'v0.5.8',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
-  defaultTitle: 'noprob agency™ – Your eCommerce Technical & Growth Partner',
+  defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
   description:
-    'Technical partner that makes eCommerce simple. A 7/7 team of developers, designers, and strategists combining code, data, and creativity to help Shopify and WooCommerce brands scale without stress.',
+    'Shopify Partner specializzato in sviluppo, migrazione e gestione eCommerce. Costruiamo il tuo store per convertire, restiamo per farlo crescere. Un unico partner tecnico, a lungo termine.',
   keywords: [
     'ecommerce agency',
     'shopify development',
