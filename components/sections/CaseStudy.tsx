@@ -1,4 +1,7 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 
@@ -10,13 +13,19 @@ export default function CaseStudy() {
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8">
         <div className="max-w-[550px] text-center">
           <SectionLabel>Case Studies</SectionLabel>
-          <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-np-text">
+          <h2 className="mt-5 text-np-h2 text-center text-np-dark">
             What happens when tech meets execution and consistency.
           </h2>
         </div>
 
-        <article className="shadow-card flex w-full max-w-[850px] flex-col overflow-hidden rounded-card bg-np-card-off np-border-card lg:flex-row">
-          <div className="relative flex-1">
+        <motion.article
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 'some' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="shadow-card flex w-full max-w-[850px] flex-col overflow-hidden rounded-[16px] bg-[#f9f9f9] border-[6px] border-[#f0f0f0] lg:flex-row"
+        >
+          <div className="relative w-full h-[200px] flex-none lg:h-auto lg:flex-1">
             <Image
               src="/images/originals/2QNUkNFRX0OUC0qTVjeplIvlFS0.jpg"
               alt="Cumini fashion case study"
@@ -26,10 +35,10 @@ export default function CaseStudy() {
             />
           </div>
 
-          <div className="flex flex-1 flex-col gap-5 pt-5 px-8 pb-5 lg:pr-8">
+          <div className="flex flex-1 flex-col gap-[15px] p-[32px] lg:gap-5 lg:px-8 lg:py-5 lg:pr-8">
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
-                <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text">
+                <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[#666]">
                   eCommerce Luxury Fashion Retail
                 </p>
 
@@ -49,12 +58,12 @@ export default function CaseStudy() {
               </p>
             </div>
 
-            <div className="border-b border-[rgba(164,164,164,0.5)] pb-6">
+            <div className="border-b border-[rgba(164,164,164,0.5)] pb-2 lg:pb-6">
               <p className="flex items-center gap-2 font-sans text-body-lg font-medium text-np-dark">
                 <span className="text-np-green">↑</span>
                 347% revenue growth
               </p>
-              <p className="mt-2 font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text">
+              <p className="mt-2 font-sans text-[11px] lg:text-[12px] font-medium tracking-[-0.04em] text-np-text whitespace-nowrap lg:whitespace-normal">
                 In 36 months of full partnership with noprob agency
               </p>
             </div>
@@ -62,15 +71,15 @@ export default function CaseStudy() {
             <div className="flex flex-wrap gap-2">
               {serviceTags.map((tag) => (
                 <span
-                   key={tag}
-                   className="inline-flex rounded-pill bg-white px-3 py-[2px] font-sans text-[14px] font-semibold tracking-[-0.04em] text-[#121212]"
-                 >
-                   {tag}
-                 </span>
+                  key={tag}
+                  className="inline-flex rounded-pill bg-white px-3 py-[2px] font-sans text-[14px] font-semibold tracking-[-0.04em] text-[#121212]"
+                >
+                  {tag}
+                </span>
               ))}
             </div>
           </div>
-        </article>
+        </motion.article>
       </div>
     </section>
   )

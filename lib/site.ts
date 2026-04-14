@@ -27,6 +27,8 @@ export const siteConfig = {
 
 export const siteAssets = {
   logo: '/images/originals/AY6rjj8ZVUbD4McJGHwEF1x9L08.svg',
+  logoBlack: '/images/logo-no-prob-black.svg',
+  logoWhite: '/images/logo-no-prob-white-1.svg',
   heroBlob: '/images/originals/sTppB2IVM0xacjy14dgUESIfmsE.png',
   heroBlobMobile: '/images/originals/922LPrLT3JS7JXQbJxraBeoo8I.png',
   heroChart: '/images/originals/HijMCqLZAt650eXmAVvyaUjhCCs.svg',

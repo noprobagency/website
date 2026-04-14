@@ -1,65 +1,114 @@
+'use client'
+
 import Image from 'next/image'
+import { motion, Variants } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 
 const logoRows = [
   [
-    { src: '/images/originals/FR3xEp7KJjpolR8QoX59evskBqM.png', height: 30 },
-    { src: '/images/originals/RWVPFhFtXLH5J1UMr53qg3AEzL8.svg', height: 60 },
-    { src: '/images/originals/N0Tx01aMkN7R9VRqxvyyVyhYwQk.png', height: 46 },
-    { src: '/images/originals/HvA5aLVjEBt6fJXZIKt8YOmWX30.svg', height: 39 },
-    { src: '/images/originals/vN14wZ29u2zUpcqrMSGkycbAUf0.svg', height: 15 },
-    { src: '/images/originals/8occchv7EZ1XL94VC9bEoysJDPU.svg', height: 52 },
+    { src: '/images/originals/T1UW1kS41RaUauBrmK5dUj0txA.png', isLarge: true },
+    { src: '/images/originals/RWVPFhFtXLH5J1UMr53qg3AEzL8.svg' },
+    { src: '/images/originals/N0Tx01aMkN7R9VRqxvyyVyhYwQk.png' },
+    { src: '/images/originals/HvA5aLVjEBt6fJXZIKt8YOmWX30.svg' },
+    { src: '/images/originals/vN14wZ29u2zUpcqrMSGkycbAUf0.svg' },
+    { src: '/images/originals/8occchv7EZ1XL94VC9bEoysJDPU.svg' },
   ],
   [
-    { src: '/images/originals/TkZPz7oSBvfmLnhfuoopRtZMGOg.svg', height: 12 },
-    { src: '/images/originals/XbNI9XSTG5RsPHfZYFc2XLBJmw.webp', height: 51 },
-    { src: '/images/originals/4WXTDogs69o24LfYlTlhkJwFNis.svg', height: 31 },
-    { src: '/images/originals/dKDeBQLhklB2IlsixCrTFByIQ1w.svg', height: 35 },
-    { src: '/images/originals/qwWohvBrgJlSHfTWtvnnrKMguM.svg', height: 32 },
-    { src: '/images/originals/qN88QvWhz41zWATtn6ZnzXM2cE.png', height: 47 },
+    { src: '/images/originals/TkZPz7oSBvfmLnhfuoopRtZMGOg.svg' },
+    { src: '/images/originals/XbNI9XSTG5RsPHfZYFc2XLBJmw.webp' },
+    { src: '/images/originals/4WXTDogs69o24LfYlTlhkJwFNis.svg' },
+    { src: '/images/originals/dKDeBQLhklB2IlsixCrTFByIQ1w.svg' },
+    { src: '/images/originals/qwWohvBrgJlSHfTWtvnnrKMguM.svg' },
+    { src: '/images/originals/qN88QvWhz41zWATtn6ZnzXM2cE.png' },
   ],
   [
-    { src: '/images/originals/ZdmuSU05kPctAmOJTND91Yiov7Y.svg', height: 24 },
-    { src: '/images/originals/HFB669NKhBu4jn7AhQ5uvYL0cY.svg', height: 25 },
-    { src: '/images/originals/43oBOi4PKxtyVmYCQkDgPI.svg', height: 19 },
-    { src: '/images/originals/SewUzXcHAaqioXr7g1lRajka5Mc.svg', height: 49 },
-    { src: '/images/originals/SXlf93ZkIQ5nC06iYVj2bs4d7vg.png', height: 50 },
+    { src: '/images/originals/ZdmuSU05kPctAmOJTND91Yiov7Y.svg' },
+    { src: '/images/originals/HFB669NKhBu4jn7AhQ5uvYL0cY.svg' },
+    { src: '/images/originals/43oBOi4PKxtyVmYCQkDgPI.svg' },
+    { src: '/images/originals/SewUzXcHAaqioXr7g1lRajka5Mc.svg' },
+    { src: '/images/originals/SXlf93ZkIQ5nC06iYVj2bs4d7vg.png' },
   ],
 ] as const
 
+const logoVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.05,
+      duration: 0.4,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+}
+
 export default function LogoWall() {
+  const allLogos = logoRows.flat()
+
   return (
-    <section className="px-6 pb-0 pt-[80px] scroll-mt-[150px]">
+    <section className="pb-0 pt-[80px] scroll-mt-[150px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[760px] text-center">
           <SectionLabel>Clients</SectionLabel>
-          <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-noprob-text">
+          <h2 className="mt-5 font-display text-np-h2-sm lg:text-np-h2 text-center text-np-dark">
             Brands that believed in us.
           </h2>
         </div>
 
-        <div className="mt-10 space-y-1">
+        {/* Mobile Marquee */}
+        <div className="mt-10 overflow-hidden py-4 min-[810px]:hidden [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_10%,rgb(0,0,0)_90%,rgba(0,0,0,0)_100%)]">
+          <div className="flex w-max animate-marquee items-center gap-10 [animation-duration:25s]">
+            {[...allLogos, ...allLogos].map((logo, index) => (
+              <div
+                key={`${logo.src}-${index}`}
+                className="relative flex shrink-0 items-center justify-center grayscale transition-all duration-300 hover:grayscale-0"
+              >
+                <img
+                  src={logo.src}
+                  alt="Client logo"
+                  className="max-h-[42px] max-w-[150px] block object-contain opacity-[0.8] transition-opacity hover:opacity-100"
+                  style={{ width: 'auto', height: 'auto' }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="mx-auto mt-14 hidden max-w-[1000px] space-y-10 min-[810px]:block">
           {logoRows.map((row, rowIndex) => (
             <div
               key={`row-${rowIndex}`}
-              className="flex flex-wrap items-center justify-center gap-0"
+              className={`flex flex-wrap items-center justify-center gap-y-6 ${rowIndex === 2 ? 'gap-x-10' : 'gap-x-[10px]'
+                }`}
             >
-              {row.map((logo) => (
-                <div
-                  key={logo.src}
-                  className="flex h-[100px] flex-1 basis-[160px] items-center justify-center"
-                >
-                  <Image
-                    src={logo.src}
-                    alt="Client logo"
-                    width={180}
-                    height={logo.height}
-                    className="w-auto object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-                    style={{ height: logo.height }}
-                  />
-                </div>
-              ))}
+              {row.map((logo, logoIndex) => {
+                const globalIndex = rowIndex * 6 + logoIndex
+                return (
+                  <motion.div
+                    key={logo.src}
+                    custom={globalIndex}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 'some' }}
+                    variants={logoVariants}
+                    className={`flex items-center justify-center grayscale transition-all duration-300 hover:grayscale-0 ${'isLarge' in logo && logo.isLarge
+                      ? 'h-[42px] w-[150px] hover:scale-105'
+                      : 'h-[36px] w-[130px] hover:scale-105'
+                      }`}
+                  >
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={logo.src}
+                        alt="Client logo"
+                        fill
+                        className="object-contain opacity-[0.8] transition-opacity hover:opacity-100"
+                      />
+                    </div>
+                  </motion.div>
+                )
+              })}
             </div>
           ))}
         </div>

@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
-import { siteConfig } from '@/lib/site'
+import { siteConfig, siteAssets } from '@/lib/site'
+import { ServicesDropdown } from '@/components/layout/Navbar'
 
 const footerLinks = [
   { label: 'About', href: '/about' },
@@ -11,24 +13,23 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center gap-12 bg-black px-9 py-10 text-white">
+    <footer data-header-theme="dark" className="flex flex-col items-center gap-12 bg-black px-9 py-10 text-white">
       <div className="w-full max-w-[1200px] lg:flex lg:items-end lg:justify-between lg:gap-8">
         <div className="max-w-[760px]">
-          <div className="relative inline-flex items-start">
-            <span className="font-serif text-[30px] font-semibold italic leading-none tracking-[-0.08em] text-white">
-              noprob
-            </span>
-            <sup className="relative -top-2 ml-0.5 font-sans text-[14px] font-semibold text-white">
-              ®
-            </sup>
-          </div>
+          <Link href="/" className="relative inline-flex h-[44px] w-auto items-center">
+            <Image
+              src={siteAssets.logoWhite}
+              alt="noprob agency logo"
+              height={44}
+              width={176}
+              className="h-full w-auto object-contain object-left"
+            />
+          </Link>
 
-          <div className="mt-3">
-            <h2 className="font-display text-[44px] font-semibold leading-none tracking-[-0.05em] text-white sm:text-[56px] lg:text-[64px]">
-              Consistency.{' '}
-              <span className="font-display not-italic">
-                That&apos;s <span className="font-serif italic">noprob agency</span>
-              </span>
+          <div className="mt-4">
+            <h2 className="font-display text-[44px] font-semibold leading-[1.1] tracking-[-0.05em] text-white sm:text-[56px] lg:text-[64px]">
+              Consistency <br />
+              That&apos;s <span className="font-serif italic font-normal">noprob agency</span>
             </h2>
           </div>
 
@@ -38,7 +39,8 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav className="mt-8 flex flex-wrap items-center gap-2 lg:mt-0 lg:justify-end">
+        <nav className="mt-8 flex flex-wrap items-center gap-2 lg:mt-0 lg:justify-end border-b border-transparent">
+          <ServicesDropdown theme="dark" direction="down" />
           {footerLinks.map((link) => (
             <Link
               key={link.href}

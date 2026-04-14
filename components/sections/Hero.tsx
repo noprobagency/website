@@ -1,5 +1,9 @@
+'use client'
+
+import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useInView } from 'framer-motion'
 
 import { siteAssets } from '@/lib/site'
 
@@ -9,57 +13,90 @@ const heroPartners = [
     src: siteAssets.heroPartners[0],
     width: 288,
     height: 76,
-    className: 'block h-[18px] w-auto object-contain opacity-[0.85] min-[810px]:h-[22px]',
+    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[28px]',
   },
   {
     name: 'WooCommerce',
     src: siteAssets.heroPartners[1],
     width: 300,
     height: 300,
-    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[26px]',
+    className: 'block h-[28px] w-auto object-contain opacity-[0.85] min-[810px]:h-[34px]',
   },
   {
     name: 'Google Partner',
     src: siteAssets.heroPartners[2],
     width: 288,
     height: 76,
-    className: 'block h-[32px] w-auto object-contain opacity-[0.85] min-[810px]:h-[38px]',
+    className: 'block h-[38px] w-auto object-contain opacity-[0.85] min-[810px]:h-[46px]',
   },
   {
     name: 'Meta Business Partner',
     src: siteAssets.heroPartners[3],
     width: 288,
     height: 76,
-    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[26px]',
+    className: 'block h-[28px] w-auto object-contain opacity-[0.85] min-[810px]:h-[34px]',
   },
   {
     name: 'Klaviyo Partners',
     src: siteAssets.heroPartners[4],
     width: 500,
     height: 233,
-    className: 'block h-[24px] w-auto object-contain opacity-[0.85] min-[810px]:h-[29px]',
+    className: 'block h-[30px] w-auto object-contain opacity-[0.85] min-[810px]:h-[36px]',
   },
 ] as const
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { amount: 0.1 })
+  const waveStyle = {
+    '--wave-play-state': isInView ? 'running' : 'paused',
+  } as React.CSSProperties
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative flex w-full justify-center overflow-hidden bg-noprob-bg px-6 pb-20 pt-[63px] min-[810px]:h-[751px] min-[810px]:items-center min-[810px]:px-9 min-[810px]:pb-40 min-[810px]:pt-[250px] min-[810px]:max-[1199px]:h-auto min-[810px]:max-[1199px]:items-start min-[810px]:max-[1199px]:pb-[50px] min-[810px]:max-[1199px]:pt-[100px]"
     >
-      <div className="pointer-events-none absolute inset-x-0 bottom-[-24px] block h-[262px] rotate-[-75deg] overflow-hidden min-[810px]:hidden">
-        <Image src={siteAssets.heroBlobMobile} alt="" fill priority className="object-cover" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-[-24px] block h-[262px] overflow-hidden min-[810px]:hidden"
+        style={waveStyle}
+      >
+        {/* START: Effetto Onda Lissajous Premium */}
+        <div className="relative h-full w-full wave-x">
+          <div className="relative h-full w-full wave-y">
+            <div className="relative h-full w-full wave-3d">
+              <div className="relative h-full w-full wave-stretch">
+                <Image src={siteAssets.heroBlobMobile} alt="" fill priority className="object-contain object-bottom" aria-hidden />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* END: Effetto Onda Lissajous Premium */}
       </div>
 
-      <div className="pointer-events-none absolute hidden overflow-hidden min-[810px]:block min-[810px]:max-[1199px]:bottom-[-90px] min-[810px]:max-[1199px]:right-[-720px] min-[810px]:max-[1199px]:top-auto min-[810px]:max-[1199px]:h-[904px] min-[810px]:max-[1199px]:w-[1343px] min-[810px]:max-[1199px]:-rotate-[200deg] min-[1200px]:-bottom-[77px] min-[1200px]:-right-[571px] min-[1200px]:-top-[76px] min-[1200px]:w-[1344px] min-[1200px]:aspect-[1.48636] min-[1200px]:-rotate-[240deg]">
-        <Image
-          src={siteAssets.heroBlob}
-          alt=""
-          fill
-          priority
-          className="object-contain"
-          aria-hidden
-        />
+      <div
+        className="pointer-events-none absolute hidden overflow-hidden min-[810px]:block min-[810px]:max-[1199px]:bottom-[-90px] min-[810px]:max-[1199px]:right-[-720px] min-[810px]:max-[1199px]:top-auto min-[810px]:max-[1199px]:h-[904px] min-[810px]:max-[1199px]:w-[1343px] min-[810px]:max-[1199px]:-rotate-[200deg] min-[1200px]:-bottom-[77px] min-[1200px]:-right-[571px] min-[1200px]:-top-[76px] min-[1200px]:w-[1344px] min-[1200px]:aspect-[1.48636] min-[1200px]:-rotate-[240deg]"
+        style={waveStyle}
+      >
+        {/* START: Effetto Onda Lissajous Premium */}
+        <div className="h-full w-full wave-x">
+          <div className="h-full w-full wave-y">
+            <div className="h-full w-full wave-3d">
+              <div className="h-full w-full wave-stretch">
+                <Image
+                  src={siteAssets.heroBlob}
+                  alt=""
+                  fill
+                  priority
+                  className="object-contain"
+                  aria-hidden
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* END: Effetto Onda Lissajous Premium */}
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-[5] bg-noprob-bg [mask-image:linear-gradient(rgba(0,0,0,0)_88%,#000_97%)] [-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_88%,#000_97%)] min-[810px]:[mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] min-[810px]:[-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)]" />
@@ -94,7 +131,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <h1 className="max-w-[650px] text-center font-display text-[2.3rem] font-semibold leading-[1em] tracking-[-0.06em] text-noprob-text min-[810px]:text-left min-[810px]:text-[3.8rem] min-[810px]:tracking-[-0.05em]">
+          <h1 className="max-w-[650px] text-center text-np-hero text-noprob-text min-[810px]:text-left">
             <span className="block">Your Brand is premium.</span>
             <span className="block">Your eCommerce</span>
             <span className="block">
@@ -124,7 +161,7 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="grid w-full max-w-[480px] grid-cols-5 items-center gap-0 pt-[2px] min-[810px]:pt-0">
+          <div className="grid w-full max-w-[600px] grid-cols-5 items-center gap-0 pt-[2px] min-[810px]:pt-0">
             {heroPartners.map((partner) => (
               <div key={partner.name} className="relative flex h-10 items-center justify-center">
                 <Image

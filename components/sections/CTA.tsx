@@ -125,25 +125,25 @@ export default function CTA() {
         </div>
 
         {/* Content Layer - High z-index to stay above the blur mask */}
-        <div 
+        <div
           className="relative z-30 flex flex-col items-center text-center w-full max-w-3xl"
           style={{ position: 'absolute', bottom: '80px', left: '50%', transform: 'translateX(-50%)' }}
         >
-          <h2 className="mb-8 text-[44px] font-semibold leading-[1.1] tracking-tight text-[#121212] md:text-5xl lg:text-[56px] lg:leading-[1.2]">
+          <h2 className="mb-8 text-center text-np-dark text-[56px] min-[810px]:text-[56px]" style={{ fontFamily: '"Inter Display", Inter, sans-serif', fontWeight: 600, lineHeight: '1.1em', letterSpacing: '-0.05em' }}>
             Ready to fix what&apos;s <br className="hidden sm:block" />
             <span className="font-serif italic font-normal">slowing</span> you down?
           </h2>
 
           <Link
             href="/contacts"
-            className="group flex items-center gap-4 rounded-[50px] border-2 border-[#181818] bg-[#121212] p-2 pr-6 text-white transition-colors hover:opacity-90 shadow-btn"
+            className="flex items-center gap-3 overflow-hidden rounded-[50px] border-2 border-[#181818] bg-[#121212] py-2 pl-2 pr-6 hover:opacity-90"
           >
-            <div className="relative h-[48px] w-[48px] overflow-hidden rounded-[50px] border border-white/10">
+            <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[50px]">
               <Image
                 src="https://framerusercontent.com/images/7jMr2bJ1E0BHUjGZvEWpbOHZ0.png"
                 alt="Avatar"
                 fill
-                sizes="48px"
+                sizes="40px"
                 className="object-cover"
               />
             </div>
@@ -151,7 +151,7 @@ export default function CTA() {
               <span className="text-[16px] font-semibold tracking-tight text-[#f0f0f0]">
                 Reserve Your Sprint
               </span>
-              <div className="mt-0.5 flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[#1dcc5d]"></span>
                 <span className="text-[13px] text-[#a9a9a9]">
                   Slot Available for November

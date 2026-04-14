@@ -69,11 +69,11 @@ export default function FAQ() {
   }
 
   return (
-    <section className="px-9 pb-0 pt-[80px]">
+    <section className="pb-0 pt-[80px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[760px] text-center">
           <SectionLabel>FAQs</SectionLabel>
-          <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-noprob-text">
+          <h2 className="mt-5 text-np-h2 text-center text-np-dark">
             Everything you <span className="font-serif italic">need</span> to know
           </h2>
           <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">
@@ -81,7 +81,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div className="border-card-thick shadow-card animate-fade-up mx-auto mt-8 max-w-[800px] rounded-card-lg bg-noprob-card p-12">
+        <div className="border-card-thick shadow-card animate-fade-up mx-auto mt-8 max-w-[800px] rounded-card-lg bg-noprob-card px-6 pt-8 pb-6 min-[810px]:p-12">
           <Accordion items={faqs} />
         </div>
 

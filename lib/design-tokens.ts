@@ -31,7 +31,7 @@ export const fonts = {
 
 export const type = {
   hero: { size: '3.8rem', weight: 600, tracking: '-0.05em', leading: '1em', font: fonts.display },
-  h2: { size: '2.8rem', weight: 600, tracking: '-0.05em', leading: '1.2em', font: fonts.display },
+  h2: { size: '1.5rem', weight: 600, tracking: '-0.05em', leading: '1.2em', font: fonts.display },
   h3: { size: '2rem', weight: 700, tracking: '-0.04em', leading: '1.2em', font: fonts.sans },
   h4: { size: '1.5rem', weight: 600, tracking: '-0.04em', leading: '1.3em', font: fonts.sans },
   pricingTitle: {
@@ -125,7 +125,7 @@ export const logoText = {
   style: 'italic' as const,
   weight: 600,
   tracking: '-0.08em',
-  navSize: '1.625rem',
+  navSize: '2.625rem',
   footerSize: '1.875rem',
 } as const
 
@@ -134,7 +134,7 @@ export const dropdown = {
   radius: '12px',
   padding: '8px',
   minWidth: '220px',
-  gap: '8px',
+  gap: '12px',
   itemPadding: '10px 16px',
   itemRadius: '8px',
   itemFont: { size: '16px', weight: 400, tracking: '-0.03em' },

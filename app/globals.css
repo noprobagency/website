@@ -66,6 +66,10 @@
   font-display: swap;
 }
 
+:root {
+  --np-scale: 1rem;
+}
+
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
@@ -76,6 +80,7 @@
     background-color: #f0f0f0;
     color: #181818;
     font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
   }
 
   a {
@@ -104,7 +109,7 @@
 
 @layer utilities {
   .np-container {
-    @apply mx-auto w-full px-9;
+    @apply mx-auto w-full px-5 min-[810px]:px-9;
     max-width: 1200px;
   }
 
@@ -313,6 +318,64 @@
   }
 }
 
+/* h1 — mobile */
+.text-np-hero {
+  font-family: "Inter Display", Inter, sans-serif;
+  font-size: calc(var(--np-scale) * 2.3);
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: -0.06em;
+}
+
+/* h1 — desktop */
+@media (min-width: 810px) {
+  .text-np-hero {
+    font-size: calc(var(--np-scale) * 3.8);
+    letter-spacing: -0.05em;
+  }
+}
+
+/* h2 — mobile */
+.text-np-h2 {
+  font-family: "Inter Display", Inter, sans-serif;
+  font-size: calc(var(--np-scale) * 1.8);
+  font-weight: 600;
+  line-height: 1.2em;
+  letter-spacing: -0.05em;
+}
+
+/* h2 — desktop */
+@media (min-width: 1024px) {
+  .text-np-h2 {
+    font-size: calc(var(--np-scale) * 2.8);
+  }
+}
+
+/* h3 */
+.text-np-h3 {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: calc(var(--np-scale) * 1.13);
+  font-weight: 700;
+  line-height: 1.2em;
+  letter-spacing: -0.04em;
+}
+
+/* pricing plan name */
+.text-np-pricing {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-style: italic;
+  font-size: calc(var(--np-scale) * 1.9);
+  font-weight: 600;
+  line-height: 1.1em;
+  letter-spacing: -0.05em;
+}
+
+@media (min-width: 810px) {
+  .text-np-pricing {
+    font-size: calc(var(--np-scale) * 2.5);
+  }
+}
+
 #cc-main .cm,
 #cc-main .pm {
   font-family: 'Inter', system-ui, sans-serif;
@@ -334,6 +397,7 @@
 
   .np-nav-mobile {
     display: inline-flex !important;
+    padding: 4px 12px !important;
   }
 }
 
@@ -364,4 +428,84 @@
   border: 1px solid #d6d6d6;
   background: transparent;
   color: #181818;
+}
+
+
+
+@keyframes wave-x {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(18px) rotate(1.5deg);
+  }
+}
+
+@keyframes wave-y {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes wave-stretch {
+
+  0%,
+  100% {
+    transform: scale(1.02, 0.95);
+  }
+
+  50% {
+    transform: scale(1.12, 0.85);
+  }
+}
+
+@keyframes wave-3d {
+
+  0%,
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-4deg);
+  }
+}
+
+.wave-x {
+  animation: wave-x 14s ease-in-out infinite;
+  animation-play-state: var(--wave-play-state, running);
+  will-change: transform;
+}
+
+.wave-y {
+  animation: wave-y 13s ease-in-out infinite;
+  animation-play-state: var(--wave-play-state, running);
+  will-change: transform;
+}
+
+.wave-stretch {
+  animation: wave-stretch 14s ease-in-out infinite;
+  animation-play-state: var(--wave-play-state, running);
+  will-change: transform;
+}
+
+.wave-3d {
+  animation: wave-3d 15s ease-in-out infinite;
+  animation-play-state: var(--wave-play-state, running);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.wave-image-container {
+  pointer-events: none;
+  transform-origin: center center;
 }

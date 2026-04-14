@@ -47,9 +47,9 @@ const config: Config = {
       },
       fontSize: {
         'np-hero': ['3.8rem', { lineHeight: '1em', letterSpacing: '-0.05em', fontWeight: '600' }],
-        'np-h2': ['2.8rem', { lineHeight: '1.2em', letterSpacing: '-0.05em', fontWeight: '600' }],
+        'np-h2': ['3.5rem', { lineHeight: '1.2em', letterSpacing: '-0.07em', fontWeight: '600' }],
         'np-h2-md': ['2.24rem', { lineHeight: '1.2em', letterSpacing: '-0.05em' }],
-        'np-h2-sm': ['1.79rem', { lineHeight: '1.2em', letterSpacing: '-0.05em' }],
+        'np-h2-sm': ['2rem', { lineHeight: '1.2em', letterSpacing: '-0.07em', fontWeight: '600' }],
         'np-pricing': ['2.5rem', { lineHeight: '1.1em', letterSpacing: '-0.05em', fontWeight: '600' }],
         'np-footer': ['4rem', { lineHeight: '1em', letterSpacing: '-0.05em', fontWeight: '600' }],
         'np-body': ['1.125rem', { lineHeight: '1.4em', letterSpacing: '-0.02em', fontWeight: '500' }],

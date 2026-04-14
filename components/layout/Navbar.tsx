@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { colors, dropdown, logoText } from '@/lib/design-tokens'
+import { siteAssets } from '@/lib/site'
 
 type NavLink = {
   label: string
@@ -57,23 +59,28 @@ function CloseIcon() {
   )
 }
 
-function Logo({ size = logoText.navSize }: { size?: string }) {
+function Logo({ size = '35px' }: { size?: string }) {
   return (
-    <Link href="/" aria-label="noprob agency — torna alla home" className="inline-flex items-baseline">
-      <span
-        className="inline-flex select-none items-baseline font-serif italic leading-none tracking-[-0.08em] text-np-text"
-        style={{ fontSize: size, fontWeight: logoText.weight }}
-      >
-        {logoText.text}
-        <sup className="relative -top-[0.45em] ml-px font-sans text-[0.55em] font-semibold not-italic leading-none tracking-normal">
-          {logoText.trademark}
-        </sup>
-      </span>
+    <Link
+      href="/"
+      aria-label="noprob agency — torna alla home"
+      className="inline-flex items-center"
+    >
+      <div className="relative" style={{ height: size }}>
+        <Image
+          src={siteAssets.logoBlack}
+          alt="noprob agency logo"
+          height={parseInt(size)}
+          width={parseInt(size) * 4} // Assumed aspect ratio, object-contain will handle it
+          className="h-full w-auto object-contain object-left"
+          priority
+        />
+      </div>
     </Link>
   )
 }
 
-function ServicesDropdown() {
+export function ServicesDropdown({ theme = 'light', direction = 'down' }: { theme?: 'light' | 'dark', direction?: 'up' | 'down' }) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const closeTimeoutRef = useRef<number | null>(null)
@@ -116,9 +123,17 @@ function ServicesDropdown() {
   return (
     <div
       ref={ref}
-      className="relative after:absolute after:left-0 after:top-full after:h-2 after:w-[220px] after:content-['']"
-      onMouseEnter={openDropdown}
-      onMouseLeave={scheduleClose}
+      className={`relative ${direction === 'down' ? "after:top-full" : "after:bottom-full"} after:absolute after:left-0 after:h-2 after:w-[220px] after:content-['']`}
+      onMouseEnter={() => {
+        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+          openDropdown()
+        }
+      }}
+      onMouseLeave={() => {
+        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+          scheduleClose()
+        }
+      }}
     >
       <button
         type="button"
@@ -128,15 +143,17 @@ function ServicesDropdown() {
           clearCloseTimeout()
           setOpen((current) => !current)
         }}
-        className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans text-[16px] font-normal leading-[120%] tracking-[-0.04em] text-np-dark transition-colors hover:bg-black/5"
-        style={{ backgroundColor: open ? dropdown.itemHoverBg : 'transparent' }}
+        className={`inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans overflow-hidden text-[16px] font-semibold tracking-[-0.04em] transition-colors ${
+          theme === 'dark' ? 'text-[#f0f0f0] hover:bg-white/10' : 'font-normal text-np-dark hover:bg-black/5'
+        }`}
+        style={theme === 'light' ? { backgroundColor: open ? dropdown.itemHoverBg : 'transparent' } : {}}
       >
         <span>Services</span>
         <span
           className="transition-transform duration-150"
           style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
         >
-          <ChevronDown size={14} />
+          <ChevronDown size={14} color={theme === 'dark' ? '#f0f0f0' : 'currentColor'} />
         </span>
       </button>
 
@@ -144,16 +161,24 @@ function ServicesDropdown() {
         <div
           role="menu"
           aria-label="Servizi"
-          className="absolute left-0 z-[100] bg-white"
+          className={`absolute left-0 z-[100] border ${theme === 'dark' ? 'border-white/10 bg-black' : 'border-black/5 bg-white'}`}
           style={{
-            top: `calc(100% + ${dropdown.gap})`,
+            ...(direction === 'down' ? { top: `calc(100% + ${dropdown.gap})` } : { bottom: `calc(100% + ${dropdown.gap})` }),
             borderRadius: dropdown.radius,
             padding: dropdown.padding,
             minWidth: dropdown.minWidth,
             boxShadow: dropdown.shadow,
           }}
-          onMouseEnter={openDropdown}
-          onMouseLeave={scheduleClose}
+          onMouseEnter={() => {
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              openDropdown()
+            }
+          }}
+          onMouseLeave={() => {
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              scheduleClose()
+            }
+          }}
         >
           {SERVICE_ITEMS.map((item) => (
             <Link
@@ -161,7 +186,9 @@ function ServicesDropdown() {
               href={item.href}
               role="menuitem"
               onClick={() => setOpen(false)}
-              className="block whitespace-nowrap rounded-[8px] px-4 py-[10px] font-sans text-[16px] font-normal tracking-[-0.03em] text-np-text transition-colors hover:bg-black/5"
+              className={`block whitespace-nowrap rounded-[8px] px-4 py-[10px] font-sans text-[16px] font-normal tracking-[-0.03em] transition-colors ${
+                theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-np-text hover:bg-black/5'
+              }`}
             >
               {item.label}
             </Link>
@@ -172,8 +199,42 @@ function ServicesDropdown() {
   )
 }
 
+const MENU_PARTNERS = [
+  { name: 'Shopify Partners', src: siteAssets.heroPartners[0], width: 288, height: 76, className: 'block h-[18px] w-auto object-contain opacity-75' },
+  { name: 'WooCommerce', src: siteAssets.heroPartners[1], width: 300, height: 300, className: 'block h-[22px] w-auto object-contain opacity-75' },
+  { name: 'Google Partner', src: siteAssets.heroPartners[2], width: 288, height: 76, className: 'block h-[30px] w-auto object-contain opacity-75' },
+  { name: 'Meta Partner', src: siteAssets.heroPartners[3], width: 288, height: 76, className: 'block h-[22px] w-auto object-contain opacity-75' },
+  { name: 'Klaviyo Partners', src: siteAssets.heroPartners[4], width: 500, height: 233, className: 'block h-[24px] w-auto object-contain opacity-75' },
+] as const
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [isOverDark, setIsOverDark] = useState(false)
+
+  useEffect(() => {
+    const checkScroll = () => {
+      const darkSections = document.querySelectorAll('[data-header-theme="dark"]')
+      const headerHeight = 60 // Approximate header height
+
+      let isIntersecting = false
+      darkSections.forEach((section) => {
+        const rect = section.getBoundingClientRect()
+        // Check if the scroll position is within the boundaries of a dark section
+        if (rect.top <= headerHeight && rect.bottom >= 0) {
+          isIntersecting = true
+        }
+      })
+
+      setIsOverDark(isIntersecting)
+    }
+
+    window.addEventListener('scroll', checkScroll)
+    // Initial check
+    checkScroll()
+
+    return () => window.removeEventListener('scroll', checkScroll)
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
@@ -199,9 +260,14 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)]">
+      <header
+        className={[
+          'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
+          isOverDark ? 'bg-white' : 'bg-[rgba(240,240,240,0.5)] backdrop-blur-[20px] [-webkit-backdrop-filter:blur(20px)]',
+        ].join(' ')}
+      >
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-6 py-2 min-[810px]:px-9">
-          <Logo size={logoText.navSize} />
+          <Logo />
 
           <nav
             aria-label="Navigazione principale"
@@ -223,7 +289,7 @@ export default function Navbar() {
             <button
               type="button"
               aria-label="Cambia lingua in italiano"
-              className="np-nav-desktop items-center gap-1 rounded-pill bg-white px-[10px] py-[6px] font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text"
+              className="np-nav-desktop items-center gap-1 rounded-pill bg-white px-[10px] py-[6px] font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-all duration-300"
             >
               <span>IT</span>
               <ChevronDown size={12} color={colors.textPrimary} />
@@ -238,18 +304,20 @@ export default function Navbar() {
 
             <button
               type="button"
-              aria-label="Apri menu di navigazione"
+              aria-label={mobileOpen ? 'Chiudi menu di navigazione' : 'Apri menu di navigazione'}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
-              onClick={() => setMobileOpen(true)}
-              className="np-nav-mobile items-center justify-center rounded-pill border border-black/10 bg-white px-4 py-2 font-sans text-[14px] font-semibold tracking-[-0.04em] text-np-text"
+              onClick={() => setMobileOpen((v) => !v)}
+              className="np-nav-mobile items-center justify-center rounded-[50px] bg-white font-sans text-[14px] font-medium tracking-[-0.04em] text-black transition-colors"
+              style={{ border: isOverDark ? '1px solid black' : '1px solid transparent', backdropFilter: 'blur(5px)', fontFeatureSettings: '"salt","kern","cv05","cv11","ccmp"' }}
             >
-              Menu
+              {mobileOpen ? 'Close' : 'Menu'}
             </button>
           </div>
         </div>
       </header>
 
+      {/* Mobile menu — glass dropdown panel, matches header exact styles */}
       <div
         id="mobile-menu"
         role="dialog"
@@ -257,44 +325,64 @@ export default function Navbar() {
         aria-modal="true"
         aria-hidden={!mobileOpen}
         className={[
-          'fixed inset-0 z-[100] flex flex-col bg-np-bg px-6 pb-9 pt-0 transition-opacity duration-200 min-[810px]:hidden',
-          mobileOpen ? 'visible opacity-100 pointer-events-auto' : 'invisible opacity-0 pointer-events-none',
+          'fixed inset-x-0 top-[50px] z-[40] min-[810px]:hidden transition-all duration-300 ease-out pt-6 pb-6',
+          isOverDark
+            ? 'bg-white'
+            : 'bg-[rgba(240,240,240,0.5)] backdrop-blur-[20px] [-webkit-backdrop-filter:blur(20px)]',
+          mobileOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none',
         ].join(' ')}
       >
-        <div className="mb-8 flex items-center justify-between border-b border-black/5 py-2">
-          <Logo />
+        {/* Nav links */}
+        <nav aria-label="Navigazione mobile" className="px-6">
+          {/* Services accordion */}
           <button
             type="button"
-            onClick={() => setMobileOpen(false)}
-            aria-label="Chiudi menu"
-            className="inline-flex items-center gap-1 rounded-pill border border-black/10 bg-white px-[14px] py-2 font-sans text-[14px] font-semibold tracking-[-0.04em] text-np-text"
+            onClick={() => setMobileServicesOpen((v) => !v)}
+            className="flex w-full items-center justify-between py-2 font-sans text-[16px] font-medium tracking-[-0.04em] text-np-text"
           >
-            <CloseIcon />
-            <span>Chiudi</span>
+            <span>Services</span>
+            <span className="transition-transform duration-200" style={{ transform: mobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+              <ChevronDown size={18} />
+            </span>
           </button>
-        </div>
 
-        <nav aria-label="Navigazione mobile" className="flex-1">
-          {MOBILE_NAV.map((link) => (
+          {mobileServicesOpen && (
+            <div className="pl-3 pb-1">
+              {SERVICE_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => { setMobileOpen(false); setMobileServicesOpen(false) }}
+                  className="block py-1.5 font-sans text-[15px] font-medium tracking-[-0.04em] text-np-text"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {NAV_LINKS.map((link) => (
             <Link
-              key={`${link.href}-${link.label}`}
+              key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-between border-b border-black/5 py-[18px] font-sans text-[16px] font-normal leading-[120%] tracking-[-0.04em] text-np-text"
+              className="block py-2 font-sans text-[16px] font-medium tracking-[-0.04em] text-np-text"
             >
-              <span>{link.label}</span>
-              <ChevronDown size={20} />
+              {link.label}
             </Link>
           ))}
         </nav>
 
-        <Link
-          href="/contacts"
-          onClick={() => setMobileOpen(false)}
-          className="np-btn-primary mt-6"
-        >
-          Reserve Your Sprint
-        </Link>
+        {/* Language + bottom padding */}
+        <div className="px-6 py-4">
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 rounded-pill bg-white px-3 py-[5px] font-sans text-[13px] font-medium tracking-[-0.04em] text-np-text shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+          >
+            <span>IT</span>
+            <ChevronDown size={11} color={colors.textPrimary} />
+          </button>
+        </div>
       </div>
     </>
   )

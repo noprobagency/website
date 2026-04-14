@@ -58,7 +58,7 @@ export default function FinalCTA() {
           </div>
 
           <div className="relative z-10 max-w-[720px] text-center">
-            <h2 className="font-display text-[56px] font-semibold leading-[1em] tracking-[-0.07em] text-noprob-dark">
+            <h2 className="font-display text-np-h2-sm lg:text-np-h2 text-center text-np-dark">
               Ready to fix what&apos;s <span className="font-serif italic">slowing</span> you
               down?
             </h2>

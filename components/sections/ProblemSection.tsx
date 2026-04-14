@@ -1,4 +1,7 @@
+'use client'
+
 import Image from 'next/image'
+import { motion, Variants } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 
@@ -23,13 +26,25 @@ const problems = [
   },
 ]
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.4,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+}
+
 export default function ProblemSection() {
   return (
-    <section className="px-4 pb-0 pt-[60px]">
+    <section id="problem" className="pb-0 pt-[60px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[800px] text-center">
           <SectionLabel>Problem</SectionLabel>
-          <h2 className="mt-5 font-display text-[2.8rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-noprob-text">
+          <h2 className="mt-5 text-np-h2 text-np-dark text-center">
             Forget the <br /> <span className="line-through">All in one marketing agency</span>
           </h2>
           <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">
@@ -40,9 +55,14 @@ export default function ProblemSection() {
         </div>
 
         <div className="mx-auto mt-8 flex max-w-[800px] flex-col gap-4 lg:flex-row">
-          {problems.map((problem) => (
-            <article
+          {problems.map((problem, i) => (
+            <motion.article
               key={problem.title}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 'some' }}
+              variants={cardVariants}
               className="border-card-thick shadow-card flex-1 rounded-card bg-noprob-card p-6"
             >
               <Image
@@ -53,13 +73,13 @@ export default function ProblemSection() {
                 className="h-[55px] w-[55px] object-cover"
                 aria-hidden
               />
-              <h3 className="mt-5 font-sans text-[18px] font-semibold leading-[1.3em] tracking-[-0.02em] text-noprob-text">
+              <h3 className="mt-5 text-np-h3 text-noprob-text">
                 {problem.title}
               </h3>
               <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
                 {problem.description}
               </p>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

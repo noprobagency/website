@@ -11,6 +11,7 @@ import GoogleAnalytics from '@/components/tracking/GoogleAnalytics'
 import MetaPixel from '@/components/tracking/MetaPixel'
 import { organizationJsonLd, siteConfig } from '@/lib/site'
 import Preloader from '@/components/ui/Preloader'
+import StickyContact from '@/components/ui/StickyContact'
 import '@/app/globals.css'
 
 export const metadata: Metadata = {
@@ -63,6 +64,12 @@ export const metadata: Metadata = {
       it: `${siteConfig.url}/it`,
     },
   },
+  icons: {
+    icon: [
+      { url: '/images/favicon-no-prob.svg', media: '(prefers-color-scheme: light)' },
+      { url: '/images/favicon-no-prob-white.svg', media: '(prefers-color-scheme: dark)' },
+    ],
+  },
 }
 
 export const viewport: Viewport = {
@@ -76,11 +83,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className="bg-np-bg text-np-text font-sans antialiased">
         <JsonLd data={organizationJsonLd} />
-        <Preloader />
+        {/* <Preloader /> */}
         <GoogleAnalytics />
         <MetaPixel />
         <Navbar />
         <main>{children}</main>
+        <StickyContact />
         <ConsentBanner />
         <Analytics />
         <SpeedInsights />

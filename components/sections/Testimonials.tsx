@@ -1,4 +1,7 @@
+'use client'
+
 import Image from 'next/image'
+import { motion, Variants } from 'framer-motion'
 
 import { siteAssets } from '@/lib/site'
 
@@ -19,6 +22,19 @@ const testimonials = [
   },
 ]
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+}
+
 export default function Testimonials() {
   return (
     <div className="mx-auto mt-16 max-w-[850px]">
@@ -29,9 +45,14 @@ export default function Testimonials() {
       </div>
 
       <div className="mt-6 grid gap-3 xl:grid-cols-2">
-        {testimonials.map((testimonial) => (
-          <article
+        {testimonials.map((testimonial, i) => (
+          <motion.article
             key={testimonial.name}
+            custom={i}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 'some' }}
+            variants={cardVariants}
             className="border-card-thick shadow-card flex h-auto flex-col items-start justify-between rounded-card bg-noprob-card p-6 overflow-visible"
           >
             <p className="font-sans text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-noprob-text">
@@ -71,7 +92,7 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </div>

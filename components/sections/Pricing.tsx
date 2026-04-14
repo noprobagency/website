@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion, Variants } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 import Testimonials from '@/components/sections/Testimonials'
@@ -45,14 +48,26 @@ const plans = [
   },
 ]
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+}
+
 export default function Pricing() {
   return (
-    <section id="pricing" className="scroll-mt-40 bg-black px-9 py-[80px]">
+    <section id="pricing" data-header-theme="dark" className="scroll-mt-40 bg-black py-[80px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[850px]">
           <div className="mx-auto max-w-[650px] text-center">
             <SectionLabel>Pricing</SectionLabel>
-            <h2 className="mt-5 font-display text-np-h2-md font-semibold text-[#f9f9f9]">
+            <h2 className="mt-5 text-np-h2 text-center text-[#f9f9f9]">
               Smart plans for serious eCommerce brands
             </h2>
             <p className="mt-5 font-sans text-body-lg font-medium text-[#f9f9f9]">
@@ -63,11 +78,16 @@ export default function Pricing() {
 
           <div className="mt-10 grid gap-3 xl:grid-cols-2">
             {plans.map((plan, index) => (
-              <article
+              <motion.article
                 key={plan.name}
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 'some' }}
+                variants={cardVariants}
                 className="rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
               >
-                <div className="rounded-[20px] bg-white p-8 shadow-pricing-inner">
+                <div className="rounded-[20px] bg-white p-[32px] shadow-pricing-inner">
                   <div className="flex flex-col gap-3">
                     <div
                       className={
@@ -79,7 +99,7 @@ export default function Pricing() {
                       {plan.badge}
                     </div>
 
-                    <h3 className="font-serif text-[2.5rem] font-semibold italic leading-[1.1em] tracking-[-0.05em] text-noprob-text whitespace-nowrap">
+                    <h3 className="text-np-pricing text-noprob-text">
                       {plan.name}
                     </h3>
 
@@ -121,7 +141,7 @@ export default function Pricing() {
                       <Link
                         href={plan.href}
                         data-tracking={`pricing_primary_${index}`}
-                        className="np-btn-primary w-full"
+                        className="np-btn-primary w-full py-[10px] px-[18px]"
                       >
                         {plan.cta}
                       </Link>
@@ -156,7 +176,7 @@ export default function Pricing() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
 
