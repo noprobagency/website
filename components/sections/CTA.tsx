@@ -60,7 +60,7 @@ export default function CTA() {
           placeContent: 'center',
           alignItems: 'center',
           gap: '10px',
-          height: '700px',
+          height: '600px',
           padding: '120px 36px 0px',
         }}
       >
@@ -129,7 +129,7 @@ export default function CTA() {
           className="relative z-30 flex flex-col items-center text-center w-full max-w-3xl"
           style={{ position: 'absolute', bottom: '80px', left: '50%', transform: 'translateX(-50%)' }}
         >
-          <h2 className="mb-8 text-center text-np-dark text-[56px] min-[810px]:text-[56px]" style={{ fontFamily: '"Inter Display", Inter, sans-serif', fontWeight: 600, lineHeight: '1.1em', letterSpacing: '-0.05em' }}>
+          <h2 className="mb-8 text-center text-np-dark text-[50px] min-[810px]:text-[56px]" style={{ fontFamily: '"Inter Display", Inter, sans-serif', fontWeight: 600, lineHeight: '1.1em', letterSpacing: '-0.05em' }}>
             Ready to fix what&apos;s <br className="hidden sm:block" />
             <span className="font-serif italic font-normal">slowing</span> you down?
           </h2>

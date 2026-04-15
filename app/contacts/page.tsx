@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 
-import PageIntro from '@/components/sections/PageIntro'
+import ContactsHero from '@/components/sections/ContactsHero'
+import ContactSection from '@/components/sections/ContactSection'
+import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,10 +16,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ContactsPage() {
   return (
-    <PageIntro
-      eyebrow="Contacts"
-      title="Reserve your sprint."
-      description="The full contact flow will be connected in the next iteration with form handling, validation, tracking hooks, and Resend delivery. For now, the route and metadata are ready."
-    />
+    <main>
+      <ContactsHero />
+      <ContactSection />
+      <Footer />
+    </main>
   )
 }

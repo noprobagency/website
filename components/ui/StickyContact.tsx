@@ -3,11 +3,18 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function StickyContact() {
   const [visible, setVisible] = useState(false)
+  const pathname = usePathname()
+
+  // Don't show on contact pages
+  const isContactPage = pathname === '/contacts' || pathname === '/it/contacts'
 
   useEffect(() => {
+    if (isContactPage) return
+
     const handleScroll = () => {
       const trigger = document.getElementById('problem')
       let isVisible = true
@@ -27,7 +34,9 @@ export default function StickyContact() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll() // Initial check
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isContactPage])
+
+  if (isContactPage) return null
 
   return (
     <div

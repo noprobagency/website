@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         <nav className="mt-8 flex flex-wrap items-center gap-2 lg:mt-0 lg:justify-end border-b border-transparent">
-          <ServicesDropdown theme="dark" direction="down" />
+          <ServicesDropdown theme="dark" direction="up" className="text-[18px] font-semibold" />
           {footerLinks.map((link) => (
             <Link
               key={link.href}

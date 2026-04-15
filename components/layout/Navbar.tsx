@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { cn } from '@/lib/utils'
+
 import { colors, dropdown, logoText } from '@/lib/design-tokens'
 import { siteAssets } from '@/lib/site'
 
@@ -80,7 +82,15 @@ function Logo({ size = '35px' }: { size?: string }) {
   )
 }
 
-export function ServicesDropdown({ theme = 'light', direction = 'down' }: { theme?: 'light' | 'dark', direction?: 'up' | 'down' }) {
+export function ServicesDropdown({ 
+  theme = 'light', 
+  direction = 'down', 
+  className 
+}: { 
+  theme?: 'light' | 'dark', 
+  direction?: 'up' | 'down',
+  className?: string
+}) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const closeTimeoutRef = useRef<number | null>(null)
@@ -143,9 +153,11 @@ export function ServicesDropdown({ theme = 'light', direction = 'down' }: { them
           clearCloseTimeout()
           setOpen((current) => !current)
         }}
-        className={`inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans overflow-hidden text-[16px] font-normal tracking-[-0.04em] transition-colors ${
-          theme === 'dark' ? 'text-[#f0f0f0] hover:bg-white/10' : 'text-np-dark hover:bg-black/5'
-        }`}
+        className={cn(
+          "inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans overflow-hidden text-[16px] font-normal tracking-[-0.04em] transition-colors",
+          theme === 'dark' ? 'text-[#f0f0f0] hover:bg-white/10' : 'text-np-dark hover:bg-black/5',
+          className
+        )}
         style={theme === 'light' ? { backgroundColor: open ? dropdown.itemHoverBg : 'transparent' } : {}}
       >
         <span>Services</span>
