@@ -143,8 +143,8 @@ export function ServicesDropdown({ theme = 'light', direction = 'down' }: { them
           clearCloseTimeout()
           setOpen((current) => !current)
         }}
-        className={`inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans overflow-hidden text-[16px] font-semibold tracking-[-0.04em] transition-colors ${
-          theme === 'dark' ? 'text-[#f0f0f0] hover:bg-white/10' : 'font-normal text-np-dark hover:bg-black/5'
+        className={`inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] px-[14px] py-2 font-sans overflow-hidden text-[16px] font-normal tracking-[-0.04em] transition-colors ${
+          theme === 'dark' ? 'text-[#f0f0f0] hover:bg-white/10' : 'text-np-dark hover:bg-black/5'
         }`}
         style={theme === 'light' ? { backgroundColor: open ? dropdown.itemHoverBg : 'transparent' } : {}}
       >

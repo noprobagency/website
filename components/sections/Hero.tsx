@@ -67,7 +67,7 @@ export default function Hero() {
           <div className="relative h-full w-full wave-y">
             <div className="relative h-full w-full wave-3d">
               <div className="relative h-full w-full wave-stretch">
-                <Image src={siteAssets.heroBlobMobile} alt="" fill priority className="object-contain object-bottom" aria-hidden />
+                <Image src={siteAssets.heroBlobMobile} alt="" fill priority className="object-cover object-bottom" aria-hidden />
               </div>
             </div>
           </div>
