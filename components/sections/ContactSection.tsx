@@ -91,7 +91,7 @@ export default function ContactSection() {
               <div className="flex flex-col gap-[15px]">
                 <h2 className="text-[34px] font-semibold leading-[1.1] tracking-[-0.07em] text-noprob-text">
                   Consistency. <br />
-                  That's <span className="font-serif italic font-normal">noprob agency</span>
+                  That&apos;s <span className="font-serif italic font-normal">noprob agency</span>
                 </h2>
                 <p className="font-sans text-[17px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
                   NoProb Agency is the technical partner that makes eCommerce simple. A 7/7 team
@@ -202,7 +202,7 @@ export default function ContactSection() {
 
               <div className="flex flex-col gap-[2px]">
                 <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                  eCommerce's URL
+                  eCommerce&apos;s URL
                 </label>
                 <input
                   {...register('websiteUrl')}

@@ -51,7 +51,7 @@ export async function sendContactEmail(data: ContactFormData) {
     }
 
     return { success: true }
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Server Error:', err)
     return { error: 'An unexpected error occurred. Please try again.' }
   }
