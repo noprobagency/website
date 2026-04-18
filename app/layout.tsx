@@ -1,18 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-
-import 'vanilla-cookieconsent/dist/cookieconsent.css'
-
-import Navbar from '@/components/layout/Navbar'
-import JsonLd from '@/components/seo/JsonLd'
-import ConsentBanner from '@/components/tracking/ConsentBanner'
-import GoogleAnalytics from '@/components/tracking/GoogleAnalytics'
-import MetaPixel from '@/components/tracking/MetaPixel'
-import { organizationJsonLd, siteConfig } from '@/lib/site'
-import Preloader from '@/components/ui/Preloader'
-import StickyContact from '@/components/ui/StickyContact'
+import BaseLayout from '@/components/layout/BaseLayout'
+import { siteConfig } from '@/lib/site'
 import '@/app/globals.css'
+import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -81,17 +71,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="bg-np-bg text-np-text font-sans antialiased">
-        <JsonLd data={organizationJsonLd} />
-        {/* <Preloader /> */}
-        <GoogleAnalytics />
-        <MetaPixel />
-        <Navbar />
-        <main>{children}</main>
-        <StickyContact />
-        <ConsentBanner />
-        <Analytics />
-        <SpeedInsights />
+      <body className="bg-np-bg text-np-text font-sans antialiased overflow-x-hidden">
+        <BaseLayout locale="en">
+          {children}
+        </BaseLayout>
       </body>
     </html>
   )

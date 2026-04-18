@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useInView } from 'framer-motion'
 
 import { siteAssets } from '@/lib/site'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
 const heroPartners = [
   {
@@ -45,7 +46,8 @@ const heroPartners = [
   },
 ] as const
 
-export default function Hero() {
+export default function Hero({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale)
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { amount: 0.1 })
   const waveStyle = {
@@ -125,39 +127,38 @@ export default function Hero() {
                   </span>
                 </div>
                 <p className="max-w-[280px] text-center font-sans text-[12px] font-medium leading-[1.4em] tracking-[-0.04em] text-noprob-dark min-[810px]:max-w-none min-[810px]:text-left">
-                  Trusted by Fashion, Supplements, and DTC eCommerce brands
+                  {t.hero.trustpilotLabel}
                 </p>
               </div>
             </div>
           </div>
 
           <h1 className="max-w-[650px] text-center text-np-hero text-noprob-text min-[810px]:text-left">
-            <span className="block">Your Brand is premium.</span>
-            <span className="block">Your eCommerce</span>
+            <span className="block">{t.hero.line1}</span>
+            <span className="block">{t.hero.line2}</span>
             <span className="block">
-              partner should be <em className="font-serif italic">too</em>.
+              {t.hero.line3pre}<em className="font-serif italic">{t.hero.line3em}</em>.
             </span>
           </h1>
 
           <p className="max-w-[550px] text-center font-sans text-[16px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text min-[810px]:text-left min-[810px]:text-[18px]">
-            We rebuild your store from the ground up and offer a dedicated team in Development,
-            Marketing, and Strategy, available together or separately based on your needs.
+            {t.hero.description}
           </p>
 
           <div className="flex flex-col items-center gap-[9px] min-[810px]:w-auto min-[810px]:flex-row min-[810px]:flex-nowrap min-[810px]:items-center min-[810px]:gap-2">
             <Link
-              href="/contacts"
+              href={t.hero.ctaPrimaryHref}
               data-tracking="hero_cta_primary"
               className="np-btn-primary"
             >
-              Reserve your sprint
+              {t.hero.ctaPrimary}
             </Link>
             <Link
-              href="/#pricing"
+              href={t.hero.ctaSecondaryHref}
               data-tracking="hero_cta_secondary"
               className="np-btn-secondary"
             >
-              Explore what we do
+              {t.hero.ctaSecondary}
             </Link>
           </div>
 
@@ -199,11 +200,10 @@ export default function Hero() {
                 />
                 <div>
                   <p className="font-sans text-[12px] font-medium italic leading-[1.2] tracking-[-0.04em] text-noprob-dark">
-                    Success comes from long-term thinking and a team that truly knows your
-                    industry and each other
+                    {t.hero.quote}
                   </p>
                   <p className="mt-1 font-sans text-[9.6px] font-medium leading-[1.2] tracking-[-0.04em] text-noprob-muted">
-                    Antonio Manitta - <em className="font-serif italic">noprob.agency</em>{' '}
+                    {t.hero.quoteAuthor} - <em className="font-serif italic">noprob.agency</em>{' '}
                     eCommerce Manager
                   </p>
                 </div>

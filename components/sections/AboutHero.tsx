@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import { siteAssets } from '@/lib/site'
+import type { Locale } from '@/lib/i18n'
 
-export default function AboutHero() {
+export default function AboutHero({ locale: _locale = 'en' }: { locale?: Locale }) {
   return (
     <section
       id="hero"

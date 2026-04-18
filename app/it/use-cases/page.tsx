@@ -6,16 +6,20 @@ import { buildMetadata } from '@/lib/site'
 import SectionLabel from '@/components/ui/SectionLabel'
 import { useCases } from '@/data/use-cases'
 import Footer from '@/components/layout/Footer'
+import { getDictionary } from '@/lib/i18n'
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Use Cases',
-    description: 'Explore the operating contexts, category fit, and growth scenarios noprob agency is designed for.',
-    path: '/use-cases',
+    title: 'Casi d’Uso',
+    description: 'Esplora i contesti operativi e gli scenari di crescita per cui la noprob agency è progettata.',
+    path: '/it/use-cases',
   })
 }
 
-export default function UseCasesPage() {
+export default function ItalianUseCasesPage() {
+  const locale = 'it'
+  const dict = getDictionary(locale)
+
   return (
     <>
       <section className="w-full bg-[#f0f0f0] pt-[120px] pb-[80px] px-5 min-[810px]:px-9">
@@ -25,8 +29,9 @@ export default function UseCasesPage() {
           <h1
             className="font-sans font-semibold text-black tracking-[-0.07em] leading-[110%] text-[40px]"
           >
-            Real brands, real growth.{' '}
-            <em className="font-serif italic tracking-[-0.08em]">See how it works.</em>
+            Brand reali, crescita reale.{' '}
+            <br />
+            <em className="font-serif italic tracking-[-0.08em]">Scopri come lavoriamo.</em>
           </h1>
         </div>
 
@@ -36,7 +41,7 @@ export default function UseCasesPage() {
             {useCases.map((useCase) => (
               <Link
                 key={useCase.slug}
-                href={`/use-cases/${useCase.slug}`}
+                href={`/it/use-cases/${useCase.slug}`}
                 className="group flex flex-col overflow-hidden rounded-[24px] bg-white no-underline"
                 style={{
                   border: '6px solid #f8f8f8',
@@ -69,7 +74,7 @@ export default function UseCasesPage() {
                     }}
                   >
                     <span className="font-sans text-[12px] font-medium tracking-[-0.03em] text-[#181818]">
-                      {useCase.caseType}
+                      {useCase.caseType === 'Use Case' ? 'Caso d’Uso' : useCase.caseType}
                     </span>
                   </div>
                 </div>
@@ -100,7 +105,7 @@ export default function UseCasesPage() {
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer locale={locale} />
     </>
   )
 }

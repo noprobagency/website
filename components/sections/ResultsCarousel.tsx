@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import type { Locale } from '@/lib/i18n'
 
 const resultCards = [
   {
@@ -33,7 +34,7 @@ const resultCards = [
   },
 ] as const
 
-export default function ResultsCarousel() {
+export default function ResultsCarousel({ locale: _locale = 'en' }: { locale?: Locale }) {
   return (
     <section id="results" className="scroll-mt-[150px] px-0 py-0">
       <div className="px-5 lg:px-0">

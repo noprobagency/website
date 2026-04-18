@@ -3,20 +3,17 @@ import Link from 'next/link'
 
 import { siteConfig, siteAssets } from '@/lib/site'
 import { ServicesDropdown } from '@/components/layout/Navbar'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
-const footerLinks = [
-  { label: 'About', href: '/about' },
-  { label: 'Use Case', href: '/use-cases' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contacts', href: '/contacts' },
-]
+export default function Footer({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale)
+  const logoHref = locale === 'it' ? '/it' : '/'
 
-export default function Footer() {
   return (
     <footer data-header-theme="dark" className="flex flex-col items-center gap-12 bg-black px-9 py-10 text-white">
       <div className="w-full max-w-[1200px] lg:flex lg:items-end lg:justify-between lg:gap-8">
         <div className="max-w-[760px]">
-          <Link href="/" className="relative inline-flex h-[44px] w-auto items-center">
+          <Link href={logoHref} className="relative inline-flex h-[44px] w-auto items-center">
             <Image
               src={siteAssets.logoWhite}
               alt="noprob agency logo"
@@ -28,20 +25,20 @@ export default function Footer() {
 
           <div className="mt-4">
             <h2 className="font-display text-[44px] font-semibold leading-[1.1] tracking-[-0.05em] text-white sm:text-[56px] lg:text-[64px]">
-              Consistency <br />
-              That&apos;s <span className="font-serif italic font-normal">noprob agency</span>
+              {t.footer.headingPre.split('\n').map((line, i, arr) => (
+                <span key={i} className="block">{i === arr.length - 1 ? <>{line}<span className="font-serif italic font-normal">{t.footer.headingEm}</span></> : line}</span>
+              ))}
             </h2>
           </div>
 
           <p className="mt-4 max-w-[547px] font-sans text-[18px] font-semibold tracking-[-0.04em] text-white">
-            We rebuild your store from the ground up and offer a dedicated team in Development,
-            Marketing, and Strategy, available together or separately based on your needs.
+            {t.footer.description}
           </p>
         </div>
 
         <nav className="mt-8 flex flex-wrap items-center gap-2 lg:mt-0 lg:justify-end border-b border-transparent">
-          <ServicesDropdown theme="dark" direction="up" className="text-[18px] font-semibold" />
-          {footerLinks.map((link) => (
+          <ServicesDropdown locale={locale} theme="dark" direction="up" className="text-[18px] font-semibold" />
+          {t.footer.links.map((link) => (
             <Link
               key={link.href}
               href={link.href}

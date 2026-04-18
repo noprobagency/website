@@ -2,15 +2,8 @@
 
 import Image from 'next/image'
 import { motion, Variants } from 'framer-motion'
-
-import SectionLabel from '@/components/ui/SectionLabel'
 import { getDictionary, type Locale } from '@/lib/i18n'
-
-const problemImages = [
-  '/images/originals/vea64dgdN9StI4fAs6PXXKFyE.png',
-  '/images/originals/BwTYAhLAepLBYZo2TxC9P40G5aU.png',
-  '/images/originals/p6hRcI15hP2jkD7fjTm3I0v15WI.png',
-]
+import SectionLabel from '@/components/ui/SectionLabel'
 
 const cardVariants: Variants = {
   hidden: { opacity: 0 },
@@ -24,24 +17,42 @@ const cardVariants: Variants = {
   }),
 }
 
-export default function ProblemSection({ locale = 'en' }: { locale?: Locale }) {
+const problemImages = [
+  '/images/originals/vea64dgdN9StI4fAs6PXXKFyE.png',
+  '/images/originals/BwTYAhLAepLBYZo2TxC9P40G5aU.png',
+  '/images/originals/p6hRcI15hP2jkD7fjTm3I0v15WI.png',
+]
+
+export default function DataDrivenTeamProblem({ locale = 'en' }: { locale?: Locale }) {
   const t = getDictionary(locale)
+  const d = t.dataDrivenTeam.problem
 
   return (
-    <section id="problem" className="pb-0 pt-[60px]">
+    <section id="problem" className="pb-0 pt-0">
       <div className="container-noprob">
         <div className="mx-auto max-w-[800px] text-center">
-          <SectionLabel>{t.problem.label}</SectionLabel>
+          <SectionLabel>{d.label}</SectionLabel>
           <h2 className="mt-5 text-np-h2 text-np-dark text-center">
-            {t.problem.heading} <br /> <span className="line-through">{t.problem.headingStrike}</span>
+            {d.heading}{' '}
+            <br />
+            <em
+              className="font-serif italic"
+              style={{
+                background: 'rgb(232, 204, 204)',
+                borderRadius: '4px',
+                padding: '0 6px',
+              }}
+            >
+              {d.headingEm}
+            </em>
           </h2>
           <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">
-            {t.problem.body}
+            {d.description}
           </p>
         </div>
 
         <div className="mx-auto mt-8 flex max-w-[800px] flex-col gap-4 lg:flex-row">
-          {t.problem.items.map((problem, i) => (
+          {d.items.map((problem, i) => (
             <motion.article
               key={problem.title}
               custom={i}
@@ -49,7 +60,7 @@ export default function ProblemSection({ locale = 'en' }: { locale?: Locale }) {
               whileInView="visible"
               viewport={{ once: true, amount: 'some' }}
               variants={cardVariants}
-              className="border-card-thick shadow-card flex-1 rounded-card bg-noprob-card p-6"
+              className="border-card-thick shadow-card flex flex-1 flex-col items-start justify-center gap-[10px] overflow-visible rounded-card bg-noprob-card p-6"
             >
               <Image
                 src={problemImages[i]}
@@ -59,10 +70,10 @@ export default function ProblemSection({ locale = 'en' }: { locale?: Locale }) {
                 className="h-[55px] w-[55px] object-cover"
                 aria-hidden
               />
-              <h3 className="mt-5 text-np-h3 text-noprob-text">
+              <h3 className="text-np-h3 text-noprob-text">
                 {problem.title}
               </h3>
-              <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+              <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text text-balance break-words whitespace-pre-wrap">
                 {problem.description}
               </p>
             </motion.article>

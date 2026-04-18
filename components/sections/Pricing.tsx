@@ -7,6 +7,7 @@ import { motion, Variants } from 'framer-motion'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Testimonials from '@/components/sections/Testimonials'
 import { siteAssets } from '@/lib/site'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
 function CheckIcon() {
   return (
@@ -18,35 +19,6 @@ function CheckIcon() {
     </svg>
   )
 }
-
-const plans = [
-  {
-    badge: 'Already with a good eCommerce?',
-    name: 'Data-Driven Team',
-    price: '€1,495',
-    period: '/month',
-    description:
-      'A tailor-made eCommerce team that evolves with you. Your eCommerce Manager is your single point of contact, leading a flexible, well-tuned group of specialists. You focus on your brand, he takes care of everything else, including hiring.',
-    features: ['7/7 support', 'NDA sign', 'Trial Discount'],
-    cta: 'Get Your custom Data Team',
-    href: '/contacts',
-    secondary: 'Learn more about the plan',
-    secondaryHref: '/data-driven-team',
-  },
-  {
-    badge: 'Want to build your ecommerce?',
-    name: 'eCommerce Rebuild',
-    price: '5795€',
-    period: '',
-    description:
-      'We rebuild your eCommerce from design to performance, creating a platform built to grow. You focus on elevating your brand. We handle everything technical, from maintenance to optimization.',
-    features: ['7/7 support', 'NDA sign', '100% Risk-Free'],
-    cta: 'Start your eCommerce Rebuild',
-    href: '/contacts',
-    secondary: 'Learn more about the plan',
-    secondaryHref: '/ecommerce-rebuild',
-  },
-]
 
 const cardVariants: Variants = {
   hidden: { opacity: 0 },
@@ -60,23 +32,33 @@ const cardVariants: Variants = {
   }),
 }
 
-export default function Pricing() {
+export default function Pricing({
+  locale = 'en',
+  rebuildOnly = false,
+  teamOnly = false,
+}: {
+  locale?: Locale
+  rebuildOnly?: boolean
+  teamOnly?: boolean
+}) {
+  const t = getDictionary(locale)
+  const plans = rebuildOnly ? [t.pricing.plans[1]] : teamOnly ? [t.pricing.plans[0]] : t.pricing.plans
+
   return (
     <section id="pricing" data-header-theme="dark" className="scroll-mt-40 bg-black py-[80px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[850px]">
           <div className="mx-auto max-w-[650px] text-center">
-            <SectionLabel>Pricing</SectionLabel>
+            <SectionLabel>{t.pricing.label}</SectionLabel>
             <h2 className="mt-5 text-np-h2 text-center text-[#f9f9f9]">
-              Smart plans for serious eCommerce brands
+              {t.pricing.heading}
             </h2>
             <p className="mt-5 font-sans text-body-lg font-medium text-[#f9f9f9]">
-              Whether your eCommerce is running and growing or needs a complete rebuild, our tech
-              team will guide you every step of the way.
+              {t.pricing.subheading}
             </p>
           </div>
 
-          <div className="mt-10 grid gap-3 xl:grid-cols-2">
+          <div className={(rebuildOnly || teamOnly) ? "mt-10 mx-auto max-w-[450px]" : "mt-10 grid gap-3 xl:grid-cols-2"}>
             {plans.map((plan, index) => (
               <motion.article
                 key={plan.name}
@@ -105,7 +87,7 @@ export default function Pricing() {
 
                     <div className="flex items-end gap-[9px]">
                       <span className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
-                        From
+                        {t.pricing.from}
                       </span>
                       <div className="flex items-end gap-1">
                         <span className="font-sans text-[1.8rem] font-bold leading-[1em] tracking-[-0.04em] text-noprob-text">
@@ -139,7 +121,7 @@ export default function Pricing() {
                   <div className="mt-8 flex flex-col gap-3">
                     <div className="flex flex-col gap-3">
                       <Link
-                        href={plan.href}
+                        href={plan.ctaHref}
                         data-tracking={`pricing_primary_${index}`}
                         className="np-btn-primary w-full py-[10px] px-[18px]"
                       >
@@ -171,7 +153,7 @@ export default function Pricing() {
                         </span>
                       </div>
                       <p className="max-w-[200px] text-center font-sans text-[12px] font-medium leading-[1.3em] tracking-[-0.04em] text-[#121212]">
-                        Trusted by Fashion, Supplements, and DTC eCommerce brands
+                        {t.pricing.trustpilotLabel}
                       </p>
                     </div>
                   </div>

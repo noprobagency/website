@@ -3,34 +3,23 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
-
+import { getDictionary, type Locale } from '@/lib/i18n'
 import { colors, dropdown, logoText } from '@/lib/design-tokens'
 import { siteAssets } from '@/lib/site'
 
-type NavLink = {
-  label: string
-  href: string
+function getLocale(pathname: string): Locale {
+  return pathname.startsWith('/it') ? 'it' : 'en'
 }
 
-const NAV_LINKS: NavLink[] = [
-  { label: 'About', href: '/about' },
-  { label: 'Use Case', href: '/use-cases' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contacts', href: '/contacts' },
-]
-
-const SERVICE_ITEMS = [
-  { label: 'eCommerce ReBuild', href: '/ecommerce-rebuild' },
-  { label: 'Data Drive Team', href: '/data-driven-team' },
-  { label: 'MVP Sprint', href: '/contacts' },
-] as const
-
-const MOBILE_NAV = [
-  ...SERVICE_ITEMS,
-  ...NAV_LINKS,
-] as const
+function getAlternateHref(pathname: string): string {
+  if (pathname === '/it') return '/'
+  if (pathname.startsWith('/it/')) return pathname.slice(3)
+  if (pathname === '/') return '/it'
+  return `/it${pathname}`
+}
 
 function ChevronDown({ size = 14, color = colors.textDark }: { size?: number; color?: string }) {
   return (
@@ -61,10 +50,10 @@ function CloseIcon() {
   )
 }
 
-function Logo({ size = '35px' }: { size?: string }) {
+function Logo({ href, size = '35px' }: { href: string; size?: string }) {
   return (
     <Link
-      href="/"
+      href={href}
       aria-label="noprob agency — torna alla home"
       className="inline-flex items-center"
     >
@@ -73,7 +62,7 @@ function Logo({ size = '35px' }: { size?: string }) {
           src={siteAssets.logoBlack}
           alt="noprob agency logo"
           height={parseInt(size)}
-          width={parseInt(size) * 4} // Assumed aspect ratio, object-contain will handle it
+          width={parseInt(size) * 4}
           className="h-full w-auto object-contain object-left"
           priority
         />
@@ -82,15 +71,18 @@ function Logo({ size = '35px' }: { size?: string }) {
   )
 }
 
-export function ServicesDropdown({ 
-  theme = 'light', 
-  direction = 'down', 
-  className 
-}: { 
-  theme?: 'light' | 'dark', 
-  direction?: 'up' | 'down',
+export function ServicesDropdown({
+  locale = 'en',
+  theme = 'light',
+  direction = 'down',
+  className
+}: {
+  locale?: Locale
+  theme?: 'light' | 'dark'
+  direction?: 'up' | 'down'
   className?: string
 }) {
+  const t = getDictionary(locale)
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const closeTimeoutRef = useRef<number | null>(null)
@@ -160,7 +152,7 @@ export function ServicesDropdown({
         )}
         style={theme === 'light' ? { backgroundColor: open ? dropdown.itemHoverBg : 'transparent' } : {}}
       >
-        <span>Services</span>
+        <span>{t.navbar.services}</span>
         <span
           className="transition-transform duration-150"
           style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
@@ -192,19 +184,140 @@ export function ServicesDropdown({
             }
           }}
         >
-          {SERVICE_ITEMS.map((item) => (
+          {t.navbar.serviceItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               role="menuitem"
               onClick={() => setOpen(false)}
-              className={`block whitespace-nowrap rounded-[8px] px-4 py-[10px] font-sans text-[16px] font-normal tracking-[-0.03em] transition-colors ${
-                theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-np-text hover:bg-black/5'
-              }`}
+              className={`block whitespace-nowrap rounded-[8px] px-4 py-[10px] font-sans text-[16px] font-normal tracking-[-0.03em] transition-colors ${theme === 'dark' ? 'text-white hover:bg-white/10' : 'text-np-text hover:bg-black/5'
+                }`}
             >
               {item.label}
             </Link>
           ))}
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
+function LangDropdown({ locale, pathname }: { locale: Locale; pathname: string }) {
+  const t = getDictionary(locale)
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const closeTimeoutRef = useRef<number | null>(null)
+
+  const clearCloseTimeout = () => {
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }
+
+  const openDropdown = () => {
+    clearCloseTimeout()
+    setOpen(true)
+  }
+
+  const scheduleClose = () => {
+    clearCloseTimeout()
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setOpen(false)
+      closeTimeoutRef.current = null
+    }, 140)
+  }
+
+  useEffect(() => {
+    const handleMouseDown = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleMouseDown)
+    return () => {
+      document.removeEventListener('mousedown', handleMouseDown)
+      clearCloseTimeout()
+    }
+  }, [])
+
+  const alternateHref = getAlternateHref(pathname)
+  const langs = [
+    { display: 'EN', href: locale === 'it' ? alternateHref : pathname, active: locale === 'en' },
+    { display: 'IT', href: locale === 'en' ? alternateHref : pathname, active: locale === 'it' },
+  ]
+
+  return (
+    <div
+      ref={ref}
+      className="np-nav-desktop relative after:absolute after:top-full after:left-0 after:h-6 after:w-full after:content-['']"
+      onMouseEnter={() => {
+        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+          openDropdown()
+        }
+      }}
+      onMouseLeave={() => {
+        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+          scheduleClose()
+        }
+      }}
+    >
+      <button
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label={t.navbar.langSwitcher.label}
+        onClick={() => {
+          clearCloseTimeout()
+          setOpen((current) => !current)
+        }}
+        className="inline-flex items-center gap-1 rounded-pill bg-white px-[10px] py-[6px] font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-all duration-300"
+      >
+        <span>{t.navbar.langSwitcher.display}</span>
+        <span
+          className="transition-transform duration-150"
+          style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
+        >
+          <ChevronDown size={11} color={colors.textPrimary} />
+        </span>
+      </button>
+
+      {open ? (
+        <div
+          role="menu"
+          aria-label="Seleziona lingua"
+          className="absolute left-0 z-[100] border border-black/5 bg-white"
+          style={{
+            top: 'calc(100% + 22px)',
+            borderRadius: dropdown.radius,
+            padding: dropdown.padding,
+            minWidth: 'max-content',
+            boxShadow: dropdown.shadow,
+          }}
+          onMouseEnter={() => {
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              openDropdown()
+            }
+          }}
+          onMouseLeave={() => {
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              scheduleClose()
+            }
+          }}
+        >
+          <div className="flex flex-col gap-[5px]">
+            {langs.map((lang) => (
+              <Link
+                key={lang.display}
+                href={lang.href}
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className={`block whitespace-nowrap rounded-[8px] px-[10px] py-[5px] font-sans text-[12px] tracking-[-0.03em] transition-colors hover:bg-black/5 ${lang.active ? 'font-semibold text-np-dark bg-black/[0.03]' : 'font-normal text-np-text'}`}
+              >
+                {lang.display}
+              </Link>
+            ))}
+          </div>
         </div>
       ) : null}
     </div>
@@ -220,19 +333,28 @@ const MENU_PARTNERS = [
 ] as const
 
 export default function Navbar() {
+  const pathname = usePathname()
+  const locale = getLocale(pathname)
+  const t = getDictionary(locale)
+
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [isOverDark, setIsOverDark] = useState(false)
 
+  const alternateHref = getAlternateHref(pathname)
+  const contactsHref = locale === 'it' ? '/it/contacts' : '/contacts'
+  const logoHref = locale === 'it' ? '/it' : '/'
+
+  const mobileNav = [...t.navbar.serviceItems, ...t.navbar.navLinks]
+
   useEffect(() => {
     const checkScroll = () => {
       const darkSections = document.querySelectorAll('[data-header-theme="dark"]')
-      const headerHeight = 60 // Approximate header height
+      const headerHeight = 60
 
       let isIntersecting = false
       darkSections.forEach((section) => {
         const rect = section.getBoundingClientRect()
-        // Check if the scroll position is within the boundaries of a dark section
         if (rect.top <= headerHeight && rect.bottom >= 0) {
           isIntersecting = true
         }
@@ -242,7 +364,6 @@ export default function Navbar() {
     }
 
     window.addEventListener('scroll', checkScroll)
-    // Initial check
     checkScroll()
 
     return () => window.removeEventListener('scroll', checkScroll)
@@ -279,14 +400,14 @@ export default function Navbar() {
         ].join(' ')}
       >
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-6 py-2 min-[810px]:px-9">
-          <Logo />
+          <Logo href={logoHref} />
 
           <nav
             aria-label="Navigazione principale"
             className="np-nav-desktop items-center gap-0"
           >
-            <ServicesDropdown />
-            {NAV_LINKS.map((link) => (
+            <ServicesDropdown locale={locale} />
+            {t.navbar.navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -298,20 +419,13 @@ export default function Navbar() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <button
-              type="button"
-              aria-label="Cambia lingua in italiano"
-              className="np-nav-desktop items-center gap-1 rounded-pill bg-white px-[10px] py-[6px] font-sans text-[12px] font-medium tracking-[-0.04em] text-np-text shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-all duration-300"
-            >
-              <span>IT</span>
-              <ChevronDown size={12} color={colors.textPrimary} />
-            </button>
+            <LangDropdown locale={locale} pathname={pathname} />
 
             <Link
-              href="/contacts"
+              href={contactsHref}
               className="np-nav-desktop np-btn-primary"
             >
-              Reserve Your Sprint
+              {t.navbar.reserveCta}
             </Link>
 
             <button
@@ -323,13 +437,13 @@ export default function Navbar() {
               className="np-nav-mobile items-center justify-center rounded-[50px] bg-white font-sans text-[14px] font-medium tracking-[-0.04em] text-black transition-colors"
               style={{ border: isOverDark ? '1px solid black' : '1px solid transparent', backdropFilter: 'blur(5px)', fontFeatureSettings: '"salt","kern","cv05","cv11","ccmp"' }}
             >
-              {mobileOpen ? 'Close' : 'Menu'}
+              {mobileOpen ? t.navbar.menuClose : t.navbar.menuOpen}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile menu — glass dropdown panel, matches header exact styles */}
+      {/* Mobile menu */}
       <div
         id="mobile-menu"
         role="dialog"
@@ -352,7 +466,7 @@ export default function Navbar() {
             onClick={() => setMobileServicesOpen((v) => !v)}
             className="flex w-full items-center justify-between py-2 font-sans text-[16px] font-medium tracking-[-0.04em] text-np-text"
           >
-            <span>Services</span>
+            <span>{t.navbar.services}</span>
             <span className="transition-transform duration-200" style={{ transform: mobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
               <ChevronDown size={18} />
             </span>
@@ -360,7 +474,7 @@ export default function Navbar() {
 
           {mobileServicesOpen && (
             <div className="pl-3 pb-1">
-              {SERVICE_ITEMS.map((item) => (
+              {t.navbar.serviceItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -373,7 +487,7 @@ export default function Navbar() {
             </div>
           )}
 
-          {NAV_LINKS.map((link) => (
+          {t.navbar.navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -386,14 +500,20 @@ export default function Navbar() {
         </nav>
 
         {/* Language + bottom padding */}
-        <div className="px-6 py-4">
-          <button
-            type="button"
-            className="inline-flex items-center gap-1 rounded-pill bg-white px-3 py-[5px] font-sans text-[13px] font-medium tracking-[-0.04em] text-np-text shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
-          >
-            <span>IT</span>
-            <ChevronDown size={11} color={colors.textPrimary} />
-          </button>
+        <div className="px-6 py-4 flex items-center gap-2">
+          {[
+            { display: 'EN', href: locale === 'it' ? alternateHref : pathname, active: locale === 'en' },
+            { display: 'IT', href: locale === 'en' ? alternateHref : pathname, active: locale === 'it' },
+          ].map((lang) => (
+            <Link
+              key={lang.display}
+              href={lang.href}
+              onClick={() => setMobileOpen(false)}
+              className={`inline-flex items-center gap-1.5 rounded-pill bg-white px-3 py-[5px] font-sans text-[13px] tracking-[-0.04em] text-np-text shadow-[0_1px_3px_rgba(0,0,0,0.08)] ${lang.active ? 'font-semibold' : 'font-medium opacity-50'}`}
+            >
+              {lang.display}
+            </Link>
+          ))}
         </div>
       </div>
     </>

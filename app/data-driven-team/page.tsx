@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 
-import PageIntro from '@/components/sections/PageIntro'
+import DataDrivenTeamHero from '@/components/sections/DataDrivenTeamHero'
+import DataDrivenTeamProblem from '@/components/sections/DataDrivenTeamProblem'
+import DataDrivenTeamSolution from '@/components/sections/DataDrivenTeamSolution'
+import EcommerceRebuildProcess from '@/components/sections/EcommerceRebuildProcess'
+import EcommerceRebuildWhyUs from '@/components/sections/EcommerceRebuildWhyUs'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,12 +16,25 @@ export async function generateMetadata(): Promise<Metadata> {
   })
 }
 
+import CaseStudy from '@/components/sections/CaseStudy'
+import Pricing from '@/components/sections/Pricing'
+import FAQ from '@/components/sections/FAQ'
+import CTA from '@/components/sections/CTA'
+import Footer from '@/components/layout/Footer'
+
 export default function DataDrivenTeamPage() {
   return (
-    <PageIntro
-      eyebrow="Plan"
-      title="Data-Driven Team."
-      description="This offer page is scaffolded and linked from the homepage pricing section. Detailed scope, process, and deliverables can now be added without changing the routing or SEO structure."
-    />
+    <main>
+      <DataDrivenTeamHero />
+      <DataDrivenTeamProblem />
+      <DataDrivenTeamSolution />
+      <EcommerceRebuildProcess />
+      <EcommerceRebuildWhyUs />
+      <CaseStudy noPadding={true} />
+      <Pricing teamOnly={true} />
+      <FAQ />
+      <CTA />
+      <Footer />
+    </main>
   )
 }

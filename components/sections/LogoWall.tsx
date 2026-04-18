@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion, Variants } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
 const logoRows = [
   [
@@ -43,16 +44,17 @@ const logoVariants: Variants = {
   }),
 }
 
-export default function LogoWall() {
+export default function LogoWall({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale)
   const allLogos = logoRows.flat()
 
   return (
     <section className="pb-0 pt-[80px] scroll-mt-[150px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[760px] text-center">
-          <SectionLabel>Clients</SectionLabel>
+          <SectionLabel>{t.logoWall.label}</SectionLabel>
           <h2 className="mt-5 font-display text-np-h2-sm lg:text-np-h2 text-center text-np-dark">
-            Brands that believed in us.
+            {t.logoWall.heading}
           </h2>
         </div>
 

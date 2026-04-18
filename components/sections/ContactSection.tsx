@@ -337,8 +337,8 @@ export default function ContactSection() {
                 </button>
 
                 <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-text">
-                  {isSuccess 
-                    ? 'Messaggio inviato con successo.' 
+                  {isSuccess
+                    ? 'Messaggio inviato con successo.'
                     : 'You’ll get direct access to our eCommerce manager in the next step.'}
                 </p>
                 {serverError && (

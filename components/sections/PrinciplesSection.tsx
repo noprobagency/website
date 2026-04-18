@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
+import type { Locale } from '@/lib/i18n'
 
-export default function PrinciplesSection() {
+export default function PrinciplesSection({ locale: _locale = 'en' }: { locale?: Locale }) {
   return (
     <section id="principles" className="py-16 lg:py-32 bg-noprob-bg">
       <div className="container-noprob">

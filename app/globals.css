@@ -76,6 +76,14 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   body {
     background-color: #f0f0f0;
     color: #181818;
@@ -431,6 +439,15 @@
 }
 
 
+
+@keyframes np-page-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.np-page-transition {
+  animation: np-page-in 0.22s ease-out both;
+}
 
 @keyframes wave-x {
 

@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
+import { getDictionary, type Locale } from '@/lib/i18n'
+
 // Flat list of 24 images - Shuffled to avoid side-by-side duplicates
 const FLAT_AVATARS = [
   'https://framerusercontent.com/images/D4OlAav8RISd0opp4Z1aT4ypRXw.png', // Man glasses
@@ -33,7 +35,8 @@ const FLAT_AVATARS = [
   'https://framerusercontent.com/images/WdMlO6P4eyTomKkSRBDtGLAio4.png', // Man curly (repeat 6)
 ]
 
-export default function CTA() {
+export default function CTA({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale)
   const containerRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -129,13 +132,14 @@ export default function CTA() {
           className="relative z-30 flex flex-col items-center text-center w-full max-w-3xl"
           style={{ position: 'absolute', bottom: '80px', left: '50%', transform: 'translateX(-50%)' }}
         >
-          <h2 className="mb-8 text-center text-np-dark text-[50px] min-[810px]:text-[56px]" style={{ fontFamily: '"Inter Display", Inter, sans-serif', fontWeight: 600, lineHeight: '1.1em', letterSpacing: '-0.05em' }}>
-            Ready to fix what&apos;s <br className="hidden sm:block" />
-            <span className="font-serif italic font-normal">slowing</span> you down?
+          <h2 className="mb-8 text-center text-np-dark text-[46px] min-[810px]:text-[56px]" style={{ fontFamily: '"Inter Display", Inter, sans-serif', fontWeight: 600, lineHeight: '1.1em', letterSpacing: '-0.05em' }}>
+            {t.cta.heading}<br className={locale === 'it' ? 'block' : 'hidden sm:block'} />
+            {t.cta.headingSub}{" "}
+            <span className="font-serif italic font-normal">{t.cta.headingEm}</span>{t.cta.headingPost}
           </h2>
 
           <Link
-            href="/contacts"
+            href={locale === 'it' ? '/it/contacts' : '/contacts'}
             className="flex items-center gap-3 overflow-hidden rounded-[50px] border-2 border-[#181818] bg-[#121212] py-2 pl-2 pr-6 hover:opacity-90"
           >
             <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[50px]">
@@ -149,12 +153,12 @@ export default function CTA() {
             </div>
             <div className="flex flex-col text-left">
               <span className="text-[16px] font-semibold tracking-tight text-[#f0f0f0]">
-                Reserve Your Sprint
+                {t.cta.buttonLabel}
               </span>
               <div className="flex items-center gap-1.5">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[#1dcc5d]"></span>
                 <span className="text-[13px] text-[#a9a9a9]">
-                  Slot Available for November
+                  {t.cta.availability}
                 </span>
               </div>
             </div>
