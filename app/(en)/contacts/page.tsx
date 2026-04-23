@@ -11,6 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Reserve your sprint and start a technical growth conversation with noprob agency.',
     path: '/contacts',
+    locale: 'en',
   })
 }
 

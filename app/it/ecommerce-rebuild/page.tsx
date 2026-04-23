@@ -18,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Ricostruiamo il tuo eCommerce dalle fondamenta, creando uno store veloce, stabile e pronto a convertire.',
     path: '/it/ecommerce-rebuild',
+    locale: 'it',
   })
 }
 

@@ -159,6 +159,15 @@ export type Dictionary = {
     privacyPolicy: string
     cookiePolicy: string
   }
+  seo: {
+    home: { title: string; description: string }
+    about: { title: string; description: string }
+    contacts: { title: string; description: string }
+    blog: { title: string; description: string }
+    useCases: { title: string; description: string }
+    dataDrivenTeam: { title: string; description: string }
+    ecommerceRebuild: { title: string; description: string }
+  }
 }
 
 const en: Dictionary = {
@@ -570,6 +579,15 @@ const en: Dictionary = {
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
   },
+  seo: {
+    home: { title: 'TODO: EN home title', description: 'TODO: EN home description' },
+    about: { title: 'TODO: EN about title', description: 'TODO: EN about description' },
+    contacts: { title: 'TODO: EN contacts title', description: 'TODO: EN contacts description' },
+    blog: { title: 'TODO: EN blog title', description: 'TODO: EN blog description' },
+    useCases: { title: 'TODO: EN use cases title', description: 'TODO: EN use cases description' },
+    dataDrivenTeam: { title: 'TODO: EN data-driven team title', description: 'TODO: EN data-driven team description' },
+    ecommerceRebuild: { title: 'TODO: EN ecommerce rebuild title', description: 'TODO: EN ecommerce rebuild description' },
+  },
 }
 
 const it: Dictionary = {
@@ -979,6 +997,15 @@ const it: Dictionary = {
     ],
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
+  },
+  seo: {
+    home: { title: 'TODO: IT home title', description: 'TODO: IT home description' },
+    about: { title: 'TODO: IT about title', description: 'TODO: IT about description' },
+    contacts: { title: 'TODO: IT contacts title', description: 'TODO: IT contacts description' },
+    blog: { title: 'TODO: IT blog title', description: 'TODO: IT blog description' },
+    useCases: { title: 'TODO: IT use cases title', description: 'TODO: IT use cases description' },
+    dataDrivenTeam: { title: 'TODO: IT data-driven team title', description: 'TODO: IT data-driven team description' },
+    ecommerceRebuild: { title: 'TODO: IT ecommerce rebuild title', description: 'TODO: IT ecommerce rebuild description' },
   },
 }
 

@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: siteConfig.defaultTitle,
     description: siteConfig.description,
     path: '/',
+    locale: 'en',
   })
 }
 

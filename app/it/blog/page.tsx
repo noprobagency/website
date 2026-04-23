@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'Blog',
     description: 'Approfondimenti tecnici, dati e crescita per operatori Shopify e WooCommerce.',
     path: '/it/blog',
+    locale: 'it',
   })
 }
 

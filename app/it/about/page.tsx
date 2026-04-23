@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Incontra il partner tecnico e di crescita dietro noprob agency e il modello operativo che portiamo ai brand eCommerce.',
     path: '/it/about',
+    locale: 'it',
   })
 }
 

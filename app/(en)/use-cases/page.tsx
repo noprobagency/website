@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'Use Cases',
     description: 'Explore the operating contexts, category fit, and growth scenarios noprob agency is designed for.',
     path: '/use-cases',
+    locale: 'en',
   })
 }
 

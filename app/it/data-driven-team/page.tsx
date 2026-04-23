@@ -18,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Il team tecnico per la crescita che ti aiuta a scalare il tuo eCommerce senza il caos.',
     path: '/it/data-driven-team',
+    locale: 'it',
   })
 }
 

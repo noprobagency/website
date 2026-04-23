@@ -139,7 +139,7 @@ export default function CTA({ locale = 'en' }: { locale?: Locale }) {
           </h2>
 
           <Link
-            href={locale === 'it' ? '/it/contacts' : '/contacts'}
+            href={t.hero.ctaPrimaryHref}
             className="flex items-center gap-3 overflow-hidden rounded-[50px] border-2 border-[#181818] bg-[#121212] py-2 pl-2 pr-6 hover:opacity-90"
           >
             <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[50px]">

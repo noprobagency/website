@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull:*)",
+      "Bash(npm install:*)",
+      "Bash(rm '/Users/antoniomanitta/Documents/noprobagency/app/blog/[slug]/page.tsx' '/Users/antoniomanitta/Documents/noprobagency/app/use-cases/[slug]/page.tsx')",
+      "Bash(rmdir /Users/antoniomanitta/Documents/noprobagency/app/about /Users/antoniomanitta/Documents/noprobagency/app/contacts /Users/antoniomanitta/Documents/noprobagency/app/data-driven-team /Users/antoniomanitta/Documents/noprobagency/app/ecommerce-rebuild /Users/antoniomanitta/Documents/noprobagency/app/trustpilot '/Users/antoniomanitta/Documents/noprobagency/app/blog/[slug]' /Users/antoniomanitta/Documents/noprobagency/app/blog '/Users/antoniomanitta/Documents/noprobagency/app/use-cases/[slug]' /Users/antoniomanitta/Documents/noprobagency/app/use-cases)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

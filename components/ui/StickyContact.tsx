@@ -5,9 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
+import { getDictionary } from '@/lib/i18n'
+
 export default function StickyContact() {
   const [visible, setVisible] = useState(false)
   const pathname = usePathname()
+  const locale = pathname.startsWith('/it') ? 'it' : 'en'
+  const t = getDictionary(locale)
 
   // Don't show on contact pages
   const isContactPage = pathname === '/contacts' || pathname === '/it/contacts'
@@ -44,7 +48,7 @@ export default function StickyContact() {
       style={{ opacity: visible ? 1 : 0, transform: 'translateX(-50%)', pointerEvents: visible ? 'auto' : 'none' }}
     >
       <Link
-        href="/contacts"
+        href={t.hero.ctaPrimaryHref}
         className="flex items-center justify-center gap-[30px] overflow-clip rounded-[138px] border border-[#363636] bg-[#121212] py-2 pl-2 pr-[18px] hover:opacity-90"
       >
         <div className="relative h-[30px] w-[30px] shrink-0 overflow-hidden rounded-full">

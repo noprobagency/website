@@ -10,16 +10,16 @@ import Pricing from '@/components/sections/Pricing'
 import ProblemSection from '@/components/sections/ProblemSection'
 import ResultsCarousel from '@/components/sections/ResultsCarousel'
 import SolutionSection from '@/components/sections/SolutionSection'
-import { siteConfig } from '@/lib/site'
+import { buildMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Il tuo Partner eCommerce. Dal Build alla Crescita.',
-  description:
-    'Partner eCommerce premium specializzato in sviluppo, rebuild e crescita. Un unico team tecnico per Shopify e WooCommerce.',
-  alternates: {
-    canonical: `${siteConfig.url}/it`,
-    languages: { en: siteConfig.url, it: `${siteConfig.url}/it` },
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Il tuo Partner eCommerce. Dal Build alla Crescita.',
+    description:
+      'Partner eCommerce premium specializzato in sviluppo, rebuild e crescita. Un unico team tecnico per Shopify e WooCommerce.',
+    path: '/it',
+    locale: 'it',
+  })
 }
 
 export default function ItalianHomePage() {

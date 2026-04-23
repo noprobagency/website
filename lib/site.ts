@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 
 import { absoluteUrl } from '@/lib/utils'
+import type { Locale } from '@/lib/i18n'
 
 export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.5.8',
+  version: 'v0.6.0',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
@@ -48,6 +49,7 @@ type MetadataOptions = {
   title?: string
   description?: string
   path?: string
+  locale: Locale
   noIndex?: boolean
 }
 
@@ -55,10 +57,18 @@ export function buildMetadata({
   title,
   description = siteConfig.description,
   path = '/',
+  locale,
   noIndex = false,
-}: MetadataOptions = {}): Metadata {
+}: MetadataOptions): Metadata {
+  // Derive the EN and IT paths from the current path + locale
+  const enPath = locale === 'it' ? path.replace(/^\/it/, '') || '/' : path
+  const itPath = locale === 'en' ? `/it${path === '/' ? '' : path}` : path
+
   const canonical = absoluteUrl(path)
+  const enUrl = absoluteUrl(enPath)
+  const itUrl = absoluteUrl(itPath)
   const resolvedTitle = title || siteConfig.defaultTitle
+  const ogLocale = locale === 'it' ? 'it_IT' : 'en_US'
 
   return {
     title: resolvedTitle,
@@ -66,12 +76,17 @@ export function buildMetadata({
     keywords: [...siteConfig.keywords],
     alternates: {
       canonical,
+      languages: {
+        en: enUrl,
+        it: itUrl,
+        'x-default': enUrl,
+      },
     },
     openGraph: {
       type: 'website',
       url: canonical,
       siteName: siteConfig.name,
-      locale: 'en_US',
+      locale: ogLocale,
       title: resolvedTitle,
       description,
       images: [
@@ -91,19 +106,19 @@ export function buildMetadata({
     },
     robots: noIndex
       ? {
-        index: false,
-        follow: false,
-      }
+          index: false,
+          follow: false,
+        }
       : {
-        index: true,
-        follow: true,
-        googleBot: {
           index: true,
           follow: true,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
         },
-      },
   }
 }
 

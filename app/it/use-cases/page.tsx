@@ -6,19 +6,18 @@ import { buildMetadata } from '@/lib/site'
 import SectionLabel from '@/components/ui/SectionLabel'
 import { useCases } from '@/data/use-cases'
 import Footer from '@/components/layout/Footer'
-import { getDictionary } from '@/lib/i18n'
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Casi d’Uso',
-    description: 'Esplora i contesti operativi e gli scenari di crescita per cui la noprob agency è progettata.',
+    title: "Casi d'Uso",
+    description: 'Esplora i contesti operativi e gli scenari di crescita per cui la noprob agency \u00e8 progettata.',
     path: '/it/use-cases',
+    locale: 'it',
   })
 }
 
 export default function ItalianUseCasesPage() {
   const locale = 'it'
-  const dict = getDictionary(locale)
 
   return (
     <>
@@ -74,7 +73,7 @@ export default function ItalianUseCasesPage() {
                     }}
                   >
                     <span className="font-sans text-[12px] font-medium tracking-[-0.03em] text-[#181818]">
-                      {useCase.caseType === 'Use Case' ? 'Caso d’Uso' : useCase.caseType}
+                      {useCase.caseType === 'Use Case' ? "Caso d'Uso" : useCase.caseType}
                     </span>
                   </div>
                 </div>
