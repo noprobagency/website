@@ -13,13 +13,7 @@ import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'eCommerce Rebuild',
-    description:
-      'We recreate your eCommerce from the ground up, creating a fast, stable, and conversion-ready store.',
-    path: '/ecommerce-rebuild',
-    locale: 'en',
-  })
+  return buildMetadata({ path: '/ecommerce-rebuild', locale: 'en', pageKey: 'ecommerceRebuild' })
 }
 
 export default function EcommerceRebuildPage() {

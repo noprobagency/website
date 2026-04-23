@@ -6,13 +6,7 @@ import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Contatti',
-    description:
-      'Prenota il tuo sprint e inizia una conversazione di crescita tecnica con noprob agency.',
-    path: '/it/contacts',
-    locale: 'it',
-  })
+  return buildMetadata({ path: '/it/contacts', locale: 'it', pageKey: 'contacts' })
 }
 
 export default function ItalianContactsPage() {

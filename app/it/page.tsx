@@ -13,13 +13,7 @@ import SolutionSection from '@/components/sections/SolutionSection'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Il tuo Partner eCommerce. Dal Build alla Crescita.',
-    description:
-      'Partner eCommerce premium specializzato in sviluppo, rebuild e crescita. Un unico team tecnico per Shopify e WooCommerce.',
-    path: '/it',
-    locale: 'it',
-  })
+  return buildMetadata({ path: '/it', locale: 'it', pageKey: 'home' })
 }
 
 export default function ItalianHomePage() {

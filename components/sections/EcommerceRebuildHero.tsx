@@ -13,13 +13,6 @@ const heroPartners = [
     className: 'block h-[17px] w-auto object-contain opacity-[0.85] min-[810px]:h-[20px]',
   },
   {
-    name: 'WooCommerce',
-    src: siteAssets.heroPartners[1],
-    width: 300,
-    height: 300,
-    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[26px]',
-  },
-  {
     name: 'Google Partner',
     src: siteAssets.heroPartners[2],
     width: 288,

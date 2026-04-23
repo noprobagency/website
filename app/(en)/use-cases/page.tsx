@@ -8,12 +8,7 @@ import { useCases } from '@/data/use-cases'
 import Footer from '@/components/layout/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Use Cases',
-    description: 'Explore the operating contexts, category fit, and growth scenarios noprob agency is designed for.',
-    path: '/use-cases',
-    locale: 'en',
-  })
+  return buildMetadata({ path: '/use-cases', locale: 'en', pageKey: 'useCases' })
 }
 
 export default function UseCasesPage() {

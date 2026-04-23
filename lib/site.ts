@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
 
 import { absoluteUrl } from '@/lib/utils'
-import type { Locale } from '@/lib/i18n'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
 export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.6.0',
+  version: 'v0.7.0',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
   description:
-    'Shopify Partner specializzato in sviluppo, migrazione e gestione eCommerce. Costruiamo il tuo store per convertire, restiamo per farlo crescere. Un unico partner tecnico, a lungo termine.',
+    'Shopify Partner for fashion, supplement, and DTC brands. We build, migrate, and manage eCommerce stores as your long-term technical partner.',
   keywords: [
     'ecommerce agency',
     'shopify development',
@@ -45,21 +45,29 @@ export const siteAssets = {
   ],
 } as const
 
+type PageKey = keyof ReturnType<typeof getDictionary>['seo']
+
 type MetadataOptions = {
   title?: string
   description?: string
   path?: string
   locale: Locale
+  pageKey?: PageKey
   noIndex?: boolean
 }
 
 export function buildMetadata({
   title,
-  description = siteConfig.description,
+  description,
   path = '/',
   locale,
+  pageKey,
   noIndex = false,
 }: MetadataOptions): Metadata {
+  const dict = pageKey ? getDictionary(locale).seo[pageKey] : null
+  const resolvedTitle = title ?? dict?.title ?? siteConfig.defaultTitle
+  const resolvedDescription = description ?? dict?.description ?? siteConfig.description
+
   // Derive the EN and IT paths from the current path + locale
   const enPath = locale === 'it' ? path.replace(/^\/it/, '') || '/' : path
   const itPath = locale === 'en' ? `/it${path === '/' ? '' : path}` : path
@@ -67,13 +75,11 @@ export function buildMetadata({
   const canonical = absoluteUrl(path)
   const enUrl = absoluteUrl(enPath)
   const itUrl = absoluteUrl(itPath)
-  const resolvedTitle = title || siteConfig.defaultTitle
   const ogLocale = locale === 'it' ? 'it_IT' : 'en_US'
 
   return {
     title: resolvedTitle,
-    description,
-    keywords: [...siteConfig.keywords],
+    description: resolvedDescription,
     alternates: {
       canonical,
       languages: {
@@ -88,7 +94,7 @@ export function buildMetadata({
       siteName: siteConfig.name,
       locale: ogLocale,
       title: resolvedTitle,
-      description,
+      description: resolvedDescription,
       images: [
         {
           url: absoluteUrl('/og-image.svg'),
@@ -101,7 +107,7 @@ export function buildMetadata({
     twitter: {
       card: 'summary_large_image',
       title: resolvedTitle,
-      description,
+      description: resolvedDescription,
       images: [absoluteUrl('/og-image.svg')],
     },
     robots: noIndex

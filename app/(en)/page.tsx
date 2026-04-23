@@ -13,12 +13,7 @@ import SolutionSection from '@/components/sections/SolutionSection'
 import { buildMetadata, siteConfig } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: siteConfig.defaultTitle,
-    description: siteConfig.description,
-    path: '/',
-    locale: 'en',
-  })
+  return buildMetadata({ path: '/', locale: 'en', pageKey: 'home' })
 }
 
 export default function HomePage() {

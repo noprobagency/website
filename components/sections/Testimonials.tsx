@@ -4,23 +4,7 @@ import Image from 'next/image'
 import { motion, Variants } from 'framer-motion'
 
 import { siteAssets } from '@/lib/site'
-
-const testimonials = [
-  {
-    name: 'Antonio Cali',
-    role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
-    image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
-    quote:
-      'Collaborating with NoProb Agency for the development of our e-commerce was an extremely positive experience. From the very first stages of the project, the team stood out for its clear communication, technical expertise, and listening skills. Every step, from graphic design to going live, was handled with professionalism…',
-  },
-  {
-    name: 'Camilla Dudine',
-    role: 'DDglobal Store - B2B eCommerce Owner',
-    image: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
-    quote:
-      'Collaborating with Antonio on the creation of our e-commerce website was an extremely positive experience. He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing e-commerce website.',
-  },
-]
+import { getDictionary, type Locale } from '@/lib/i18n'
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -35,17 +19,19 @@ const cardVariants: Variants = {
   }),
 }
 
-export default function Testimonials() {
+export default function Testimonials({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale).about.testimonials
+
   return (
     <div className="mx-auto mt-16 max-w-[850px]">
       <div className="text-center">
         <h3 className="font-sans text-[1.6rem] font-bold leading-[1.4em] tracking-[-0.04em] text-[#f9f9f9]">
-          Trusted by established business owners
+          {t.heading}
         </h3>
       </div>
 
       <div className="mt-6 grid gap-3 xl:grid-cols-2">
-        {testimonials.map((testimonial, i) => (
+        {t.items.map((testimonial, i) => (
           <motion.article
             key={testimonial.name}
             custom={i}

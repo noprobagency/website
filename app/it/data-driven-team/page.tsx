@@ -13,13 +13,7 @@ import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Data-Driven Team',
-    description:
-      'Il team tecnico per la crescita che ti aiuta a scalare il tuo eCommerce senza il caos.',
-    path: '/it/data-driven-team',
-    locale: 'it',
-  })
+  return buildMetadata({ path: '/it/data-driven-team', locale: 'it', pageKey: 'dataDrivenTeam' })
 }
 
 export default function ItalianDataDrivenTeamPage() {

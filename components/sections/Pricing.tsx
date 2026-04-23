@@ -162,7 +162,7 @@ export default function Pricing({
             ))}
           </div>
 
-          <Testimonials />
+          <Testimonials locale={locale} />
         </div>
       </div>
     </section>

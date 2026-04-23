@@ -326,7 +326,6 @@ function LangDropdown({ locale, pathname }: { locale: Locale; pathname: string }
 
 const MENU_PARTNERS = [
   { name: 'Shopify Partners', src: siteAssets.heroPartners[0], width: 288, height: 76, className: 'block h-[18px] w-auto object-contain opacity-75' },
-  { name: 'WooCommerce', src: siteAssets.heroPartners[1], width: 300, height: 300, className: 'block h-[22px] w-auto object-contain opacity-75' },
   { name: 'Google Partner', src: siteAssets.heroPartners[2], width: 288, height: 76, className: 'block h-[30px] w-auto object-contain opacity-75' },
   { name: 'Meta Partner', src: siteAssets.heroPartners[3], width: 288, height: 76, className: 'block h-[22px] w-auto object-contain opacity-75' },
   { name: 'Klaviyo Partners', src: siteAssets.heroPartners[4], width: 500, height: 233, className: 'block h-[24px] w-auto object-contain opacity-75' },

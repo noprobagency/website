@@ -7,12 +7,11 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css'
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? siteConfig.url),
   title: {
-    default: 'Il tuo Partner eCommerce. Dal Build alla Crescita.',
+    default: 'Agenzia Shopify per Brand eCommerce Fashion e DTC | NoProb',
     template: '%s | noprob agency™',
   },
   description:
-    'Partner eCommerce premium specializzato in sviluppo, rebuild e crescita. Un unico team tecnico per Shopify e WooCommerce.',
-  keywords: [...siteConfig.keywords],
+    'Partner tecnico Shopify per brand fashion, integratori e DTC. Sviluppo, migrazione e gestione eCommerce con un team dedicato a lungo termine.',
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,

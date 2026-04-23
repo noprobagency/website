@@ -10,13 +10,7 @@ import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'About',
-    description:
-      'Meet the technical and growth partner behind noprob agency and the operating model we bring to eCommerce brands.',
-    path: '/about',
-    locale: 'en',
-  })
+  return buildMetadata({ path: '/about', locale: 'en', pageKey: 'about' })
 }
 
 export default function AboutPage() {

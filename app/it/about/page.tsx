@@ -10,13 +10,7 @@ import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Chi Siamo',
-    description:
-      'Incontra il partner tecnico e di crescita dietro noprob agency e il modello operativo che portiamo ai brand eCommerce.',
-    path: '/it/about',
-    locale: 'it',
-  })
+  return buildMetadata({ path: '/it/about', locale: 'it', pageKey: 'about' })
 }
 
 export default function ItalianAboutPage() {

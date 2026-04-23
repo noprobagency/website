@@ -96,7 +96,7 @@ export default function ContactSection() {
                 <p className="font-sans text-[17px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
                   NoProb Agency is the technical partner that makes eCommerce simple. A 7/7 team
                   of developers, designers, and strategists combining code, data, and creativity
-                  to help Shopify and WooCommerce brands scale without stress.
+                  to help Shopify brands scale without stress.
                 </p>
               </div>
             </div>

@@ -8,12 +8,7 @@ import { articles } from '@/data/articles'
 import Footer from '@/components/layout/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Blog',
-    description: 'Technical, data, and growth insights for Shopify and WooCommerce operators.',
-    path: '/blog',
-    locale: 'en',
-  })
+  return buildMetadata({ path: '/blog', locale: 'en', pageKey: 'blog' })
 }
 
 export default function BlogPage() {
