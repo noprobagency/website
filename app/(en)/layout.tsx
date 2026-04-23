@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import BaseLayout from '@/components/layout/BaseLayout'
-import { siteConfig } from '@/lib/site'
+import { AnalyticsProvider } from '@/components/analytics/AnalyticsProvider'
+import { siteConfig, organizationJsonLd } from '@/lib/site'
 import '@/app/globals.css'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
@@ -42,9 +43,14 @@ export default function EnglishLayout({ children }: Readonly<{ children: React.R
   return (
     <html lang="en">
       <body className="bg-np-bg text-np-text font-sans antialiased overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <BaseLayout locale="en">
           {children}
         </BaseLayout>
+        <AnalyticsProvider />
       </body>
     </html>
   )

@@ -91,6 +91,78 @@
 - CTA buttons now share a unified responsive system: black/white variants, `10px` radius, `16px / 400` desktop typography, and proportionally reduced mobile padding/text sizing defined once in the global button utilities.
 - The hero partner logos now step up in size on desktop breakpoints only, so the brand marks read more clearly without crowding the mobile layout.
 
+## 13. Stack Analytics, SEO & LLM Optimization
+
+- Site live: https://noprob.agency
+- Hosting: Vercel (branch main → production)
+- Framework: Next.js 15 App Router, route groups `(en)` + `it/`
+- Current version: v0.7.1
+
+### Analytics active
+
+- Google Analytics 4 — ID: G-JD0T1HWWWV (env: `NEXT_PUBLIC_GA4_ID`)
+- Meta Pixel — ID: 1174058738142037 (env: `NEXT_PUBLIC_META_PIXEL_ID`)
+- Meta Conversions API server-side (endpoint: `/api/meta-capi`)
+  - Token in env `META_CAPI_ACCESS_TOKEN` (server-only, never exposed)
+  - Deduplication browser Pixel + CAPI via `event_id` UUID shared per event
+  - Test event code env `META_CAPI_TEST_EVENT_CODE` active only in Preview environment
+
+### Event tracking
+
+Helper in `lib/analytics/events.ts`:
+- `trackEvent(name, params)` — fires Pixel + GA4 + CAPI with same `event_id`
+- `trackPageView(url)` — automatic on route change via `RouteChangeTracker`
+- `trackContactClick(location)` — triggered on CTA clicks
+- `trackPricingView()`, `trackCaseStudyView(slug)` — content-specific events
+- `ClickTrackingDelegator` intercepts all `[data-tracking]` elements in DOM
+
+### SEO infrastructure
+
+- Sitemap: `/sitemap.xml` generated from `app/sitemap.ts` + `lib/sitemap/routes.ts`
+  - Single source of truth: add page to `ROUTES` array → sitemap auto-updates
+  - Includes hreflang `en`/`it`/`x-default` alternates inline
+- Robots: `/robots.txt` (`app/robots.ts`) — explicit allow for GPTBot, ClaudeBot, PerplexityBot, Google-Extended
+- Hreflang: EN root + `/it/` subfolder, `x-default` → EN
+- GSC verification: meta tag via env `GSC_VERIFICATION_TOKEN`
+- Canonical: self-referencing per page via `buildMetadata()`
+
+### GEO / LLM Optimization
+
+- `llms.txt`: structured document for LLM crawlers (ChatGPT, Claude, Perplexity) at `/llms.txt` (static public file)
+- Schema.org Organization JSON-LD in `app/(en)/layout.tsx` body
+- Schema.org Service JSON-LD on `/data-driven-team` and `/ecommerce-rebuild` with offers and pricing
+- Entity consistency: founder "Antonio Manitta" + company "NoProb Agency LLC" mentioned cross-page
+
+### GDPR / Consent
+
+- `ConsentGate` component currently in **pass-through mode** (analytics always load)
+- TODO: install Iubenda Consent Solution, change `consentGranted` default to `false`, wire `_iub` callbacks
+
+### Runbook — Adding a new indexable page
+
+1. Create page under `app/(en)/[route]/page.tsx` AND `app/it/[route]/page.tsx`
+2. Add entry in `lib/sitemap/routes.ts`
+3. Add `seo.[pageKey]` (title + description EN/IT) in `lib/i18n/index.ts`
+4. Sitemap auto-updates on next build
+5. If service page, add Service JSON-LD schema in the page component
+
+### Analytics files created
+
+- `components/analytics/GoogleAnalytics.tsx`
+- `components/analytics/MetaPixel.tsx`
+- `components/analytics/ConsentGate.tsx`
+- `components/analytics/AnalyticsProvider.tsx`
+- `components/analytics/RouteChangeTracker.tsx`
+- `components/analytics/ClickTrackingDelegator.tsx`
+- `lib/analytics/events.ts`
+- `app/api/meta-capi/route.ts`
+- `app/sitemap.ts` (replaced — now uses `lib/sitemap/routes.ts`)
+- `app/robots.ts` (updated — LLM crawlers explicitly allowed)
+- `lib/sitemap/routes.ts`
+- `public/llms.txt`
+
+---
+
 ## Notes
 
 - The Sanity CLI syntax has changed from the one in the brief, so a local Sanity scaffold was created manually with `sanity.config.ts`, `sanity.cli.ts`, and an empty schema entrypoint to keep the codebase ready without blocking the homepage sprint.

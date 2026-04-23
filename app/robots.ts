@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-import { siteConfig } from '@/lib/site'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://noprob.agency'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,10 +8,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/'],
+        disallow: ['/api/', '/_next/', '/admin/'],
       },
+      // Explicitly allow LLM crawlers (GEO optimization)
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'ChatGPT-User', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'anthropic-ai', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   }
 }

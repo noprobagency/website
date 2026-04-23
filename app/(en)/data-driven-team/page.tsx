@@ -16,9 +16,33 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({ path: '/data-driven-team', locale: 'en', pageKey: 'dataDrivenTeam' })
 }
 
+const dataDrivenTeamJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Data-Driven Team — Dedicated eCommerce Retainer',
+  provider: { '@type': 'Organization', name: 'NoProb Agency', url: 'https://noprob.agency' },
+  serviceType: 'eCommerce management retainer',
+  areaServed: ['IT', 'EU', 'US'],
+  offers: {
+    '@type': 'Offer',
+    price: '1495',
+    priceCurrency: 'EUR',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '1495',
+      priceCurrency: 'EUR',
+      unitText: 'MONTH',
+    },
+  },
+}
+
 export default function DataDrivenTeamPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(dataDrivenTeamJsonLd) }}
+      />
       <DataDrivenTeamHero />
       <DataDrivenTeamProblem />
       <DataDrivenTeamSolution />

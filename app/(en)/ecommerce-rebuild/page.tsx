@@ -16,9 +16,33 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({ path: '/ecommerce-rebuild', locale: 'en', pageKey: 'ecommerceRebuild' })
 }
 
+const ecommerceRebuildJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'eCommerce Rebuild on Shopify',
+  provider: { '@type': 'Organization', name: 'NoProb Agency', url: 'https://noprob.agency' },
+  serviceType: 'Shopify eCommerce rebuild',
+  areaServed: ['IT', 'EU', 'US'],
+  offers: {
+    '@type': 'Offer',
+    price: '5795',
+    priceCurrency: 'EUR',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '5795',
+      priceCurrency: 'EUR',
+      unitText: 'ONE_TIME',
+    },
+  },
+}
+
 export default function EcommerceRebuildPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ecommerceRebuildJsonLd) }}
+      />
       <EcommerceRebuildHero />
       <EcommerceRebuildProblem />
       <EcommerceRebuildSolution />

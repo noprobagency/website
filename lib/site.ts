@@ -7,7 +7,7 @@ export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.7.0',
+  version: 'v0.7.1',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
@@ -125,16 +125,25 @@ export function buildMetadata({
             'max-snippet': -1,
           },
         },
+    verification: {
+      google: process.env.GSC_VERIFICATION_TOKEN,
+    },
   }
 }
 
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: siteConfig.name,
+  name: 'NoProb Agency',
   legalName: siteConfig.companyName,
   url: siteConfig.url,
-  logo: absoluteUrl(siteAssets.logo),
+  logo: absoluteUrl(siteAssets.logoBlack),
+  foundingDate: '2022',
+  founder: {
+    '@type': 'Person',
+    name: 'Antonio Manitta',
+    jobTitle: 'Founder & eCommerce Manager',
+  },
   description: siteConfig.description,
   address: {
     '@type': 'PostalAddress',
@@ -144,5 +153,15 @@ export const organizationJsonLd = {
     postalCode: '82801',
     addressCountry: 'US',
   },
-  sameAs: ['https://www.trustpilot.com/review/noprob.agency'],
+  knowsAbout: [
+    'Shopify development',
+    'eCommerce migration',
+    'Conversion rate optimization',
+    'Server-side tracking',
+    'eCommerce management',
+  ],
+  sameAs: [
+    'https://www.linkedin.com/company/noprobagency',
+    'https://www.trustpilot.com/review/noprob.agency',
+  ],
 } as const
