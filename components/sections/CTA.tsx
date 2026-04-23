@@ -169,7 +169,7 @@ export default function CTA({ locale = 'en' }: { locale?: Locale }) {
           >
             <RevealWords text={t.cta.heading} />
             <br className={locale === 'it' ? 'block' : 'hidden sm:block'} />
-            <RevealWords text={t.cta.headingSub} />
+            {t.cta.headingSub && <RevealWords text={t.cta.headingSub} />}
             <motion.span variants={wordVariants} className="inline-block font-serif italic font-normal mr-[0.25em]">{t.cta.headingEm}</motion.span>
             {t.cta.headingPost && <RevealWords text={t.cta.headingPost!} />}
           </motion.h2>
