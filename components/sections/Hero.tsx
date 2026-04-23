@@ -14,35 +14,35 @@ const heroPartners = [
     src: siteAssets.heroPartners[0],
     width: 288,
     height: 76,
-    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[28px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[28px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'WooCommerce',
     src: siteAssets.heroPartners[1],
     width: 300,
     height: 300,
-    className: 'block h-[28px] w-auto object-contain opacity-[0.85] min-[810px]:h-[34px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[44px] min-[810px]:h-[34px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'Google Partner',
     src: siteAssets.heroPartners[2],
     width: 288,
     height: 76,
-    className: 'block h-[38px] w-auto object-contain opacity-[0.85] min-[810px]:h-[46px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[46px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'Meta Business Partner',
     src: siteAssets.heroPartners[3],
     width: 288,
     height: 76,
-    className: 'block h-[28px] w-auto object-contain opacity-[0.85] min-[810px]:h-[34px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[34px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'Klaviyo Partners',
     src: siteAssets.heroPartners[4],
     width: 500,
     height: 233,
-    className: 'block h-[30px] w-auto object-contain opacity-[0.85] min-[810px]:h-[36px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[36px] min-[810px]:h-[36px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
 ] as const
 
@@ -103,7 +103,7 @@ export default function Hero({ locale = 'en' }: { locale?: Locale }) {
 
       <div className="pointer-events-none absolute inset-0 z-[5] bg-noprob-bg [mask-image:linear-gradient(rgba(0,0,0,0)_88%,#000_97%)] [-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_88%,#000_97%)] min-[810px]:[mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)] min-[810px]:[-webkit-mask-image:linear-gradient(rgba(0,0,0,0)_75%,#000_97%)]" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col gap-5 min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-[29px] min-[810px]:max-[1199px]:items-center min-[810px]:max-[1199px]:gap-6">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col gap-[20px] min-[810px]:flex-row min-[810px]:items-start min-[810px]:max-[1199px]:items-center">
         <div className="flex w-full flex-col items-center gap-[18px] min-[810px]:w-px min-[810px]:flex-[1.2_0_0] min-[810px]:items-start min-[810px]:gap-7">
           <div className="flex w-full flex-col items-center gap-[10px] min-[810px]:items-start">
             <div className="flex max-w-[280px] flex-col items-center gap-1 min-[810px]:max-w-none min-[810px]:items-start">
@@ -133,7 +133,7 @@ export default function Hero({ locale = 'en' }: { locale?: Locale }) {
             </div>
           </div>
 
-          <h1 className="max-w-[650px] text-center text-np-hero text-noprob-text min-[810px]:text-left">
+          <h1 className="max-w-[650px] text-center text-np-hero text-noprob-text min-[810px]:text-left" style={{ lineHeight: '1.2em', fontFeatureSettings: "'blwf' on, 'cv09' on, 'cv03' on, 'cv04' on, 'cv11' on" }}>
             <span className="block">{t.hero.line1}</span>
             <span className="block">{t.hero.line2}</span>
             <span className="block">
@@ -149,14 +149,14 @@ export default function Hero({ locale = 'en' }: { locale?: Locale }) {
             <Link
               href={t.hero.ctaPrimaryHref}
               data-tracking="hero_cta_primary"
-              className="np-btn-primary"
+              className="button-principal"
             >
               {t.hero.ctaPrimary}
             </Link>
             <Link
               href={t.hero.ctaSecondaryHref}
               data-tracking="hero_cta_secondary"
-              className="np-btn-secondary"
+              className="button-secondary max-[809px]:bg-transparent max-[809px]:border-0 max-[809px]:shadow-none max-[809px]:p-0 max-[809px]:rounded-none max-[809px]:font-light max-[809px]:text-[12.8px] max-[809px]:text-[#181818] max-[809px]:underline max-[809px]:decoration-[#000] max-[809px]:underline-offset-0 max-[809px]:leading-[120%] max-[809px]:tracking-[-0.04em] max-[809px]:text-center max-[809px]:cursor-auto max-[809px]:hover:transform-none max-[809px]:hover:shadow-none max-[809px]:[font-feature-settings:'blwf'_on,'cv09'_on,'cv03'_on,'cv04'_on,'cv11'_on]"
             >
               {t.hero.ctaSecondary}
             </Link>
@@ -164,7 +164,7 @@ export default function Hero({ locale = 'en' }: { locale?: Locale }) {
 
           <div className="grid w-full max-w-[600px] grid-cols-5 items-center gap-0 pt-[2px] min-[810px]:pt-0">
             {heroPartners.map((partner) => (
-              <div key={partner.name} className="relative flex h-10 items-center justify-center">
+              <div key={partner.name} className="relative flex h-10 items-center justify-center px-1">
                 <Image
                   src={partner.src}
                   alt={partner.name}

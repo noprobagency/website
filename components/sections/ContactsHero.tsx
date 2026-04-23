@@ -1,6 +1,5 @@
 'use client'
 
-import { siteAssets } from '@/lib/site'
 
 export default function ContactsHero() {
   return (
@@ -35,16 +34,18 @@ export default function ContactsHero() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-np-hero text-noprob-text">
+        <h1
+          className="text-center font-sans text-[1.79rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-black [text-wrap:balance] min-[810px]:text-[2.8rem]"
+          style={{ fontFeatureSettings: "'blwf' on, 'cv09' on, 'cv03' on, 'cv04' on, 'cv11' on" }}
+        >
           Book Your Call With an <br className="hidden sm:block" />
           eCommerce <em className="font-serif italic font-normal">Expert</em>
         </h1>
 
         {/* Description */}
-        <div className="mt-8">
+        <div className="mt-[20px] w-[550px] max-w-full">
           <p className="font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
-            Once you submit the form, you’ll be contacted by our senior ecommerce manager. <br className="hidden min-[810px]:block" />
-            Together, you’ll analyze your current situation and define the best next steps for your growth.
+            Once you submit the form, you’ll be contacted by our senior ecommerce manager. Together, you’ll analyze your current situation and define the best next steps for your growth.
           </p>
         </div>
       </div>

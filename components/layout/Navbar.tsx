@@ -423,7 +423,7 @@ export default function Navbar() {
 
             <Link
               href={contactsHref}
-              className="np-nav-desktop np-btn-primary"
+              className="np-nav-desktop button-header"
             >
               {t.navbar.reserveCta}
             </Link>

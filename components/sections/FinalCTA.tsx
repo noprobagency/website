@@ -65,7 +65,7 @@ export default function FinalCTA() {
             <div className="mt-8 flex justify-center">
               <a
                 href="/contacts"
-                className="np-btn-primary flex-wrap justify-center gap-3 px-4 text-center sm:flex-nowrap sm:px-5"
+                className="button-principal flex-wrap justify-center gap-3 px-4 text-center sm:flex-nowrap sm:px-5"
                 data-tracking="final_cta"
               >
                 <Image

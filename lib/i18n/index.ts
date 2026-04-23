@@ -176,7 +176,6 @@ const en: Dictionary = {
     serviceItems: [
       { label: 'eCommerce ReBuild', href: '/ecommerce-rebuild' },
       { label: 'Data Drive Team', href: '/data-driven-team' },
-      { label: 'MVP Sprint', href: '/contacts' },
     ],
     langSwitcher: { label: 'Switch to Italian', display: 'EN' },
   },
@@ -221,15 +220,15 @@ const en: Dictionary = {
     headingMark: 'true technical partner',
     items: [
       {
-        title: 'Tech Integration Zero Chaos',
+        title: 'Tech Integration\nZero Chaos',
         description: 'All-in-one partner. Full-stack team\u2014development, design, data and strategy. Everything managed for you.',
       },
       {
-        title: 'Real Support Real Results',
+        title: 'Real Support\nReal Results',
         description: 'Response in minutes, not days. Proactive problem-solvers in Branding & Dev. We support your growth',
       },
       {
-        title: 'Clean Data That Drives Growth',
+        title: 'Clean Data That\nDrives Growth',
         description: 'Professional tracking, complete analytics, actionable dashboards. Decisions on real numbers, not hope.',
       },
     ],
@@ -558,7 +557,7 @@ const en: Dictionary = {
   },
   footer: {
     headingPre: 'Consistency\nThat\u2019s ',
-    headingEm: 'noprob agency',
+    headingEm: 'noprobagency',
     description:
       'We rebuild your store from the ground up and offer a dedicated team in Development, Marketing, and Strategy, available together or separately based on your needs.',
     links: [
@@ -587,7 +586,6 @@ const it: Dictionary = {
     serviceItems: [
       { label: 'eCommerce ReBuild', href: '/it/ecommerce-rebuild' },
       { label: 'Data Drive Team', href: '/it/data-driven-team' },
-      { label: 'MVP Sprint', href: '/it/contacts' },
     ],
     langSwitcher: { label: 'Passa alla versione inglese', display: 'IT' },
   },
@@ -968,7 +966,7 @@ const it: Dictionary = {
   },
   footer: {
     headingPre: 'Consistenza.\nEcco cos\u2019\u00e8 ',
-    headingEm: 'noprob agency',
+    headingEm: 'noprobagency',
     description:
       'Ricostruiamo il tuo store dalle fondamenta e mettiamo a disposizione un team dedicato in Sviluppo, Marketing e Strategia \u2014 insieme o separatamente, in base alle tue esigenze.',
     links: [

@@ -10,35 +10,35 @@ const heroPartners = [
     src: siteAssets.heroPartners[0],
     width: 288,
     height: 76,
-    className: 'block h-[17px] w-auto object-contain opacity-[0.85] min-[810px]:h-[20px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[20px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'WooCommerce',
     src: siteAssets.heroPartners[1],
     width: 300,
     height: 300,
-    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[26px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[44px] min-[810px]:h-[26px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'Google Partner',
     src: siteAssets.heroPartners[2],
     width: 288,
     height: 76,
-    className: 'block h-[28px] w-auto object-contain opacity-[0.85] min-[810px]:h-[32px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[32px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'Meta Business Partner',
     src: siteAssets.heroPartners[3],
     width: 288,
     height: 76,
-    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[26px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[26px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
   {
     name: 'Klaviyo Partners',
     src: siteAssets.heroPartners[4],
     width: 500,
     height: 233,
-    className: 'block h-[22px] w-auto object-contain opacity-[0.85] min-[810px]:h-[26px]',
+    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[36px] min-[810px]:h-[26px] min-[810px]:w-auto min-[810px]:max-h-none',
   },
 ] as const
 
@@ -47,13 +47,35 @@ export default function EcommerceRebuildHero({ locale = 'en' }: { locale?: Local
   const d = t.ecommerceRebuild.hero
 
   return (
-    <section className="px-5 pb-10 pt-[100px] min-[810px]:px-9 min-[810px]:pb-14 min-[810px]:pt-[120px]">
+    <section className="flex flex-col items-center overflow-hidden px-5 pt-[65px] pb-[65px] min-[810px]:px-[34px] min-[810px]:pt-[100px] min-[810px]:pb-[60px]">
       <div
-        className="relative mx-auto flex w-[95%] min-[810px]:w-[90%] flex-col items-center gap-[21px] overflow-visible rounded-card border-2 border-[#d6d6d6] px-6 pb-6 pt-10 backdrop-blur-[5px] min-[810px]:px-12 min-[810px]:pb-10 min-[810px]:pt-14"
+        className="relative flex w-full flex-col items-center gap-[21px] overflow-visible rounded-card border-2 border-[#d6d6d6] px-6 pb-6 pt-10 backdrop-blur-[5px] min-[810px]:max-w-[1200px]"
         style={{
-          background: 'linear-gradient(#f0f0f0 44%, #5bbf4742 100%)',
+          background: 'linear-gradient(rgb(240, 240, 240) 44%, rgba(91, 191, 71, 0.26) 100%)',
         }}
       >
+        {/* Background icons */}
+        <div className="pointer-events-none absolute top-[75%] -translate-y-1/2 rotate-[20deg] left-[15px] min-[810px]:left-[300px]" style={{ zIndex: 0 }}>
+          <Image
+            src="/images/originals/shopify-icon.svg"
+            alt=""
+            width={150}
+            height={150}
+            aria-hidden
+            className="opacity-60 blur-[6px] w-[90px] h-[90px] min-[810px]:w-[80px] min-[810px]:h-[80px]"
+          />
+        </div>
+        <div className="pointer-events-none absolute top-[75%] -translate-y-1/2 -rotate-[15deg] right-[15px] min-[810px]:right-[300px]" style={{ zIndex: 0 }}>
+          <Image
+            src="/images/originals/XLyBDTREt3z2DUGwONQm3gbCnI.svg"
+            alt=""
+            width={150}
+            height={150}
+            aria-hidden
+            className="opacity-60 blur-[6px] w-[90px] h-[90px] min-[810px]:w-[120px] min-[810px]:h-[120px]"
+          />
+        </div>
+
         {/* Doodle decoration */}
         <div
           className="absolute hidden min-[1150px]:flex"
@@ -185,20 +207,20 @@ export default function EcommerceRebuildHero({ locale = 'en' }: { locale?: Local
           <Link
             href={locale === 'it' ? '/it/contacts' : '/contacts'}
             data-tracking="ecommerce_rebuild_hero_cta"
-            className="np-btn-primary"
+            className="button-principal"
           >
             {d.cta}
           </Link>
         </div>
 
         {/* Trusted by + logo grid */}
-        <div className="flex flex-col items-center gap-3 pb-2">
+        <div className="flex flex-col items-center place-content-center gap-[10px] w-full max-w-[400px]">
           <p className="font-sans text-[12px] font-medium tracking-[-0.03em] text-np-dark">
             {d.trustedCount}
           </p>
-          <div className="grid w-full max-w-[520px] grid-cols-5 items-center gap-0 pt-[2px] min-[810px]:pt-0">
+          <div className="grid w-full grid-cols-5 gap-0">
             {heroPartners.map((partner) => (
-              <div key={partner.name} className="relative flex h-8 items-center justify-center">
+              <div key={partner.name} className="place-self-start h-10 w-full overflow-visible flex items-center justify-center px-2">
                 <Image
                   src={partner.src}
                   alt={partner.name}

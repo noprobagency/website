@@ -35,7 +35,7 @@ export default function ProblemSection({ locale = 'en' }: { locale?: Locale }) {
           <h2 className="mt-5 text-np-h2 text-np-dark text-center">
             {t.problem.heading} <br /> <span className="line-through">{t.problem.headingStrike}</span>
           </h2>
-          <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">
+          <p className="mx-auto mt-5 max-w-[660px] font-sans text-body-lg font-medium text-noprob-text">
             {t.problem.body}
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function ProblemSection({ locale = 'en' }: { locale?: Locale }) {
               whileInView="visible"
               viewport={{ once: true, amount: 'some' }}
               variants={cardVariants}
-              className="border-card-thick shadow-card flex-1 rounded-card bg-noprob-card p-6"
+              className="section-card flex-1"
             >
               <Image
                 src={problemImages[i]}
@@ -59,10 +59,10 @@ export default function ProblemSection({ locale = 'en' }: { locale?: Locale }) {
                 className="h-[55px] w-[55px] object-cover"
                 aria-hidden
               />
-              <h3 className="mt-5 text-np-h3 text-noprob-text">
+              <h3 className="text-np-h3 text-noprob-text">
                 {problem.title}
               </h3>
-              <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+              <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
                 {problem.description}
               </p>
             </motion.article>

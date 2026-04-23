@@ -1,31 +1,62 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+
+const LOGO_TEXT = 'noprob'
+
+const charVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
+  },
+}
 
 export default function Preloader() {
-  const [hidden, setHidden] = useState(false)
+  const [phase, setPhase] = useState<'in' | 'exit' | 'done'>('in')
 
-  useEffect(() => {
-    const timeout = window.setTimeout(() => setHidden(true), 1500)
-
-    return () => window.clearTimeout(timeout)
-  }, [])
-
-  if (hidden) {
-    return null
-  }
+  if (phase === 'done') return null
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-np-bg">
-      <Image
-        src="/images/originals/AY6rjj8ZVUbD4McJGHwEF1x9L08.svg"
-        alt="noprob"
-        width={120}
-        height={40}
-        priority
-        className="h-10 w-auto"
-      />
-    </div>
+    <motion.div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-noprob-bg"
+      initial={{ y: 0 }}
+      animate={{ y: phase === 'exit' ? '-100%' : 0 }}
+      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+      onAnimationComplete={() => {
+        if (phase === 'exit') setPhase('done')
+      }}
+    >
+      <motion.div
+        className="flex"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+        }}
+        onAnimationComplete={() => {
+          setTimeout(() => setPhase('exit'), 400)
+        }}
+      >
+        {LOGO_TEXT.split('').map((char, i) => (
+          <motion.span
+            key={i}
+            variants={charVariants}
+            className="font-serif italic text-[64px] font-normal leading-none tracking-[-0.05em] text-[#121212]"
+          >
+            {char}
+          </motion.span>
+        ))}
+        <motion.span
+          variants={charVariants}
+          className="font-serif text-[28px] font-normal leading-none text-[#121212] self-start mt-[6px]"
+        >
+          ®
+        </motion.span>
+      </motion.div>
+    </motion.div>
   )
 }

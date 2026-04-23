@@ -48,9 +48,9 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact-form" className="bg-noprob-bg pt-[50px] pb-16 lg:pb-24">
-      <div className="flex w-full justify-center">
-        <div className="flex w-[90%] flex-col-reverse items-start justify-start gap-4 overflow-hidden rounded-[16px] border-[6px] border-[#f8f8f8] bg-white p-5 shadow-xl shadow-black/5 lg:flex-row lg:gap-[50px] lg:p-[50px]">
+    <section id="contact-form" className="bg-noprob-bg flex flex-col items-center place-content-center overflow-hidden gap-[20px] max-w-[1200px] mx-auto w-full mt-[20px] mb-[50px] px-[24px] min-[810px]:px-0">
+      <div className="flex w-full flex-col items-center place-content-center gap-[30px] overflow-x-clip">
+        <div className="flex w-full flex-col-reverse items-start justify-start gap-4 overflow-clip rounded-[16px] border-[6px] border-[#f8f8f8] bg-white p-5 lg:flex-row lg:gap-[50px] lg:p-[50px]">
           {/* Left Column: Info & Trust (Now Second on Mobile) */}
           <div className="flex flex-[1_0_0px] flex-col gap-6 p-0 w-full">
             {/* Consistency Card */}
@@ -331,7 +331,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting || isSuccess}
-                  className="w-full rounded-full bg-black py-[10px] font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="button-principal !w-full disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Your Request'}
                 </button>
@@ -353,7 +353,7 @@ export default function ContactSection() {
       </div>
 
       {/* Reviews Grid under the form block */}
-      <div className="mx-auto mt-5 grid w-[90%] grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="mx-auto grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Card Cristiana Z. */}
         <article className="flex h-auto flex-col items-start justify-between rounded-[16px] border-[6px] border-[#f8f8f8] bg-white p-[24px] shadow-xl shadow-black/5 overflow-visible gap-[15px]">
           <p className="font-sans text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-noprob-text">

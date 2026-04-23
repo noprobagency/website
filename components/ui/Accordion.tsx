@@ -30,7 +30,7 @@ export default function Accordion({ items, className }: AccordionProps) {
               aria-expanded={isOpen}
               onClick={() => setOpenIndex(isOpen ? null : index)}
             >
-              <span className="font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
+              <span className="font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text max-[809px]:text-[16px] max-[809px]:font-normal max-[809px]:leading-[1.5em]">
                 {item.question}
               </span>
               <span

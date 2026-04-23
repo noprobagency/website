@@ -1,6 +1,7 @@
 import Navbar from '@/components/layout/Navbar'
 import ConsentBanner from '@/components/tracking/ConsentBanner'
 import StickyContact from '@/components/ui/StickyContact'
+import Preloader from '@/components/ui/Preloader'
 
 export default function BaseLayout({
   children,
@@ -10,6 +11,7 @@ export default function BaseLayout({
 }) {
   return (
     <>
+      <Preloader />
       <Navbar />
       <ConsentBanner />
       <StickyContact />

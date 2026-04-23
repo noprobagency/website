@@ -67,9 +67,9 @@ export default function Pricing({
                 whileInView="visible"
                 viewport={{ once: true, amount: 'some' }}
                 variants={cardVariants}
-                className="rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
+                className="w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
               >
-                <div className="rounded-[20px] bg-white p-[32px] shadow-pricing-inner">
+                <div className="rounded-[20px] bg-white p-[32px] max-[809px]:px-5 shadow-pricing-inner">
                   <div className="flex flex-col gap-3">
                     <div
                       className={
@@ -84,22 +84,6 @@ export default function Pricing({
                     <h3 className="text-np-pricing text-noprob-text">
                       {plan.name}
                     </h3>
-
-                    <div className="flex items-end gap-[9px]">
-                      <span className="font-sans text-tiny font-medium tracking-[-0.04em] text-noprob-muted">
-                        {t.pricing.from}
-                      </span>
-                      <div className="flex items-end gap-1">
-                        <span className="font-sans text-[1.8rem] font-bold leading-[1em] tracking-[-0.04em] text-noprob-text">
-                          {plan.price}
-                        </span>
-                        {plan.period ? (
-                          <span className="font-sans text-body-sm font-medium text-noprob-grey">
-                            {plan.period}
-                          </span>
-                        ) : null}
-                      </div>
-                    </div>
 
                     <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
                       {plan.description}
@@ -119,11 +103,11 @@ export default function Pricing({
                   </div>
 
                   <div className="mt-8 flex flex-col gap-3">
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-3 max-[809px]:w-full min-[810px]:items-center">
                       <Link
                         href={plan.ctaHref}
                         data-tracking={`pricing_primary_${index}`}
-                        className="np-btn-primary w-full py-[10px] px-[18px]"
+                        className="button-principal max-[809px]:!w-full py-[10px] px-[18px]"
                       >
                         {plan.cta}
                       </Link>

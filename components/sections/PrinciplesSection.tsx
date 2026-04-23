@@ -11,7 +11,7 @@ export default function PrinciplesSection({ locale: _locale = 'en' }: { locale?:
           {/* Left Column: Image */}
           <div className="relative min-h-[400px] w-full overflow-hidden rounded-card-lg lg:w-[45%]">
             <Image
-              src="/images/originals/about-no-prob.avif"
+              src="/images/about-no-prob.webp"
               alt="Photo of Hamza"
               fill
               className="object-cover"

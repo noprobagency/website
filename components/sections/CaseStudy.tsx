@@ -38,9 +38,9 @@ export default function CaseStudy({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 'some' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="shadow-card flex w-full max-w-[850px] flex-col overflow-hidden rounded-[16px] bg-[#f9f9f9] border-[6px] border-[#f0f0f0] lg:flex-row"
+          className="shadow-card relative flex w-full max-w-[850px] flex-col items-start overflow-hidden rounded-[16px] bg-[#f9f9f9] border-[6px] border-[#f0f0f0] gap-5 p-0 max-[809px]:gap-0 lg:flex-row"
         >
-          <div className="relative w-full h-[200px] flex-none lg:h-auto lg:flex-1">
+          <div className="relative w-full h-[200px] flex-none self-stretch lg:h-auto lg:flex-1">
             <Image
               src="/images/originals/2QNUkNFRX0OUC0qTVjeplIvlFS0.jpg"
               alt="Cumini fashion case study"
@@ -50,8 +50,8 @@ export default function CaseStudy({
             />
           </div>
 
-          <div className="flex flex-1 flex-col gap-[15px] p-[32px] lg:gap-5 lg:px-8 lg:py-5 lg:pr-8">
-            <div className="flex flex-col gap-4">
+          <div className="relative flex flex-1 flex-col items-start justify-start gap-[25px] overflow-clip pb-5 pl-0 pr-5 pt-5 max-[809px]:w-full max-[809px]:flex-none max-[809px]:gap-[15px] max-[809px]:p-5">
+            <div className="relative flex w-full flex-none flex-col items-start justify-start gap-[10px] overflow-clip">
               <div className="flex flex-col gap-2">
                 <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-[#666]">
                   {t.caseStudy.category}
@@ -62,7 +62,7 @@ export default function CaseStudy({
                   alt="Cumini logo"
                   width={228}
                   height={36}
-                  className="h-9 w-auto object-contain object-left"
+                  className="h-6 w-auto object-contain object-left"
                 />
               </div>
 
@@ -71,25 +71,28 @@ export default function CaseStudy({
               </p>
             </div>
 
-            <div className="border-b border-[rgba(164,164,164,0.5)] pb-2 lg:pb-6">
-              <p className="flex items-center gap-2 font-sans text-body-lg font-medium text-np-dark">
-                <span className="text-np-green">{t.caseStudy.metric.charAt(0)}</span>
-                {t.caseStudy.metric.slice(2)}
-              </p>
-              <p className="mt-2 font-sans text-[11px] lg:text-[12px] font-medium tracking-[-0.04em] text-np-text whitespace-nowrap lg:whitespace-normal">
-                {t.caseStudy.metricNote}
-              </p>
-            </div>
+            <div className="flex w-full flex-col gap-[10px]">
+              <div className="flex items-center gap-2">
+                <span className="font-sans text-body-lg font-medium text-noprob-text">{t.caseStudy.metric.charAt(0)}</span>
+                <span className="font-sans text-body-lg font-medium text-noprob-text">{t.caseStudy.metric.slice(2)}</span>
+              </div>
 
-            <div className="flex flex-wrap gap-2">
-              {serviceTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex rounded-pill bg-white px-3 py-[2px] font-sans text-[14px] font-semibold tracking-[-0.04em] text-[#121212]"
-                >
-                  {tag}
-                </span>
-              ))}
+              <div className="border-b border-[rgba(164,164,164,0.5)] pb-2">
+                <p className="font-sans text-[11px] font-medium tracking-[-0.04em] text-np-text">
+                  {t.caseStudy.metricNote}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-2 max-[809px]:gap-1">
+                {serviceTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex rounded-pill bg-white px-3 py-[2px] font-sans text-[14px] font-semibold tracking-[-0.04em] text-[#121212]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </motion.article>

@@ -35,6 +35,33 @@ const FLAT_AVATARS = [
   'https://framerusercontent.com/images/WdMlO6P4eyTomKkSRBDtGLAio4.png', // Man curly (repeat 6)
 ]
 
+const wordVariants = {
+  hidden: { opacity: 0, y: 8, filter: 'blur(6px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
+  },
+}
+
+const h2Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.055, delayChildren: 0.05 } },
+}
+
+function RevealWords({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(' ').filter(Boolean).map((word, i) => (
+        <motion.span key={i} variants={wordVariants} className="inline-block mr-[0.25em]">
+          {word}
+        </motion.span>
+      ))}
+    </>
+  )
+}
+
 export default function CTA({ locale = 'en' }: { locale?: Locale }) {
   const t = getDictionary(locale)
   const containerRef = useRef<HTMLElement>(null)
@@ -132,11 +159,20 @@ export default function CTA({ locale = 'en' }: { locale?: Locale }) {
           className="relative z-30 flex flex-col items-center text-center w-full max-w-3xl"
           style={{ position: 'absolute', bottom: '80px', left: '50%', transform: 'translateX(-50%)' }}
         >
-          <h2 className="mb-8 text-center text-np-dark text-[46px] min-[810px]:text-[56px]" style={{ fontFamily: '"Inter Display", Inter, sans-serif', fontWeight: 600, lineHeight: '1.1em', letterSpacing: '-0.05em' }}>
-            {t.cta.heading}<br className={locale === 'it' ? 'block' : 'hidden sm:block'} />
-            {t.cta.headingSub}{" "}
-            <span className="font-serif italic font-normal">{t.cta.headingEm}</span>{t.cta.headingPost}
-          </h2>
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={h2Variants}
+            className="mb-8 text-center text-np-dark text-[46px] min-[810px]:text-[56px] max-[809px]:max-w-[330px]"
+            style={{ fontFamily: '"Inter Display", Inter, sans-serif', fontWeight: 600, lineHeight: '1.1em', letterSpacing: '-0.05em' }}
+          >
+            <RevealWords text={t.cta.heading} />
+            <br className={locale === 'it' ? 'block' : 'hidden sm:block'} />
+            <RevealWords text={t.cta.headingSub} />
+            <motion.span variants={wordVariants} className="inline-block font-serif italic font-normal mr-[0.25em]">{t.cta.headingEm}</motion.span>
+            {t.cta.headingPost && <RevealWords text={t.cta.headingPost!} />}
+          </motion.h2>
 
           <Link
             href={locale === 'it' ? '/it/contacts' : '/contacts'}

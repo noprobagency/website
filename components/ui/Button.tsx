@@ -19,7 +19,7 @@ type ButtonProps = {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'np-btn-primary',
+  primary: 'button-principal',
   secondary: 'np-btn-secondary',
   ghost: 'inline-flex items-center justify-center text-[18px] font-semibold tracking-[-0.04em] text-np-dark transition-opacity hover:opacity-70',
 }
