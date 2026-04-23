@@ -159,6 +159,38 @@ export type Dictionary = {
     privacyPolicy: string
     cookiePolicy: string
   }
+  seo: {
+    home: { title: string; description: string }
+    about: { title: string; description: string }
+    contacts: { title: string; description: string }
+    blog: { title: string; description: string }
+    useCases: { title: string; description: string }
+    dataDrivenTeam: { title: string; description: string }
+    ecommerceRebuild: { title: string; description: string }
+  }
+  about: {
+    hero: {
+      trustLabel: string
+      h1pre: string
+      h1em: string
+      body1: string
+      body2: string
+    }
+    principles: {
+      heading: string
+      card1Title: string
+      card1Body: string
+      card2Title: string
+      card2Body: string
+      card3Title: string
+      card3Body1: string
+      card3Body2: string
+    }
+    testimonials: {
+      heading: string
+      items: { name: string; role: string; image: string; quote: string }[]
+    }
+  }
 }
 
 const en: Dictionary = {
@@ -498,7 +530,7 @@ const en: Dictionary = {
       {
         question: 'Who do you work with?',
         answer:
-          'We work exclusively with established eCommerce brands in Fashion, Supplements, and DTC sectors operating on Shopify or WooCommerce. We select partners carefully to ensure long-term aligned growth.',
+          'We work exclusively with established eCommerce brands in Fashion, Supplements, and DTC sectors operating on Shopify. We select partners carefully to ensure long-term aligned growth.',
       },
       {
         question: 'What does support and maintenance include, and how often do you intervene?',
@@ -568,6 +600,51 @@ const en: Dictionary = {
     ],
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
+  },
+  seo: {
+    home: { title: 'Shopify Development & eCommerce Growth Agency | NoProb', description: 'Shopify Partner for fashion, supplement, and DTC brands. We build, migrate, and manage eCommerce stores as your long-term technical partner.' },
+    about: { title: 'About NoProb | Your Technical eCommerce Partner', description: 'Meet the team behind NoProb. A technical Shopify partner helping B2C brands scale with development, migration, and dedicated retainer teams.' },
+    contacts: { title: 'Contact NoProb | Book Your Sprint', description: 'Start a conversation with NoProb. Reserve a sprint to rebuild your eCommerce on Shopify or activate a long-term dedicated team.' },
+    blog: { title: 'NoProb Blog | Shopify, eCommerce & Growth', description: 'Articles on Shopify development, migration, tracking, and CRO for fashion, supplement, and DTC brands. Written by the NoProb team.' },
+    useCases: { title: 'eCommerce Case Studies & Results | NoProb', description: 'Real results from long-term Shopify partnerships. See how we helped fashion and DTC brands grow revenue, improve MER, and scale eCommerce operations.' },
+    dataDrivenTeam: { title: 'Data-Driven Team — Dedicated eCommerce Retainer | NoProb', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
+    ecommerceRebuild: { title: 'eCommerce Rebuild on Shopify | NoProb', description: 'We rebuild your eCommerce from design to performance, built to convert and to grow. A standardized Shopify rebuild process with CRO and tracking included.' },
+  },
+  about: {
+    hero: {
+      trustLabel: 'Trusted by Fashion, Supplements, and DTC eCommerce brands',
+      h1pre: 'Your technical partner that makes eCommerce ',
+      h1em: 'simple',
+      body1: 'A 7/7 team of developers, designers, and strategists combining code, data, and creativity to help Shopify brands scale without stress.',
+      body2: 'We are not an agency you \u201cdelegate execution\u201d to, we become part of your project at 360\u00b0.',
+    },
+    principles: {
+      heading: "We don\u2019t work with just anyone. Every project must align with these three core principles:",
+      card1Title: 'Seamless Integration & Proven Team',
+      card1Body: 'We plug directly into your structure with aligned workflows, vetted specialists, and a methodology that delivers. You\u2019ll work with a tight-knit, stable team shaped by long-term growth partnerships. When needed, we also source the right talent for your exact eCommerce needs.',
+      card2Title: 'Long-Term Vision & Strategic Focus',
+      card2Body: "We\u2019re built for Fashion, Supplements, and DTC brands. Our approach values quality over noise: stable growth, data-led decisions, and a consistent strategic partner over time. Our 2026 goal? Be the most trusted performance ally in your space.",
+      card3Title: 'Substance, Stability & Experience',
+      card3Body1: 'With 7+ years of international execution and a model based on predictable, fixed costs, we help you scale without margin surprises. No fluff \u2014 just infrastructure, strategy, and industry-native talent.',
+      card3Body2: 'That\u2019s why we work exclusively with a highly selected group of brands.',
+    },
+    testimonials: {
+      heading: 'Trusted by established business owners',
+      items: [
+        {
+          name: 'Antonio Cali',
+          role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
+          image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
+          quote: 'Collaborating with NoProb Agency for the development of our e-commerce was an extremely positive experience. From the very first stages of the project, the team stood out for its clear communication, technical expertise, and listening skills. Every step, from graphic design to going live, was handled with professionalism\u2026',
+        },
+        {
+          name: 'Camilla Dudine',
+          role: 'DDglobal Store - B2B eCommerce Owner',
+          image: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
+          quote: 'Collaborating with Antonio on the creation of our e-commerce website was an extremely positive experience. He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing e-commerce website.',
+        },
+      ],
+    },
   },
 }
 
@@ -907,7 +984,7 @@ const it: Dictionary = {
       {
         question: 'Con chi lavorate?',
         answer:
-          'Lavoriamo esclusivamente con brand eCommerce affermati nei settori Moda, Integratori e DTC, operanti su Shopify o WooCommerce. Selezioniamo i partner con cura per garantire una crescita allineata nel lungo periodo.',
+          'Lavoriamo esclusivamente con brand eCommerce affermati nei settori Moda, Integratori e DTC operanti su Shopify. Selezioniamo i partner con cura per garantire una crescita allineata nel lungo periodo.',
       },
       {
         question: 'Cosa include il supporto e la manutenzione, e con quale frequenza intervenite?',
@@ -977,6 +1054,51 @@ const it: Dictionary = {
     ],
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
+  },
+  seo: {
+    home: { title: 'Agenzia Shopify per Brand eCommerce Fashion e DTC | NoProb', description: 'Partner tecnico Shopify per brand fashion, integratori e DTC. Sviluppo, migrazione e gestione eCommerce con un team dedicato a lungo termine.' },
+    about: { title: 'Chi Siamo | Il tuo partner tecnico eCommerce', description: 'Il team dietro NoProb. Partner tecnico Shopify che aiuta i brand B2C a scalare con sviluppo, migrazioni e team dedicati in retainer.' },
+    contacts: { title: 'Contattaci | Prenota il tuo Sprint', description: 'Apri una conversazione con NoProb. Prenota uno sprint per ricostruire il tuo eCommerce su Shopify o attivare un team dedicato a lungo termine.' },
+    blog: { title: 'Blog NoProb | Shopify, eCommerce e Crescita', description: 'Articoli su sviluppo Shopify, migrazioni, tracking e CRO per brand fashion, integratori e DTC. Scritti dal team NoProb.' },
+    useCases: { title: "Casi d'Uso eCommerce e Risultati Reali | NoProb", description: 'Risultati concreti da partnership Shopify a lungo termine. Come abbiamo fatto crescere brand fashion e DTC su fatturato, MER e operations eCommerce.' },
+    dataDrivenTeam: { title: 'Data-Driven Team \u2014 Retainer eCommerce Dedicato | NoProb', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare senza assumere internamente.' },
+    ecommerceRebuild: { title: 'Rebuild eCommerce su Shopify | NoProb', description: 'Ricostruiamo il tuo eCommerce dal design alle performance, per convertire e crescere. Processo standardizzato con CRO e tracking inclusi.' },
+  },
+  about: {
+    hero: {
+      trustLabel: 'Scelti da brand Fashion, Integratori e DTC eCommerce',
+      h1pre: "Il tuo partner tecnico che rende l\u2019eCommerce ",
+      h1em: 'semplice',
+      body1: 'Un team 7/7 di sviluppatori, designer e strategist che unisce codice, dati e creativit\u00e0 per aiutare i brand Shopify a scalare senza stress.',
+      body2: 'Non siamo un\u2019agenzia a cui \u201cdelegare l\u2019esecuzione\u201d, diventiamo parte del tuo progetto a 360\u00b0.',
+    },
+    principles: {
+      heading: 'Non lavoriamo con chiunque. Ogni progetto deve essere allineato a questi tre principi:',
+      card1Title: 'Integrazione fluida e team consolidato',
+      card1Body: 'Ci integriamo direttamente nella tua struttura con workflow allineati, specialisti verificati e una metodologia che funziona. Lavorerai con un team stabile e coeso, costruito su partnership di crescita di lungo periodo. Quando serve, attiviamo anche il talento giusto per le esigenze specifiche del tuo eCommerce.',
+      card2Title: 'Visione a lungo termine e focus strategico',
+      card2Body: 'Siamo costruiti per brand Fashion, Integratori e DTC. Il nostro approccio valorizza la qualit\u00e0 sopra il rumore: crescita stabile, decisioni guidate dai dati, un partner strategico costante nel tempo. Il nostro obiettivo per il 2026? Essere il partner di performance pi\u00f9 affidabile nel tuo settore.',
+      card3Title: 'Sostanza, stabilit\u00e0 ed esperienza',
+      card3Body1: 'Con oltre 7 anni di esecuzione internazionale e un modello basato su costi fissi e prevedibili, ti aiutiamo a scalare senza sorprese sui margini. Niente fuffa \u2014 solo infrastruttura, strategia e talenti nativi del settore.',
+      card3Body2: 'Per questo lavoriamo esclusivamente con un gruppo selezionato di brand.',
+    },
+    testimonials: {
+      heading: 'Scelti da imprenditori affermati',
+      items: [
+        {
+          name: 'Antonio Cali',
+          role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
+          image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
+          quote: "Collaborare con NoProb Agency per lo sviluppo del nostro e-commerce \u00e8 stata un\u2019esperienza estremamente positiva. Fin dalle prime fasi del progetto, il team si \u00e8 distinto per chiarezza nella comunicazione, competenza tecnica e capacit\u00e0 di ascolto. Ogni passaggio, dalla progettazione grafica al go-live, \u00e8 stato gestito con professionalit\u00e0\u2026",
+        },
+        {
+          name: 'Camilla Dudine',
+          role: 'DDglobal Store - B2B eCommerce Owner',
+          image: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
+          quote: 'Collaborare con Antonio per la creazione del nostro sito e-commerce \u00e8 stata un\u2019esperienza estremamente positiva. Ha dimostrato grande professionalit\u00e0, competenza tecnica e una notevole attenzione al dettaglio, riuscendo a trasformare le nostre idee in un e-commerce funzionale, moderno e performante.',
+        },
+      ],
+    },
   },
 }
 

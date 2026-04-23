@@ -4,39 +4,35 @@ import Link from 'next/link'
 
 import { buildMetadata } from '@/lib/site'
 import SectionLabel from '@/components/ui/SectionLabel'
-import { articles } from '@/data/articles'
+import { useCases } from '@/data/use-cases'
 import Footer from '@/components/layout/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Blog',
-    description: 'Technical, data, and growth insights for Shopify and WooCommerce operators.',
-    path: '/blog',
-  })
+  return buildMetadata({ path: '/use-cases', locale: 'en', pageKey: 'useCases' })
 }
 
-export default function BlogPage() {
+export default function UseCasesPage() {
   return (
     <>
       <section className="w-full bg-[#f0f0f0] pt-[120px] pb-[80px] px-5 min-[810px]:px-9">
         {/* Header */}
         <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center">
-          <SectionLabel>Blog</SectionLabel>
+          <SectionLabel>Use Cases</SectionLabel>
           <h1
             className="font-sans font-semibold text-black tracking-[-0.07em] leading-[110%] text-[40px]"
           >
-            Practical reads to help you move{' '}
-            <em className="font-serif italic tracking-[-0.08em]">faster.</em>
+            Real brands, real growth.{' '}
+            <em className="font-serif italic tracking-[-0.08em]">See how it works.</em>
           </h1>
         </div>
 
-        {/* Article Grid */}
+        {/* Grid */}
         <div className="mx-auto mt-12 max-w-[1200px]">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
+            {useCases.map((useCase) => (
               <Link
-                key={article.slug}
-                href={`/blog/${article.slug}`}
+                key={useCase.slug}
+                href={`/use-cases/${useCase.slug}`}
                 className="group flex flex-col overflow-hidden rounded-[24px] bg-white no-underline"
                 style={{
                   border: '6px solid #f8f8f8',
@@ -54,13 +50,13 @@ export default function BlogPage() {
                 >
                   <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
                     <Image
-                      src={article.image}
-                      alt={article.title}
+                      src={useCase.image}
+                      alt={useCase.title}
                       fill
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
                   </div>
-                  {/* Article type pill */}
+                  {/* Case type pill */}
                   <div
                     className="absolute left-4 top-4 flex items-center rounded-full px-3 py-1"
                     style={{
@@ -69,7 +65,7 @@ export default function BlogPage() {
                     }}
                   >
                     <span className="font-sans text-[12px] font-medium tracking-[-0.03em] text-[#181818]">
-                      {article.articleType}
+                      {useCase.caseType}
                     </span>
                   </div>
                 </div>
@@ -86,13 +82,13 @@ export default function BlogPage() {
                       overflow: 'hidden',
                     }}
                   >
-                    {article.title}
+                    {useCase.title}
                   </h2>
                   <p
                     className="font-sans text-[14px] font-medium leading-[1.4em] tracking-[-0.02em]"
                     style={{ color: '#7c7c7c' }}
                   >
-                    {article.excerpt}
+                    {useCase.excerpt}
                   </p>
                 </div>
               </Link>

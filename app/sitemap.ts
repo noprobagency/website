@@ -1,20 +1,38 @@
 import type { MetadataRoute } from 'next'
+import { ROUTES } from '@/lib/sitemap/routes'
 
-import { siteConfig } from '@/lib/site'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://noprob.agency'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date()
+  const now = new Date()
+  const entries: MetadataRoute.Sitemap = []
 
-  const staticPages = [
-    { url: siteConfig.url, priority: 1.0, changeFrequency: 'weekly' as const },
-    { url: `${siteConfig.url}/about`, priority: 0.8, changeFrequency: 'monthly' as const },
-    { url: `${siteConfig.url}/use-cases`, priority: 0.8, changeFrequency: 'monthly' as const },
-    { url: `${siteConfig.url}/contacts`, priority: 0.9, changeFrequency: 'monthly' as const },
-    { url: `${siteConfig.url}/data-driven-team`, priority: 0.9, changeFrequency: 'monthly' as const },
-    { url: `${siteConfig.url}/ecommerce-rebuild`, priority: 0.9, changeFrequency: 'monthly' as const },
-    { url: `${siteConfig.url}/blog`, priority: 0.7, changeFrequency: 'weekly' as const },
-    { url: `${siteConfig.url}/it`, priority: 0.7, changeFrequency: 'weekly' as const },
-  ]
+  for (const route of ROUTES) {
+    const enUrl = `${BASE_URL}${route.path === '/' ? '' : route.path}`
+    const itUrl = `${BASE_URL}/it${route.path === '/' ? '' : route.path}`
 
-  return staticPages.map((page) => ({ ...page, lastModified }))
+    entries.push({
+      url: enUrl,
+      lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+      alternates: route.hasIt
+        ? { languages: { en: enUrl, it: itUrl, 'x-default': enUrl } }
+        : undefined,
+    })
+
+    if (route.hasIt) {
+      entries.push({
+        url: itUrl,
+        lastModified: now,
+        changeFrequency: route.changeFrequency,
+        priority: route.priority * 0.9,
+        alternates: { languages: { en: enUrl, it: itUrl, 'x-default': enUrl } },
+      })
+    }
+  }
+
+  // TODO: when blog goes live, scan MDX/CMS and append dynamic blog post entries
+
+  return entries
 }

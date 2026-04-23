@@ -9,11 +9,7 @@ import Footer from '@/components/layout/Footer'
 import { getDictionary } from '@/lib/i18n'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Blog',
-    description: 'Approfondimenti tecnici, dati e crescita per operatori Shopify e WooCommerce.',
-    path: '/it/blog',
-  })
+  return buildMetadata({ path: '/it/blog', locale: 'it', pageKey: 'blog' })
 }
 
 export default function ItalianBlogPage() {

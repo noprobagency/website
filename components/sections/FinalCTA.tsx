@@ -1,5 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
+import { getDictionary, type Locale } from '@/lib/i18n'
 import { siteAssets } from '@/lib/site'
 
 const orbitArms = [
@@ -17,7 +19,8 @@ const orbitArms = [
   ['/images/originals/y3RHLfHQboDd91CD2B0QwpU4pno.png', '/images/originals/y3RHLfHQboDd91CD2B0QwpU4pno.png'],
 ] as const
 
-export default function FinalCTA() {
+export default function FinalCTA({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale)
   return (
     <section className="overflow-hidden px-9 pb-0 pt-[80px]">
       <div className="container-noprob">
@@ -63,8 +66,8 @@ export default function FinalCTA() {
               down?
             </h2>
             <div className="mt-8 flex justify-center">
-              <a
-                href="/contacts"
+              <Link
+                href={t.hero.ctaPrimaryHref}
                 className="button-principal flex-wrap justify-center gap-3 px-4 text-center sm:flex-nowrap sm:px-5"
                 data-tracking="final_cta"
               >
@@ -82,7 +85,7 @@ export default function FinalCTA() {
                 <span className="font-sans text-tiny font-medium tracking-[-0.04em]">
                   Slot Available for November
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

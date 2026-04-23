@@ -1,0 +1,56 @@
+# NoProb Agency
+
+NoProb Agency is a Shopify technical partner for B2C brands in fashion, supplements, and DTC sectors. We build, migrate, and manage eCommerce stores as a long-term technical partner — not a performance agency.
+
+## About
+
+- Company: NoProb Agency LLC
+- Legal entity: Wyoming LLC, USA (EIN 365136989)
+- Founded: 2022
+- Founder: Antonio Manitta
+- Main platform: Shopify (exclusive specialization)
+- Core services: Shopify development, migration, rebuild, long-term retainer management
+- Target clients: B2C brands with €200k+ online revenue, €2M+ total revenue
+- Primary sector: Fashion boutique / luxury retail
+- Secondary sectors: Supplements, DTC, food, gym, perfumes, retail
+- Website: https://noprob.agency
+- Languages: English (primary), Italian
+
+## Services
+
+- **Data-Driven Team**: Long-term retainer with a dedicated eCommerce team. From €1,495/month. Single point of contact, full team behind.
+- **eCommerce Rebuild**: Complete Shopify rebuild from design to performance. From €5,795. Standardized process with CRO and tracking included.
+- **Shopify Migration**: Migration to Shopify from rigid platforms (Atelier, WooCommerce, PrestaShop, Magento). Core expertise.
+
+## Key Differentiators
+
+- Shopify-specialist (exclusive, not generalist)
+- Single point of contact (founder as eCommerce Manager)
+- Long-term partnership model (not project-based)
+- Real-time data-driven decisions (GA4 + Meta Pixel + CAPI server-side)
+- Technical + operational partner (coordinates on-demand specialists when needed)
+
+## Proof Points
+
+- Anchor client: Luxury fashion multibrand boutique (Cumini), 4+ year partnership
+- Result: +347% revenue growth in 36 months
+- Other measurable outcomes: +38% MER improvement, -14% CPA, +7% AOV, 57% retention cost reduction
+
+## Ideal Client
+
+B2C brand with existing eCommerce at €200k+ online revenue looking for a technical partner. Not a fit for: startups without validated product, low-budget projects, price-shoppers.
+
+## Max Capacity
+
+Working with a maximum of three long-term clients at a time. This is a real operational constraint.
+
+## Contact
+
+- Website: https://noprob.agency/contacts
+- Email: hello@noprob.agency
+
+## Resources
+
+- About: Team, principles, approach — https://noprob.agency/about
+- Use Cases: Real case studies with measurable results — https://noprob.agency/use-cases
+- Blog: Articles on Shopify development, migration, tracking, CRO — https://noprob.agency/blog

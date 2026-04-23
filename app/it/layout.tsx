@@ -1,22 +1,54 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import BaseLayout from '@/components/layout/BaseLayout'
+import { AnalyticsProvider } from '@/components/analytics/AnalyticsProvider'
 import { siteConfig } from '@/lib/site'
+import '@/app/globals.css'
+import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? siteConfig.url),
   title: {
-    default: 'Il tuo Partner eCommerce. Dal Build alla Crescita.',
+    default: 'Agenzia Shopify per Brand eCommerce Fashion e DTC | NoProb',
     template: '%s | noprob agency™',
   },
   description:
-    'Partner eCommerce premium specializzato in sviluppo, rebuild e crescita. Un unico team tecnico per Shopify e WooCommerce.',
-  openGraph: { locale: 'it_IT', siteName: siteConfig.name },
-  alternates: {
-    canonical: `${siteConfig.url}/it`,
-    languages: { en: siteConfig.url, it: `${siteConfig.url}/it` },
+    'Partner tecnico Shopify per brand fashion, integratori e DTC. Sviluppo, migrazione e gestione eCommerce con un team dedicato a lungo termine.',
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/images/favicon-no-prob.svg', media: '(prefers-color-scheme: light)' },
+      { url: '/images/favicon-no-prob-white.svg', media: '(prefers-color-scheme: dark)' },
+    ],
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#f0f0f0',
+}
+
 export default function ItalianLayout({ children }: { children: React.ReactNode }) {
-  return <BaseLayout locale="it">{children}</BaseLayout>
+  return (
+    <html lang="it">
+      <body className="bg-np-bg text-np-text font-sans antialiased overflow-x-hidden">
+        <BaseLayout locale="it">
+          {children}
+        </BaseLayout>
+        <AnalyticsProvider />
+      </body>
+    </html>
+  )
 }

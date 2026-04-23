@@ -4,39 +4,35 @@ import Link from 'next/link'
 
 import { buildMetadata } from '@/lib/site'
 import SectionLabel from '@/components/ui/SectionLabel'
-import { useCases } from '@/data/use-cases'
+import { articles } from '@/data/articles'
 import Footer from '@/components/layout/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({
-    title: 'Use Cases',
-    description: 'Explore the operating contexts, category fit, and growth scenarios noprob agency is designed for.',
-    path: '/use-cases',
-  })
+  return buildMetadata({ path: '/blog', locale: 'en', pageKey: 'blog' })
 }
 
-export default function UseCasesPage() {
+export default function BlogPage() {
   return (
     <>
       <section className="w-full bg-[#f0f0f0] pt-[120px] pb-[80px] px-5 min-[810px]:px-9">
         {/* Header */}
         <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center">
-          <SectionLabel>Use Cases</SectionLabel>
+          <SectionLabel>Blog</SectionLabel>
           <h1
             className="font-sans font-semibold text-black tracking-[-0.07em] leading-[110%] text-[40px]"
           >
-            Real brands, real growth.{' '}
-            <em className="font-serif italic tracking-[-0.08em]">See how it works.</em>
+            Practical reads to help you move{' '}
+            <em className="font-serif italic tracking-[-0.08em]">faster.</em>
           </h1>
         </div>
 
-        {/* Grid */}
+        {/* Article Grid */}
         <div className="mx-auto mt-12 max-w-[1200px]">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {useCases.map((useCase) => (
+            {articles.map((article) => (
               <Link
-                key={useCase.slug}
-                href={`/use-cases/${useCase.slug}`}
+                key={article.slug}
+                href={`/blog/${article.slug}`}
                 className="group flex flex-col overflow-hidden rounded-[24px] bg-white no-underline"
                 style={{
                   border: '6px solid #f8f8f8',
@@ -54,13 +50,13 @@ export default function UseCasesPage() {
                 >
                   <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
                     <Image
-                      src={useCase.image}
-                      alt={useCase.title}
+                      src={article.image}
+                      alt={article.title}
                       fill
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
                   </div>
-                  {/* Case type pill */}
+                  {/* Article type pill */}
                   <div
                     className="absolute left-4 top-4 flex items-center rounded-full px-3 py-1"
                     style={{
@@ -69,7 +65,7 @@ export default function UseCasesPage() {
                     }}
                   >
                     <span className="font-sans text-[12px] font-medium tracking-[-0.03em] text-[#181818]">
-                      {useCase.caseType}
+                      {article.articleType}
                     </span>
                   </div>
                 </div>
@@ -86,13 +82,13 @@ export default function UseCasesPage() {
                       overflow: 'hidden',
                     }}
                   >
-                    {useCase.title}
+                    {article.title}
                   </h2>
                   <p
                     className="font-sans text-[14px] font-medium leading-[1.4em] tracking-[-0.02em]"
                     style={{ color: '#7c7c7c' }}
                   >
-                    {useCase.excerpt}
+                    {article.excerpt}
                   </p>
                 </div>
               </Link>

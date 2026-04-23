@@ -1,10 +1,10 @@
 'use client'
 
-import Image from 'next/image'
-import { siteAssets } from '@/lib/site'
-import type { Locale } from '@/lib/i18n'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
-export default function AboutHero({ locale: _locale = 'en' }: { locale?: Locale }) {
+export default function AboutHero({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale).about.hero
+
   return (
     <section
       id="hero"
@@ -32,24 +32,22 @@ export default function AboutHero({ locale: _locale = 'en' }: { locale?: Locale 
             </span>
           </div>
           <p className="font-sans text-[12px] font-medium leading-[1.4em] tracking-[-0.04em] text-noprob-dark">
-            Trusted by Fashion, Supplements, and DTC eCommerce brands
+            {t.trustLabel}
           </p>
         </div>
 
         {/* Heading */}
         <h1 className="text-np-hero text-noprob-text">
-          Your technical partner <br className="hidden sm:block" />
-          that makes eCommerce <em className="font-serif italic font-normal">simple</em>
+          {t.h1pre}<em className="font-serif italic font-normal">{t.h1em}</em>
         </h1>
 
         {/* Description */}
         <div className="mt-8 flex flex-col gap-6">
           <p className="font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
-            A 7/7 team of developers, designers, and strategists combining code, data, and creativity
-            to help Shopify and WooCommerce brands scale without stress.
+            {t.body1}
           </p>
           <p className="font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
-            We are not an agency you “delegate execution” to, we become part of your project at 360°.
+            {t.body2}
           </p>
         </div>
       </div>

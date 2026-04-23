@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 import { buildMetadata } from '@/lib/site'
-import { articles, type ArticleSection } from '@/data/articles'
+import { useCases } from '@/data/use-cases'
+import { type ArticleSection } from '@/data/articles'
 import CTA from '@/components/sections/CTA'
 import Footer from '@/components/layout/Footer'
 
@@ -12,17 +13,18 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }))
+  return useCases.map((uc) => ({ slug: uc.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const article = articles.find((a) => a.slug === slug)
-  if (!article) return {}
+  const useCase = useCases.find((uc) => uc.slug === slug)
+  if (!useCase) return {}
   return buildMetadata({
-    title: article.title,
-    description: article.excerpt,
-    path: `/blog/${article.slug}`,
+    title: useCase.title,
+    description: useCase.excerpt,
+    path: `/use-cases/${useCase.slug}`,
+    locale: 'en',
   })
 }
 
@@ -74,25 +76,25 @@ function renderSection(section: ArticleSection, idx: number) {
   }
 }
 
-export default async function ArticlePage({ params }: Props) {
+export default async function UseCasePage({ params }: Props) {
   const { slug } = await params
-  const article = articles.find((a) => a.slug === slug)
-  if (!article) notFound()
+  const useCase = useCases.find((uc) => uc.slug === slug)
+  if (!useCase) notFound()
 
   return (
     <>
       {/* Hero */}
       <section className="w-full bg-[#f0f0f0] pt-[120px] pb-0 px-5 min-[810px]:px-9">
         <div className="mx-auto flex max-w-[860px] flex-col items-center gap-5 pb-12 text-center">
-          <span className="np-eyebrow">{article.articleType}</span>
+          <span className="np-eyebrow">{useCase.caseType}</span>
           <h1
             className="font-sans font-semibold text-black tracking-[-0.07em] leading-[110%]"
             style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
           >
-            {article.title}
+            {useCase.title}
           </h1>
           <p className="max-w-[600px] font-sans text-[18px] font-medium leading-[1.5em] tracking-[-0.03em] text-[#7c7c7c]">
-            {article.excerpt}
+            {useCase.excerpt}
           </p>
         </div>
 
@@ -100,8 +102,8 @@ export default async function ArticlePage({ params }: Props) {
         <div className="mx-auto max-w-[860px] overflow-hidden rounded-[24px]">
           <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
             <Image
-              src={article.image}
-              alt={article.imageAlt ?? article.title}
+              src={useCase.image}
+              alt={useCase.imageAlt ?? useCase.title}
               fill
               className="object-cover"
               priority
@@ -110,10 +112,10 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Article body */}
+      {/* Body */}
       <section className="w-full flex justify-center bg-[#f0f0f0] py-16 px-5 min-[810px]:px-9">
         <article className="w-full max-w-[700px]">
-          {article.content?.map((section, idx) => renderSection(section, idx))}
+          {useCase.content?.map((section, idx) => renderSection(section, idx))}
         </article>
       </section>
 

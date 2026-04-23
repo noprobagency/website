@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
 
 import { absoluteUrl } from '@/lib/utils'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
 export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.5.8',
+  version: 'v0.7.1',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
   description:
-    'Shopify Partner specializzato in sviluppo, migrazione e gestione eCommerce. Costruiamo il tuo store per convertire, restiamo per farlo crescere. Un unico partner tecnico, a lungo termine.',
+    'Shopify Partner for fashion, supplement, and DTC brands. We build, migrate, and manage eCommerce stores as your long-term technical partner.',
   keywords: [
     'ecommerce agency',
     'shopify development',
@@ -44,36 +45,56 @@ export const siteAssets = {
   ],
 } as const
 
+type PageKey = keyof ReturnType<typeof getDictionary>['seo']
+
 type MetadataOptions = {
   title?: string
   description?: string
   path?: string
+  locale: Locale
+  pageKey?: PageKey
   noIndex?: boolean
 }
 
 export function buildMetadata({
   title,
-  description = siteConfig.description,
+  description,
   path = '/',
+  locale,
+  pageKey,
   noIndex = false,
-}: MetadataOptions = {}): Metadata {
+}: MetadataOptions): Metadata {
+  const dict = pageKey ? getDictionary(locale).seo[pageKey] : null
+  const resolvedTitle = title ?? dict?.title ?? siteConfig.defaultTitle
+  const resolvedDescription = description ?? dict?.description ?? siteConfig.description
+
+  // Derive the EN and IT paths from the current path + locale
+  const enPath = locale === 'it' ? path.replace(/^\/it/, '') || '/' : path
+  const itPath = locale === 'en' ? `/it${path === '/' ? '' : path}` : path
+
   const canonical = absoluteUrl(path)
-  const resolvedTitle = title || siteConfig.defaultTitle
+  const enUrl = absoluteUrl(enPath)
+  const itUrl = absoluteUrl(itPath)
+  const ogLocale = locale === 'it' ? 'it_IT' : 'en_US'
 
   return {
     title: resolvedTitle,
-    description,
-    keywords: [...siteConfig.keywords],
+    description: resolvedDescription,
     alternates: {
       canonical,
+      languages: {
+        en: enUrl,
+        it: itUrl,
+        'x-default': enUrl,
+      },
     },
     openGraph: {
       type: 'website',
       url: canonical,
       siteName: siteConfig.name,
-      locale: 'en_US',
+      locale: ogLocale,
       title: resolvedTitle,
-      description,
+      description: resolvedDescription,
       images: [
         {
           url: absoluteUrl('/og-image.svg'),
@@ -86,34 +107,43 @@ export function buildMetadata({
     twitter: {
       card: 'summary_large_image',
       title: resolvedTitle,
-      description,
+      description: resolvedDescription,
       images: [absoluteUrl('/og-image.svg')],
     },
     robots: noIndex
       ? {
-        index: false,
-        follow: false,
-      }
+          index: false,
+          follow: false,
+        }
       : {
-        index: true,
-        follow: true,
-        googleBot: {
           index: true,
           follow: true,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
         },
-      },
+    verification: {
+      google: process.env.GSC_VERIFICATION_TOKEN,
+    },
   }
 }
 
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: siteConfig.name,
+  name: 'NoProb Agency',
   legalName: siteConfig.companyName,
   url: siteConfig.url,
-  logo: absoluteUrl(siteAssets.logo),
+  logo: absoluteUrl(siteAssets.logoBlack),
+  foundingDate: '2022',
+  founder: {
+    '@type': 'Person',
+    name: 'Antonio Manitta',
+    jobTitle: 'Founder & eCommerce Manager',
+  },
   description: siteConfig.description,
   address: {
     '@type': 'PostalAddress',
@@ -123,5 +153,15 @@ export const organizationJsonLd = {
     postalCode: '82801',
     addressCountry: 'US',
   },
-  sameAs: ['https://www.trustpilot.com/review/noprob.agency'],
+  knowsAbout: [
+    'Shopify development',
+    'eCommerce migration',
+    'Conversion rate optimization',
+    'Server-side tracking',
+    'eCommerce management',
+  ],
+  sameAs: [
+    'https://www.linkedin.com/company/noprobagency',
+    'https://www.trustpilot.com/review/noprob.agency',
+  ],
 } as const

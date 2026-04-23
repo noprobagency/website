@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: useCase.title,
     description: useCase.excerpt,
     path: `/it/use-cases/${useCase.slug}`,
+    locale: 'it',
   })
 }
 
