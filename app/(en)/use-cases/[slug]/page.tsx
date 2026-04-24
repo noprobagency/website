@@ -58,6 +58,22 @@ function renderSection(section: ArticleSection, idx: number) {
           {section.text}
         </p>
       )
+    case 'image':
+      return (
+        <figure
+          key={idx}
+          className="my-8 mx-auto overflow-hidden rounded-[16px]"
+          style={section.maxWidth ? { maxWidth: section.maxWidth } : undefined}
+        >
+          <Image
+            src={section.src}
+            alt={section.alt ?? ''}
+            width={section.width ?? 1400}
+            height={section.height ?? 900}
+            className="h-auto w-full object-contain"
+          />
+        </figure>
+      )
     case 'list':
       return (
         <ul key={idx} className="mb-5 list-disc pl-6 space-y-2">

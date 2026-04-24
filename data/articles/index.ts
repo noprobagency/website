@@ -3,6 +3,7 @@ export type ArticleSection =
   | { type: 'h2'; text: string }
   | { type: 'list'; items: string[] }
   | { type: 'h3'; text: string }
+  | { type: 'image'; src: string; alt?: string; width?: number; height?: number; maxWidth?: string }
 
 export type Article = {
   slug: string
