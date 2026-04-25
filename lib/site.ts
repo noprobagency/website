@@ -38,7 +38,6 @@ export const siteAssets = {
   heroAntonio: '/images/originals/7jMr2bJ1E0BHUjGZvEWpbOHZ0.png',
   heroPartners: [
     '/images/originals/05zntouhHCNSOngYM6ybfvl2s.svg',
-    '/images/originals/agPK5mb4ANTVoDB7vttXGc5Ink.webp',
     '/images/originals/pNYebJJ9UvO2bOfzWB6XHxacQs.svg',
     '/images/originals/SOy6gjI9zh07NZMqw435UMgZbWM.svg',
     '/images/originals/PShAQlL3z50doCD4JeSedvGws3o.png',
