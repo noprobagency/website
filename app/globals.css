@@ -592,3 +592,14 @@
   pointer-events: none;
   transform-origin: center center;
 }
+/* Article body typography (use case + blog long-form) */
+.article-body {
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+@media (max-width: 767px) {
+  .article-body {
+    font-size: 16px;
+  }
+}

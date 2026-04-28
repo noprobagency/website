@@ -14,7 +14,7 @@ export type UseCase = {
 export const useCases: UseCase[] = [
   {
     slug: 'cumini-luxury-fashion-ecommerce',
-    title: "Come far crescere l'eCommerce di una Luxury Fashion Boutique",
+    title: "Come far crescere l'eCommerce di una Luxury Fashion Boutique: da fatturato marginale a oltre 1 milione online",
     excerpt: 'Il caso studio di Cumini',
     image: '/images/originals/2QNUkNFRX0OUC0qTVjeplIvlFS0.jpg',
     imageAlt: 'Cumini fashion case study',
@@ -77,6 +77,10 @@ export const useCases: UseCase[] = [
         text: 'Mancava, in sintesi, un ecosistema strutturato capace di supportare lo sviluppo del brand anche sul digitale.',
       },
       {
+        type: 'paragraph',
+        text: "Il progetto è seguito da NoProb Agency, Shopify Partner specializzato in sviluppo, migrazione e gestione eCommerce B2C, con cui Cumini lavora in esclusiva da agosto 2022.",
+      },
+      {
         type: 'h2',
         text: '2022-2024: Gli anni di costruzione',
       },
@@ -121,8 +125,9 @@ export const useCases: UseCase[] = [
         text: 'Non è stato un picco eccezionale, ma la risposta a una domanda che, in fondo, era già esistente: l’attivazione di Google Ads ha semplicemente reso visibile un’offerta che prima non lo era.',
       },
       {
-        type: 'paragraph',
-        text: 'MER > 9 Crescita fatturato eCommerce: +25,8%',
+        type: 'metrics',
+        merValue: '9',
+        growthValue: '+25,8%',
       },
       {
         type: 'h3',
@@ -165,8 +170,9 @@ export const useCases: UseCase[] = [
         text: 'Nonostante le limitazioni tecniche, il fatturato eCommerce ha registrato una crescita significativa.',
       },
       {
-        type: 'paragraph',
-        text: 'MER > 7,5 Crescita fatturato eCommerce: +226,9%',
+        type: 'metrics',
+        merValue: '7,5',
+        growthValue: '+226,9%',
       },
       {
         type: 'h3',
@@ -213,8 +219,9 @@ export const useCases: UseCase[] = [
         text: 'A fine anno, insieme al cliente, è stata presa una decisione strategica e pianificata come investimento sul lungo termine: migrare l’intero ecosistema su una piattaforma moderna e sviluppare internamente una soluzione tecnica in grado di integrarsi con il gestionale proprietario di Cumini.',
       },
       {
-        type: 'paragraph',
-        text: 'MER > 6 Crescita fatturato eCommerce: +71,6%',
+        type: 'metrics',
+        merValue: '6',
+        growthValue: '+71,6%',
       },
       {
         type: 'h2',
@@ -268,8 +275,13 @@ export const useCases: UseCase[] = [
         text: 'Il 2025 si è chiuso con il record assoluto di fatturato, nonostante i mesi di transizione tecnica.',
       },
       {
-        type: 'paragraph',
-        text: "MER > 5   Crescita fatturato eCommerce: +26,2% rispetto all'anno precedente. Record storico.",
+        type: 'metrics',
+        merValue: '5',
+        growthValue: '+26,2%',
+        note: "Rispetto all'anno precedente. Record storico.",
+      },
+      {
+        type: 'cta',
       },
       {
         type: 'h3',
@@ -337,10 +349,6 @@ export const useCases: UseCase[] = [
       },
       {
         type: 'paragraph',
-        text: 'esempio',
-      },
-      {
-        type: 'paragraph',
         text: 'Il tasso di conversione da mobile rappresenta uno degli indicatori più sensibili per un eCommerce fashion.',
       },
       {
@@ -379,10 +387,6 @@ export const useCases: UseCase[] = [
       {
         type: 'h3',
         text: 'Periodi di nuova collezione -> prezzo pieno',
-      },
-      {
-        type: 'paragraph',
-        text: '[ Screenshot: Dashboard ROAS/MER con dati mensili (blurrata) ]',
       },
       {
         type: 'paragraph',
@@ -429,10 +433,6 @@ export const useCases: UseCase[] = [
         text: 'Metodo, numeri, crescita: la combinazione che fa la differenza',
       },
       {
-        type: 'paragraph',
-        text: '[grafico decrescita MER e crescita di fatturato -> profitto]',
-      },
-      {
         type: 'image',
         src: '/images/use-case-cumini/use-case-cumini1.png',
         alt: 'Grafico MER in decrescita e fatturato generale in crescita',
@@ -441,10 +441,6 @@ export const useCases: UseCase[] = [
         type: 'image',
         src: '/images/use-case-cumini/use-case-cumini4.png',
         alt: 'Grafico MER vs margine di contribuzione (ricavi netti) nel tempo',
-      },
-      {
-        type: 'paragraph',
-        text: '[Grafico: MER in decrescita progressiva anno su anno, fatturato eCommerce in crescita costante]',
       },
       {
         type: 'paragraph',
@@ -519,8 +515,11 @@ export const useCases: UseCase[] = [
         ],
       },
       {
+        type: 'cta',
+      },
+      {
         type: 'h2',
-        text: 'CTA - Questo modello funziona per te?',
+        text: 'Questo modello funziona per te?',
       },
       {
         type: 'paragraph',
@@ -537,6 +536,9 @@ export const useCases: UseCase[] = [
       {
         type: 'paragraph',
         text: 'Cumini è un cliente attivo di NoProb Agency da oltre 4 anni.',
+      },
+      {
+        type: 'cta',
       },
     ],
   },
