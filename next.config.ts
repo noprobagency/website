@@ -22,8 +22,8 @@ const nextConfig: NextConfig = {
     ]
   },
   async redirects() {
-    // 301 redirects from legacy English-named IT paths to SEO-optimized Italian slugs
     return [
+      // Legacy English-named IT paths -> SEO-optimized Italian slugs
       { source: '/it/about',                  destination: '/it/chi-siamo',                permanent: true },
       { source: '/it/about/:path*',           destination: '/it/chi-siamo/:path*',         permanent: true },
       { source: '/it/use-cases',              destination: '/it/casi-studio',              permanent: true },
@@ -33,6 +33,9 @@ const nextConfig: NextConfig = {
       { source: '/it/data-driven-team/:path*',destination: '/it/team-ecommerce-dedicato/:path*', permanent: true },
       { source: '/it/ecommerce-rebuild',      destination: '/it/rifacimento-ecommerce',    permanent: true },
       { source: '/it/ecommerce-rebuild/:path*',destination: '/it/rifacimento-ecommerce/:path*', permanent: true },
+      // Misclassified content moved from use-cases to blog
+      { source: '/use-cases/ecommerce-growth-secrets',         destination: '/blog/ecommerce-growth-secrets',         permanent: true },
+      { source: '/it/casi-studio/ecommerce-growth-secrets',    destination: '/it/blog/ecommerce-growth-secrets',      permanent: true },
     ]
   },
 }
