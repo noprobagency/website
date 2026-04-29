@@ -35,7 +35,10 @@ const nextConfig: NextConfig = {
       { source: '/it/ecommerce-rebuild/:path*',destination: '/it/rifacimento-ecommerce/:path*', permanent: true },
       // Misclassified content moved from use-cases to blog
       { source: '/use-cases/ecommerce-growth-secrets',         destination: '/blog/ecommerce-growth-secrets',         permanent: true },
-      { source: '/it/casi-studio/ecommerce-growth-secrets',    destination: '/it/blog/ecommerce-growth-secrets',      permanent: true },
+      { source: '/it/casi-studio/ecommerce-growth-secrets',    destination: '/it/blog/strategia-ecommerce-long-term', permanent: true },
+      // IT blog post slug rebranded to SEO-optimized "strategia-ecommerce-long-term"
+      // (EN version retains old slug until translation is published)
+      { source: '/it/blog/ecommerce-growth-secrets',           destination: '/it/blog/strategia-ecommerce-long-term', permanent: true },
     ]
   },
 }

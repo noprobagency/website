@@ -3,90 +3,113 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 import { buildMetadata } from '@/lib/site'
-import { articles, type ArticleSection } from '@/data/articles'
+import { articles, type Article } from '@/data/articles'
+import { renderSection } from '@/components/article/renderSection'
+import { BlogPostMeta } from '@/components/blog/BlogPostMeta'
+import { AuthorBio } from '@/components/blog/AuthorBio'
+import { RelatedCTA } from '@/components/blog/RelatedCTA'
+import { StructuredData } from '@/components/blog/StructuredData'
 import CTA from '@/components/sections/CTA'
 import Footer from '@/components/layout/Footer'
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://noprob.agency'
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
+function findItArticle(slug: string): Article | undefined {
+  return articles.find((a) => (a.slugIt ?? a.slug) === slug)
+}
+
 export async function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }))
+  return articles.map((a) => ({ slug: a.slugIt ?? a.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const article = articles.find((a) => a.slug === slug)
+  const article = findItArticle(slug)
   if (!article) return {}
+  const itSlug = article.slugIt ?? article.slug
   return buildMetadata({
     title: article.titleIt ?? article.title,
     description: article.excerptIt ?? article.excerpt,
-    path: `/it/blog/${article.slug}`,
+    path: `/it/blog/${itSlug}`,
     locale: 'it',
   })
 }
 
-function renderSection(section: ArticleSection, idx: number) {
-  switch (section.type) {
-    case 'h2':
-      return (
-        <h2
-          key={idx}
-          className="mt-12 mb-4 font-sans font-semibold tracking-[-0.05em] leading-[1.15em] text-black"
-          style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}
-        >
-          {section.text}
-        </h2>
-      )
-    case 'h3':
-      return (
-        <h3
-          key={idx}
-          className="mt-8 mb-3 font-sans font-semibold tracking-[-0.04em] leading-[1.3em] text-black text-[22px]"
-        >
-          {section.text}
-        </h3>
-      )
-    case 'paragraph':
-      return (
-        <p
-          key={idx}
-          className="mb-5 font-sans text-[18px] font-medium leading-[1.7em] tracking-[-0.02em] text-[#1c1c1c]"
-        >
-          {section.text}
-        </p>
-      )
-    case 'list':
-      return (
-        <ul key={idx} className="mb-5 list-disc pl-6 space-y-2">
-          {section.items.map((item, i) => (
-            <li
-              key={i}
-              className="font-sans text-[18px] font-medium leading-[1.7em] tracking-[-0.02em] text-[#1c1c1c]"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      )
-    default:
-      return null
+function buildBlogPostingJsonLd(article: Article, itSlug: string) {
+  const headline = article.titleIt ?? article.title
+  const description = article.excerptIt ?? article.excerpt
+  const image = `${SITE_URL}${article.image}`
+  const datePublished = article.datePublishedIso ?? `${article.date}T10:00:00+02:00`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline,
+    description,
+    image,
+    datePublished,
+    dateModified: datePublished,
+    author: {
+      '@type': 'Person',
+      name: 'Antonio Manitta',
+      jobTitle: 'Founder & eCommerce Manager',
+      worksFor: { '@type': 'Organization', name: 'NoProb Agency' },
+      url: `${SITE_URL}/it/chi-siamo`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'NoProb Agency',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/images/logo-no-prob-black.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/it/blog/${itSlug}`,
+    },
+    ...(article.wordCount ? { wordCount: article.wordCount } : {}),
+    ...(article.articleSection ? { articleSection: article.articleSection } : {}),
+    ...(article.keywordsIt ? { keywords: article.keywordsIt } : {}),
+    inLanguage: 'it-IT',
+  }
+}
+
+function buildFaqJsonLd(faq: Array<{ question: string; answer: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((entry) => ({
+      '@type': 'Question',
+      name: entry.question,
+      acceptedAnswer: { '@type': 'Answer', text: entry.answer },
+    })),
   }
 }
 
 export default async function ItalianArticlePage({ params }: Props) {
   const { slug } = await params
-  const article = articles.find((a) => a.slug === slug)
+  const article = findItArticle(slug)
   if (!article) notFound()
 
   const locale = 'it'
+  const itSlug = article.slugIt ?? article.slug
   const title = article.titleIt ?? article.title
-  const excerpt = article.excerptIt ?? article.excerpt
+  const lede = article.ledeIt ?? article.excerptIt ?? article.excerpt
   const content = article.contentIt ?? article.content
+
+  const schemas: Array<Record<string, unknown>> = [buildBlogPostingJsonLd(article, itSlug)]
+  if (article.faqIt && article.faqIt.length > 0) {
+    schemas.push(buildFaqJsonLd(article.faqIt))
+  }
 
   return (
     <>
+      <StructuredData schemas={schemas} />
+
       {/* Hero */}
       <section className="w-full bg-[#f0f0f0] pt-[120px] pb-0 px-5 min-[810px]:px-9">
         <div className="mx-auto flex max-w-[860px] flex-col items-center gap-5 pb-12 text-center">
@@ -97,9 +120,16 @@ export default async function ItalianArticlePage({ params }: Props) {
           >
             {title}
           </h1>
-          <p className="max-w-[600px] font-sans text-[18px] font-medium leading-[1.5em] tracking-[-0.03em] text-[#7c7c7c]">
-            {excerpt}
+          <p className="max-w-[640px] font-sans text-[18px] font-medium leading-[1.5em] tracking-[-0.03em] text-[#7c7c7c]">
+            {lede}
           </p>
+          {article.datePublishedIso && article.readingTimeMinutes ? (
+            <BlogPostMeta
+              publishedAt={article.datePublishedIso}
+              readingTimeMinutes={article.readingTimeMinutes}
+              locale={locale}
+            />
+          ) : null}
         </div>
 
         {/* Cover image */}
@@ -118,8 +148,10 @@ export default async function ItalianArticlePage({ params }: Props) {
 
       {/* Article body */}
       <section className="w-full flex justify-center bg-[#f0f0f0] py-16 px-5 min-[810px]:px-9">
-        <article className="w-full max-w-[700px]">
-          {content?.map((section, idx) => renderSection(section, idx))}
+        <article className="w-full max-w-[720px]">
+          {content?.map((section, idx) => renderSection(section, idx, locale))}
+          <RelatedCTA locale={locale} />
+          <AuthorBio locale={locale} />
         </article>
       </section>
 

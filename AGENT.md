@@ -163,6 +163,61 @@ Helper in `lib/analytics/events.ts`:
 
 ---
 
+## 14. Blog Architecture & SEO
+
+### Pattern blog post
+
+Every new post under `/blog/[slug]` (or `/it/blog/[slugIt]`) must include:
+
+- Cover image SVG + PNG `1200×630` in `public/images/blog/[slug]-cover.{svg,png}`
+- Article entry in `data/articles/index.ts` with: `title`, `excerpt`, `slug`, `image`, `imageAlt`, `articleType`, `date`, `datePublishedIso`, `readingTimeMinutes`, `wordCount`, `articleSection`, `keywordsIt` / `keywordsEn`
+- Localized fields when available: `titleIt`, `excerptIt`, `ledeIt`, `slugIt`, `contentIt`, `faqIt`
+- BlogPosting JSON-LD via `<StructuredData />` (built from article fields in the page component)
+- FAQPage JSON-LD when `faqIt` (or `faqEn`) is populated
+- `<BlogPostMeta />` under the H1 (date + author + reading time)
+- `<RelatedCTA />` and `<AuthorBio />` after the article body
+- At least 2 internal links to service pages (`/it/team-ecommerce-dedicato`, `/it/rifacimento-ecommerce`, `/it/casi-studio`, `/it/contatti`)
+- At least 2 outbound links to authoritative sources (McKinsey, Bain, HBR, Shopify, etc.)
+- Sitemap is generated dynamically from the `articles` array in `app/sitemap.ts` — no manual entry required
+
+### Inline content syntax
+
+Paragraphs and list items support markdown-style inline tokens via `parseInline` in `components/article/renderSection.tsx`:
+
+- `[testo](/path)` → internal `<Link>` (no rel/target)
+- `[testo](https://...)` → external `<a target="_blank" rel="noopener noreferrer">`
+- `**testo**` → `<strong>`
+
+### Reusable blog components
+
+- `components/blog/StructuredData.tsx` — emits one or more JSON-LD `<script>` tags
+- `components/blog/BlogPostMeta.tsx` — author + date + reading time row under H1
+- `components/blog/AuthorBio.tsx` — Antonio Manitta bio card (locale-aware)
+- `components/blog/RelatedCTA.tsx` — contextual CTA (defaults to Data-Driven Team)
+
+### Keyword strategy primaria (Italia)
+
+- Topic primario: "strategia ecommerce" (150 vol/mo, KD 2)
+- Topic secondari: "kpi ecommerce", "gestire un ecommerce", "ottimizzazione ecommerce"
+- Keyword commerciali fondo funnel: "agenzia shopify" (150 vol KD 0), "consulente ecommerce" (150 vol KD 0)
+- Keyword da NON targettizzare: "scalare ecommerce" (0 vol IT), "crescita ecommerce" (10 vol IT)
+
+### Primo articolo pubblicato (riferimento)
+
+- IT: `/it/blog/strategia-ecommerce-long-term`
+- EN slug originale: `/blog/ecommerce-growth-secrets` (traduzione EN da rifare)
+- Pubblicato: 2026-04-29
+- Reading time: 9 min · Word count: ~2600
+- Target keyword: "strategia ecommerce"
+
+### Locale-specific slugs
+
+- Article fields: `slug` (EN, required), `slugIt` (IT override, optional)
+- IT routes match on `slugIt ?? slug`
+- 301 redirect from any old IT slug lives in `next.config.ts > redirects()`
+
+---
+
 ## Notes
 
 - The Sanity CLI syntax has changed from the one in the brief, so a local Sanity scaffold was created manually with `sanity.config.ts`, `sanity.cli.ts`, and an empty schema entrypoint to keep the codebase ready without blocking the homepage sprint.

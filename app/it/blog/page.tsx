@@ -39,7 +39,7 @@ export default function ItalianBlogPage() {
               return (
               <Link
                 key={article.slug}
-                href={`/it/blog/${article.slug}`}
+                href={`/it/blog/${article.slugIt ?? article.slug}`}
                 className="group flex flex-col overflow-hidden rounded-[24px] bg-white no-underline"
                 style={{
                   border: '6px solid #f8f8f8',

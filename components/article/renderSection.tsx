@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 
 import type { ArticleSection } from '@/data/articles'
 import type { Locale } from '@/lib/i18n'
@@ -16,6 +17,62 @@ const CTA_COPY: Record<Locale, { heading: string; body: string; button: string }
     body: 'Se hai un eCommerce fashion che non sta ancora rendendo quello che dovrebbe, parliamoci. Lavoriamo con un numero selezionato di progetti a lungo termine.',
     button: 'Parliamoci',
   },
+}
+
+const INLINE_LINK_CLASS =
+  'font-medium text-[#1c1c1c] underline underline-offset-4 decoration-[#1c1c1c]/40 hover:decoration-[#1c1c1c] transition-colors'
+
+/**
+ * Parse a string with markdown-style inline tokens into React nodes.
+ * Supports:
+ *   [text](url)   -> Next Link for internal, <a target="_blank" rel="noopener noreferrer"> for http(s)
+ *   **text**      -> <strong>
+ * Tokens are matched in a single pass; nesting is not supported (each pattern
+ * is at the same level, which is sufficient for blog body copy).
+ */
+export function parseInline(text: string): ReactNode[] {
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g
+  const nodes: ReactNode[] = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+  let key = 0
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index))
+    }
+    if (match[1] !== undefined && match[2] !== undefined) {
+      const linkText = match[1]
+      const url = match[2]
+      const isExternal = /^https?:\/\//i.test(url)
+      if (isExternal) {
+        nodes.push(
+          <a
+            key={key++}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={INLINE_LINK_CLASS}
+          >
+            {linkText}
+          </a>
+        )
+      } else {
+        nodes.push(
+          <Link key={key++} href={url} className={INLINE_LINK_CLASS}>
+            {linkText}
+          </Link>
+        )
+      }
+    } else if (match[3] !== undefined) {
+      nodes.push(<strong key={key++}>{match[3]}</strong>)
+    }
+    lastIndex = regex.lastIndex
+  }
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex))
+  }
+  return nodes
 }
 
 export function renderSection(section: ArticleSection, idx: number, locale: Locale = 'en') {
@@ -45,7 +102,7 @@ export function renderSection(section: ArticleSection, idx: number, locale: Loca
           key={idx}
           className="article-body mb-5 font-sans font-medium tracking-[-0.02em] text-[#1c1c1c]"
         >
-          {section.text}
+          {parseInline(section.text)}
         </p>
       )
     case 'image':
@@ -72,7 +129,7 @@ export function renderSection(section: ArticleSection, idx: number, locale: Loca
               key={i}
               className="article-body font-sans font-medium tracking-[-0.02em] text-[#1c1c1c]"
             >
-              {item}
+              {parseInline(item)}
             </li>
           ))}
         </ul>

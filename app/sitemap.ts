@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { ROUTES } from '@/lib/sitemap/routes'
+import { articles } from '@/data/articles'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://noprob.agency'
 
@@ -7,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   const entries: MetadataRoute.Sitemap = []
 
+  // Fixed routes (home, about, services, etc.)
   for (const route of ROUTES) {
     const enUrl = `${BASE_URL}${route.enPath === '/' ? '' : route.enPath}`
     const itUrl = `${BASE_URL}${route.itPath}`
@@ -32,7 +34,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // TODO: when blog goes live, scan MDX/CMS and append dynamic blog post entries
+  // Blog posts (per-locale slugs supported via slugIt)
+  for (const article of articles) {
+    const lastModified = article.datePublishedIso ? new Date(article.datePublishedIso) : now
+    const enUrl = `${BASE_URL}/blog/${article.slug}`
+    const itUrl = `${BASE_URL}/it/blog/${article.slugIt ?? article.slug}`
+
+    entries.push({
+      url: enUrl,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: { languages: { en: enUrl, it: itUrl, 'x-default': enUrl } },
+    })
+
+    entries.push({
+      url: itUrl,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.72,
+      alternates: { languages: { en: enUrl, it: itUrl, 'x-default': enUrl } },
+    })
+  }
 
   return entries
 }
