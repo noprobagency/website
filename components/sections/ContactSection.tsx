@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { siteAssets } from '@/lib/site'
 import { contactSchema, ContactFormData } from '@/lib/schemas/contact'
-import { sendContactEmail } from '@/app/actions/contact'
 
 const avatars = [
   '/images/originals/mEIBGBqwotHJ35YaPhM5ljuLc2U.png',
@@ -37,13 +36,24 @@ export default function ContactSection() {
 
   async function onSubmit(data: ContactFormData) {
     setServerError(null)
-    const result = await sendContactEmail(data)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
-    if (result.error) {
-      setServerError(result.error)
-    } else {
+      if (!res.ok) {
+        const { error } = (await res.json().catch(() => ({}))) as { error?: string }
+        setServerError(error ?? 'Something went wrong. Please try again.')
+        return
+      }
+
       setIsSuccess(true)
       reset()
+    } catch (err) {
+      console.error('[contact-form] submit error:', err)
+      setServerError('Network error. Please try again.')
     }
   }
 
