@@ -26,8 +26,8 @@ export const articles: Article[] = [
     slug: 'ecommerce-growth-secrets',
     title: 'Why Consistent eCommerce Growth Beats Chasing Trends: The Unsexy Secret Winning Brands Know',
     excerpt: "I'll explain you why you should stop trend-chasing and just focus on growing.",
-    image: '/images/originals/ueqZoCFRDc46Zk64JejcJN460.png',
-    imageAlt: 'eCommerce growth consistency',
+    image: '/images/blog/blog-growth-cover.png',
+    imageAlt: 'Long-term thinking, compounded growth: with NoProb vs chasing every trend',
     articleType: 'Article',
     date: '2026-03-22',
     content: [
