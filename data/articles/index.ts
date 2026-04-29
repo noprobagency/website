@@ -16,6 +16,9 @@ export type Article = {
   articleType: string
   date: string
   content?: ArticleSection[]
+  titleIt?: string
+  excerptIt?: string
+  contentIt?: ArticleSection[]
 }
 
 export const articles: Article[] = [
@@ -150,7 +153,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: "It makes a huge difference to have a tech partner who does more than just set up Shopify or WooCommerce. They should actually watch your data, handle tech support, fix bugs, manage tracking, and give you an operations team every single day, always on call. At noprob.agency, that's what we do:",
+        text: "It makes a huge difference to have a tech partner who does more than just set up Shopify. They should actually watch your data, handle tech support, fix bugs, manage tracking, and give you an operations team every single day, always on call. At noprob.agency, that's what we do:",
       },
       {
         type: 'list',
@@ -175,7 +178,7 @@ export const articles: Article[] = [
       {
         type: 'list',
         items: [
-          "Platform: Pick Shopify or WooCommerce and stick with it. Don't experiment on multiple platforms at once.",
+          "Platform: Pick Shopify and stick with it. Don't experiment on multiple platforms at once.",
           "Clear ownership: Assign someone to own ads, someone to own data, someone to own UX. No gray zones.",
           "One dashboard: Get all your real KPIs in one place (AOV, retention, entry points, drop-off, margin). Check it weekly.",
         ],
@@ -285,6 +288,268 @@ export const articles: Article[] = [
       {
         type: 'paragraph',
         text: "The smartest move: find a tech partner who has your back for years, not just weeks. Curious about what that could look like for your brand? Let's talk.",
+      },
+    ],
+    titleIt: 'Perché la Crescita eCommerce Costante Batte la Caccia ai Trend: Il Segreto Poco Glamour dei Brand Vincenti',
+    excerptIt: 'Ti spiego perché dovresti smettere di rincorrere i trend e concentrarti solo sulla crescita.',
+    contentIt: [
+      {
+        type: 'paragraph',
+        text: "Sentiamo sempre parlare di qualche brand fashion, retail o di integratori che esplode dall'oggi al domani grazie a un growth hack, a una campagna virale o a qualche tool miracoloso. Ma da quello che ho visto lavorando con aziende fashion, DTC, beauty e integratori in Italia e in tutta Europa, i brand che davvero crescono non rincorrono ogni novità appariscente. Costruiscono processi solidi, mantengono i team uniti, ottimizzano costantemente e si fidano dei dati, non dell'hype.",
+      },
+      {
+        type: 'paragraph',
+        text: 'Ecco cosa abbiamo imparato lavorando in questo settore per anni:',
+      },
+      {
+        type: 'list',
+        items: [
+          "Perché rimanere fedeli al piano conta più dell'ultimo trend",
+          'Perché i piccoli miglioramenti battono i tentativi di arricchirsi in fretta',
+          "Come generare ricavi affidabili e costruire un'azienda vera",
+          'Perché il cambiamento continuo può davvero danneggiarti',
+          'Un piano pratico per brand fashion, retail e di integratori che ho testato nel mondo reale',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Alla fine vedrai perché dovresti smettere di rincorrere i trend e concentrarti solo sulla crescita.',
+      },
+      {
+        type: 'h2',
+        text: 'Il Modo Noioso: Più Costanza, Più Profitto',
+      },
+      {
+        type: 'paragraph',
+        text: 'Pensi di dover cambiare ad manager, copywriter o piattaforme ogni anno? I dati dicono di no.',
+      },
+      {
+        type: 'list',
+        items: [
+          "Migliorare anche solo dell'1% ogni giorno lavorativo porta a una crescita del +3700% in un anno grazie all'effetto composto",
+          "I brand con piani a lungo termine fanno crescere i ricavi del 47% in più, i profitti del 36% in più e il valore complessivo del business dell'81% in più",
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Dalla mia esperienza lavorando con store fashion, aziende di integratori e ogni sorta di altri brand, ogni volta che abbiamo aiutato i fondatori a tagliare cambiamenti inutili e a concentrarsi su piccoli miglioramenti — velocità, conversion rate, tracciamento dati, user experience — le loro vendite e i loro profitti sono diventati più stabili, e lo stress è calato.',
+      },
+      {
+        type: 'paragraph',
+        text: "La matematica è semplice: se cambi direzione di continuo, resetti i progressi ogni pochi mesi. Ma se rimani concentrato e migliori anche solo un po' ogni settimana, quei guadagni si compongono in qualcosa di concreto.",
+      },
+      {
+        type: 'h2',
+        text: 'Il Costo Reale di Cambiare Tutto: Team e Strategia',
+      },
+      {
+        type: 'paragraph',
+        text: 'Ogni volta che cambi il team, sprechi mesi (e migliaia di euro).',
+      },
+      {
+        type: 'list',
+        items: [
+          'Sostituire una persona costa tra €8.000 e €35.000 considerando recruiting, formazione, perdita di produttività e know-how perso',
+          'I nuovi assunti possono impiegare fino a due mesi per essere pienamente operativi',
+          "Quando cambi piattaforma spesso, l'80% dei brand fashion riporta un calo delle conversioni per 1-3 mesi dopo",
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "Nei miei progetti ho osservato che ogni volta che un cliente cambia membri del team (ads/dev/design) o piattaforme senza un motivo solido, la produttività cala e in generale le cose peggiorano. Le vendite sono scese in media dell'8-12% nei due mesi successivi a un cambio di una figura chiave o di stack tecnologico.",
+      },
+      {
+        type: 'paragraph',
+        text: 'Non è un caso. È quello che succede quando perdi contesto, rompi la continuità e costringi le persone a imparare nuovi sistemi da zero.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Vuoi smettere di buttare soldi? Tieniti il team, migliora i processi con i dati e rimani fedele a un piano. È così semplice.',
+      },
+      {
+        type: 'h2',
+        text: 'Perché i Team Stabili Vanno Sempre Meglio',
+      },
+      {
+        type: 'list',
+        items: [
+          'I team che lavorano insieme da almeno due anni sono il 15-30% più efficienti',
+          'I team con basso turnover sono il 25% più efficaci nel gestire problemi ed emergenze',
+          "Mantenere l'attenzione e la fedeltà dei clienti oltre il 70% migliora la percezione del tuo brand. L'ho notato soprattutto con le aziende di integratori e quelle a subscription.",
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Ogni volta che i miei clienti hanno avuto lo stesso responsabile ads, developer e UX per molto tempo, i risultati sono migliorati e la crescita è diventata più prevedibile. Si muovevano più velocemente. Capivano meglio il business. Notavano opportunità senza che gliele si dovesse indicare.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Non si tratta solo di produttività. Si tratta di fiducia, contesto e visione condivisa.',
+      },
+      {
+        type: 'h2',
+        text: 'Quanto Vale un Brand Prevedibile? I Brand Noiosi Vincono',
+      },
+      {
+        type: 'list',
+        items: [
+          'Un fatturato ricorrente affidabile (clienti che riacquistano, subscription) vale 3,3 volte di più per euro rispetto a vendite imprevedibili',
+          "Oggi, oltre l'80% di quanto vale un brand fashion o di integratori dipende da quanto è stabile il cashflow, non dall'avere occasionali grandi colpi",
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Da quando ho iniziato a creare dashboard stabili e a monitorare in modo costante i numeri chiave per i miei clienti, investitori e acquirenti sono diventati molto più interessati a quei business.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Pensaci: preferiresti investire in un business che fa €1M un mese e €300k il successivo? O in uno che fa €600k ogni singolo mese? Il secondo è noioso, ma è quello di valore. La prevedibilità è ciò che ti permette di pianificare, assumere, investire e scalare senza paura.',
+      },
+      {
+        type: 'h2',
+        text: 'Il Framework NOPROB: Come Costruire la Costanza',
+      },
+      {
+        type: 'h3',
+        text: '0. Scegli un Vero Tech Partner (Step Zero o Step Finale, Ma È Quello Che Conta Davvero)',
+      },
+      {
+        type: 'paragraph',
+        text: 'Fa una differenza enorme avere un tech partner che faccia più che limitarsi a configurare Shopify. Dovrebbe davvero monitorare i tuoi dati, gestire il supporto tecnico, risolvere i bug, occuparsi del tracciamento e metterti a disposizione un team operativo ogni singolo giorno, sempre reperibile. In noprob.agency, è esattamente quello che facciamo:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Supporto 7 giorni su 7 via email, WhatsApp e ticket — sempre lì quando ti serviamo',
+          'Un team pronto per il fashion retail, gli integratori e i brand DTC — esperto e veloce a partire',
+          'Problem-solver che aiutano a costruire i piani, gestire i KPI e portare avanti le operations, così tu puoi concentrarti sul brand, la supply chain e la visione di lungo termine',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Che ti serva un rebuild completo o un supporto mensile, la stabilità parte dal trovare un vero partner, non solo un fornitore. Non accontentarti di agenzie che spuntano caselle — trova qualcuno che davvero colma i gap.',
+      },
+      {
+        type: 'h3',
+        text: '1. Stabilizza il Core',
+      },
+      {
+        type: 'paragraph',
+        text: 'Congela i cambiamenti non necessari per 30 giorni:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Piattaforma: scegli Shopify e rimanici. Non sperimentare su più piattaforme contemporaneamente.',
+          'Ownership chiara: assegna a qualcuno gli ads, a qualcuno i dati, a qualcuno la UX. Niente zone grigie.',
+          'Una dashboard: porta tutti i KPI reali in un solo posto (AOV, retention, punti di ingresso, drop-off, margine). Controllala ogni settimana.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Questo step serve a creare chiarezza. Non puoi ottimizzare ciò che non vedi.',
+      },
+      {
+        type: 'h3',
+        text: '2. Audit e Roadmap Pratica',
+      },
+      {
+        type: 'paragraph',
+        text: 'Capisci dove stai perdendo soldi o conversioni. Richiede qualche settimana e ne vale la pena:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Audit tecnico: usa GTmetrix, GA4, Clarity, Shopify Analytics per vedere come performa davvero il tuo sito. Page speed, esperienza mobile, flusso di checkout.',
+          'Audit dei dati: tracci ciò che conta davvero? Dove perdi le persone nel funnel? Ci sono leak di fatturato nascosti?',
+          'Audit del team: chi è allineato? Chi risponde lentamente? Chi continua a fare gli stessi errori?',
+          'Audit competitor: cosa stanno facendo 3-5 brand del tuo settore che tu non fai? Controlla SimilarWeb, Semrush, LinkedIn.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "Poi dai priorità a 2-3 vere criticità con impatto misurabile. Non 10 progetti incompleti. Solo quelli che sposteranno l'ago della bilancia.",
+      },
+      {
+        type: 'h3',
+        text: '3. 90 Giorni di Focus',
+      },
+      {
+        type: 'paragraph',
+        text: "Scegli le tue 2-3 leve principali (AOV, funnel d'acquisto, velocità di checkout, recupero carrelli abbandonati, retention) e concentra le energie su quelle. Dai scadenze chiare. Rendi qualcuno responsabile.",
+      },
+      {
+        type: 'paragraph',
+        text: 'Monitora i risultati ogni singola settimana. Non solo a fine trimestre. Settimanalmente.',
+      },
+      {
+        type: 'paragraph',
+        text: 'In ogni progetto in cui ho spinto su questa disciplina — focus reale, tracking settimanale, zero distrazioni — almeno un KPI è migliorato in modo evidente dopo 90 giorni. Crescita, AOV o retention. Anche quando il traffico è rimasto piatto.',
+      },
+      {
+        type: 'h2',
+        text: 'FAQ Interne: Le Vere Domande che Mi Fanno',
+      },
+      {
+        type: 'h3',
+        text: 'Se rimango fedele a un solo piano, qualcun altro non mi supererà?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Solo se misuri i progressi in base a quanto sei impegnato. I brand che iterano con disciplina battono sempre quelli che "vanno veloci e rompono tutto". La velocità senza direzione è solo rumore.',
+      },
+      {
+        type: 'h3',
+        text: 'E se il mio mercato cambia? Non devo essere flessibile?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Certo, cambia le tue tattiche. Ma le fondamenta rimangono stabili. Le piattaforme, il team, i processi core — quelli non si stravolgono ogni trimestre. Adatti le offerte, il messaggio, i contenuti. Ma non ricostruisci la casa ogni volta che cambia il meteo.',
+      },
+      {
+        type: 'h3',
+        text: 'Costanza non significa meno innovazione?',
+      },
+      {
+        type: 'paragraph',
+        text: "Al contrario. La vera innovazione viene da team che hanno il tempo di pensare, testare e iterare. Non da team che spengono incendi di continuo. L'80% dei brand vincenti si basa su miglioramenti incrementali, non su pivot drastici.",
+      },
+      {
+        type: 'h3',
+        text: 'Come faccio a capire se i miei cambiamenti continui mi stanno costando davvero?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Fai una lista: quante volte hai cambiato i membri principali del team, la piattaforma, la strategia ads o il setup di tracciamento negli ultimi 12 mesi? Se è più di due volte per uno qualsiasi di questi, stai pagando un prezzo che probabilmente non vedi.',
+      },
+      {
+        type: 'h2',
+        text: 'Conclusione',
+      },
+      {
+        type: 'paragraph',
+        text: "Scalare nell'eCommerce, soprattutto nel fashion retail e negli integratori, quasi mai è una questione di idee geniali o colpi di fortuna. È una questione di fare bene i fondamentali:",
+      },
+      {
+        type: 'list',
+        items: [
+          'Un team pronto e allineato',
+          'Una strategia chiara, KPI reali e una roadmap che tutti capiscono',
+          'Un tech partner che risolve davvero i problemi e si prende responsabilità',
+          'Decisioni basate sui numeri, non sul trend virale della settimana',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Il vero game-changer non è evitare gli errori. È risolverli velocemente e imparare da essi. Gli errori capitano; rimanere bloccati è una scelta.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Se vuoi vedere quanto stai perdendo restando sul tapis roulant del cambiamento continuo, parliamoci. In noprob.agency aiutiamo i brand costruendo sistemi stabili, mettendo a disposizione un team rodato, organizzando meeting operativi settimanali, garantendo supporto 24/7 e indirizzandoti sempre verso i dati.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La mossa più intelligente: trova un tech partner che ti supporti per anni, non solo per settimane. Curioso di vedere come potrebbe essere per il tuo brand? Parliamoci.',
       },
     ],
   },

@@ -33,7 +33,10 @@ export default function ItalianBlogPage() {
         {/* Article Grid */}
         <div className="mx-auto mt-12 max-w-[1200px]">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
+            {articles.map((article) => {
+              const title = article.titleIt ?? article.title
+              const excerpt = article.excerptIt ?? article.excerpt
+              return (
               <Link
                 key={article.slug}
                 href={`/it/blog/${article.slug}`}
@@ -55,7 +58,7 @@ export default function ItalianBlogPage() {
                   <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
                     <Image
                       src={article.image}
-                      alt={article.title}
+                      alt={title}
                       fill
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
@@ -86,17 +89,18 @@ export default function ItalianBlogPage() {
                       overflow: 'hidden',
                     }}
                   >
-                    {article.title}
+                    {title}
                   </h2>
                   <p
                     className="font-sans text-[14px] font-medium leading-[1.4em] tracking-[-0.02em]"
                     style={{ color: '#7c7c7c' }}
                   >
-                    {article.excerpt}
+                    {excerpt}
                   </p>
                 </div>
               </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

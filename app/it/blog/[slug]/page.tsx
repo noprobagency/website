@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = articles.find((a) => a.slug === slug)
   if (!article) return {}
   return buildMetadata({
-    title: article.title,
-    description: article.excerpt,
+    title: article.titleIt ?? article.title,
+    description: article.excerptIt ?? article.excerpt,
     path: `/it/blog/${article.slug}`,
     locale: 'it',
   })
@@ -81,6 +81,9 @@ export default async function ItalianArticlePage({ params }: Props) {
   if (!article) notFound()
 
   const locale = 'it'
+  const title = article.titleIt ?? article.title
+  const excerpt = article.excerptIt ?? article.excerpt
+  const content = article.contentIt ?? article.content
 
   return (
     <>
@@ -92,10 +95,10 @@ export default async function ItalianArticlePage({ params }: Props) {
             className="font-sans font-semibold text-black tracking-[-0.07em] leading-[110%]"
             style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
           >
-            {article.title}
+            {title}
           </h1>
           <p className="max-w-[600px] font-sans text-[18px] font-medium leading-[1.5em] tracking-[-0.03em] text-[#7c7c7c]">
-            {article.excerpt}
+            {excerpt}
           </p>
         </div>
 
@@ -104,7 +107,7 @@ export default async function ItalianArticlePage({ params }: Props) {
           <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
             <Image
               src={article.image}
-              alt={article.imageAlt ?? article.title}
+              alt={article.imageAlt ?? title}
               fill
               className="object-cover"
               priority
@@ -116,7 +119,7 @@ export default async function ItalianArticlePage({ params }: Props) {
       {/* Article body */}
       <section className="w-full flex justify-center bg-[#f0f0f0] py-16 px-5 min-[810px]:px-9">
         <article className="w-full max-w-[700px]">
-          {article.content?.map((section, idx) => renderSection(section, idx))}
+          {content?.map((section, idx) => renderSection(section, idx))}
         </article>
       </section>
 
