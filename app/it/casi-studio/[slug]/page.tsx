@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildMetadata({
     title: useCase.title,
     description: useCase.excerpt,
-    path: `/it/use-cases/${useCase.slug}`,
+    path: `/it/casi-studio/${useCase.slug}`,
     locale: 'it',
   })
 }

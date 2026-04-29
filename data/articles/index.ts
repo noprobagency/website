@@ -45,9 +45,9 @@ export type Article = {
 
 export const articles: Article[] = [
   {
-    slug: 'ecommerce-long-term-strategy',
-    title: 'eCommerce Long-Term Strategy: Why Long-Term Thinking Beats Trend Chasing',
-    excerpt: "eCommerce brands that truly grow don't chase trends. They build long-term strategy, stable teams, and solid technical foundations. What the data really says.",
+    slug: 'ecommerce-growth-strategy-long-term',
+    title: 'eCommerce Growth Strategy: Why Long-Term Thinking Beats Trend Chasing',
+    excerpt: "eCommerce brands that truly grow don't chase trends. They build a growth strategy that compounds over the long term: stable teams, solid technical foundations, real KPIs. What the data really says.",
     ledeEn: "The secret of eCommerce brands that actually grow isn't growth hacks. It's the foundations that compound over time.",
     image: '/images/blog/strategia-ecommerce-long-term-cover.png',
     imageAlt: 'Long-term thinking, compounded growth: with NoProb vs chasing every trend',
@@ -57,7 +57,7 @@ export const articles: Article[] = [
     wordCount: 2600,
     articleSection: 'eCommerce Strategy',
     readingTimeMinutes: 9,
-    keywordsEn: 'ecommerce strategy, long-term thinking, ecommerce kpi, stable team, shopify partner',
+    keywordsEn: 'ecommerce growth strategy, ecommerce strategy, long-term thinking, ecommerce kpi, stable team, shopify partner',
     faqEn: [
       {
         question: "If I stick to the same strategy, won't I fall behind while competitors innovate?",

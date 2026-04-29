@@ -33,12 +33,14 @@ const nextConfig: NextConfig = {
       { source: '/it/data-driven-team/:path*',destination: '/it/team-ecommerce-dedicato/:path*', permanent: true },
       { source: '/it/ecommerce-rebuild',      destination: '/it/rifacimento-ecommerce',    permanent: true },
       { source: '/it/ecommerce-rebuild/:path*',destination: '/it/rifacimento-ecommerce/:path*', permanent: true },
-      // Misclassified content moved from use-cases to blog
-      { source: '/use-cases/ecommerce-growth-secrets',         destination: '/blog/ecommerce-long-term-strategy',     permanent: true },
-      { source: '/it/casi-studio/ecommerce-growth-secrets',    destination: '/it/blog/strategia-ecommerce-long-term', permanent: true },
-      // Blog post slugs rebranded to SEO-optimized
-      { source: '/blog/ecommerce-growth-secrets',              destination: '/blog/ecommerce-long-term-strategy',     permanent: true },
-      { source: '/it/blog/ecommerce-growth-secrets',           destination: '/it/blog/strategia-ecommerce-long-term', permanent: true },
+      // Misclassified content moved from use-cases to blog (single-hop to current slug)
+      { source: '/use-cases/ecommerce-growth-secrets',         destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
+      { source: '/it/casi-studio/ecommerce-growth-secrets',    destination: '/it/blog/strategia-ecommerce-long-term',    permanent: true },
+      // Blog post slugs rebranded to SEO-optimized (every historical slug points
+      // directly at the current slug — no redirect chains)
+      { source: '/blog/ecommerce-growth-secrets',              destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
+      { source: '/blog/ecommerce-long-term-strategy',          destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
+      { source: '/it/blog/ecommerce-growth-secrets',           destination: '/it/blog/strategia-ecommerce-long-term',    permanent: true },
     ]
   },
 }
