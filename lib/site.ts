@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 
 import { absoluteUrl } from '@/lib/utils'
 import { getDictionary, type Locale } from '@/lib/i18n'
+import { getAlternateLocalePath } from '@/lib/i18n/routes'
 
 export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.7.3',
+  version: 'v0.7.4',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
@@ -67,9 +68,10 @@ export function buildMetadata({
   const resolvedTitle = title ?? dict?.title ?? siteConfig.defaultTitle
   const resolvedDescription = description ?? dict?.description ?? siteConfig.description
 
-  // Derive the EN and IT paths from the current path + locale
-  const enPath = locale === 'it' ? path.replace(/^\/it/, '') || '/' : path
-  const itPath = locale === 'en' ? `/it${path === '/' ? '' : path}` : path
+  // Derive the EN and IT paths via the route map (handles different slugs per locale)
+  const altPath = getAlternateLocalePath(path, locale)
+  const enPath = locale === 'en' ? path : altPath
+  const itPath = locale === 'it' ? path : altPath
 
   const canonical = absoluteUrl(path)
   const enUrl = absoluteUrl(enPath)

@@ -8,7 +8,7 @@ import { useCases } from '@/data/use-cases'
 import Footer from '@/components/layout/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({ path: '/it/use-cases', locale: 'it', pageKey: 'useCases' })
+  return buildMetadata({ path: '/it/casi-studio', locale: 'it', pageKey: 'useCases' })
 }
 
 export default function ItalianUseCasesPage() {
@@ -35,7 +35,7 @@ export default function ItalianUseCasesPage() {
             {useCases.map((useCase) => (
               <Link
                 key={useCase.slug}
-                href={`/it/use-cases/${useCase.slug}`}
+                href={`/it/casi-studio/${useCase.slug}`}
                 className="group flex flex-col overflow-hidden rounded-[24px] bg-white no-underline"
                 style={{
                   border: '6px solid #f8f8f8',

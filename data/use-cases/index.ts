@@ -9,6 +9,9 @@ export type UseCase = {
   caseType: string
   date: string
   content?: ArticleSection[]
+  titleEn?: string
+  excerptEn?: string
+  contentEn?: ArticleSection[]
 }
 
 export const useCases: UseCase[] = [
@@ -540,6 +543,448 @@ export const useCases: UseCase[] = [
       {
         type: 'cta',
       },
+    ],
+    titleEn: 'How to Grow the eCommerce of a Luxury Fashion Boutique: From Marginal Revenue to Over 1 Million Online',
+    excerptEn: 'The Cumini case study',
+    contentEn: [
+      { type: 'paragraph', text: 'Sector: Fashion retail | Luxury multibrand' },
+      { type: 'paragraph', text: 'Partnership length: Over 4 years (active)' },
+      { type: 'paragraph', text: 'Status: In steady growth' },
+      {
+        type: 'paragraph',
+        text: "An eCommerce doesn't grow by chance, it needs a system. This case study describes what happens when one is built the right way.",
+      },
+      { type: 'paragraph', text: 'In just over 4 years, since 2022:' },
+      {
+        type: 'list',
+        items: [
+          'from an eCommerce with marginal revenue to millions of euros in annual online revenue',
+          'first six-figure monthly sales, today a stable average during peak periods',
+          '+226.9% growth in the second year',
+          'tracking moved from incomplete to a 95% coverage of real conversions',
+          'mobile conversion rate nearly doubled',
+          'email marketing finally reliable and measurable, with +23% in attributable revenue',
+        ],
+      },
+      { type: 'h2', text: 'The starting point' },
+      {
+        type: 'paragraph',
+        text: 'Cumini is an Italian luxury fashion multibrand boutique with two physical stores in Friuli-Venezia Giulia. For years it has been a reference point for high fashion in the region, thanks to a selection that includes some of the most relevant names in international ready-to-wear.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A solid positioning that, however, was not yet fully expressed on the digital channel: the eCommerce was already active, but used as a mere extension of the physical store and not developed as a strategic tool.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The conversion rate was in fact close to zero, navigation was not intuitive, and the platform was technically tied to an external vendor connected to the internal ERP, with limited room for intervention.',
+      },
+      {
+        type: 'paragraph',
+        text: 'From a marketing standpoint, the picture was rather fragmented: there was no data tracking system, social media had been penalized by previous management, email marketing was limited to occasional sends, and advertising activities were minimal and lacked a defined structure.',
+      },
+      {
+        type: 'paragraph',
+        text: "What was missing, in short, was a structured ecosystem capable of supporting the brand's development on the digital channel as well.",
+      },
+      {
+        type: 'paragraph',
+        text: 'The project is led by NoProb Agency, a Shopify Partner specialized in B2C eCommerce development, migration, and management, working exclusively with Cumini since August 2022.',
+      },
+      { type: 'h2', text: '2022-2024: The construction years' },
+      {
+        type: 'paragraph',
+        text: 'The details of these years would deserve a separate analysis. They are summarized here to provide the necessary context, not to build an operational manual.',
+      },
+      {
+        type: 'paragraph',
+        text: 'At the end of each year, two indicators are reported: the MER (Marketing Efficiency Ratio, an indicator of overall profitability) and the percentage growth of eCommerce revenue compared to the previous year.',
+      },
+      { type: 'h3', text: '2022: project setup and first integrations' },
+      {
+        type: 'paragraph',
+        text: '2022 marked the beginning of the operational management of the entire project.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The objective was to start integrating some initial interventions progressively, calibrating them to the real needs of the moment.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The first activity was the activation of Google Ads, entrusted to a vertical specialist in the sector.',
+      },
+      {
+        type: 'paragraph',
+        text: "The starting situation was favorable: a catalog of luxury brands with a distinctive selection and competitive online prices, combined with an audience that was already 'formed' and actively searching for those products online.",
+      },
+      {
+        type: 'paragraph',
+        text: 'In a few months, this single channel allowed us to achieve the same eCommerce revenue as the entire previous year.',
+      },
+      { type: 'paragraph', text: 'This result should be interpreted correctly.' },
+      {
+        type: 'paragraph',
+        text: 'It was not an exceptional spike, but the response to a demand that already existed: the activation of Google Ads simply made an offer visible that previously was not.',
+      },
+      { type: 'metrics', merValue: '9', growthValue: '+25.8%' },
+      { type: 'h3', text: '2023: development and operational consolidation' },
+      {
+        type: 'paragraph',
+        text: 'In the second year, the strategy structured itself around the key moments of the commercial calendar, from sales seasons to new collection launches.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The system began to take shape, with a first significant peak already in January, during winter sales.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The main limitation, however, remained the eCommerce platform.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Built on proprietary code and not directly managed, it presented recurring and hardly predictable technical issues: site instability, interruptions in the purchase processes, and a consequent loss of sales.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This had a direct impact on marketing activities as well. At several moments it was necessary to reduce or suspend advertising campaigns, to avoid investing traffic into an unreliable infrastructure.',
+      },
+      {
+        type: 'paragraph',
+        text: 'During the year, several attempts were made to work around these limitations: external integrations, modifications to tracking flows, operational adaptations to keep the main channels active.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Useful interventions to mitigate the issues, but not resolutive, because they did not address the root cause.',
+      },
+      {
+        type: 'paragraph',
+        text: 'In this context, the main lever was flexibility: rapid integration of vertical skills, continuous testing, data reading, and constant adaptation.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Despite the technical limitations, eCommerce revenue recorded significant growth.',
+      },
+      { type: 'metrics', merValue: '7.5', growthValue: '+226.9%' },
+      { type: 'h3', text: '2024: toward a new infrastructure' },
+      {
+        type: 'paragraph',
+        text: 'January 2024 marked a symbolic moment: the first month with six-figure online revenue.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A result that, two years earlier, seemed completely out of reach.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The main limitation, however, remained the same: the eCommerce platform still presented sudden crashes and did not allow us to set up marketing automation activities or implement complete and accurate tracking systems.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Furthermore, in September 2024, the Google catalog remained offline for three consecutive weeks, compromising one of the most strategic moments of the year (sales).',
+      },
+      {
+        type: 'paragraph',
+        text: 'All the data indicated a constant loss of potential sales, linked to technical factors outside our control.',
+      },
+      {
+        type: 'paragraph',
+        text: 'In parallel, the team reached greater operational stability: the professionals involved worked in an increasingly coordinated way across the various channels, making overall management more effective.',
+      },
+      { type: 'paragraph', text: 'In this context, a new phase of the project opened up.' },
+      {
+        type: 'paragraph',
+        text: 'Alongside performance activities, we dedicated ourselves to branding, with new editorial lines for social media and greater attention to the overall consistency of the image, with the goal of making the brand more recognizable and consistent in the digital space as well.',
+      },
+      {
+        type: 'paragraph',
+        text: "All this allowed the brand to continue growing in a coherent way on all fronts, despite the platform's limitations.",
+      },
+      {
+        type: 'paragraph',
+        text: "At the end of the year, together with the client, a strategic decision was made and planned as a long-term investment: to migrate the entire ecosystem to a modern platform and develop in-house a technical solution capable of integrating with Cumini's proprietary ERP.",
+      },
+      { type: 'metrics', merValue: '6', growthValue: '+71.6%' },
+      { type: 'h2', text: '2025: A structural shift with Shopify' },
+      {
+        type: 'image',
+        src: '/images/use-case-cumini/use-case-cumini5.png',
+        alt: 'Cumini eCommerce on Shopify',
+      },
+      {
+        type: 'paragraph',
+        text: "With Shopify, everything that previously didn't work stopped being a problem.",
+      },
+      {
+        type: 'list',
+        items: [
+          'real tracking: from 30% to 95% of identified conversions',
+          'mobile conversion rate nearly doubled',
+          'email automation finally active and measurable',
+          'zero crashes, zero offline catalogs, zero sales lost due to technical issues',
+          'decisions based on accurate data, not estimates',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The transition to Shopify was not just a platform change, but a true turning point for the entire project: here is why.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The first months of 2025 turned out to be the best ever for the eCommerce.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Years of work, well-consolidated internal processes, and team stability were finally producing predictable and plannable results.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The structure was solid, but a platform up to standard was still missing.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Starting in spring 2025, for about three months, the team dedicated itself entirely to planning and organizing the transition to Shopify: technical architecture, integrations, flows, and tracking.',
+      },
+      {
+        type: 'paragraph',
+        text: 'From May to December the active migration phase took place, accompanied by constant optimization work on all fronts: SEO traffic recovery, technical issue resolution, staff training, automation of operational processes, conversion rate optimization (CRO), and integration with tools like Klaviyo and Stape.',
+      },
+      {
+        type: 'paragraph',
+        text: '2025 closed with the all-time revenue record, despite the months of technical transition.',
+      },
+      {
+        type: 'metrics',
+        merValue: '5',
+        growthValue: '+26.2%',
+        note: 'Compared to the previous year. All-time record.',
+      },
+      { type: 'cta' },
+      { type: 'h3', text: 'Tracking: from partial to complete' },
+      {
+        type: 'image',
+        src: '/images/use-case-cumini/use-case-cumini2.png',
+        alt: 'Tracking system score before and after the Sprint',
+        maxWidth: '420px',
+      },
+      {
+        type: 'paragraph',
+        text: "Before Shopify, the tracking system was a 'patch accumulation': partial integrations, missing data, and incorrect attribution across channels. We knew the numbers were not reliable, but we did not imagine to what extent.",
+      },
+      {
+        type: 'paragraph',
+        text: 'With the migration we introduced a server-to-server tracking system through Stape.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Today, the site reaches an overall score of 92/100, with Analytics at 100 and Ads at 97.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This allows us to accurately track about 95% of real sessions and conversions, giving us a complete view of what happens in each channel: which campaigns produce results, where users abandon the funnel, and what the real value of each touchpoint is.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Naturally, 95% tracking is not an objective in itself, but the necessary condition for making all decisions at a strategic, marketing, and communication level.',
+      },
+      { type: 'h3', text: 'Data-driven: the strategic shift' },
+      {
+        type: 'image',
+        src: '/images/use-case-cumini/use-case-cumini6.png',
+        alt: 'Monthly metrics dashboard - ROAS, MER, margin',
+      },
+      {
+        type: 'image',
+        src: '/images/use-case-cumini/use-case-cumini3.png',
+        alt: 'Shopify analytics: sessions, sales, orders, conversion rate',
+      },
+      {
+        type: 'paragraph',
+        text: 'With Shopify, we have access to a clear dashboard, easily integrable with external analysis tools and capable of returning metrics that we previously calculated manually on Google Sheets.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We are talking about precise numbers, not generic estimates: total CAC, nCAC (new customer acquisition cost), ROAS by channel, total ROAS of the shop, real contribution margin net of all costs.',
+      },
+      {
+        type: 'paragraph',
+        text: 'By cross-referencing all this data with seasonality, we are able to clearly read the dynamics of the shop: how much a new customer really costs, when is the right time to push more on campaigns and when to slow down, which strategies remain solid over time, and which only win during sales.',
+      },
+      {
+        type: 'paragraph',
+        text: "Today, the focus is on retention and LTV: growth doesn't come only from acquiring new customers, but from knowing how to value existing ones and increasing their value over time.",
+      },
+      { type: 'h3', text: 'Conversion rate: mobile priority' },
+      {
+        type: 'paragraph',
+        text: 'The mobile conversion rate is one of the most sensitive indicators for a fashion eCommerce.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Today, in the case of Cumini, most visits come from smartphones (a now-standard data point in the sector), but until recently almost all transactions still happened from desktop.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This imbalance highlighted a clear criticality: the mobile purchase journey was not fluid or intuitive enough, and user experience was holding back customers who already intended to purchase.',
+      },
+      {
+        type: 'paragraph',
+        text: "With the transition to Shopify, the situation changed radically: the mobile conversion rate nearly doubled, and the credit goes to a native checkout designed for the mobile experience, free of errors and perfectly aligned with the brand's standards.",
+      },
+      {
+        type: 'paragraph',
+        text: 'In a fashion eCommerce with a high AOV, even a single percentage point of increase in conversion rate can generate tens of thousands of euros of additional revenue every year.',
+      },
+      {
+        type: 'h3',
+        text: 'Klaviyo and marketing automation: reliable data, more effective strategies',
+      },
+      {
+        type: 'image',
+        src: '/images/use-case-cumini/use-case-cumini-7.png',
+        alt: 'Klaviyo: performance summary and attributed revenue',
+      },
+      {
+        type: 'paragraph',
+        text: 'With the move to Shopify, the integration with Klaviyo became native and perfectly functional. Previously, the connection was unstable: incomplete data, unrecognized purchases, intermittent automatic flows. Even the simplest automations operated irregularly.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Today Klaviyo receives clean and updated data in real time on every user behavior. The flows are active, consistent, and high-performing. The result? An increase in revenue attributable to email marketing of about 23% compared to the previous period.',
+      },
+      { type: 'h3', text: 'New collection periods -> full price' },
+      {
+        type: 'paragraph',
+        text: 'In multibrand fashion, sales dynamics change significantly between sale periods and full-price periods.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Many stores tend to reduce or interrupt advertising during new collection launches, because the ROAS appears lower in the short term.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Our approach was different: a 400 EUR product is rarely purchased on the first visit. The decision-making process is longer, requires more interactions and time.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For this reason, investments during new collection launch periods are not aimed at immediate conversion, but at building a base of users who, in most cases, activate in the following months, often during sales.',
+      },
+      {
+        type: 'paragraph',
+        text: 'To manage this strategy in a truly profitable way, accurate data is needed: campaign breakeven, cost per add-to-cart, cost per checkout start, CAC, and nCAC monitored in real time.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Today, even in historically more complex periods, the store maintains solid profitability, with tens of thousands of euros invested every month in advertising.',
+      },
+      { type: 'h2', text: '2026: new results' },
+      {
+        type: 'paragraph',
+        text: 'In the months following the migration, the results began to consolidate.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The store reached a monthly six-figure revenue average, no longer linked to occasional exceptional peaks but now stable and recurring.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Today, Cumini has reached a level of maturity that allows it to grow consistently and predictably over time.',
+      },
+      { type: 'h2', text: 'Method, numbers, growth: the combination that makes the difference' },
+      {
+        type: 'image',
+        src: '/images/use-case-cumini/use-case-cumini1.png',
+        alt: 'MER decreasing chart and overall revenue growth',
+      },
+      {
+        type: 'image',
+        src: '/images/use-case-cumini/use-case-cumini4.png',
+        alt: 'MER vs contribution margin (net revenue) over time',
+      },
+      {
+        type: 'paragraph',
+        text: 'The growth of a fashion eCommerce is never linear: it alternates phases of acceleration, moments of stagnation, and periods in which work is done to build, not to harvest.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The chart above tells this dynamic better than any words. The MER tends to decrease over time, a sign of an increasingly competitive market and margins that shrink with scale. Yet, revenue continues to grow.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The real value indicator is the contribution margin, that is, net revenue year over year (the green line in the chart). This is the metric that really matters: how much the company earns, net, every year.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Naturally, the growth of net revenue should not be interpreted as a constantly ascending line, but as a value that is built and accumulated over time. There can be years, like 2025, in which a slight dip is recorded due to platform investments, while still maintaining a positive and solid base.',
+      },
+      {
+        type: 'paragraph',
+        text: 'In the long run, with consistent numbers and a strategy founded on stability, value tends to grow steadily and to accumulate lasting results. It is the result of work conceived and carried out with a long-term logic.',
+      },
+      { type: 'h2', text: 'Today: structure and growth' },
+      {
+        type: 'paragraph',
+        text: 'In fashion, the space between brand discovery and purchase is wide and not attributable to a single channel.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For this reason, growth cannot be managed in an isolated way. It requires an integrated multichannel strategy, in which each touchpoint contributes differently to the purchase journey.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Social, email, Google, Meta, SEO: each channel has a specific role. Direct ROAS, alone, is not enough to evaluate its effectiveness. A user can discover the brand on Instagram, find it again on Google, receive an email, and purchase weeks later, often during sales. It is a journey distributed over time, built through successive interactions.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For this reason, no channel is interrupted based solely on short-term performance. The result is always the combined effect of multiple levers working together.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This approach is directly reflected in overall results. The real growth indicator is not online revenue itself, but the ability to generate value consistently and predictably over time.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Operationally, the work is based on the continuous monitoring of the same indicators (MER, ROAS by channel, contribution margin, CAC, and repurchase rate) from which decisions are derived. The results are the product of a set of progressive choices, not isolated actions.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The determining variable is balance. Managing an eCommerce today means coordinating in a coherent way all the levers: advertising, branding, email marketing, SEO, technical development, and analytics.',
+      },
+      {
+        type: 'paragraph',
+        text: 'It is from this balance that growth potential depends. Even a single area managed inadequately can limit it.',
+      },
+      { type: 'paragraph', text: 'Today:' },
+      {
+        type: 'list',
+        items: [
+          'The eCommerce store has gone from practically zero revenue to millions of euros in annual online revenue',
+          'The first six-figure month was reached and surpassed',
+          'Overall company revenue has grown year over year for the entire duration of the collaboration',
+          'Tracking now covers about 95% of real sessions and conversions',
+          'The mobile conversion rate has doubled since the migration to Shopify',
+          'Revenue attributable to email marketing has grown by about 23% with Klaviyo correctly integrated',
+          'Urgent technical issues went from 86 communications in 2024 to 14 in 2025',
+        ],
+      },
+      { type: 'cta' },
+      { type: 'h2', text: 'Does this model work for you?' },
+      {
+        type: 'paragraph',
+        text: "If you have made it this far, you probably recognize something of your own reality in these pages. A brand with a strong product and physical stores that perform well, but with an eCommerce that does not express its full potential. Or an active online store, but lacking real governance: incomplete data, advertising guided by intuition, a technical platform that does not scale with the ambition of the business.",
+      },
+      {
+        type: 'paragraph',
+        text: 'The model built with Cumini is designed for fashion boutiques and multibrand B2C brands that already have a validated product and structured company revenue. It is for those who want to transform the online channel into a strategic asset, managed with the same care and attention dedicated to the physical store.',
+      },
+      {
+        type: 'paragraph',
+        text: 'It is not the solution for those looking for results in 30 days, nor for those who want a simple supplier to delegate to without involvement.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Cumini has been an active client of NoProb Agency for over 4 years.',
+      },
+      { type: 'cta' },
     ],
   },
   {

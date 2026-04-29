@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const useCase = useCases.find((uc) => uc.slug === slug)
   if (!useCase) return {}
   return buildMetadata({
-    title: useCase.title,
-    description: useCase.excerpt,
+    title: useCase.titleEn ?? useCase.title,
+    description: useCase.excerptEn ?? useCase.excerpt,
     path: `/use-cases/${useCase.slug}`,
     locale: 'en',
   })
@@ -32,6 +32,10 @@ export default async function UseCasePage({ params }: Props) {
   const { slug } = await params
   const useCase = useCases.find((uc) => uc.slug === slug)
   if (!useCase) notFound()
+
+  const title = useCase.titleEn ?? useCase.title
+  const excerpt = useCase.excerptEn ?? useCase.excerpt
+  const content = useCase.contentEn ?? useCase.content
 
   return (
     <>
@@ -43,10 +47,10 @@ export default async function UseCasePage({ params }: Props) {
             className="font-sans font-semibold text-black tracking-[-0.07em] leading-[110%]"
             style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
           >
-            {useCase.title}
+            {title}
           </h1>
           <p className="max-w-[600px] font-sans text-[18px] font-medium leading-[1.5em] tracking-[-0.03em] text-[#7c7c7c]">
-            {useCase.excerpt}
+            {excerpt}
           </p>
         </div>
 
@@ -55,7 +59,7 @@ export default async function UseCasePage({ params }: Props) {
           <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
             <Image
               src={useCase.image}
-              alt={useCase.imageAlt ?? useCase.title}
+              alt={useCase.imageAlt ?? title}
               fill
               className="object-cover"
               priority
@@ -67,7 +71,7 @@ export default async function UseCasePage({ params }: Props) {
       {/* Body */}
       <section className="w-full flex justify-center bg-[#f0f0f0] py-16 px-5 min-[810px]:px-9">
         <article className="w-full max-w-[720px]">
-          {useCase.content?.map((section, idx) => renderSection(section, idx))}
+          {content?.map((section, idx) => renderSection(section, idx, 'en'))}
         </article>
       </section>
 

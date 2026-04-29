@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { siteAssets } from '@/lib/site'
 import { getDictionary, type Locale } from '@/lib/i18n'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
 const heroPartners = [
   {
@@ -175,7 +176,7 @@ export default function DataDrivenTeamHero({ locale = 'en' }: { locale?: Locale 
         {/* CTA */}
         <div className="flex flex-col items-center gap-[9px] max-[809px]:w-full min-[810px]:w-auto min-[810px]:flex-row min-[810px]:flex-nowrap min-[810px]:items-center min-[810px]:gap-2">
           <Link
-            href={locale === 'it' ? '/it/contacts' : '/contacts'}
+            href={ROUTE_PATHS.contacts[locale]}
             data-tracking="data_driven_team_hero_cta"
             className="button-principal text-center max-[809px]:!w-full max-[809px]:![white-space:normal]"
           >

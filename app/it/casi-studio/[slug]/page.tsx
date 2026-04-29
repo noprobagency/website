@@ -69,7 +69,7 @@ export default async function ItalianUseCasePage({ params }: Props) {
       {/* Article body */}
       <section className="w-full flex justify-center bg-[#f0f0f0] py-16 px-5 min-[810px]:px-9">
         <article className="w-full max-w-[720px]">
-          {useCase.content?.map((section, idx) => renderSection(section, idx))}
+          {useCase.content?.map((section, idx) => renderSection(section, idx, 'it'))}
         </article>
       </section>
 

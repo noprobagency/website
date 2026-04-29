@@ -2,10 +2,23 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import type { ArticleSection } from '@/data/articles'
+import type { Locale } from '@/lib/i18n'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
-const CONTACTS_HREF = 'https://noprob.agency/it/contacts'
+const CTA_COPY: Record<Locale, { heading: string; body: string; button: string }> = {
+  en: {
+    heading: "You're leaving potential on the table.",
+    body: "If you have a fashion eCommerce that isn't producing what it should, let's talk. We work with a selected number of long-term projects.",
+    button: "Let's talk",
+  },
+  it: {
+    heading: 'Stai lasciando potenziale sul tavolo.',
+    body: 'Se hai un eCommerce fashion che non sta ancora rendendo quello che dovrebbe, parliamoci. Lavoriamo con un numero selezionato di progetti a lungo termine.',
+    button: 'Parliamoci',
+  },
+}
 
-export function renderSection(section: ArticleSection, idx: number) {
+export function renderSection(section: ArticleSection, idx: number, locale: Locale = 'en') {
   switch (section.type) {
     case 'h2':
       return (
@@ -64,7 +77,8 @@ export function renderSection(section: ArticleSection, idx: number) {
           ))}
         </ul>
       )
-    case 'metrics':
+    case 'metrics': {
+      const growthLabel = locale === 'en' ? 'eCommerce revenue growth: ' : 'Crescita fatturato eCommerce: '
       return (
         <div
           key={idx}
@@ -75,7 +89,7 @@ export function renderSection(section: ArticleSection, idx: number) {
             <span style={{ color: '#96BF47', fontWeight: 600 }}>{section.merValue}</span>
           </div>
           <div className="mt-2 border-t border-black/10 pt-2 font-sans text-[15px] tracking-[-0.02em] text-[#1c1c1c]">
-            <span>Crescita fatturato eCommerce: </span>
+            <span>{growthLabel}</span>
             <span style={{ color: '#96BF47', fontWeight: 600 }}>{section.growthValue}</span>
           </div>
           {section.note ? (
@@ -85,7 +99,10 @@ export function renderSection(section: ArticleSection, idx: number) {
           ) : null}
         </div>
       )
-    case 'cta':
+    }
+    case 'cta': {
+      const copy = CTA_COPY[locale]
+      const href = ROUTE_PATHS.contacts[locale]
       return (
         <aside
           key={idx}
@@ -93,13 +110,13 @@ export function renderSection(section: ArticleSection, idx: number) {
           style={{ padding: '40px 48px' }}
         >
           <h3 className="font-sans text-[24px] font-bold leading-[1.2em] tracking-[-0.03em] text-white">
-            Stai lasciando potenziale sul tavolo.
+            {copy.heading}
           </h3>
           <p className="mt-3 font-sans text-[16px] leading-[1.6em] text-[#AAAAAA]">
-            Se hai un eCommerce fashion che non sta ancora rendendo quello che dovrebbe, parliamoci. Lavoriamo con un numero selezionato di progetti a lungo termine.
+            {copy.body}
           </p>
           <Link
-            href={CONTACTS_HREF}
+            href={href}
             className="mt-6 inline-block rounded-[12px] font-sans font-semibold no-underline"
             style={{
               backgroundColor: '#96BF47',
@@ -108,10 +125,11 @@ export function renderSection(section: ArticleSection, idx: number) {
             }}
             data-tracking="cumini_use_case_cta"
           >
-            Parliamoci
+            {copy.button}
           </Link>
         </aside>
       )
+    }
     default:
       return null
   }

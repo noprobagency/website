@@ -51,7 +51,7 @@ export default function UseCasesPage() {
                   <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
                     <Image
                       src={useCase.image}
-                      alt={useCase.title}
+                      alt={useCase.titleEn ?? useCase.title}
                       fill
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
@@ -82,13 +82,13 @@ export default function UseCasesPage() {
                       overflow: 'hidden',
                     }}
                   >
-                    {useCase.title}
+                    {useCase.titleEn ?? useCase.title}
                   </h2>
                   <p
                     className="font-sans text-[14px] font-medium leading-[1.4em] tracking-[-0.02em]"
                     style={{ color: '#7c7c7c' }}
                   >
-                    {useCase.excerpt}
+                    {useCase.excerptEn ?? useCase.excerpt}
                   </p>
                 </div>
               </Link>

@@ -8,8 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
 
   for (const route of ROUTES) {
-    const enUrl = `${BASE_URL}${route.path === '/' ? '' : route.path}`
-    const itUrl = `${BASE_URL}/it${route.path === '/' ? '' : route.path}`
+    const enUrl = `${BASE_URL}${route.enPath === '/' ? '' : route.enPath}`
+    const itUrl = `${BASE_URL}${route.itPath}`
 
     entries.push({
       url: enUrl,

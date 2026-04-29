@@ -14,7 +14,7 @@ export default function StickyContact() {
   const t = getDictionary(locale)
 
   // Don't show on contact pages
-  const isContactPage = pathname === '/contacts' || pathname === '/it/contacts'
+  const isContactPage = pathname === '/contacts' || pathname === '/it/contatti'
 
   useEffect(() => {
     if (isContactPage) return

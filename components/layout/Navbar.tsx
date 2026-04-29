@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
 import { getDictionary, type Locale } from '@/lib/i18n'
+import { ROUTE_PATHS, getAlternateLocalePath } from '@/lib/i18n/routes'
 import { colors, dropdown, logoText } from '@/lib/design-tokens'
 import { siteAssets } from '@/lib/site'
 
@@ -15,10 +16,7 @@ function getLocale(pathname: string): Locale {
 }
 
 function getAlternateHref(pathname: string): string {
-  if (pathname === '/it') return '/'
-  if (pathname.startsWith('/it/')) return pathname.slice(3)
-  if (pathname === '/') return '/it'
-  return `/it${pathname}`
+  return getAlternateLocalePath(pathname, getLocale(pathname))
 }
 
 function ChevronDown({ size = 14, color = colors.textDark }: { size?: number; color?: string }) {
@@ -341,8 +339,8 @@ export default function Navbar() {
   const [isOverDark, setIsOverDark] = useState(false)
 
   const alternateHref = getAlternateHref(pathname)
-  const contactsHref = locale === 'it' ? '/it/contacts' : '/contacts'
-  const logoHref = locale === 'it' ? '/it' : '/'
+  const contactsHref = ROUTE_PATHS.contacts[locale]
+  const logoHref = ROUTE_PATHS.home[locale]
 
   const mobileNav = [...t.navbar.serviceItems, ...t.navbar.navLinks]
 

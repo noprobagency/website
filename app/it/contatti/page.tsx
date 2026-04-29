@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({ path: '/it/contacts', locale: 'it', pageKey: 'contacts' })
+  return buildMetadata({ path: '/it/contatti', locale: 'it', pageKey: 'contacts' })
 }
 
 export default function ItalianContactsPage() {
