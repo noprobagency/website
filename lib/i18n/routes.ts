@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n'
+import { articles } from '@/data/articles'
 
 export type RouteKey =
   | 'home'
@@ -25,8 +26,13 @@ export function getRoutePath(key: RouteKey, locale: Locale): string {
 
 /**
  * Map a path in one locale to the equivalent path in the other locale.
- * Handles fixed routes (lookup in ROUTE_PATHS) and dynamic /use-cases/[slug],
- * /blog/[slug] routes (slug is shared, only prefix changes).
+ * Handles:
+ *  - Fixed routes via lookup in `ROUTE_PATHS`.
+ *  - Dynamic `/use-cases/[slug]` routes — slug is shared between locales.
+ *  - Dynamic `/blog/[slug]` routes — slug differs per locale (article.slug for
+ *    EN, article.slugIt for IT). The article data is consulted to map the
+ *    current-locale slug to the alternate-locale slug.
+ *  - Unknown paths fall back to the input path (no-op).
  */
 export function getAlternateLocalePath(path: string, currentLocale: Locale): string {
   const altLocale: Locale = currentLocale === 'en' ? 'it' : 'en'
@@ -36,17 +42,28 @@ export function getAlternateLocalePath(path: string, currentLocale: Locale): str
     if (paths[currentLocale] === path) return paths[altLocale]
   }
 
-  // Dynamic routes: use-cases
+  // Dynamic routes: use-cases (slug shared between locales)
   const useCasesCurrent = ROUTE_PATHS.useCases[currentLocale]
   const useCasesAlt = ROUTE_PATHS.useCases[altLocale]
   if (path.startsWith(useCasesCurrent + '/')) {
     return useCasesAlt + path.slice(useCasesCurrent.length)
   }
 
-  // Dynamic routes: blog
+  // Dynamic routes: blog (per-locale slug — look up via articles data)
   const blogCurrent = ROUTE_PATHS.blog[currentLocale]
   const blogAlt = ROUTE_PATHS.blog[altLocale]
   if (path.startsWith(blogCurrent + '/')) {
+    const currentSlug = path.slice(blogCurrent.length + 1)
+    const article = articles.find((a) =>
+      currentLocale === 'it' ? (a.slugIt ?? a.slug) === currentSlug : a.slug === currentSlug
+    )
+    if (article) {
+      const altSlug = altLocale === 'it' ? (article.slugIt ?? article.slug) : article.slug
+      return `${blogAlt}/${altSlug}`
+    }
+    // Article not found in data — fall back to the alt-locale prefix with the
+    // original slug. The alt URL may 404, but that surfaces a real data issue
+    // rather than silently sending users to a wrong page.
     return blogAlt + path.slice(blogCurrent.length)
   }
 
