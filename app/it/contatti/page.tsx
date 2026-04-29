@@ -13,7 +13,7 @@ export default function ItalianContactsPage() {
   return (
     <main>
       <ContactsHero />
-      <ContactSection />
+      <ContactSection successRedirect="/it/grazie" />
       <Footer locale="it" />
     </main>
   )

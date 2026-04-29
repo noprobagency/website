@@ -2,10 +2,16 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { siteAssets } from '@/lib/site'
 import { contactSchema, ContactFormData } from '@/lib/schemas/contact'
+
+type ContactSectionProps = {
+  /** Path to navigate to after a successful submission. Defaults to /thank-you. */
+  successRedirect?: string
+}
 
 const avatars = [
   '/images/originals/mEIBGBqwotHJ35YaPhM5ljuLc2U.png',
@@ -15,9 +21,11 @@ const avatars = [
   '/images/originals/38I07rfLJ4DXJRQZ7YXCanY6ko.png',
 ]
 
-export default function ContactSection() {
+export default function ContactSection({
+  successRedirect = '/thank-you',
+}: ContactSectionProps = {}) {
+  const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
-  const [isSuccess, setIsSuccess] = useState(false)
 
   const {
     register,
@@ -49,8 +57,8 @@ export default function ContactSection() {
         return
       }
 
-      setIsSuccess(true)
       reset()
+      router.push(successRedirect)
     } catch (err) {
       console.error('[contact-form] submit error:', err)
       setServerError('Network error. Please try again.')
@@ -340,16 +348,14 @@ export default function ContactSection() {
               <div className="flex flex-col gap-3">
                 <button
                   type="submit"
-                  disabled={isSubmitting || isSuccess}
+                  disabled={isSubmitting}
                   className="button-principal !w-full disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Your Request'}
                 </button>
 
                 <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-text">
-                  {isSuccess
-                    ? 'Messaggio inviato con successo.'
-                    : 'You’ll get direct access to our eCommerce manager in the next step.'}
+                  You’ll get direct access to our eCommerce manager in the next step.
                 </p>
                 {serverError && (
                   <p className="text-center font-sans text-[10px] font-medium text-red-500">

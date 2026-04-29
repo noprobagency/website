@@ -41,6 +41,8 @@ const nextConfig: NextConfig = {
       { source: '/blog/ecommerce-growth-secrets',              destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
       { source: '/blog/ecommerce-long-term-strategy',          destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
       { source: '/it/blog/ecommerce-growth-secrets',           destination: '/it/blog/strategia-ecommerce-long-term',    permanent: true },
+      // Defensive: any IT visitor hitting /it/thank-you lands on the IT page
+      { source: '/it/thank-you',                               destination: '/it/grazie',                                permanent: true },
     ]
   },
 }
