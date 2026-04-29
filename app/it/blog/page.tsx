@@ -47,20 +47,15 @@ export default function ItalianBlogPage() {
                     'rgba(108, 113, 128, 0.08) 0px 2px 4px 0px, rgba(108, 113, 128, 0.07) 0px 7px 7px 0px, rgba(108, 113, 128, 0.04) 0px 17px 10px 0px, rgba(108, 113, 128, 0.01) 0px 29px 12px 0px, rgba(108, 113, 128, 0) 0px 46px 13px 0px',
                 }}
               >
-                {/* Image with fade mask */}
-                <div
-                  className="relative w-full overflow-hidden rounded-[16px_16px_0_0]"
-                  style={{
-                    mask: 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgb(0,0,0) 35%, rgb(0,0,0) 100%)',
-                    WebkitMask: 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgb(0,0,0) 35%, rgb(0,0,0) 100%)',
-                  }}
-                >
-                  <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
+                {/* Cover image (object-contain so any aspect ratio renders without crop) */}
+                <div className="relative w-full overflow-hidden rounded-[16px_16px_0_0] bg-[#f5f5f5]">
+                  <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
                     <Image
                       src={article.image}
                       alt={title}
                       fill
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     />
                   </div>
                   {/* Article type pill */}

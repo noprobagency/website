@@ -133,13 +133,13 @@ export default async function ItalianArticlePage({ params }: Props) {
         </div>
 
         {/* Cover image */}
-        <div className="mx-auto max-w-[860px] overflow-hidden rounded-[24px]">
+        <div className="mx-auto max-w-[860px] overflow-hidden rounded-[24px] bg-[#f5f5f5]">
           <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
             <Image
               src={article.image}
               alt={article.imageAlt ?? title}
               fill
-              className="object-cover"
+              className="object-contain"
               priority
             />
           </div>
