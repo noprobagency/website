@@ -441,11 +441,6 @@ export const useCases: UseCase[] = [
         alt: 'Grafico MER in decrescita e fatturato generale in crescita',
       },
       {
-        type: 'image',
-        src: '/images/use-case-cumini/use-case-cumini4.png',
-        alt: 'Grafico MER vs margine di contribuzione (ricavi netti) nel tempo',
-      },
-      {
         type: 'paragraph',
         text: 'La crescita di un eCommerce fashion non è mai lineare: alterna fasi di accelerazione, momenti di stallo e periodi in cui si lavora per costruire, non per raccogliere.',
       },
@@ -894,11 +889,6 @@ export const useCases: UseCase[] = [
         type: 'image',
         src: '/images/use-case-cumini/use-case-cumini1.png',
         alt: 'MER decreasing chart and overall revenue growth',
-      },
-      {
-        type: 'image',
-        src: '/images/use-case-cumini/use-case-cumini4.png',
-        alt: 'MER vs contribution margin (net revenue) over time',
       },
       {
         type: 'paragraph',
