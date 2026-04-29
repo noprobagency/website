@@ -9,6 +9,7 @@ export type RouteKey =
   | 'ecommerceRebuild'
   | 'blog'
   | 'contacts'
+  | 'thankYou'
 
 export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   home:             { en: '/',                   it: '/it' },
@@ -18,6 +19,7 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   ecommerceRebuild: { en: '/ecommerce-rebuild',  it: '/it/rifacimento-ecommerce' },
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },
+  thankYou:         { en: '/thank-you',          it: '/it/grazie' },
 }
 
 export function getRoutePath(key: RouteKey, locale: Locale): string {
