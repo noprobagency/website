@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:em-dash": "node scripts/check-em-dash.mjs"
   },
   "dependencies": {
     "@fontsource/fragment-mono": "^5.2.8",

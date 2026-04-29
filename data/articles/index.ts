@@ -324,7 +324,7 @@ export const articles: Article[] = [
     faqIt: [
       {
         question: 'Se mantengo la stessa strategia, non rischio di rimanere indietro mentre i competitor innovano?',
-        answer: 'No, perché mantenere la strategia non significa non cambiare nulla. Significa mantenere stabili le fondamenta — piattaforma, team core, processi — e iterare sopra in modo continuo. I competitor che cambiano tutto ogni trimestre stanno bruciando energia, non costruendo vantaggio competitivo.',
+        answer: 'No, perché mantenere la strategia non significa non cambiare nulla. Significa mantenere stabili le fondamenta (piattaforma, team core, processi) e iterare sopra in modo continuo. I competitor che cambiano tutto ogni trimestre stanno bruciando energia, non costruendo vantaggio competitivo.',
       },
       {
         question: 'Quanto tempo serve prima di vedere risultati con un approccio long-term?',
@@ -453,11 +453,11 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'Per un eCommerce B2C le proporzioni sono ovviamente diverse. Ma il principio scala: un brand che cambia direzione ogni trimestre non costruisce mai un vantaggio difendibile. Un brand che mantiene piattaforma, team e processi core per anni — ottimizzando sopra in modo incrementale — accumula un vantaggio composto che diventa molto difficile da copiare.',
+        text: 'Per un eCommerce B2C le proporzioni sono ovviamente diverse. Ma il principio scala: un brand che cambia direzione ogni trimestre non costruisce mai un vantaggio difendibile. Un brand che mantiene piattaforma, team e processi core per anni (ottimizzando sopra in modo incrementale) accumula un vantaggio composto che diventa molto difficile da copiare.',
       },
       {
         type: 'paragraph',
-        text: 'Lo vedo io stesso nei progetti che gestisco. Quando aiuto un cliente a ridurre i cambi non strutturali e a focalizzarsi su miglioramenti settimanali — velocità, conversion rate, tracking accurato, user experience — i numeri diventano più stabili e prevedibili. Non più "spike e collasso", ma curva crescente.',
+        text: 'Lo vedo io stesso nei progetti che gestisco. Quando aiuto un cliente a ridurre i cambi non strutturali e a focalizzarsi su miglioramenti settimanali (velocità, conversion rate, tracking accurato, user experience), i numeri diventano più stabili e prevedibili. Non più "spike e collasso", ma curva crescente.',
       },
       {
         type: 'paragraph',
@@ -502,7 +502,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'Eppure la maggior parte dei founder spende il 90% del proprio budget marketing in acquisition. La metà di quello potrebbe andare in retention — email marketing, programmi fedeltà, customer experience post-vendita, prodotto ricorrente — generando un ROI significativamente più alto.',
+        text: 'Eppure la maggior parte dei founder spende il 90% del proprio budget marketing in acquisition. La metà di quello potrebbe andare in retention (email marketing, programmi fedeltà, customer experience post-vendita, prodotto ricorrente), generando un ROI significativamente più alto.',
       },
       {
         type: 'paragraph',
@@ -510,7 +510,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'Un brand prevedibile vale di più di un brand "esplosivo". Per gli investitori, per gli acquirenti, e — soprattutto — per chi lo gestisce. La prevedibilità è quello che ti permette di pianificare, di assumere, di investire in qualità invece che spegnere incendi.',
+        text: 'Un brand prevedibile vale di più di un brand "esplosivo". Per gli investitori, per gli acquirenti, e soprattutto per chi lo gestisce. La prevedibilità è quello che ti permette di pianificare, di assumere, di investire in qualità invece che spegnere incendi.',
       },
       {
         type: 'h2',
@@ -526,11 +526,11 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'La piattaforma è la fondamenta letterale. Cambiarla ogni 2-3 anni è il modo più rapido per resettare anni di ottimizzazione. La regola che do ai miei clienti: scegli una piattaforma seria — per i B2C strutturati Shopify rimane la scelta più razionale — e non cambiarla per almeno 5 anni.',
+        text: 'La piattaforma è la fondamenta letterale. Cambiarla ogni 2-3 anni è il modo più rapido per resettare anni di ottimizzazione. La regola che do ai miei clienti: scegli una piattaforma seria (per i B2C strutturati Shopify rimane la scelta più razionale) e non cambiarla per almeno 5 anni.',
       },
       {
         type: 'paragraph',
-        text: "Questo non significa accettare limitazioni. Significa investire le energie nell'ottimizzare il setup esistente — performance, conversion rate, mobile UX — invece che nel migrare ogni 18 mesi.",
+        text: "Questo non significa accettare limitazioni. Significa investire le energie nell'ottimizzare il setup esistente (performance, conversion rate, mobile UX) invece che nel migrare ogni 18 mesi.",
       },
       {
         type: 'paragraph',
@@ -550,7 +550,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: "Quando il tracking è sporco, ogni decisione successiva è un'opinione mascherata da dato. Investire in setup tracking server-side serio — Google Analytics 4, Meta Conversions API, GTM — è uno dei pochi investimenti che si ripaga in 6 mesi di campagne meglio ottimizzate.",
+        text: "Quando il tracking è sporco, ogni decisione successiva è un'opinione mascherata da dato. Investire in setup tracking server-side serio (Google Analytics 4, Meta Conversions API, GTM) è uno dei pochi investimenti che si ripaga in 6 mesi di campagne meglio ottimizzate.",
       },
       {
         type: 'h3',
@@ -590,7 +590,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'Un brand luxury fashion italiano (multibrand boutique, presenza fisica e online). Fatturato online a sei cifre mensili, fatturato aziendale a sette cifre. Quando li abbiamo presi in carico nel 2022, erano su una piattaforma italiana con gestionale integrato — rigida, lenta, non scalabile.',
+        text: 'Un brand luxury fashion italiano (multibrand boutique, presenza fisica e online). Fatturato online a sei cifre mensili, fatturato aziendale a sette cifre. Quando li abbiamo presi in carico nel 2022, erano su una piattaforma italiana con gestionale integrato: rigida, lenta, non scalabile.',
       },
       {
         type: 'paragraph',
@@ -615,7 +615,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'Se vuoi vedere il caso completo — challenge iniziale, approccio tecnico, KPI dettagliati per anno — abbiamo scritto un [use case dedicato nei nostri casi studio](/it/casi-studio).',
+        text: 'Se vuoi vedere il caso completo (challenge iniziale, approccio tecnico, KPI dettagliati per anno), abbiamo scritto un [use case dedicato nei nostri casi studio](/it/casi-studio).',
       },
       {
         type: 'paragraph',
@@ -623,7 +623,7 @@ export const articles: Article[] = [
       },
       {
         type: 'h2',
-        text: 'FAQ — Le domande che mi fanno più spesso',
+        text: 'FAQ: le domande che mi fanno più spesso',
       },
       {
         type: 'h3',
@@ -631,7 +631,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'No, perché "mantenere la strategia" non significa "non cambiare nulla". Significa mantenere stabili le fondamenta — piattaforma, team core, processi — e iterare sopra in modo continuo. I competitor che cambiano tutto ogni trimestre stanno bruciando energia, non costruendo vantaggio competitivo.',
+        text: 'No, perché "mantenere la strategia" non significa "non cambiare nulla". Significa mantenere stabili le fondamenta (piattaforma, team core, processi) e iterare sopra in modo continuo. I competitor che cambiano tutto ogni trimestre stanno bruciando energia, non costruendo vantaggio competitivo.',
       },
       {
         type: 'h3',
