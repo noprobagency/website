@@ -224,7 +224,7 @@ export default function ContactSection({
                 </label>
                 <input
                   {...register('websiteUrl')}
-                  type="url"
+                  type="text"
                   placeholder="company.com"
                   className={`w-full rounded-[12px] border bg-white p-[10px] font-sans text-[14px] font-medium leading-[1.2] tracking-[-0.02em] text-[#181818] placeholder:text-[#999999] focus:outline-none ${errors.websiteUrl ? 'border-red-500' : 'border-black'}`}
                 />
