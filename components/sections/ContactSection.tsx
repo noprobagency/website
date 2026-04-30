@@ -11,6 +11,8 @@ import { contactSchema, ContactFormData } from '@/lib/schemas/contact'
 type ContactSectionProps = {
   /** Path to navigate to after a successful submission. Defaults to /thank-you. */
   successRedirect?: string
+  /** Locale of the page hosting the form. Forwarded to the API for the welcome email. */
+  locale?: 'en' | 'it'
 }
 
 const avatars = [
@@ -23,6 +25,7 @@ const avatars = [
 
 export default function ContactSection({
   successRedirect = '/thank-you',
+  locale = 'en',
 }: ContactSectionProps = {}) {
   const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
@@ -48,7 +51,7 @@ export default function ContactSection({
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, locale }),
       })
 
       if (!res.ok) {

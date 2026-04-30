@@ -10,6 +10,7 @@ export const contactSchema = z.object({
   revenue: z.string().min(1, 'Please select an option'),
   adsSpend: z.string().min(1, 'Please select an option'),
   additionalInfo: z.string().optional(),
+  locale: z.enum(['en', 'it']).optional(),
 })
 
 export type ContactFormData = z.infer<typeof contactSchema>
