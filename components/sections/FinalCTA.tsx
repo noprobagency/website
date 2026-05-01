@@ -83,7 +83,7 @@ export default function FinalCTA({ locale = 'en' }: { locale?: Locale }) {
                 </span>
                 <span className="h-2 w-2 rounded-full bg-noprob-green" aria-hidden />
                 <span className="font-sans text-tiny font-medium tracking-[-0.04em]">
-                  Slot Available for November
+                  {t.cta.availability}
                 </span>
               </Link>
             </div>

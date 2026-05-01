@@ -585,7 +585,7 @@ const en: Dictionary = {
     headingEm: "slowing",
     headingPost: ' you down?',
     buttonLabel: 'Reserve Your Sprint',
-    availability: 'Slot Available for November',
+    availability: 'Limited slots available',
   },
   footer: {
     headingPre: 'Consistency\nThat\u2019s ',
@@ -1039,7 +1039,7 @@ const it: Dictionary = {
     headingEm: "frena",
     headingPost: '?',
     buttonLabel: 'Prenota il tuo Sprint',
-    availability: 'Slot Disponibile per Novembre',
+    availability: 'Slot disponibili',
   },
   footer: {
     headingPre: 'Consistenza.\nEcco cos\u2019\u00e8 ',
