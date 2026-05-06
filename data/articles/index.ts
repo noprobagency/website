@@ -13,6 +13,8 @@ export type Article = {
   excerpt: string
   image: string
   imageAlt?: string
+  /** Optional EN-specific alt text override (falls back to imageAlt). */
+  imageAltEn?: string
   articleType: string
   date: string
   content?: ArticleSection[]
@@ -47,18 +49,19 @@ export const articles: Article[] = [
   {
     slug: 'how-shopify-works',
     slugIt: 'cose-shopify',
-    title: "How Shopify Works: A Practitioner's Guide for Growing Brands (2025)",
-    titleIt: "Cos'è Shopify: guida completa alla piattaforma eCommerce (2025)",
+    title: "How Shopify Works: A Practitioner's Guide for Growing Brands (2026)",
+    titleIt: "Cos'è Shopify: guida completa alla piattaforma eCommerce (2026)",
     excerpt:
-      'How Shopify actually works, what it costs, and whether it is worth it. Written by a Shopify Partner agency with 4+ years managing real brand stores.',
+      'How Shopify actually works, what it costs, and whether it is worth it. Written by a Shopify Partner with 7+ years running real brand stores.',
     excerptIt:
-      "Cos'è Shopify, come funziona davvero e per chi è adatto. La guida scritta da un Shopify Partner con 4+ anni su clienti italiani.",
+      "Cos'è Shopify, come funziona davvero e per chi è adatto. La guida scritta da un Shopify Partner con 7+ anni su clienti italiani.",
     ledeEn:
       "Written from the inside: what Shopify actually does, where it works exceptionally well, where it has limits, and when it makes sense to move to it.",
     ledeIt:
       "La guida scritta da chi gestisce Shopify ogni giorno per brand fashion, integratori e DTC. Cosa fa davvero, dove funziona, dove ha limiti, quando ha senso migrare.",
     image: '/images/blog/cose-shopify-cover.png',
-    imageAlt: 'Shopify piattaforma eCommerce: guida completa per brand B2C nel 2025',
+    imageAlt: 'Shopify piattaforma eCommerce: guida completa 2026',
+    imageAltEn: 'How Shopify works: complete guide for ecommerce brands 2026',
     articleType: 'Article',
     date: '2026-05-06',
     datePublishedIso: '2026-05-06T10:00:00+02:00',
@@ -160,12 +163,12 @@ export const articles: Article[] = [
           '**Cloud-based**: nothing to install or maintain. Shopify manages infrastructure, backups, and security on your behalf.',
           '**All-in-one**: product catalog, order management, payments, shipping, and analytics live in one system.',
           '**Scalable**: works for a 10-product store and for brands processing millions of orders annually through Shopify Plus.',
-          '**Open ecosystem**: over 8,000 apps available to add functionality without rebuilding your site from scratch.',
+          '**Open ecosystem**: over 12,000 apps available to add functionality without rebuilding your site from scratch.',
         ],
       },
       {
         type: 'paragraph',
-        text: 'Founded in Canada in 2006, Shopify now has over 4 million active merchants in 175 countries. Its user base spans early-stage DTC brands, established fashion retailers, supplement companies, and luxury boutiques, all of which need a stable platform without building an internal technical team.',
+        text: 'Founded in Canada in 2006, Shopify now powers millions of merchants across 175+ countries, with independent estimates for 2026 putting the active store count above 5 million. Its user base spans early-stage DTC brands, established fashion retailers, supplement companies, and luxury boutiques, all of which need a stable platform without building an internal technical team.',
       },
       { type: 'h2', text: 'How Shopify Works: The Technical Reality' },
       {
@@ -224,16 +227,20 @@ export const articles: Article[] = [
       {
         type: 'list',
         items: [
-          '**Basic**: $29/month, 2% transaction fee. New stores, low volume.',
-          '**Shopify**: $79/month, 1% transaction fee. Growing stores, small team.',
-          '**Advanced**: $299/month, 0.5% transaction fee. Structured stores, advanced reports.',
+          '**Basic**: $29/month (annual billing, 25% discount; $39/month on monthly), 2% transaction fee. New stores, low volume.',
+          '**Grow**: $79/month (annual billing; $105/month on monthly), 1% transaction fee. Growing stores, small team.',
+          '**Advanced**: $299/month (annual billing; $399/month on monthly), 0.6% transaction fee. Structured stores, advanced reports.',
           '**Shopify Plus**: from $2,300/month, negotiable fee. Enterprise, high volume.',
         ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Prices above reflect annual billing (25% discount applied). Month-to-month plans cost $39, $105, and $399 respectively. Shopify rebranded the mid-tier plan from "Shopify" to "Grow" in 2025, so older articles may still use the previous name.',
       },
       { type: 'paragraph', text: '**What matters beyond the subscription price.**' },
       {
         type: 'paragraph',
-        text: 'Transaction fees are the cost most brands underestimate. If you are not using Shopify Payments, you pay a percentage on every sale. At $100,000 monthly revenue, the difference between Basic (2%) and Advanced (0.5%) is $1,500 per month in fees alone.',
+        text: 'Transaction fees are the cost most brands underestimate. If you are not using Shopify Payments, you pay a percentage on every sale. At $100,000 monthly revenue, the difference between Basic (2%) and Advanced (0.6%) is $1,400 per month in fees alone.',
       },
       {
         type: 'paragraph',
@@ -241,7 +248,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'Premium themes cost $150-380 as a one-time fee, not recurring.',
+        text: 'Premium themes cost $300-450 as a one-time fee, not recurring.',
       },
       { type: 'h2', text: 'Shopify vs the Alternatives' },
       {
@@ -384,7 +391,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: '**2. Choose your theme before touching anything else.** Do not optimize the default theme long-term. Invest in a professional theme from the start if you are serious about this store. Quality themes for fashion (Prestige, Symmetry, Impulse) cost $200-350 as a one-time fee and save weeks of custom development. For DTC or supplement brands, Dawn and Refresh are strong free starting points.',
+        text: '**2. Choose your theme before touching anything else.** Do not optimize the default theme long-term. Invest in a professional theme from the start if you are serious about this store. Quality themes for fashion (Prestige, Symmetry, Impulse) cost $300-450 as a one-time fee and save weeks of custom development. For DTC or supplement brands, Dawn and Horizon are strong free starting points; Sense works well for beauty and wellness categories.',
       },
       {
         type: 'paragraph',
@@ -406,7 +413,7 @@ export const articles: Article[] = [
       {
         type: 'list',
         items: [
-          '**Shopify plan**: $29-299/month. Basic or Shopify for most cases.',
+          '**Shopify plan**: $29-299/month with annual billing ($39-399 monthly). Basic or Grow for most cases.',
           '**Essential apps**: $80-300/month. Email, tracking, CRO, reviews.',
           '**Domain**: $1-2/month. Annual renewal.',
           '**Development and maintenance**: $0-500/month. Depends on whether DIY or with a partner.',
@@ -506,12 +513,12 @@ export const articles: Article[] = [
           '**Cloud-based**: non installi nulla sul tuo server. Shopify gestisce infrastruttura, backup e sicurezza al posto tuo.',
           '**All-in-one**: catalogo prodotti, gestione ordini, pagamenti, spedizioni e analytics vivono dentro un solo sistema.',
           '**Scalabile**: funziona per uno store con dieci prodotti e per brand con milioni di ordini all\'anno tramite Shopify Plus.',
-          '**Ecosistema aperto**: oltre 8.000 app disponibili per aggiungere funzionalità senza riscrivere il sito da zero.',
+          '**Ecosistema aperto**: oltre 12.000 app disponibili per aggiungere funzionalità senza riscrivere il sito da zero.',
         ],
       },
       {
         type: 'paragraph',
-        text: 'Fondata nel 2006 in Canada, oggi Shopify conta più di 4 milioni di merchant attivi in 175 paesi. In Italia la usano brand fashion, retailer multibrand, brand DTC e boutique di lusso che hanno bisogno di una piattaforma solida senza costruire un team tecnico interno da zero.',
+        text: 'Fondata nel 2006 in Canada, oggi Shopify conta milioni di merchant attivi in oltre 175 paesi, con stime indipendenti 2026 che parlano di oltre 5 milioni di store attivi. In Italia la usano brand fashion, retailer multibrand, brand DTC e boutique di lusso che hanno bisogno di una piattaforma solida senza costruire un team tecnico interno da zero.',
       },
       { type: 'h2', text: 'Come funziona Shopify tecnicamente' },
       {
@@ -570,16 +577,20 @@ export const articles: Article[] = [
       {
         type: 'list',
         items: [
-          '**Basic**: 29€/mese, commissione 2%. Nuovi store, volumi bassi.',
-          '**Shopify**: 79€/mese, commissione 1%. Store in crescita, piccolo team.',
-          '**Advanced**: 299€/mese, commissione 0,5%. Store strutturati, report avanzati.',
+          '**Basic**: 29€/mese (con fatturazione annuale; 39€/mese mensile), commissione 2%. Nuovi store, volumi bassi.',
+          '**Grow**: 79€/mese (con fatturazione annuale; 105€/mese mensile), commissione 1%. Store in crescita, piccolo team.',
+          '**Advanced**: 299€/mese (con fatturazione annuale; 399€/mese mensile), commissione 0,6%. Store strutturati, report avanzati.',
           '**Shopify Plus**: da 2.300€/mese, commissione negoziabile. Enterprise, volumi alti.',
         ],
+      },
+      {
+        type: 'paragraph',
+        text: 'I prezzi indicati sono con fatturazione annuale prepagata, che include uno sconto del 25% rispetto al mensile senza impegno. Shopify ha rinominato il piano intermedio da "Shopify" a "Grow" nel 2025, quindi articoli più vecchi potrebbero ancora usare il nome precedente.',
       },
       { type: 'paragraph', text: '**Cosa guardare oltre al prezzo mensile dell\'abbonamento.**' },
       {
         type: 'paragraph',
-        text: 'La commissione per transazione è il costo nascosto che più spesso sorprende. Se non usi Shopify Payments, paghi una percentuale su ogni vendita. Su 100.000 euro di fatturato mensile, la differenza tra piano Basic (2%) e Advanced (0,5%) è 1.500 euro al mese solo di commissioni.',
+        text: 'La commissione per transazione è il costo nascosto che più spesso sorprende. Se non usi Shopify Payments, paghi una percentuale su ogni vendita. Su 100.000 euro di fatturato mensile, la differenza tra piano Basic (2%) e Advanced (0,6%) è 1.400 euro al mese solo di commissioni.',
       },
       {
         type: 'paragraph',
@@ -587,7 +598,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'I temi premium costano tra i 150 e i 380 euro una tantum, non ricorrenti.',
+        text: 'I temi premium costano tra i 300 e i 450 euro una tantum, non ricorrenti.',
       },
       {
         type: 'paragraph',
@@ -716,7 +727,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: '**2. Scegli il tema con criterio.** Non ottimizzare il tema di default a lungo. Se la tua intenzione è seria, investi in un tema professionale dall\'inizio. I temi di qualità per il fashion (Prestige, Symmetry, Impulse) costano tra i 200 e i 350 euro una tantum e risparmiano settimane di sviluppo personalizzato. Per store DTC o supplement, Dawn e Refresh sono ottimi punti di partenza gratuiti.',
+        text: '**2. Scegli il tema con criterio.** Non ottimizzare il tema di default a lungo. Se la tua intenzione è seria, investi in un tema professionale dall\'inizio. I temi di qualità per il fashion (Prestige, Symmetry, Impulse) costano tra i 300 e i 450 euro una tantum e risparmiano settimane di sviluppo personalizzato. Per store DTC o supplement, Dawn e Horizon sono ottimi punti di partenza gratuiti; Sense funziona bene per beauty e wellness.',
       },
       {
         type: 'paragraph',
@@ -746,7 +757,7 @@ export const articles: Article[] = [
       {
         type: 'list',
         items: [
-          '**Piano Shopify**: 29-299€/mese. Basic o Shopify nella maggior parte dei casi.',
+          '**Piano Shopify**: 29-299€/mese con fatturazione annuale (39-399€ con mensile). Basic o Grow nella maggior parte dei casi.',
           '**App essenziali**: 80-300€/mese. Email, tracking, CRO, recensioni.',
           '**Dominio**: 1-2€/mese. Rinnovato annualmente.',
           '**Sviluppo e manutenzione**: 0-500€/mese. Dipende se DIY o con partner.',

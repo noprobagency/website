@@ -31,6 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.excerpt,
     path: `/blog/${article.slug}`,
     locale: 'en',
+    image: article.image,
+    imageAlt: article.imageAltEn ?? article.imageAlt ?? article.title,
   })
 }
 
@@ -128,7 +130,7 @@ export default async function ArticlePage({ params }: Props) {
           <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
             <Image
               src={article.image}
-              alt={article.imageAlt ?? article.title}
+              alt={article.imageAltEn ?? article.imageAlt ?? article.title}
               fill
               className="object-contain"
               priority

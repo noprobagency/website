@@ -8,7 +8,7 @@ export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.8.1',
+  version: 'v0.8.2',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
@@ -54,6 +54,10 @@ type MetadataOptions = {
   locale: Locale
   pageKey?: PageKey
   noIndex?: boolean
+  /** Optional per-page OG/Twitter image (relative path). Defaults to /og-image.svg. */
+  image?: string
+  /** Optional alt text for the OG/Twitter image. */
+  imageAlt?: string
 }
 
 export function buildMetadata({
@@ -63,6 +67,8 @@ export function buildMetadata({
   locale,
   pageKey,
   noIndex = false,
+  image,
+  imageAlt,
 }: MetadataOptions): Metadata {
   const dict = pageKey ? getDictionary(locale).seo[pageKey] : null
   const resolvedTitle = title ?? dict?.title ?? siteConfig.defaultTitle
@@ -77,6 +83,9 @@ export function buildMetadata({
   const enUrl = absoluteUrl(enPath)
   const itUrl = absoluteUrl(itPath)
   const ogLocale = locale === 'it' ? 'it_IT' : 'en_US'
+
+  const ogImageUrl = absoluteUrl(image ?? '/og-image.svg')
+  const ogImageAlt = imageAlt ?? siteConfig.name
 
   return {
     title: resolvedTitle,
@@ -98,10 +107,10 @@ export function buildMetadata({
       description: resolvedDescription,
       images: [
         {
-          url: absoluteUrl('/og-image.svg'),
+          url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: siteConfig.name,
+          alt: ogImageAlt,
         },
       ],
     },
@@ -109,7 +118,7 @@ export function buildMetadata({
       card: 'summary_large_image',
       title: resolvedTitle,
       description: resolvedDescription,
-      images: [absoluteUrl('/og-image.svg')],
+      images: [ogImageUrl],
     },
     robots: noIndex
       ? {
