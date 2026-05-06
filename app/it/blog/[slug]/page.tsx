@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.excerptIt ?? article.excerpt,
     path: `/it/blog/${itSlug}`,
     locale: 'it',
+    image: article.image,
+    imageAlt: article.imageAlt ?? article.titleIt ?? article.title,
   })
 }
 
