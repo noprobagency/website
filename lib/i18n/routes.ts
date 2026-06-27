@@ -7,6 +7,7 @@ export type RouteKey =
   | 'useCases'
   | 'dataDrivenTeam'
   | 'ecommerceRebuild'
+  | 'migrazioneShopify'
   | 'blog'
   | 'contacts'
   | 'thankYou'
@@ -17,6 +18,9 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   useCases:         { en: '/use-cases',          it: '/it/casi-studio' },
   dataDrivenTeam:   { en: '/data-driven-team',   it: '/it/team-ecommerce-dedicato' },
   ecommerceRebuild: { en: '/ecommerce-rebuild',  it: '/it/rifacimento-ecommerce' },
+  // IT-only for now: EN points to the IT URL so hreflang/canonical resolve to a
+  // real page (no EN route exists yet). Repoint `en` when the English page ships.
+  migrazioneShopify: { en: '/it/migrazione-shopify', it: '/it/migrazione-shopify' },
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },
   thankYou:         { en: '/thank-you',          it: '/it/grazie' },
