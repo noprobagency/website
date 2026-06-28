@@ -44,6 +44,7 @@ export type MigrazioneCopy = {
     headingEm: string
     description: string
     items: { title: string; description: string }[]
+    fourMonths: { title: string; description: string }
   }
   process: {
     label: string
@@ -86,12 +87,12 @@ const it: MigrazioneCopy = {
     trustSectors: 'Scelti da brand Fashion, Integratori e DTC eCommerce',
     titlePart1: 'Migra a Shopify senza perdere ',
     titleEm1: 'vendite',
-    titleMid: ', ',
+    titleMid: ' e ',
     titleEm2: 'clienti',
-    titlePart2: ' o posizioni su Google',
+    titlePart2: '',
     subtitle:
-      'Un percorso completo di 4 mesi che porta il tuo eCommerce su Shopify: gestione tecnica, design, tracciamento e SEO. Con un solo interlocutore.',
-    microBenefits: ['Zero downtime garantito', 'Redirect SEO 1:1', 'Garanzia 30 giorni'],
+      'Non un semplice “ricostruiamo il tuo sito”. Impostiamo il tuo store su Shopify per vendere meglio: design, tracciamento, performance, affidabilità, flessibilità, SEO. Con un solo interlocutore, un report di conferma per ogni area di lavoro, garanzia di rimborso e manutenzione inclusa.',
+    microBenefits: ['Nemmeno un secondo offline', 'Redirect SEO 1:1', 'Garanzia rimborso 30 giorni'],
     cta: 'Candidati per la migrazione',
     trustedCount: 'Scelti da 33+ brand',
   },
@@ -105,7 +106,7 @@ const it: MigrazioneCopy = {
       {
         title: 'Piattaforma rigida',
         description:
-          'Ogni modifica passa da un ticket. Fuori dai saldi è difficile spingere davvero. La piattaforma decide cosa puoi fare, non tu.',
+          'Ogni modifica passa da un ticket. Fuori dagli sconti non riesci a spingere. La piattaforma decide cosa puoi fare, non tu.',
       },
       {
         title: 'Paura di migrare',
@@ -125,27 +126,32 @@ const it: MigrazioneCopy = {
   },
   solution: {
     label: 'la soluzione',
-    headingPart1: 'Non un trasloco. ',
-    headingEm: 'Una migrazione gestita.',
+    headingPart1: 'Team con esperienza per una migrazione ',
+    headingEm: 'gestita e prevedibile.',
     description:
-      'La differenza tra un brand che cresce dopo la migrazione e uno che si blocca non è la piattaforma. È come ci si arriva.',
+      'In una migrazione quasi tutto si può prevedere: dati, redirect, integrazioni, SEO. Un team che le ha già fatte sa dove sono i punti critici e li copre prima che diventino problemi. L’imprevisto però c’è sempre. E si gestisce solo se hai accanto chi lo riconosce e lo risolve in fretta. Qui sta la differenza: non un lavoro “una tantum”, ma un team che trova ogni collo di bottiglia e lo sistema.',
     items: [
       {
-        title: 'Continuità totale',
+        title: 'Esperienza, non tentativi',
         description:
-          'Zero downtime, redirect 1:1 mappati a monte, tracciamento che non si perde un colpo. I tuoi clienti non si accorgono del cambio. Google nemmeno.',
+          'Migrazioni complesse e redirect su larga scala, fatti bene. I problemi che spaventano te, noi li abbiamo già risolti. Sappiamo dove guardare prima ancora di iniziare.',
       },
       {
-        title: 'Team completo, guidato da te',
+        title: 'Un team esperto',
         description:
-          'Sviluppo, design, SEO, tracciamento. Un team intero coordinato da un eCommerce Manager dedicato. Tu non assembli freelancer.',
+          'Sviluppo, SEO, tracciamento, design. Quando emerge un imprevisto non aspetti il freelancer giusto: il team è già lì, completo, e interviene subito.',
       },
       {
-        title: 'Un solo interlocutore',
+        title: 'Bottleneck killer',
         description:
-          'Parli sempre con la stessa persona. Niente ticket, niente account junior, niente brief ripetuti a cinque fornitori diversi.',
+          'Troviamo i colli di bottiglia. E li sistemiamo. Il valore non è fare tutto perfetto al primo colpo. È individuare cosa frena lo store e ottimizzarlo. Un team costante che migliora in corsa batte chiunque prometta zero errori.',
       },
     ],
+    fourMonths: {
+      title: 'Perché 4 mesi di tempo per fare tutto?',
+      description:
+        'Nel corso dei vari progetti abbiamo capito una cosa: il modo migliore per fare una migrazione non è la fretta, e nemmeno la lentezza. Quattro mesi non è il tempo che ci mettiamo a migrare lo store. È il tempo che dedichiamo a seguirlo a 360°: analizzare, operare, monitorare. Troviamo i colli di bottiglia e li miglioriamo, controlliamo lo stato giorno dopo giorno, perfezioniamo ogni dettaglio. Non un team che consegna e sparisce, ma un team completo che resta su ogni aspetto fino a quando tutto funziona come deve.',
+    },
   },
   process: {
     label: 'come lavoriamo',

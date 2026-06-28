@@ -68,6 +68,37 @@ export default function MigrazioneSolution({ locale = 'it' }: { locale?: Locale 
             </motion.article>
           ))}
         </div>
+
+        {/* Fourth, full-width horizontal card (yellow border) */}
+        <motion.article
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 'some' }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="shadow-card mx-auto mt-4 flex max-w-[800px] flex-col gap-4 overflow-visible rounded-card border-[6px] border-[#e8dfa3] bg-noprob-card p-6 min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-6 min-[810px]:p-8"
+        >
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#121212"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+            className="shrink-0"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 2" />
+          </svg>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-np-h3 text-noprob-text">{d.fourMonths.title}</h3>
+            <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+              {d.fourMonths.description}
+            </p>
+          </div>
+        </motion.article>
       </div>
     </section>
   )
