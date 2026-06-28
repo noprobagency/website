@@ -11,9 +11,11 @@ const serviceTags = ['Meta Ads', 'eCommerce', 'Klaviyo', 'Shopify', 'Google Ads'
 export default function CaseStudy({
   locale = 'en',
   noPadding = false,
+  compact = false,
 }: {
   locale?: Locale
   noPadding?: boolean
+  compact?: boolean
 }) {
   const t = getDictionary(locale)
 
@@ -21,7 +23,9 @@ export default function CaseStudy({
     <section
       className={
         noPadding
-          ? 'px-5 pb-20 min-[810px]:px-9 min-[810px]:pb-[100px]'
+          ? compact
+            ? 'px-5 pb-10 min-[810px]:px-9 min-[810px]:pb-[50px]'
+            : 'px-5 pb-20 min-[810px]:px-9 min-[810px]:pb-[100px]'
           : 'px-9 pb-[80px] pt-[80px]'
       }
     >

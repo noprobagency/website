@@ -20,7 +20,7 @@ export default function MigrazioneFAQ({ locale = 'it' }: { locale?: Locale }) {
   }
 
   return (
-    <section className="pb-[80px] pt-[80px]">
+    <section className="pb-[40px] pt-[40px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[760px] text-center">
           <SectionLabel>{d.label}</SectionLabel>

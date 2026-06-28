@@ -32,7 +32,7 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
   const greenWidth = center(currentIndex) - center(0)
 
   return (
-    <section id="pricing" data-header-theme="dark" className="scroll-mt-40 bg-black py-[80px]">
+    <section id="pricing" data-header-theme="dark" className="scroll-mt-40 bg-black py-[40px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[850px]">
           {/* Header */}

@@ -18,7 +18,7 @@ export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }
   const d = getMigrazioneCopy(locale).process
 
   return (
-    <section className="pb-[64px] pt-[80px]">
+    <section className="pb-[32px] pt-[40px]">
       <div className="container-noprob">
         {/* Header */}
         <div className="mx-auto max-w-[800px] text-center">

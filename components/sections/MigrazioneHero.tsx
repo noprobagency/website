@@ -9,7 +9,7 @@ export default function MigrazioneHero({ locale = 'it' }: { locale?: Locale }) {
   const d = getMigrazioneCopy(locale).hero
 
   return (
-    <section className="flex flex-col items-center overflow-hidden px-5 pt-[65px] pb-[65px] min-[810px]:px-[34px] min-[810px]:pt-[100px] min-[810px]:pb-[60px]">
+    <section className="flex flex-col items-center overflow-hidden px-5 pt-[65px] pb-[32px] min-[810px]:px-[34px] min-[810px]:pt-[100px] min-[810px]:pb-[30px]">
       <div
         className="relative flex w-full flex-col items-center gap-[21px] overflow-visible rounded-card border-2 border-[#d6d6d6] px-6 pb-6 pt-10 backdrop-blur-[5px] min-[810px]:max-w-[1200px]"
         style={{

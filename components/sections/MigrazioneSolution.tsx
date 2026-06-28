@@ -29,7 +29,7 @@ export default function MigrazioneSolution({ locale = 'it' }: { locale?: Locale 
   const d = getMigrazioneCopy(locale).solution
 
   return (
-    <section className="pb-[80px] pt-[80px]">
+    <section className="pb-[40px] pt-[40px]">
       <div className="container-noprob">
         <div className="mx-auto max-w-[800px] text-center">
           <SectionLabel>{d.label}</SectionLabel>
