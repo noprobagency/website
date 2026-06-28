@@ -1,11 +1,18 @@
 'use client'
 
+import { useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
+import Testimonials from '@/components/sections/Testimonials'
+import { siteAssets } from '@/lib/site'
 import { type Locale } from '@/lib/i18n'
 import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
+
+// TODO: sostituire con l'URL Calendly/TidyCal reale di NoProb per la migrazione.
+const CALENDLY_URL = 'https://calendly.com/noprob-agency/migrazione-shopify'
 
 function CheckIcon() {
   return (
@@ -21,7 +28,23 @@ function CheckIcon() {
 export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }) {
   const d = getMigrazioneCopy(locale).pricing
   const tiers = d.tiers
-  const current = tiers.find((t) => t.current) ?? tiers[0]
+  const currentIndex = Math.max(0, tiers.findIndex((t) => t.state === 'current'))
+  const current = tiers[currentIndex] ?? tiers[0]
+
+  // Continuous track: each column is 25% wide, so dot centers sit at 12.5%, 37.5%, 62.5%, 87.5%.
+  const center = (i: number) => (i + 0.5) * 25
+  const greenWidth = center(currentIndex) - center(0)
+
+  useEffect(() => {
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src="https://assets.calendly.com/assets/external/widget.js"]'
+    )
+    if (existing) return
+    const script = document.createElement('script')
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    document.body.appendChild(script)
+  }, [])
 
   return (
     <section id="pricing" data-header-theme="dark" className="scroll-mt-40 bg-black py-[80px]">
@@ -35,40 +58,52 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
           </div>
 
           {/* Tiered price bar */}
-          <div className="mt-12 grid grid-cols-4 gap-1 min-[810px]:gap-2">
-            {tiers.map((tier, i) => (
-              <div key={tier.price} className="flex flex-col items-center gap-3 text-center">
-                <span
-                  className={
-                    tier.current
-                      ? 'font-display text-[18px] font-bold tracking-[-0.04em] text-white min-[810px]:text-[26px]'
-                      : 'font-display text-[15px] font-semibold tracking-[-0.04em] text-[#777] min-[810px]:text-[20px]'
-                  }
-                >
-                  {tier.price}
-                </span>
-
-                {/* Node + track */}
-                <div className="relative flex h-4 w-full items-center justify-center">
-                  {i > 0 && (
-                    <span className="absolute right-1/2 left-0 top-1/2 h-[2px] -translate-y-1/2 bg-[#333]" />
-                  )}
-                  {i < tiers.length - 1 && (
-                    <span className="absolute left-1/2 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-[#333]" />
-                  )}
+          <div className="mt-12">
+            <div className="grid grid-cols-4">
+              {tiers.map((tier) => (
+                <div key={tier.price} className="text-center">
                   <span
                     className={
-                      tier.current
+                      tier.state === 'current'
+                        ? 'font-display text-[18px] font-bold tracking-[-0.04em] text-white min-[810px]:text-[26px]'
+                        : tier.state === 'completed'
+                          ? 'font-display text-[15px] font-semibold tracking-[-0.04em] text-[#777] line-through min-[810px]:text-[20px]'
+                          : 'font-display text-[15px] font-semibold tracking-[-0.04em] text-[#777] min-[810px]:text-[20px]'
+                    }
+                  >
+                    {tier.price}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="relative my-3 grid grid-cols-4">
+              <span className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-1/2 h-[2px] -translate-y-1/2 bg-[#333]" />
+              <span
+                className="pointer-events-none absolute top-1/2 h-[2px] -translate-y-1/2 bg-[#1dcc5d]"
+                style={{ left: '12.5%', width: `${greenWidth}%` }}
+              />
+              {tiers.map((tier) => (
+                <div key={tier.price} className="flex items-center justify-center">
+                  <span
+                    className={
+                      tier.state === 'current'
                         ? 'relative z-10 h-[16px] w-[16px] rounded-full bg-[#1dcc5d] ring-4 ring-[#1dcc5d]/25'
-                        : 'relative z-10 h-[11px] w-[11px] rounded-full bg-[#4a4a4a]'
+                        : tier.state === 'completed'
+                          ? 'relative z-10 h-[16px] w-[16px] rounded-full bg-[#1dcc5d]'
+                          : 'relative z-10 h-[11px] w-[11px] rounded-full bg-[#4a4a4a]'
                     }
                   />
                 </div>
+              ))}
+            </div>
 
-                <div className="flex flex-col gap-[2px]">
+            <div className="grid grid-cols-4">
+              {tiers.map((tier) => (
+                <div key={tier.price} className="flex flex-col gap-[2px] text-center">
                   <span
                     className={`font-sans text-[11px] font-semibold leading-[1.3] tracking-[-0.02em] min-[810px]:text-[13px] ${
-                      tier.current ? 'text-white' : 'text-[#999]'
+                      tier.state === 'current' ? 'text-white' : 'text-[#999]'
                     }`}
                   >
                     {tier.slot}
@@ -77,22 +112,29 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
                     {tier.tag}
                   </span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Card: price + CTA + includes */}
+          {/* Scarcity line */}
+          <p className="mx-auto mt-8 max-w-[620px] text-center font-sans text-[14px] font-medium leading-[1.6em] tracking-[-0.02em] text-[#c9c9c9]">
+            {d.scarcity}
+          </p>
+
+          {/* Pricing card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 'some' }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-12 w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
+            className="mt-10 w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
           >
-            <div className="grid gap-6 rounded-[20px] bg-white p-[32px] shadow-pricing-inner max-[809px]:px-5 min-[810px]:grid-cols-2 min-[810px]:gap-10">
-              {/* Left: price + CTA + guarantee */}
+            <div className="grid gap-8 rounded-[20px] bg-white p-[32px] shadow-pricing-inner max-[809px]:px-5 min-[810px]:grid-cols-2 min-[810px]:gap-10">
+              {/* Left: price + CTA + trust + guarantee */}
               <div className="flex flex-col">
-                <div className="flex items-end gap-1">
+                <span className="np-eyebrow-cat np-eyebrow-cat-green self-start">{d.priceBadge}</span>
+
+                <div className="mt-3 flex items-end gap-1">
                   <span className="text-np-pricing text-noprob-text">{current.price}</span>
                   <span className="mb-2 font-sans text-[14px] font-medium tracking-[-0.02em] text-noprob-muted">
                     {d.priceSuffix}
@@ -102,23 +144,47 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
                 <Link
                   href="#candidatura"
                   data-tracking="migrazione_pricing_cta"
-                  className="button-principal mt-6 !w-full"
+                  className="button-principal mt-5 !w-full"
                 >
                   {d.cta}
                 </Link>
 
-                <p className="mt-4 font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-muted">
-                  {d.guarantee}
-                </p>
+                {/* Trustpilot */}
+                <div className="mt-4 flex flex-col items-center gap-[8px]">
+                  <div className="flex items-center gap-[5px]">
+                    <Image
+                      src={siteAssets.trustpilotWordmark}
+                      alt="Trustpilot"
+                      width={72}
+                      height={16}
+                      className="h-4 w-auto object-contain"
+                    />
+                    <span className="font-sans text-[12px] font-semibold tracking-[-0.03em] text-np-green-trust">
+                      4,9
+                    </span>
+                  </div>
+                  <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted">
+                    {d.trustLabel}
+                  </p>
+                </div>
+
+                {/* Guarantee — prominent */}
+                <div className="mt-5 flex items-start gap-2 rounded-[12px] bg-[rgb(206,232,204)] px-4 py-3">
+                  <CheckIcon />
+                  <p className="font-sans text-[13px] font-semibold leading-[1.5em] tracking-[-0.02em] text-noprob-text">
+                    {d.guarantee}
+                  </p>
+                </div>
               </div>
 
-              {/* Right: includes checklist */}
-              <div className="flex flex-col gap-3 min-[810px]:border-l min-[810px]:border-[#ececec] min-[810px]:pl-10">
-                <p className="font-sans text-[14px] font-semibold tracking-[-0.04em] text-noprob-text">
-                  {d.includesTitle}
+              {/* Right: project summary */}
+              <div className="flex flex-col min-[810px]:border-l min-[810px]:border-[#ececec] min-[810px]:pl-10">
+                <h3 className="text-np-pricing text-noprob-text">{d.cardTitle}</h3>
+                <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+                  {d.cardDescription}
                 </p>
-                <ul className="flex flex-col gap-2">
-                  {d.includes.map((feature) => (
+                <ul className="mt-5 flex flex-col gap-3">
+                  {d.cardChecks.map((feature) => (
                     <li
                       key={feature}
                       className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
@@ -132,10 +198,22 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
             </div>
           </motion.div>
 
-          {/* Scarcity line */}
-          <p className="mx-auto mt-8 max-w-[620px] text-center font-sans text-[14px] font-medium leading-[1.6em] tracking-[-0.02em] text-[#c9c9c9]">
-            {d.scarcity}
-          </p>
+          {/* Calendly card — same style as the pricing card, anchor target */}
+          <div
+            id="candidatura"
+            className="mt-4 w-full scroll-mt-32 overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
+          >
+            <div className="overflow-hidden rounded-[20px] bg-white p-2 shadow-pricing-inner min-[810px]:p-3">
+              <div
+                className="calendly-inline-widget w-full"
+                data-url={CALENDLY_URL}
+                style={{ minWidth: '320px', height: '700px' }}
+              />
+            </div>
+          </div>
+
+          {/* Testimonials (on the black section, under the booking card) */}
+          <Testimonials locale={locale} />
         </div>
       </div>
     </section>

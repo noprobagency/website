@@ -147,7 +147,7 @@ export default function SearchConsoleCharts({ locale = 'it' }: { locale?: Locale
   const d = getMigrazioneCopy(locale).charts
 
   return (
-    <section className="py-[80px]">
+    <section className="pb-0 pt-[80px]">
       <div className="container-noprob">
         <div className="mx-auto w-full max-w-[720px] font-sans">
           <div className="mx-auto mb-10 max-w-[640px] text-center">

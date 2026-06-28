@@ -1,44 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { siteAssets } from '@/lib/site'
+import PartnerLogos from '@/components/ui/PartnerLogos'
 import { type Locale } from '@/lib/i18n'
 import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
-
-const heroPartners = [
-  {
-    name: 'Shopify Partners',
-    src: siteAssets.heroPartners[0],
-    width: 288,
-    height: 76,
-    className:
-      'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[20px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-  {
-    name: 'Google Partner',
-    src: siteAssets.heroPartners[1],
-    width: 288,
-    height: 76,
-    className:
-      'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[32px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-  {
-    name: 'Meta Business Partner',
-    src: siteAssets.heroPartners[2],
-    width: 288,
-    height: 76,
-    className:
-      'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[26px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-  {
-    name: 'Klaviyo Partners',
-    src: siteAssets.heroPartners[3],
-    width: 500,
-    height: 233,
-    className:
-      'block h-auto w-full object-contain opacity-[0.85] max-h-[36px] min-[810px]:h-[26px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-] as const
 
 export default function MigrazioneHero({ locale = 'it' }: { locale?: Locale }) {
   const d = getMigrazioneCopy(locale).hero
@@ -107,7 +72,10 @@ export default function MigrazioneHero({ locale = 'it' }: { locale?: Locale }) {
         {/* Hero title (single H1) */}
         <h1 className="max-w-[760px] text-center font-display text-[34px] font-semibold leading-[1.1em] tracking-[-0.07em] text-black min-[810px]:text-[4rem]">
           {d.titlePart1}
-          <em className="font-serif italic font-semibold">{d.titleEm}</em>
+          <em className="font-serif italic font-semibold">{d.titleEm1}</em>
+          {d.titleMid}
+          <em className="font-serif italic font-semibold">{d.titleEm2}</em>
+          {d.titlePart2}
         </h1>
 
         {/* Subtitle */}
@@ -147,22 +115,7 @@ export default function MigrazioneHero({ locale = 'it' }: { locale?: Locale }) {
           <p className="font-sans text-[12px] font-medium tracking-[-0.03em] text-np-dark">
             {d.trustedCount}
           </p>
-          <div className="grid w-full grid-cols-5 gap-0">
-            {heroPartners.map((partner) => (
-              <div
-                key={partner.name}
-                className="place-self-start h-10 w-full overflow-visible flex items-center justify-center px-2"
-              >
-                <Image
-                  src={partner.src}
-                  alt={partner.name}
-                  width={partner.width}
-                  height={partner.height}
-                  className={partner.className}
-                />
-              </div>
-            ))}
-          </div>
+          <PartnerLogos />
         </div>
       </div>
     </section>

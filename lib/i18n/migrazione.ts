@@ -19,7 +19,10 @@ export type MigrazioneCopy = {
     trustRatingLabel: string
     trustSectors: string
     titlePart1: string
-    titleEm: string
+    titleEm1: string
+    titleMid: string
+    titleEm2: string
+    titlePart2: string
     subtitle: string
     microBenefits: string[]
     cta: string
@@ -54,9 +57,14 @@ export type MigrazioneCopy = {
     label: string
     heading: string
     subheading: string
-    tiers: { price: string; slot: string; tag: string; current: boolean }[]
+    tiers: { price: string; slot: string; tag: string; state: 'completed' | 'current' | 'upcoming' }[]
     priceSuffix: string
+    priceBadge: string
     guarantee: string
+    trustLabel: string
+    cardTitle: string
+    cardDescription: string
+    cardChecks: string[]
     includesTitle: string
     includes: string[]
     scarcity: string
@@ -108,7 +116,10 @@ const it: MigrazioneCopy = {
     trustRatingLabel: '4,9',
     trustSectors: 'Scelti da brand Fashion, Integratori e DTC eCommerce',
     titlePart1: 'Migra a Shopify senza perdere ',
-    titleEm: 'vendite, clienti o posizioni su Google',
+    titleEm1: 'vendite',
+    titleMid: ', ',
+    titleEm2: 'clienti',
+    titlePart2: ' o posizioni su Google',
     subtitle:
       'Un percorso completo di 4 mesi che porta il tuo eCommerce su Shopify: gestione tecnica, design, tracciamento e SEO. Con un solo interlocutore.',
     microBenefits: ['Zero downtime garantito', 'Redirect SEO 1:1', 'Garanzia 30 giorni'],
@@ -120,7 +131,7 @@ const it: MigrazioneCopy = {
     heading: 'La tua piattaforma ',
     headingEm: 'ti tiene fermo',
     description:
-      'Cambiare piattaforma sembra un rischio enorme. Restare dove sei costa di più, ogni giorno, in vendite che non fai.',
+      'Cambiare piattaforma sembra un rischio enorme. Restare dove sei costa di più, ogni giorno, in vendite che non fai. Lo dicono i numeri.',
     items: [
       {
         title: 'Piattaforma rigida',
@@ -213,14 +224,24 @@ const it: MigrazioneCopy = {
     subheading:
       'Più progetti entrano, più la tariffa cresce. Chi entra ora blocca quella più bassa.',
     tiers: [
-      { price: '€1.100', slot: 'Primi 10 progetti', tag: 'Prezzo di lancio', current: true },
-      { price: '€1.350', slot: 'Fino a 20', tag: 'Dopo i primi 10', current: false },
-      { price: '€1.700', slot: 'Fino a 30', tag: 'Quasi pieno', current: false },
-      { price: '€2.000', slot: 'A regime', tag: 'Prezzo pieno', current: false },
+      { price: '€1.100', slot: 'Primi 10 progetti', tag: 'Esaurito', state: 'completed' },
+      { price: '€1.350', slot: 'Fino a 20', tag: 'Prezzo attuale', state: 'current' },
+      { price: '€1.700', slot: 'Fino a 30', tag: 'Quasi pieno', state: 'upcoming' },
+      { price: '€2.000', slot: 'A regime', tag: 'Prezzo pieno', state: 'upcoming' },
     ],
     priceSuffix: '/mese × 4 mesi',
+    priceBadge: 'Prezzo attuale',
     guarantee:
-      'Garanzia 30 giorni: se entro 30 giorni il progetto non ti convince, ti rimborsiamo.',
+      'Garanzia 30 giorni: se entro 30 giorni il progetto non ti convince, ti rimborsiamo, senza domande.',
+    trustLabel: 'Scelti da brand Fashion, Integratori e DTC',
+    cardTitle: 'Migrazione Shopify',
+    cardDescription:
+      'Il percorso completo di 4 mesi: migrazione tecnica, design, tracciamento e SEO. Gestito end to end, con un solo interlocutore.',
+    cardChecks: [
+      'Migrazione dati, redirect 301 1:1 e zero downtime',
+      'Tracciamento server-side, SEO tecnica e design CRO-first',
+      'Un solo interlocutore dedicato per tutto il percorso',
+    ],
     includesTitle: 'Cosa include',
     includes: [
       'Migrazione completa dei dati',

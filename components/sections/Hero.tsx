@@ -5,39 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useInView } from 'framer-motion'
 
+import PartnerLogos from '@/components/ui/PartnerLogos'
 import { siteAssets } from '@/lib/site'
 import { getDictionary, type Locale } from '@/lib/i18n'
 
-const heroPartners = [
-  {
-    name: 'Shopify Partners',
-    src: siteAssets.heroPartners[0],
-    width: 288,
-    height: 76,
-    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[28px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-  {
-    name: 'Google Partner',
-    src: siteAssets.heroPartners[1],
-    width: 288,
-    height: 76,
-    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[46px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-  {
-    name: 'Meta Business Partner',
-    src: siteAssets.heroPartners[2],
-    width: 288,
-    height: 76,
-    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[26px] min-[810px]:h-[34px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-  {
-    name: 'Klaviyo Partners',
-    src: siteAssets.heroPartners[3],
-    width: 500,
-    height: 233,
-    className: 'block h-auto w-full object-contain opacity-[0.85] max-h-[36px] min-[810px]:h-[36px] min-[810px]:w-auto min-[810px]:max-h-none',
-  },
-] as const
 
 export default function Hero({ locale = 'en' }: { locale?: Locale }) {
   const t = getDictionary(locale)
@@ -155,19 +126,7 @@ export default function Hero({ locale = 'en' }: { locale?: Locale }) {
             </Link>
           </div>
 
-          <div className="grid w-full max-w-[600px] grid-cols-5 items-center gap-0 pt-[2px] min-[810px]:pt-0">
-            {heroPartners.map((partner) => (
-              <div key={partner.name} className="relative flex h-10 items-center justify-center px-1">
-                <Image
-                  src={partner.src}
-                  alt={partner.name}
-                  width={partner.width}
-                  height={partner.height}
-                  className={partner.className}
-                />
-              </div>
-            ))}
-          </div>
+          <PartnerLogos className="max-w-[600px] pt-[2px] min-[810px]:pt-0" />
         </div>
 
         <div className="flex w-full flex-col items-center min-[810px]:w-px min-[810px]:flex-[1_0_0] min-[810px]:self-stretch min-[810px]:justify-center">

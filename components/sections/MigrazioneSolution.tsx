@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion, Variants } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
@@ -18,17 +19,25 @@ const cardVariants: Variants = {
   }),
 }
 
+const solutionImages = [
+  '/images/originals/mLxRO32RYdrkA8A3LeYtI1YsShQ.png',
+  '/images/originals/VsUV6XwKbarU0lTCxeyHOgrVaCU.png',
+  '/images/originals/Vcll2J5RvsXWeyROzs7IjM4yiY.png',
+]
+
 export default function MigrazioneSolution({ locale = 'it' }: { locale?: Locale }) {
   const d = getMigrazioneCopy(locale).solution
 
   return (
-    <section className="pt-[80px] pb-0">
+    <section className="pb-[80px] pt-[80px]">
       <div className="container-noprob">
-        <div className="mx-auto max-w-[760px] text-center">
+        <div className="mx-auto max-w-[800px] text-center">
           <SectionLabel>{d.label}</SectionLabel>
           <h2 className="mt-5 text-np-h2 text-center text-np-dark">
             {d.headingPart1}
-            <span className="font-serif italic">{d.headingEm}</span>
+            <mark className="bg-[rgb(206,232,204)] px-2 font-serif italic text-noprob-text">
+              {d.headingEm}
+            </mark>
           </h2>
           <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">{d.description}</p>
         </div>
@@ -42,13 +51,18 @@ export default function MigrazioneSolution({ locale = 'it' }: { locale?: Locale 
               whileInView="visible"
               viewport={{ once: true, amount: 'some' }}
               variants={cardVariants}
-              className="section-card"
+              className="border-card-thick shadow-card flex h-full flex-col items-start justify-center gap-[10px] overflow-visible rounded-card bg-noprob-card p-6"
             >
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[rgb(206,232,204)] font-serif text-[14px] font-semibold italic text-noprob-text">
-                {i + 1}
-              </span>
+              <Image
+                src={solutionImages[i]}
+                alt=""
+                width={55}
+                height={55}
+                className="h-[55px] w-[55px] object-cover"
+                aria-hidden
+              />
               <h3 className="text-np-h3 text-noprob-text">{item.title}</h3>
-              <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+              <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text text-balance break-words whitespace-pre-wrap">
                 {item.description}
               </p>
             </motion.article>

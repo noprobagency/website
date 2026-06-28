@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 import { getDictionary } from '@/lib/i18n'
@@ -15,6 +14,12 @@ export default function StickyContact() {
 
   // Don't show on contact pages
   const isContactPage = pathname === '/contacts' || pathname === '/it/contatti'
+
+  // Page-specific behavior: on the Shopify migration landing the floating CTA
+  // scrolls to the in-page application section instead of the contact page.
+  const isMigrazione = pathname === '/it/migrazione-shopify'
+  const href = isMigrazione ? '#candidatura' : t.hero.ctaPrimaryHref
+  const label = isMigrazione ? 'Candidati per la migrazione' : 'Contact Us'
 
   useEffect(() => {
     if (isContactPage) return
@@ -47,23 +52,8 @@ export default function StickyContact() {
       className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 transition-all duration-300"
       style={{ opacity: visible ? 1 : 0, transform: 'translateX(-50%)', pointerEvents: visible ? 'auto' : 'none' }}
     >
-      <Link
-        href={t.hero.ctaPrimaryHref}
-        className="flex items-center justify-center gap-[30px] overflow-clip rounded-[138px] border border-[#363636] bg-[#121212] py-2 pl-2 pr-[18px] hover:opacity-90"
-      >
-        <div className="relative h-[30px] w-[30px] shrink-0 overflow-hidden rounded-full">
-          <Image
-            src="https://framerusercontent.com/images/7jMr2bJ1E0BHUjGZvEWpbOHZ0.png"
-            alt=""
-            fill
-            sizes="30px"
-            className="object-cover"
-          />
-        </div>
-        <span className="whitespace-nowrap text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-[#f0f0f0]">
-          Contact Us
-        </span>
-        <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-[#1dcc5d]" />
+      <Link href={href} className="button-principal whitespace-nowrap">
+        {label}
       </Link>
     </div>
   )
