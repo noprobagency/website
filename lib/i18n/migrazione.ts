@@ -132,9 +132,9 @@ const it: MigrazioneCopy = {
       'In una migrazione quasi tutto si può prevedere: dati, redirect, integrazioni, SEO. Un team che le ha già fatte sa dove sono i punti critici e li copre prima che diventino problemi.',
     items: [
       {
-        title: 'Esperienza, non tentativi',
+        title: 'Esperienza reale',
         description:
-          'Migrazioni complesse e redirect su larga scala, fatti bene. I problemi che spaventano te, noi li abbiamo già risolti. Sappiamo dove guardare prima ancora di iniziare.',
+          'Migrazioni complesse e redirect su larga scala, fatti bene. Sappiamo dove guardare prima ancora di iniziare.',
       },
       {
         title: 'Un team esperto',
@@ -153,7 +153,7 @@ const it: MigrazioneCopy = {
     headingPart1: '4 mesi per ',
     headingEm: 'fare tutto.',
     description:
-      'Tre fasi, un ordine logico. Niente fretta, niente limbo. Il tempo per seguire ogni dettaglio. Il flusso testato e confermato dopo oltre 10 progetti.',
+      'Tre fasi, un ordine logico. Niente fretta, niente limbo. Il tempo per seguire ogni dettaglio.\nIl flusso testato e confermato dopo oltre 10 progetti.',
     phases: [
       {
         number: '01',
@@ -182,7 +182,7 @@ const it: MigrazioneCopy = {
       description:
         'Quattro mesi non è il tempo che ci mettiamo a migrare. È il tempo che dedichiamo a seguire tutto a 360°: analizzare, operare, monitorare. Troviamo i colli di bottiglia, controlliamo giorno dopo giorno, perfezioniamo ogni dettaglio. Non un team che consegna e sparisce, ma uno che resta finché tutto funziona come deve.',
     },
-    closingLine: 'Non un team che consegna e sparisce. Un team che resta finché tutto funziona come deve.',
+    closingLine: 'Non un team che consegna e sparisce.\nUn team che resta finché tutto funziona come deve.',
   },
   pricing: {
     label: 'prezzo',

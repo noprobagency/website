@@ -80,7 +80,7 @@ export default function MigrazioneHero({ locale = 'it' }: { locale?: Locale }) {
 
         {/* Subtitle */}
         <p
-          className="w-full max-w-[640px] text-center font-sans text-[14.4px] font-medium leading-[1.4em] tracking-[-0.02em] text-[#181818] min-[810px]:text-[18px]"
+          className="w-full max-w-[840px] text-center font-sans text-[14.4px] font-medium leading-[1.4em] tracking-[-0.02em] text-[#181818] min-[810px]:text-[18px]"
           style={{ wordBreak: 'break-word', wordWrap: 'break-word' }}
         >
           {d.subtitle}

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
@@ -17,7 +18,7 @@ export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }
   const d = getMigrazioneCopy(locale).process
 
   return (
-    <section className="pb-0 pt-[80px]">
+    <section className="pb-[64px] pt-[80px]">
       <div className="container-noprob">
         {/* Header */}
         <div className="mx-auto max-w-[800px] text-center">
@@ -26,7 +27,9 @@ export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }
             {d.headingPart1}
             <em className="font-serif italic">{d.headingEm}</em>
           </h2>
-          <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">{d.description}</p>
+          <p className="mt-5 whitespace-pre-line font-sans text-body-lg font-medium text-noprob-text">
+            {d.description}
+          </p>
         </div>
 
         {/* Phase cards — single column, label + title on one line, full-width description */}
@@ -46,7 +49,9 @@ export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }
                 >
                   Fase {phase.number}
                 </span>
-                <h3 className="text-np-h3 text-noprob-text">{phase.title}</h3>
+                <h3 className="font-serif text-[24px] font-medium leading-[1.2em] tracking-[-0.05em] text-noprob-text">
+                  {phase.title}
+                </h3>
                 <span className="font-serif text-[13px] font-medium italic tracking-[-0.02em] text-noprob-muted min-[520px]:ml-auto">
                   {phase.duration}
                 </span>
@@ -64,23 +69,16 @@ export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 'some' }}
           transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-          className="shadow-card mx-auto mt-4 flex max-w-[800px] flex-col gap-4 overflow-visible rounded-card border-[6px] border-[#e8dfa3] bg-noprob-card p-6 min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-6 min-[810px]:p-8"
+          className="shadow-card mx-auto mt-4 flex max-w-[800px] flex-col gap-4 overflow-visible rounded-card border-[6px] border-[rgb(255_222_0_/_30%)] bg-noprob-card p-6 min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-6 min-[810px]:p-8"
         >
-          <svg
-            width="48"
-            height="48"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#121212"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <Image
+            src="/images/originals/BwTYAhLAepLBYZo2TxC9P40G5aU.png"
+            alt=""
+            width={55}
+            height={55}
+            className="h-[55px] w-[55px] shrink-0 object-cover"
             aria-hidden
-            className="shrink-0"
-          >
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 7v5l3 2" />
-          </svg>
+          />
           <div className="flex flex-col gap-2">
             <h3 className="text-np-h3 text-noprob-text">{d.fourMonths.title}</h3>
             <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
@@ -90,7 +88,7 @@ export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }
         </motion.article>
 
         {/* Closing line */}
-        <p className="mx-auto mt-8 max-w-[640px] text-center font-sans text-body-lg font-medium text-noprob-text">
+        <p className="mx-auto mt-8 max-w-[640px] whitespace-pre-line text-center font-sans text-body-lg font-medium text-noprob-text">
           {d.closingLine}
         </p>
       </div>
