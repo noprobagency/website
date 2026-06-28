@@ -11,21 +11,21 @@ import MigrazioneFAQ from '@/components/sections/MigrazioneFAQ'
 import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/site'
 
-const locale = 'it' as const
+const locale = 'en' as const
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildMetadata({ path: '/it/migrazione-shopify', locale, pageKey: 'migrazioneShopify' })
+  return buildMetadata({ path: '/shopify-migration', locale, pageKey: 'migrazioneShopify' })
 }
 
-const migrazioneJsonLd = {
+const migrationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Migrazione eCommerce su Shopify',
+  name: 'Shopify eCommerce Migration',
   provider: { '@type': 'Organization', name: 'NoProb Agency', url: 'https://noprob.agency' },
   serviceType: 'Shopify eCommerce migration',
-  areaServed: ['IT', 'EU'],
+  areaServed: ['IT', 'EU', 'US'],
   description:
-    'Percorso di 4 mesi per migrare un eCommerce su Shopify senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione del sito, tracciamento server-side, design e SEO.',
+    'A 4-month journey to migrate your eCommerce to Shopify without losing sales or customers. 1:1 redirects, no site interruption, server-side tracking, design and SEO.',
   offers: {
     '@type': 'Offer',
     price: '1350',
@@ -39,12 +39,12 @@ const migrazioneJsonLd = {
   },
 }
 
-export default function MigrazioneShopifyPage() {
+export default function ShopifyMigrationPage() {
   return (
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(migrazioneJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(migrationJsonLd) }}
       />
       <MigrazioneHero locale={locale} />
       <MigrazioneProblem locale={locale} />

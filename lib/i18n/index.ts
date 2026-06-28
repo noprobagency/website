@@ -610,7 +610,7 @@ const en: Dictionary = {
     useCases: { title: 'eCommerce Case Studies & Results | NoProb', description: 'Real results from long-term Shopify partnerships. See how we helped fashion and DTC brands grow revenue, improve MER, and scale eCommerce operations.' },
     dataDrivenTeam: { title: 'Data-Driven Team — Dedicated eCommerce Retainer | NoProb', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
     ecommerceRebuild: { title: 'eCommerce Rebuild on Shopify | NoProb', description: 'We rebuild your eCommerce from design to performance, built to convert and to grow. A standardized Shopify rebuild process with CRO and tracking included.' },
-    migrazioneShopify: { title: 'Shopify Migration Without Losing Traffic | NoProb', description: 'Migrate your eCommerce to Shopify in 4 months without losing sales, customers, or Google rankings. 1:1 redirects, zero downtime, one point of contact. 30-day guarantee.' },
+    migrazioneShopify: { title: 'Shopify Migration Without Losing Sales | NoProb', description: 'Migrate your eCommerce to Shopify in 4 months without losing sales or customers. 1:1 redirects, no downtime, one point of contact. 30-day money-back guarantee.' },
   },
   about: {
     hero: {
@@ -1065,7 +1065,7 @@ const it: Dictionary = {
     useCases: { title: "Casi d'Uso eCommerce e Risultati Reali | NoProb", description: 'Risultati concreti da partnership Shopify a lungo termine. Come abbiamo fatto crescere brand fashion e DTC su fatturato, MER e operations eCommerce.' },
     dataDrivenTeam: { title: 'Data-Driven Team \u2014 Retainer eCommerce Dedicato | NoProb', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare senza assumere internamente.' },
     ecommerceRebuild: { title: 'Rebuild eCommerce su Shopify | NoProb', description: 'Ricostruiamo il tuo eCommerce dal design alle performance, per convertire e crescere. Processo standardizzato con CRO e tracking inclusi.' },
-    migrazioneShopify: { title: 'Migrazione a Shopify senza perdere traffico | NoProb', description: 'Migra il tuo eCommerce su Shopify in 4 mesi senza perdere vendite, clienti o posizioni su Google. Redirect 1:1, zero downtime, un solo interlocutore. Garanzia 30 giorni.' },
+    migrazioneShopify: { title: 'Migrazione a Shopify senza perdere vendite | NoProb', description: 'Migra il tuo eCommerce su Shopify in 4 mesi senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, un solo interlocutore. Garanzia 30 giorni.' },
   },
   about: {
     hero: {

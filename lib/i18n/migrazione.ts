@@ -1,18 +1,25 @@
 import type { Locale } from '@/lib/i18n'
 
 /**
- * Copy module for the IT-only "Migrazione a Shopify" landing page
- * (route: /it/migrazione-shopify).
+ * Copy module for the "Migrazione a Shopify" / "Shopify Migration" landing page.
+ * Routes: it -> /it/migrazione-shopify, en -> /shopify-migration.
  *
- * It is isolated from the large shared dictionary in `lib/i18n/index.ts` to keep
- * that file stable, while still following the house i18n convention: a typed,
- * locale-keyed object consumed through a `get*` accessor. Only `seo.migrazioneShopify`
- * lives in the shared dictionary (so `buildMetadata({ pageKey })` keeps working).
- *
- * EN: the page ships in Italian only for now. `en` mirrors `it` as a structural
- * placeholder so the module is ready for English translation when the EN route
- * is created. Replace the `en` object with real English copy at that point.
+ * Isolated from the large shared dictionary in `lib/i18n/index.ts` to keep that
+ * file stable, while following the house i18n convention: a typed, locale-keyed
+ * object consumed through a `get*` accessor. Only `seo.migrazioneShopify` lives
+ * in the shared dictionary (so `buildMetadata({ pageKey })` keeps working).
  */
+
+type ChartData = {
+  badge: string
+  note: string
+  caption: string
+  ariaLabel: string
+  clicks: string
+  impressions: string
+  ctr: string
+  position: string
+}
 
 export type MigrazioneCopy = {
   hero: {
@@ -41,6 +48,23 @@ export type MigrazioneCopy = {
     headingEm: string
     description: string
     items: { title: string; description: string }[]
+  }
+  charts: {
+    label: string
+    title1: string
+    titleEm: string
+    subtitle: string
+    axisClicks: string
+    axisImpressions: string
+    metricClicks: string
+    metricImpressions: string
+    metricCtr: string
+    metricPosition: string
+    checkpoint1: string
+    checkpoint2: string
+    foot: string
+    bad: ChartData
+    good: ChartData
   }
   process: {
     label: string
@@ -138,6 +162,44 @@ const it: MigrazioneCopy = {
       },
     ],
   },
+  charts: {
+    label: 'search console',
+    title1: 'Dopo ogni migrazione il traffico scende. ',
+    titleEm: 'Conta cosa succede dopo.',
+    subtitle:
+      'Google ri-elabora il sito: il calo è fisiologico. La risalita dipende da come è fatta la migrazione.',
+    axisClicks: 'Clic',
+    axisImpressions: 'Impressioni',
+    metricClicks: 'Clic totali',
+    metricImpressions: 'Impressioni totali',
+    metricCtr: 'CTR media',
+    metricPosition: 'Posizione media',
+    checkpoint1: '① Migrazione',
+    checkpoint2: '② Ri-elaborazione Google',
+    foot: 'Stesso punto di partenza. Esito opposto. La differenza è il metodo.',
+    bad: {
+      badge: 'Migrazione gestita male',
+      note: 'esempio illustrativo',
+      caption:
+        'Redirect mancanti, URL persi. Dopo la ri-elaborazione il traffico si stabilizza più in basso e non torna su.',
+      ariaLabel: 'Search Console: traffico che cala dopo la migrazione e si stabilizza in basso',
+      clicks: '28,4K',
+      impressions: '1,84 Mln',
+      ctr: '1,1%',
+      position: '42,8',
+    },
+    good: {
+      badge: 'Migrazione gestita da noi',
+      note: 'dato reale Cumini',
+      caption:
+        'Redirect 1:1 mappati a monte. Breve assestamento, poi Google ritrova tutto e il sito cresce. Monitoraggio post lancio continuo e modifiche rapide.',
+      ariaLabel: 'Search Console: lieve calo dopo la migrazione e poi forte crescita',
+      clicks: '99,3K',
+      impressions: '3,91 Mln',
+      ctr: '2,5%',
+      position: '9,6',
+    },
+  },
   process: {
     label: 'come lavoriamo',
     headingPart1: '4 mesi per ',
@@ -194,7 +256,7 @@ const it: MigrazioneCopy = {
     cardDescription:
       'Il percorso completo di 4 mesi: migrazione tecnica, design, tracciamento e SEO. Gestito end to end, con un solo interlocutore.',
     cardChecks: [
-      'Migrazione dati, redirect 301 1:1 e zero downtime',
+      'Migrazione dati, redirect 301 1:1 e nessuna interruzione del sito',
       'Tracciamento server-side, SEO tecnica e design CRO-first',
       'Un solo interlocutore dedicato per tutto il percorso',
     ],
@@ -253,11 +315,223 @@ const it: MigrazioneCopy = {
   },
 }
 
-const dictionaries: Record<Locale, MigrazioneCopy> = {
-  it,
-  // EN placeholder: mirrors IT until the English route ships. See file header.
-  en: it,
+const en: MigrazioneCopy = {
+  hero: {
+    trustRatingLabel: '4.9',
+    trustSectors: 'Chosen by Fashion, Supplements and DTC eCommerce brands',
+    titlePart1: 'Migrate to Shopify without losing ',
+    titleEm1: 'sales',
+    titleMid: ' or ',
+    titleEm2: 'customers',
+    titlePart2: '',
+    subtitle:
+      'Not just “we’ll rebuild your site.” We set up your store on Shopify to sell better: design, tracking, performance, reliability, flexibility, SEO. One point of contact, a confirmation report for every work area, money-back guarantee and maintenance included.',
+    microBenefits: ['Never a second offline', '1:1 SEO redirects', '30-day money-back guarantee'],
+    cta: 'Apply for your migration',
+    trustedCount: 'Chosen by 33+ brands',
+  },
+  problem: {
+    label: 'the problem',
+    heading: 'Your platform ',
+    headingEm: 'is holding you back',
+    description:
+      'Switching platforms feels like a huge risk. Staying where you are costs you more, every day, in sales you’re not making. The numbers say so.',
+    items: [
+      {
+        title: 'Rigid platform',
+        description:
+          'Every change goes through a ticket. Outside of sales periods you can’t really push. The platform decides what you can do, not you.',
+      },
+      {
+        title: 'Fear of migrating',
+        description:
+          'You’ve heard stories of brands that switched and lost half their organic traffic. It’s the number one fear, and it’s a fair one.',
+      },
+      {
+        title: 'Operational chaos',
+        description:
+          'Inventory, open orders, returning customers. Switching platforms feels like opening a construction site that blocks everything for months.',
+      },
+    ],
+  },
+  solution: {
+    label: 'the solution',
+    headingPart1: 'An experienced team for a ',
+    headingEm: 'managed, predictable migration.',
+    description:
+      'In a migration, almost everything can be planned for: data, redirects, integrations, SEO. A team that has done them well already knows where the critical points are and covers them before they become problems.',
+    items: [
+      {
+        title: 'Real experience',
+        description:
+          'Complex migrations and large-scale redirects, done right. We know where to look before we even start.',
+      },
+      {
+        title: 'An expert team',
+        description:
+          'Development, SEO, tracking, design. When something unexpected comes up you don’t wait for the right freelancer: the team is already there, complete, and steps in right away.',
+      },
+      {
+        title: 'Bottleneck killers',
+        description:
+          'We find the bottlenecks. And we fix them. The value isn’t doing everything perfectly on the first try. It’s spotting what slows the store down and optimizing it.',
+      },
+    ],
+  },
+  charts: {
+    label: 'search console',
+    title1: 'After every migration, traffic drops. ',
+    titleEm: 'What matters is what happens next.',
+    subtitle:
+      'Google re-processes the site: the drop is physiological. The recovery depends on how the migration is done.',
+    axisClicks: 'Clicks',
+    axisImpressions: 'Impressions',
+    metricClicks: 'Total clicks',
+    metricImpressions: 'Total impressions',
+    metricCtr: 'Avg CTR',
+    metricPosition: 'Avg position',
+    checkpoint1: '① Migration',
+    checkpoint2: '② Google re-processing',
+    foot: 'Same starting point. Opposite outcome. The difference is the method.',
+    bad: {
+      badge: 'Poorly managed migration',
+      note: 'illustrative example',
+      caption:
+        'Missing redirects, lost URLs. After re-processing, traffic settles lower and doesn’t come back up.',
+      ariaLabel: 'Search Console: traffic dropping after migration and settling lower',
+      clicks: '28.4K',
+      impressions: '1.84M',
+      ctr: '1.1%',
+      position: '42.8',
+    },
+    good: {
+      badge: 'Migration managed by us',
+      note: 'real Cumini data',
+      caption:
+        '1:1 redirects mapped upfront. Brief settling, then Google finds everything again and the site grows. Continuous post-launch monitoring and fast fixes.',
+      ariaLabel: 'Search Console: slight drop after migration then strong growth',
+      clicks: '99.3K',
+      impressions: '3.91M',
+      ctr: '2.5%',
+      position: '9.6',
+    },
+  },
+  process: {
+    label: 'how we work',
+    headingPart1: '4 months to ',
+    headingEm: 'do it all.',
+    description:
+      'Three phases, one logical order. No rush, no limbo. The time to look after every detail.\nThe flow tested and confirmed over 10+ projects.',
+    phases: [
+      {
+        number: '01',
+        title: 'Analysis',
+        duration: 'first ~15 days',
+        description:
+          'We understand every detail of your store: data, products, orders, customers, URLs, integrations, SEO issues. We map everything before touching anything. Nothing starts until we know exactly where to put our hands, and we set up an efficient way to communicate with you.',
+      },
+      {
+        number: '02',
+        title: 'Execution',
+        duration: '~55 days',
+        description:
+          'The build phase. Product and order migration, staging setup, 1:1 redirect plan, server-side tracking, custom design and store development. The new store takes shape, piece by piece. Every step is shared and approved before the official launch.',
+      },
+      {
+        number: '03',
+        title: 'Monitoring',
+        duration: '~50 days',
+        description:
+          'Go-live, then continuous oversight. The full team stays on every front: development, SEO, tracking, design, ready to act on every bottleneck. Every possible optimization, we find it and we do it. Day after day, optimization after optimization, we get to perfection.',
+      },
+    ],
+    fourMonths: {
+      title: 'Why 4 months to do everything?',
+      description:
+        'Four months isn’t how long it takes us to migrate. It’s the time we dedicate to following everything end to end: analyze, execute, monitor. We find the bottlenecks, check day after day, perfect every detail. Not a team that delivers and disappears, but one that stays until everything works the way it should.',
+    },
+    closingLine:
+      'Not a team that delivers and disappears.\nA team that stays until everything works the way it should.',
+  },
+  pricing: {
+    label: 'pricing',
+    heading: 'A journey, not a service.\nYou pay as we build it.',
+    subheading:
+      'No thousands of euros up front. You pay step by step, while you watch your store take shape.',
+    tiers: [
+      { price: '€1,100', slot: 'First 10 projects', tag: 'Sold out', state: 'completed' },
+      { price: '€1,350', slot: 'Up to 20', tag: 'Current price', state: 'current' },
+      { price: '€1,700', slot: 'Up to 30', tag: 'Almost full', state: 'upcoming' },
+      { price: '€2,000', slot: 'At full capacity', tag: 'Full price', state: 'upcoming' },
+    ],
+    priceSuffix: '/month × 4 months',
+    priceBadge: 'noprobagency method',
+    guarantee:
+      '30-day guarantee: if you’re not convinced within 30 days, we refund you, no questions asked.',
+    trustLabel: 'Chosen by Fashion, Supplements and DTC brands',
+    cardTitle: 'Shopify Migration',
+    cardDescription:
+      'The complete 4-month journey: technical migration, design, tracking and SEO. Managed end to end, with one point of contact.',
+    cardChecks: [
+      'Data migration, 1:1 301 redirects and no site interruption',
+      'Server-side tracking, technical SEO and CRO-first design',
+      'One dedicated point of contact for the whole journey',
+    ],
+    scarcity:
+      'Every project adds experience, method, efficiency. That’s the value for whoever comes next. Whoever starts now locks in the rate before it goes up. No countdown: your slot stays yours as long as it’s there.',
+    cta: 'Apply now',
+  },
+  faq: {
+    label: 'faq',
+    heading: 'Answers to the ',
+    headingEm: 'most common questions',
+    subheading: 'The most common objections before migrating to Shopify. No fluff.',
+    items: [
+      {
+        question: 'How long does the migration really take?',
+        answer:
+          'The journey is 4 months. Timing adapts to complexity, but the method and phases stay the same. Every project has its own story, its own challenges, and four months is the right amount of time to handle them all and do it well, without rushing.',
+      },
+      {
+        question: 'How does the 30-day guarantee work?',
+        answer:
+          'Within 30 days, if you’re not convinced, we refund you. In the first month we do the technical, reversible work: you see the store take shape before you’re fully committed.',
+      },
+      {
+        question: 'Will I lose my Google rankings?',
+        answer:
+          'No, if the migration is managed. 1:1 redirects, technical SEO, post-launch monitoring: the work is set up in detail precisely to avoid penalties and drops. It’s what we work on most.',
+      },
+      {
+        question: 'Does my store stay online during the migration?',
+        answer:
+          'Yes. We work in staging, and at go-live the site doesn’t stop for a second. Your customers don’t notice a thing.',
+      },
+      {
+        question: 'Which platforms do you migrate from?',
+        answer:
+          'CRM, ERP and integrated management systems, WooCommerce, PrestaShop, Magento. And existing stores that need rebuilding.',
+      },
+      {
+        question: 'Who is my point of contact?',
+        answer:
+          'One dedicated point of contact, for the whole journey. The same person from start to finish. Not a salesperson, but the project manager and eCommerce expert for your project.',
+      },
+      {
+        question: 'What happens after the 4 months?',
+        answer:
+          'After the migration the real work begins. The store is on Shopify, solid and ready: from here the full performance team can step in to grow it with advertising, email marketing, CRO, continuous optimization. It’s the natural step toward [complete management](/data-driven-team).',
+      },
+      {
+        question: 'What if the work finishes before or after the 4 months?',
+        answer:
+          'It can’t finish earlier: four months is exactly what’s needed to handle every last detail, and it’s the right time to do everything well (and to let you pay in installments with peace of mind). If there’s time left over, we invest it in analysis and performance strategy: we already have the team ready, so we start studying how to grow you. If it needs more time, which is extremely rare given our experience, the team keeps working at no extra cost until we reach the highest quality.',
+      },
+    ],
+  },
 }
+
+const dictionaries: Record<Locale, MigrazioneCopy> = { it, en }
 
 export function getMigrazioneCopy(locale: Locale): MigrazioneCopy {
   return dictionaries[locale]
