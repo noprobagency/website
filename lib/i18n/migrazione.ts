@@ -51,8 +51,7 @@ export type MigrazioneCopy = {
     headingPart1: string
     headingEm: string
     description: string
-    phases: { number: string; title: string; description: string }[]
-    closingLine: string
+    phases: { number: string; title: string; duration: string; description: string }[]
   }
   pricing: {
     label: string
@@ -129,7 +128,7 @@ const it: MigrazioneCopy = {
     headingPart1: 'Team con esperienza per una migrazione ',
     headingEm: 'gestita e prevedibile.',
     description:
-      'In una migrazione quasi tutto si può prevedere: dati, redirect, integrazioni, SEO. Un team che le ha già fatte sa dove sono i punti critici e li copre prima che diventino problemi. L’imprevisto però c’è sempre. E si gestisce solo se hai accanto chi lo riconosce e lo risolve in fretta. Qui sta la differenza: non un lavoro “una tantum”, ma un team che trova ogni collo di bottiglia e lo sistema.',
+      'In una migrazione quasi tutto si può prevedere: dati, redirect, integrazioni, SEO. Un team che le ha già fatte sa dove sono i punti critici e li copre prima che diventino problemi.',
     items: [
       {
         title: 'Esperienza, non tentativi',
@@ -144,7 +143,7 @@ const it: MigrazioneCopy = {
       {
         title: 'Bottleneck killer',
         description:
-          'Troviamo i colli di bottiglia. E li sistemiamo. Il valore non è fare tutto perfetto al primo colpo. È individuare cosa frena lo store e ottimizzarlo. Un team costante che migliora in corsa batte chiunque prometta zero errori.',
+          'Troviamo i colli di bottiglia. E li sistemiamo. Il valore non è fare tutto perfetto al primo colpo. È individuare cosa frena lo store e ottimizzarlo.',
       },
     ],
     fourMonths: {
@@ -155,43 +154,33 @@ const it: MigrazioneCopy = {
   },
   process: {
     label: 'come lavoriamo',
-    headingPart1: 'Cinque fasi, ',
-    headingEm: 'un ordine logico.',
+    headingPart1: '4 mesi per ',
+    headingEm: 'fare tutto.',
     description:
-      'Niente scadenze a giorno per impressionarti. Un metodo costruito per fare le cose nell’ordine giusto, senza sorprese.',
+      'Tre fasi, un ordine logico. Niente fretta, niente limbo. Il tempo per seguire ogni dettaglio. Il flusso testato e confermato dopo oltre 10 progetti.',
     phases: [
       {
         number: '01',
-        title: 'Audit e accessi',
+        title: 'Analisi',
+        duration: 'primi ~15 giorni',
         description:
-          'Analisi della piattaforma attuale, mappatura di prodotti, ordini, clienti, URL e criticità SEO. Raccolta accessi.',
+          'Capiamo ogni dettaglio dello store: dati, prodotti, ordini, clienti, URL, integrazioni, criticità SEO. Mappiamo tutto prima di toccare qualsiasi cosa. Niente parte finché non sappiamo esattamente dove mettere le mani e impostiamo un metodo di comunicazione efficiente con il cliente.',
       },
       {
         number: '02',
-        title: 'Migrazione, redirect e tracciamento',
+        title: 'Operatività',
+        duration: '~55 giorni',
         description:
-          'Setup ambiente Shopify in staging, migrazione dati, piano redirect 301 completo, tracciamento server-side (GA4, Meta CAPI, GTM).',
+          'La parte di costruzione. Migrazione di prodotti e ordini, setup in staging, piano redirect 1:1, tracciamento server-side, design su misura e sviluppo dello store. Lo store nuovo prende forma, pezzo per pezzo. Tutti gli step verranno inviati e confermati prima del lancio ufficiale.',
       },
       {
         number: '03',
-        title: 'Design su misura',
+        title: 'Monitoraggio',
+        duration: '~50 giorni',
         description:
-          'Costruzione del tema, homepage e schede prodotto in ottica conversione, UX mobile, struttura collezioni.',
-      },
-      {
-        number: '04',
-        title: 'Integrazioni e SEO',
-        description:
-          'Connessioni gestionale, ERP e CRM, app necessarie, ottimizzazione SEO on-page e tecnica, QA su tutti i flussi.',
-      },
-      {
-        number: '05',
-        title: 'Lancio e supporto',
-        description:
-          'Go-live con zero downtime, monitoraggio di ranking e traffico post-migrazione, supporto e ottimizzazione continua.',
+          'Go-live e poi controllo continuo. Il team completo resta su ogni fronte: sviluppo, SEO, tracciamento, design, pronto a intervenire su ogni collo di bottiglia. Ogni ottimizzazione possibile, la troviamo e la facciamo. Giorno dopo giorno, ottimizzazione dopo ottimizzazione, arriviamo alla perfezione.',
       },
     ],
-    closingLine: 'Quattro mesi per fare le cose bene. Non un mese in fretta, non sei mesi nel limbo.',
   },
   pricing: {
     label: 'prezzo',
