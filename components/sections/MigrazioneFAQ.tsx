@@ -14,7 +14,7 @@ export default function MigrazioneFAQ({ locale = 'it' }: { locale?: Locale }) {
       name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer,
+        text: faq.answer.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'),
       },
     })),
   }

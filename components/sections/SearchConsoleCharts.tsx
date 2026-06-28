@@ -1,6 +1,5 @@
 import SectionLabel from '@/components/ui/SectionLabel'
 import { type Locale } from '@/lib/i18n'
-import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
 
 /*
   COMPONENTE GRAFICI "SEARCH CONSOLE" — sezione comparativa migrazione.
@@ -143,9 +142,7 @@ function GscChart({
   )
 }
 
-export default function SearchConsoleCharts({ locale = 'it' }: { locale?: Locale }) {
-  const d = getMigrazioneCopy(locale).charts
-
+export default function SearchConsoleCharts(_props: { locale?: Locale }) {
   return (
     <section className="pb-0 pt-[80px]">
       <div className="container-noprob">
@@ -181,18 +178,13 @@ export default function SearchConsoleCharts({ locale = 'it' }: { locale?: Locale
               metrics={{ clicks: '99,3K', impressions: '3,91 Mln', ctr: '2,5%', position: '9,6' }}
               clicksPoints="34,96 44,90 54,102 64,86 74,99 84,83 94,94 104,88 114,101 124,84 134,96 144,90 154,103 164,87 174,95 184,91 190,94 200,108 210,116 220,110 230,114 240,107 250,112 262,100 274,106 286,92 298,98 312,82 326,90 340,72 356,80 372,64 390,71 410,54 432,62 456,46 480,53 506,38 534,45 562,32 590,40 606,30"
               imprPoints="34,134 44,130 54,140 64,128 74,137 84,126 94,133 104,129 114,141 124,127 134,135 144,131 154,142 164,128 174,136 184,132 190,134 200,144 210,150 220,146 230,148 240,143 250,147 262,140 274,144 286,135 298,139 312,130 326,136 340,124 356,130 372,118 390,124 410,110 432,116 456,104 480,110 506,98 534,104 562,92 590,99 606,90"
-              caption="Redirect 1:1 mappati a monte. Breve assestamento, poi Google ritrova tutto e il sito cresce."
+              caption="Redirect 1:1 mappati a monte. Breve assestamento, poi Google ritrova tutto e il sito cresce. Monitoraggio post lancio continuo e modifiche rapide."
               ariaLabel="Search Console: lieve calo dopo la migrazione e poi forte crescita"
             />
           </div>
 
           <p className="mt-[22px] text-center text-[14px] text-[#555]">
             Stesso punto di partenza. Esito opposto. La differenza è il metodo.
-          </p>
-
-          {/* Bridge to the solution */}
-          <p className="mx-auto mt-8 max-w-[620px] text-center font-sans text-body-lg font-medium leading-[1.5em] text-noprob-text">
-            {d.bridge}
           </p>
         </div>
       </div>

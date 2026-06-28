@@ -1,8 +1,36 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
+
+/** Render an answer string, turning [label](url) tokens into links. */
+function renderAnswer(text: string) {
+  return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+    if (!match) return part
+    const [, label, href] = match
+    if (href.startsWith('/')) {
+      return (
+        <Link key={i} href={href} className="font-semibold underline transition-opacity hover:opacity-70">
+          {label}
+        </Link>
+      )
+    }
+    return (
+      <a
+        key={i}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold underline transition-opacity hover:opacity-70"
+      >
+        {label}
+      </a>
+    )
+  })
+}
 
 type AccordionItem = {
   question: string
@@ -46,11 +74,11 @@ export default function Accordion({ items, className }: AccordionProps) {
             <div
               className={cn(
                 'overflow-hidden transition-all duration-300',
-                isOpen ? 'mt-3 max-h-96 opacity-100' : 'max-h-0 opacity-0',
+                isOpen ? 'mt-3 max-h-[1000px] opacity-100' : 'max-h-0 opacity-0',
               )}
             >
-              <p className="max-w-3xl font-sans text-body-sm font-medium text-noprob-text">
-                {item.answer}
+              <p className="max-w-3xl font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+                {renderAnswer(item.answer)}
               </p>
             </div>
           </div>

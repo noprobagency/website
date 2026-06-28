@@ -35,9 +35,6 @@ export type MigrazioneCopy = {
     description: string
     items: { title: string; description: string }[]
   }
-  charts: {
-    bridge: string
-  }
   solution: {
     label: string
     headingPart1: string
@@ -119,10 +116,6 @@ const it: MigrazioneCopy = {
           'Inventario, ordini in corso, clienti abituali. Cambiare piattaforma sembra aprire un cantiere che blocca tutto per mesi.',
       },
     ],
-  },
-  charts: {
-    bridge:
-      'Il calo dopo la migrazione è inevitabile. Che diventi permanente o un semplice assestamento dipende da una cosa sola: il metodo con cui si migra.',
   },
   solution: {
     label: 'la soluzione',
@@ -219,44 +212,49 @@ const it: MigrazioneCopy = {
   faq: {
     label: 'domande frequenti',
     heading: 'Le risposte alle ',
-    headingEm: 'domande che ti stai facendo',
+    headingEm: 'domande più comuni',
     subheading:
       'Le obiezioni più comuni prima di migrare a Shopify. Senza giri di parole.',
     items: [
       {
         question: 'Quanto dura davvero la migrazione?',
         answer:
-          'Quattro mesi è il percorso completo. Le tempistiche si adattano alla complessità del progetto, ma il metodo e le fasi restano questi: nessuna fase viene saltata per fare prima.',
+          'Il percorso è di 4 mesi. Le tempistiche si adattano alla complessità, ma il metodo e le fasi restano questi. Ogni progetto ha la sua storia, le sue criticità, le sue difficoltà, e quattro mesi sono il tempo giusto per gestirle tutte e farla bene, senza fretta.',
       },
       {
         question: 'Come funziona la garanzia 30 giorni?',
         answer:
-          'Entro 30 giorni dall’inizio, se non sei convinto del lavoro, ti rimborsiamo quanto versato. Senza discussioni.',
+          'Entro 30 giorni, se il progetto non ti convince, ti rimborsiamo. Nel primo mese facciamo il lavoro tecnico e reversibile: vedi lo store prendere forma prima di esserti impegnato del tutto.',
       },
       {
         question: 'Perderò posizionamento su Google?',
         answer:
-          'No, se la migrazione è gestita: redirect 1:1 mappati a monte, SEO tecnica curata e monitoraggio post-lancio. È esattamente il punto su cui lavoriamo, e quello che separa una migrazione riuscita da una sbagliata.',
+          'No, se la migrazione è gestita. Redirect 1:1, SEO tecnica, monitoraggio post-lancio: il lavoro è impostato nel dettaglio proprio per evitare penalizzazioni e cali. È il punto su cui lavoriamo di più.',
       },
       {
         question: 'Il mio store resta online durante la migrazione?',
         answer:
-          'Sì. Lavoriamo in staging e il go-live è a zero downtime. I clienti continuano ad acquistare sul sito attuale fino allo switch, e non si accorgono di nulla.',
+          'Sì. Lavoriamo in staging e al go-live il sito non si ferma un secondo. I tuoi clienti non si accorgono di nulla.',
       },
       {
         question: 'Da quali piattaforme migrate?',
         answer:
-          'Atelier e gestionali integrati, WooCommerce, PrestaShop, Magento, e store Shopify già esistenti da rifare da capo.',
+          'CRM, ERP e gestionali integrati, WooCommerce, PrestaShop, Magento. E store già esistenti da ricostruire.',
       },
       {
         question: 'Chi è il mio referente?',
         answer:
-          'Un solo interlocutore dedicato per tutto il percorso. Niente ticket, niente account junior, niente brief ripetuti a fornitori diversi.',
+          'Un solo interlocutore dedicato, per tutto il percorso. La stessa persona dall’inizio alla fine. Non un venditore, ma il project manager ed esperto eCommerce del tuo progetto.',
       },
       {
         question: 'Cosa succede dopo i 4 mesi?',
         answer:
-          'Puoi proseguire con la gestione continuativa del tuo store, se ha senso per te. Non resti mai solo, ma non sei vincolato a nulla.',
+          'Dopo la migrazione inizia il lavoro vero. Lo store è su Shopify, solido e pronto: da qui può entrare tutto il team performance per farlo crescere con advertising, email marketing, CRO, ottimizzazione continua. È il passo naturale verso una [gestione completa](/it/team-ecommerce-dedicato).',
+      },
+      {
+        question: 'E se il lavoro finisse prima o dopo i 4 mesi?',
+        answer:
+          'Prima non può finire: quattro mesi servono proprio a gestire ogni minimo dettaglio, ed è il tempo giusto per fare tutto bene (e per permetterti di rateizzare con serenità). Se avanza tempo, lo investiamo in analisi e strategia performance: abbiamo già il team pronto, quindi iniziamo a studiare come farti crescere. Se invece servisse più tempo, cosa rarissima vista l’esperienza, il team continua a lavorare senza costi aggiuntivi finché non arriviamo al massimo della qualità.',
       },
     ],
   },
