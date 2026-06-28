@@ -66,9 +66,6 @@ export type MigrazioneCopy = {
     scarcity: string
     cta: string
   }
-  socialProof: {
-    bridgeLine: string
-  }
   faq: {
     label: string
     heading: string
@@ -204,10 +201,6 @@ const it: MigrazioneCopy = {
     scarcity:
       'Ogni progetto aggiunge esperienza, metodo, efficienza. È il valore di chi entra dopo. Chi parte ora blocca la tariffa, prima che salga. Nessun countdown: lo slot resta tuo finché c’è.',
     cta: 'Candidati ora',
-  },
-  socialProof: {
-    bridgeLine:
-      'Lo stesso metodo lo applichiamo su integratori, food, profumeria e altri eCommerce B2C. Il fashion è dove l’abbiamo dimostrato più a lungo.',
   },
   faq: {
     label: 'domande frequenti',
