@@ -53,7 +53,13 @@ export default function StickyContact() {
       style={{ opacity: visible ? 1 : 0, transform: 'translateX(-50%)', pointerEvents: visible ? 'auto' : 'none' }}
     >
       <Link href={href} className="button-principal whitespace-nowrap">
-        {label}
+        <span className="inline-flex items-center gap-2">
+          {label}
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1dcc5d] opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1dcc5d]" />
+          </span>
+        </span>
       </Link>
     </div>
   )

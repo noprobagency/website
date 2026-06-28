@@ -11,9 +11,6 @@ import { siteAssets } from '@/lib/site'
 import { type Locale } from '@/lib/i18n'
 import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
 
-// TODO: sostituire con l'URL Calendly/TidyCal reale di NoProb per la migrazione.
-const CALENDLY_URL = 'https://calendly.com/noprob-agency/migrazione-shopify'
-
 function CheckIcon() {
   return (
     <svg className="np-check-circle shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden>
@@ -36,12 +33,10 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
   const greenWidth = center(currentIndex) - center(0)
 
   useEffect(() => {
-    const existing = document.querySelector<HTMLScriptElement>(
-      'script[src="https://assets.calendly.com/assets/external/widget.js"]'
-    )
-    if (existing) return
+    const SRC = 'https://asset-tidycal.b-cdn.net/js/embed.js'
+    if (document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`)) return
     const script = document.createElement('script')
-    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.src = SRC
     script.async = true
     document.body.appendChild(script)
   }, [])
@@ -130,11 +125,40 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
             className="mt-10 w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
           >
             <div className="grid gap-8 rounded-[20px] bg-white p-[32px] shadow-pricing-inner max-[809px]:px-5 min-[810px]:grid-cols-2 min-[810px]:gap-10">
-              {/* Left: price + CTA + trust + guarantee */}
+              {/* Left: project summary (reads first, left to right) */}
               <div className="flex flex-col">
-                <span className="np-eyebrow-cat np-eyebrow-cat-green self-start">{d.priceBadge}</span>
+                <h3 className="text-np-pricing text-noprob-text">{d.cardTitle}</h3>
+                <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+                  {d.cardDescription}
+                </p>
+                <ul className="mt-5 flex flex-col gap-3">
+                  {d.cardChecks.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
+                    >
+                      <CheckIcon />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="mt-3 flex items-end gap-1">
+              {/* Right: badge + guarantee + price + CTA + trust */}
+              <div className="flex flex-col min-[810px]:border-l min-[810px]:border-[#ececec] min-[810px]:pl-10">
+                <span className="inline-flex self-start rounded-pill border border-[#d6d6d6] bg-white px-3 py-[6px] font-serif text-[14px] font-normal italic tracking-[-0.02em] text-noprob-text">
+                  {d.priceBadge}
+                </span>
+
+                {/* Guarantee — right below the label */}
+                <div className="mt-4 flex items-start gap-2 rounded-[12px] bg-[rgb(206,232,204)] px-4 py-3">
+                  <CheckIcon />
+                  <p className="font-sans text-[13px] font-semibold leading-[1.5em] tracking-[-0.02em] text-noprob-text">
+                    {d.guarantee}
+                  </p>
+                </div>
+
+                <div className="mt-5 flex items-end gap-1">
                   <span className="text-np-pricing text-noprob-text">{current.price}</span>
                   <span className="mb-2 font-sans text-[14px] font-medium tracking-[-0.02em] text-noprob-muted">
                     {d.priceSuffix}
@@ -163,37 +187,10 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
                       4,9
                     </span>
                   </div>
-                  <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted">
+                  <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-text">
                     {d.trustLabel}
                   </p>
                 </div>
-
-                {/* Guarantee — prominent */}
-                <div className="mt-5 flex items-start gap-2 rounded-[12px] bg-[rgb(206,232,204)] px-4 py-3">
-                  <CheckIcon />
-                  <p className="font-sans text-[13px] font-semibold leading-[1.5em] tracking-[-0.02em] text-noprob-text">
-                    {d.guarantee}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right: project summary */}
-              <div className="flex flex-col min-[810px]:border-l min-[810px]:border-[#ececec] min-[810px]:pl-10">
-                <h3 className="text-np-pricing text-noprob-text">{d.cardTitle}</h3>
-                <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
-                  {d.cardDescription}
-                </p>
-                <ul className="mt-5 flex flex-col gap-3">
-                  {d.cardChecks.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
-                    >
-                      <CheckIcon />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </motion.div>
@@ -203,12 +200,8 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
             id="candidatura"
             className="mt-4 w-full scroll-mt-32 overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
           >
-            <div className="overflow-hidden rounded-[20px] bg-white p-2 shadow-pricing-inner min-[810px]:p-3">
-              <div
-                className="calendly-inline-widget w-full"
-                data-url={CALENDLY_URL}
-                style={{ minWidth: '320px', height: '700px' }}
-              />
+            <div className="overflow-hidden rounded-[20px] bg-white p-4 shadow-pricing-inner min-[810px]:p-6">
+              <div className="tidycal-embed w-full" data-path="noprobagency/contacts" style={{ minHeight: '600px' }} />
             </div>
           </div>
 

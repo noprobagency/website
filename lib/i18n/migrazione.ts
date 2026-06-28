@@ -65,19 +65,11 @@ export type MigrazioneCopy = {
     cardTitle: string
     cardDescription: string
     cardChecks: string[]
-    includesTitle: string
-    includes: string[]
     scarcity: string
     cta: string
   }
   socialProof: {
     bridgeLine: string
-    testimonialsHeading: string
-  }
-  related: {
-    label: string
-    heading: string
-    items: { title: string; description: string; href: string }[]
   }
   faq: {
     label: string
@@ -85,29 +77,6 @@ export type MigrazioneCopy = {
     headingEm: string
     subheading: string
     items: { question: string; answer: string }[]
-  }
-  form: {
-    label: string
-    heading: string
-    subheading: string
-    intro: string
-    fields: {
-      name: { label: string; placeholder: string }
-      email: { label: string; placeholder: string }
-      brand: { label: string; placeholder: string }
-      websiteUrl: { label: string; placeholder: string }
-      platform: { label: string; placeholder: string; options: string[] }
-      revenue: { label: string; placeholder: string; options: string[] }
-      timeline: { label: string; placeholder: string; options: string[] }
-      reason: { label: string; placeholder: string }
-      privacy: string
-    }
-    submit: string
-    submitting: string
-    successTitle: string
-    successBody: string
-    errorGeneric: string
-    errorNetwork: string
   }
 }
 
@@ -230,7 +199,7 @@ const it: MigrazioneCopy = {
       { price: '€2.000', slot: 'A regime', tag: 'Prezzo pieno', state: 'upcoming' },
     ],
     priceSuffix: '/mese × 4 mesi',
-    priceBadge: 'Prezzo attuale',
+    priceBadge: 'metodo noprobagency',
     guarantee:
       'Garanzia 30 giorni: se entro 30 giorni il progetto non ti convince, ti rimborsiamo, senza domande.',
     trustLabel: 'Scelti da brand Fashion, Integratori e DTC',
@@ -242,19 +211,6 @@ const it: MigrazioneCopy = {
       'Tracciamento server-side, SEO tecnica e design CRO-first',
       'Un solo interlocutore dedicato per tutto il percorso',
     ],
-    includesTitle: 'Cosa include',
-    includes: [
-      'Migrazione completa dei dati',
-      'Piano redirect 301 1:1',
-      'Zero downtime garantito',
-      'Tracciamento server-side (GA4, Meta CAPI, GTM)',
-      'Design su misura CRO-first',
-      'Ottimizzazione SEO on-page e tecnica',
-      'Integrazioni gestionale, ERP e CRM',
-      'Setup e staging',
-      'Supporto post-lancio incluso',
-      'Un solo interlocutore dedicato',
-    ],
     scarcity:
       'Il prezzo di lancio è riservato ai primi progetti. Più si riempiono gli slot, più il prezzo sale: chi entra ora blocca la tariffa più bassa. Nessun countdown: lo slot resta tuo finché c’è.',
     cta: 'Candidati ora',
@@ -262,24 +218,6 @@ const it: MigrazioneCopy = {
   socialProof: {
     bridgeLine:
       'Lo stesso metodo lo applichiamo su integratori, food, profumeria e altri eCommerce B2C. Il fashion è dove l’abbiamo dimostrato più a lungo.',
-    testimonialsHeading: 'Cosa dicono i brand con cui lavoriamo',
-  },
-  related: {
-    label: 'approfondisci',
-    heading: 'Non sei sicuro che la migrazione sia la strada giusta?',
-    items: [
-      {
-        title: 'Rifacimento eCommerce su Shopify',
-        description: 'Se lo store va ricostruito da zero, non solo spostato di piattaforma.',
-        href: '/it/rifacimento-ecommerce',
-      },
-      {
-        title: 'Team eCommerce dedicato',
-        description: 'Dopo la migrazione: gestione continuativa con un team dedicato e un solo interlocutore.',
-        href: '/it/team-ecommerce-dedicato',
-      },
-    ],
-    // TODO: aggiungere qui i link agli articoli del blog sulle migrazioni quando pubblicati.
   },
   faq: {
     label: 'domande frequenti',
@@ -324,55 +262,6 @@ const it: MigrazioneCopy = {
           'Puoi proseguire con la gestione continuativa del tuo store, se ha senso per te. Non resti mai solo, ma non sei vincolato a nulla.',
       },
     ],
-  },
-  form: {
-    label: 'candidatura',
-    heading: 'Candidati per la migrazione',
-    subheading:
-      'Pochi slot per trimestre. Candidati e vediamo se sei il progetto giusto.',
-    intro:
-      'Più dettagli ci dai, più la valutazione è rapida. Leggiamo ogni candidatura.',
-    fields: {
-      name: { label: 'Nome e cognome', placeholder: 'Mario Rossi' },
-      email: { label: 'Email aziendale', placeholder: 'nome@brand.com' },
-      brand: { label: 'Nome del brand / azienda', placeholder: 'Brand srl' },
-      websiteUrl: { label: 'URL del sito eCommerce attuale', placeholder: 'brand.com' },
-      platform: {
-        label: 'Su quale piattaforma sei ora?',
-        placeholder: 'Seleziona…',
-        options: [
-          'Atelier / gestionale integrato',
-          'WooCommerce',
-          'PrestaShop',
-          'Magento',
-          'Shopify (voglio rifarlo)',
-          'Altro',
-        ],
-      },
-      revenue: {
-        label: 'Fatturato online annuo indicativo',
-        placeholder: 'Seleziona…',
-        options: ['Meno di 100k', 'Da 100k a 300k', 'Da 300k a 1M', 'Da 1M a 3M', 'Oltre 3M'],
-      },
-      timeline: {
-        label: 'Da quando vuoi partire?',
-        placeholder: 'Seleziona…',
-        options: ['Il prima possibile', 'Entro 1-3 mesi', 'Sto solo valutando'],
-      },
-      reason: {
-        label: 'Qual è il motivo principale per cui vuoi passare a Shopify?',
-        placeholder:
-          'Raccontaci cosa ti blocca oggi e cosa vuoi ottenere con la migrazione.',
-      },
-      privacy: 'Ho letto e accetto la Privacy Policy.',
-    },
-    submit: 'Candidati ora',
-    submitting: 'Invio in corso…',
-    successTitle: 'Candidatura ricevuta.',
-    successBody:
-      'Se il progetto è in target, ti ricontattiamo per fissare una call.',
-    errorGeneric: 'Qualcosa è andato storto. Riprova tra un momento.',
-    errorNetwork: 'Errore di rete. Controlla la connessione e riprova.',
   },
 }
 
