@@ -44,7 +44,6 @@ export type MigrazioneCopy = {
     headingEm: string
     description: string
     items: { title: string; description: string }[]
-    fourMonths: { title: string; description: string }
   }
   process: {
     label: string
@@ -52,6 +51,8 @@ export type MigrazioneCopy = {
     headingEm: string
     description: string
     phases: { number: string; title: string; duration: string; description: string }[]
+    fourMonths: { title: string; description: string }
+    closingLine: string
   }
   pricing: {
     label: string
@@ -146,11 +147,6 @@ const it: MigrazioneCopy = {
           'Troviamo i colli di bottiglia. E li sistemiamo. Il valore non è fare tutto perfetto al primo colpo. È individuare cosa frena lo store e ottimizzarlo.',
       },
     ],
-    fourMonths: {
-      title: 'Perché 4 mesi di tempo per fare tutto?',
-      description:
-        'Nel corso dei vari progetti abbiamo capito una cosa: il modo migliore per fare una migrazione non è la fretta, e nemmeno la lentezza. Quattro mesi non è il tempo che ci mettiamo a migrare lo store. È il tempo che dedichiamo a seguirlo a 360°: analizzare, operare, monitorare. Troviamo i colli di bottiglia e li miglioriamo, controlliamo lo stato giorno dopo giorno, perfezioniamo ogni dettaglio. Non un team che consegna e sparisce, ma un team completo che resta su ogni aspetto fino a quando tutto funziona come deve.',
-    },
   },
   process: {
     label: 'come lavoriamo',
@@ -181,6 +177,12 @@ const it: MigrazioneCopy = {
           'Go-live e poi controllo continuo. Il team completo resta su ogni fronte: sviluppo, SEO, tracciamento, design, pronto a intervenire su ogni collo di bottiglia. Ogni ottimizzazione possibile, la troviamo e la facciamo. Giorno dopo giorno, ottimizzazione dopo ottimizzazione, arriviamo alla perfezione.',
       },
     ],
+    fourMonths: {
+      title: 'Perché 4 mesi di tempo per fare tutto?',
+      description:
+        'Quattro mesi non è il tempo che ci mettiamo a migrare. È il tempo che dedichiamo a seguire tutto a 360°: analizzare, operare, monitorare. Troviamo i colli di bottiglia, controlliamo giorno dopo giorno, perfezioniamo ogni dettaglio. Non un team che consegna e sparisce, ma uno che resta finché tutto funziona come deve.',
+    },
+    closingLine: 'Non un team che consegna e sparisce. Un team che resta finché tutto funziona come deve.',
   },
   pricing: {
     label: 'prezzo',
