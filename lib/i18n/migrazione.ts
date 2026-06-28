@@ -186,9 +186,9 @@ const it: MigrazioneCopy = {
   },
   pricing: {
     label: 'prezzo',
-    heading: 'Il prezzo di lancio sale man mano che si riempiono gli slot',
+    heading: 'Un percorso non un servizio.\nLo paghi mentre lo costruiamo.',
     subheading:
-      'Più progetti entrano, più la tariffa cresce. Chi entra ora blocca quella più bassa.',
+      'Niente esborso da migliaia di euro in anticipo. Paghi a step, mentre vedi lo store prendere forma.',
     tiers: [
       { price: '€1.100', slot: 'Primi 10 progetti', tag: 'Esaurito', state: 'completed' },
       { price: '€1.350', slot: 'Fino a 20', tag: 'Prezzo attuale', state: 'current' },
@@ -209,7 +209,7 @@ const it: MigrazioneCopy = {
       'Un solo interlocutore dedicato per tutto il percorso',
     ],
     scarcity:
-      'Il prezzo di lancio è riservato ai primi progetti. Più si riempiono gli slot, più il prezzo sale: chi entra ora blocca la tariffa più bassa. Nessun countdown: lo slot resta tuo finché c’è.',
+      'Ogni progetto aggiunge esperienza, metodo, efficienza. È il valore di chi entra dopo. Chi parte ora blocca la tariffa, prima che salga. Nessun countdown: lo slot resta tuo finché c’è.',
     cta: 'Candidati ora',
   },
   socialProof: {

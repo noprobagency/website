@@ -48,7 +48,7 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
           {/* Header */}
           <div className="mx-auto max-w-[680px] text-center">
             <SectionLabel>{d.label}</SectionLabel>
-            <h2 className="mt-5 text-np-h2 text-center text-[#f9f9f9]">{d.heading}</h2>
+            <h2 className="mt-5 whitespace-pre-line text-np-h2 text-center text-[#f9f9f9]">{d.heading}</h2>
             <p className="mt-5 font-sans text-body-lg font-medium text-[#f9f9f9]">{d.subheading}</p>
           </div>
 
@@ -67,6 +67,9 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
                     }
                   >
                     {tier.price}
+                    <span className="ml-0.5 font-sans text-[10px] font-medium text-[#777] min-[810px]:text-[12px]">
+                      /mese
+                    </span>
                   </span>
                 </div>
               ))}
