@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -31,15 +30,6 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
   // Continuous track: each column is 25% wide, so dot centers sit at 12.5%, 37.5%, 62.5%, 87.5%.
   const center = (i: number) => (i + 0.5) * 25
   const greenWidth = center(currentIndex) - center(0)
-
-  useEffect(() => {
-    const SRC = 'https://asset-tidycal.b-cdn.net/js/embed.js'
-    if (document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`)) return
-    const script = document.createElement('script')
-    script.src = SRC
-    script.async = true
-    document.body.appendChild(script)
-  }, [])
 
   return (
     <section id="pricing" data-header-theme="dark" className="scroll-mt-40 bg-black py-[80px]">
@@ -121,11 +111,12 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
 
           {/* Pricing card */}
           <motion.div
+            id="candidatura"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 'some' }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-10 w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
+            className="mt-10 w-full scroll-mt-32 overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
           >
             <div className="grid gap-8 rounded-[20px] bg-white p-[32px] shadow-pricing-inner max-[809px]:px-5 min-[810px]:grid-cols-2 min-[810px]:gap-10">
               {/* Left: project summary (reads first, left to right) */}
@@ -198,17 +189,7 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
             </div>
           </motion.div>
 
-          {/* Calendly card — same style as the pricing card, anchor target */}
-          <div
-            id="candidatura"
-            className="mt-4 w-full scroll-mt-32 overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
-          >
-            <div className="overflow-hidden rounded-[20px] bg-white p-4 shadow-pricing-inner min-[810px]:p-6">
-              <div className="tidycal-embed w-full" data-path="noprobagency/contacts" style={{ minHeight: '600px' }} />
-            </div>
-          </div>
-
-          {/* Testimonials (on the black section, under the booking card) */}
+          {/* Testimonials (on the black section, under the pricing card) */}
           <Testimonials locale={locale} />
         </div>
       </div>
