@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import EcommerceRebuildHero from '@/components/sections/EcommerceRebuildHero'
 import EcommerceRebuildProblem from '@/components/sections/EcommerceRebuildProblem'
 import EcommerceRebuildSolution from '@/components/sections/EcommerceRebuildSolution'
-import EcommerceRebuildProcess from '@/components/sections/EcommerceRebuildProcess'
+import MigrazioneProcess from '@/components/sections/MigrazioneProcess'
 import EcommerceRebuildWhyUs from '@/components/sections/EcommerceRebuildWhyUs'
 import CaseStudy from '@/components/sections/CaseStudy'
 import Pricing from '@/components/sections/Pricing'
@@ -23,7 +23,7 @@ export default function ItalianEcommerceRebuildPage() {
       <EcommerceRebuildHero locale={locale} />
       <EcommerceRebuildProblem locale={locale} />
       <EcommerceRebuildSolution locale={locale} />
-      <EcommerceRebuildProcess locale={locale} />
+      <MigrazioneProcess locale={locale} />
       <EcommerceRebuildWhyUs locale={locale} />
       <CaseStudy locale={locale} noPadding={true} />
       <Pricing locale={locale} rebuildOnly={true} />
