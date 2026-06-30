@@ -10,13 +10,13 @@ const COPY: Record<
 > = {
   en: {
     name: 'Antonio Manitta',
-    role: 'Founder & eCommerce Manager — NoProb Agency',
+    role: 'Founder & eCommerce Manager at NoProb Agency',
     bio: 'For over 7 years I have helped fashion, supplements, and DTC brands scale their eCommerce. I work in long-term partnership with three brands at a time, building stable systems that compound.',
     readMore: 'About NoProb',
   },
   it: {
     name: 'Antonio Manitta',
-    role: 'Founder & eCommerce Manager — NoProb Agency',
+    role: 'Founder e eCommerce Manager di NoProb Agency',
     bio: 'Da oltre 7 anni aiuto brand fashion, integratori e DTC a far crescere il loro eCommerce. Lavoro in long-term partnership con tre brand alla volta, costruendo sistemi stabili che si compongono nel tempo.',
     readMore: 'Scopri NoProb',
   },

@@ -220,7 +220,7 @@ const en: Dictionary = {
     line3pre: 'partner should be ',
     line3em: 'too',
     description:
-      'We rebuild your store from the ground up and offer a dedicated team in Development, Marketing, and Strategy, available together or separately based on your needs.',
+      'We build, improve and grow your eCommerce on Shopify, with a dedicated team in development, marketing and strategy. Together or separately, based on your needs.',
     ctaPrimary: 'Book a call',
     ctaPrimaryHref: '/contacts',
     ctaSecondary: 'Explore what we do',
@@ -255,7 +255,7 @@ const en: Dictionary = {
     items: [
       {
         title: 'Tech Integration\nZero Chaos',
-        description: 'All-in-one partner. Full-stack team\u2014development, design, data and strategy. Everything managed for you.',
+        description: 'All-in-one partner. Full-stack team: development, design, data and strategy. Everything managed for you.',
       },
       {
         title: 'Real Support\nReal Results',
@@ -280,7 +280,7 @@ const en: Dictionary = {
     label: 'Pricing',
     heading: 'Smart plans for serious eCommerce brands',
     subheading:
-      'Whether your eCommerce is running and growing or needs a complete rebuild, our tech team will guide you every step of the way.',
+      'Whether your eCommerce is running and growing or you need to build it from scratch, our tech team will guide you every step of the way.',
     plans: [
       {
         badge: 'Already with a good eCommerce?',
@@ -296,15 +296,15 @@ const en: Dictionary = {
         secondaryHref: '/data-driven-team',
       },
       {
-        badge: 'Want to build your ecommerce?',
-        name: 'eCommerce Rebuild',
-        price: '5795\u20ac',
-        period: '',
+        badge: 'Want to build your eCommerce?',
+        name: 'Shopify Development',
+        price: 'from \u20ac1,850',
+        period: '/month',
         description:
-          'We rebuild your eCommerce from design to performance, creating a platform built to grow. You focus on elevating your brand. We handle everything technical, from maintenance to optimization.',
-        features: ['7/7 support', 'NDA sign', '100% Risk-Free'],
-        cta: 'Start your eCommerce Rebuild',
-        ctaHref: '/contacts',
+          'We build your eCommerce on Shopify from design to tracking, ready to convert from day one. You focus on your brand, we handle the technical side. Lifetime maintenance included.',
+        features: ['7/7 support', 'Lifetime maintenance included', '30-day guarantee'],
+        cta: 'Apply for the project',
+        ctaHref: '/shopify-development#candidatura',
         secondary: 'Learn more about the plan',
         secondaryHref: '/shopify-development',
       },
@@ -327,7 +327,7 @@ const en: Dictionary = {
         'We recreate your eCommerce from the ground up, creating a fast, stable, and conversion-ready store. You focus on growth. ',
       descriptionPart2: 'We take care of the technical work.',
       cta: 'I want a rebuild',
-      trustedCount: 'Trusted by 33+ brands',
+      trustedCount: 'Chosen by Fashion, Supplements and DTC brands',
     },
     problem: {
       label: 'problem',
@@ -401,7 +401,7 @@ const en: Dictionary = {
           duration: '14 - 21 DAYS',
           title: 'Strategy & Roadmap',
           description:
-            'You get a clear action plan focused on what drives ROI—built around your growth targets.',
+            'You get a clear action plan focused on what drives ROI, built around your growth targets.',
         },
         {
           number: '04',
@@ -433,9 +433,9 @@ const en: Dictionary = {
       ],
       nobrobItems: [
         'Always led by a Senior eCommerce Manager for full oversight',
-        'Constant, responsive support — 7/7 availability',
+        'Constant, responsive support, 7/7 availability',
         'Expert eCommerce copywriter involved in every build',
-        'Quick turnaround — delivery in days, not weeks',
+        'Quick turnaround, delivery in days, not weeks',
         "Modular team built around your brand's real goals",
       ],
       featuresDescription:
@@ -444,10 +444,10 @@ const en: Dictionary = {
         'Specialized in fashion, beauty & DTC verticals',
         'Lifetime maintenance on all builds',
         'Trial discount available to start with confidence',
-        'Fixed monthly pricing — no unexpected fees',
+        'Fixed monthly pricing, no unexpected fees',
         'Optional NDA for full confidentiality',
-        'Performance-first mindset — tech built to convert',
-        'Fully independent team — zero onboarding on your side',
+        'Performance-first mindset, tech built to convert',
+        'Fully independent team, zero onboarding on your side',
         'Access to industry-leading tools, dashboards & reporting',
         'Every collaboration structured for long-term brand growth',
       ],
@@ -468,7 +468,7 @@ const en: Dictionary = {
       description:
         'For established brands with a working store that need stable growth, fixed costs, and one point of contact managing everything.',
       cta: 'Apply for on-demand eCommerce Team',
-      trustedCount: 'Trusted by 33+ brands',
+      trustedCount: 'Chosen by Fashion, Supplements and DTC brands',
     },
     problem: {
       label: 'problem',
@@ -509,7 +509,7 @@ const en: Dictionary = {
         {
           title: 'Team Always Aligned',
           description:
-            'Meta expert, Google expert, strategist, email specialist, SEO, social—all pulling in the same direction, every day.',
+            'Meta expert, Google expert, strategist, email specialist, SEO and social, all pulling in the same direction, every day.',
         },
         {
           title: 'Results Over Chaos',
@@ -550,9 +550,9 @@ const en: Dictionary = {
           'We offer flexible monthly retainers with fixed, predictable costs. No hidden fees, no surprise invoices. You can scale your team up or down based on your needs.',
       },
       {
-        question: 'What\u2019s the difference between Data Driven Team and eComm reBuild?',
+        question: 'What\u2019s the difference between Data Driven Team and Shopify Development?',
         answer:
-          'Data-Driven Team is a monthly retainer for brands with an existing eCommerce that want a dedicated team. eCommerce Rebuild is a full rebuild project for brands starting from scratch or needing a complete overhaul.',
+          'Data-Driven Team is a monthly retainer for brands with an existing eCommerce that want a dedicated team. Shopify Development is a full build project for brands starting from scratch or wanting to do it right from day one.',
       },
       {
         question: 'Who will be my main point of contact, and how is communication handled?',
@@ -567,12 +567,12 @@ const en: Dictionary = {
       {
         question: 'Do you guarantee results or refunds?',
         answer:
-          'We offer a 100% Risk-Free guarantee on our eCommerce Rebuild plan. If we do not deliver what we promised, you get a full refund. Our Data-Driven Team plan includes a trial discount for new clients.',
+          'We offer a 100% Risk-Free guarantee on our Shopify Development plan. If we do not deliver what we promised, you get a full refund. Our Data-Driven Team plan includes a trial discount for new clients.',
       },
       {
         question: 'Do you also work with new brands that don\u2019t have an eCommerce yet?',
         answer:
-          'Yes. Our eCommerce Rebuild plan covers brands starting from zero, from design to launch and beyond. We build your entire eCommerce infrastructure from the ground up.',
+          'Yes. Our Shopify Development plan covers brands starting from zero, from design to launch and beyond. We build your entire eCommerce infrastructure from the ground up.',
       },
       {
         question: 'What\u2019s included (and not included) in your team\u2019s work?',
@@ -593,7 +593,7 @@ const en: Dictionary = {
     headingPre: 'Consistency\nThat\u2019s ',
     headingEm: 'noprobagency',
     description:
-      'We rebuild your store from the ground up and offer a dedicated team in Development, Marketing, and Strategy, available together or separately based on your needs.',
+      'We build, improve and grow your eCommerce on Shopify, with a dedicated team in development, marketing and strategy. Together or separately, based on your needs.',
     links: [
       { label: 'About', href: '/about' },
       { label: 'Use Case', href: '/use-cases' },
@@ -609,7 +609,7 @@ const en: Dictionary = {
     contacts: { title: 'Contact NoProb | Book a Call', description: 'Start a conversation with NoProb. Book a call to build your eCommerce on Shopify or activate a long-term dedicated team.' },
     blog: { title: 'NoProb Blog | Shopify, eCommerce & Growth', description: 'Articles on Shopify development, migration, tracking, and CRO for fashion, supplement, and DTC brands. Written by the NoProb team.' },
     useCases: { title: 'eCommerce Case Studies & Results | NoProb', description: 'Real results from long-term Shopify partnerships. See how we helped fashion and DTC brands grow revenue, improve MER, and scale eCommerce operations.' },
-    dataDrivenTeam: { title: 'Data-Driven Team — Dedicated eCommerce Retainer | NoProb', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
+    dataDrivenTeam: { title: 'Data-Driven Team: Dedicated eCommerce Retainer | NoProb', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
     sviluppoShopify: { title: 'Shopify Development Services: We Build Your Store | NoProb', description: 'We build your eCommerce on Shopify from design to tracking, optimized to convert from day one. Lifetime maintenance included. Shopify development company for fashion, supplements and DTC brands.' },
     migrazioneShopify: { title: 'Shopify Migration Without Losing Sales | NoProb', description: 'Migrate your eCommerce to Shopify in 4 months without losing sales or customers. 1:1 redirects, no downtime, one point of contact. 30-day money-back guarantee.' },
   },
@@ -628,7 +628,7 @@ const en: Dictionary = {
       card2Title: 'Long-Term Vision & Strategic Focus',
       card2Body: "We\u2019re built for Fashion, Supplements, and DTC brands. Our approach values quality over noise: stable growth, data-led decisions, and a consistent strategic partner over time. Our 2026 goal? Be the most trusted performance ally in your space.",
       card3Title: 'Substance, Stability & Experience',
-      card3Body1: 'With 7+ years of international execution and a model based on predictable, fixed costs, we help you scale without margin surprises. No fluff \u2014 just infrastructure, strategy, and industry-native talent.',
+      card3Body1: 'With 7+ years of international execution and a model based on predictable, fixed costs, we help you scale without margin surprises. No fluff, just infrastructure, strategy, and industry-native talent.',
       card3Body2: 'That\u2019s why we work exclusively with a highly selected group of brands.',
     },
     testimonials: {
@@ -638,13 +638,13 @@ const en: Dictionary = {
           name: 'Antonio Cali',
           role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
           image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
-          quote: 'Collaborating with NoProb Agency for the development of our e-commerce was an extremely positive experience. From the very first stages of the project, the team stood out for its clear communication, technical expertise, and listening skills. Every step, from graphic design to going live, was handled with professionalism\u2026',
+          quote: 'Collaborating with NoProb Agency for the development of our eCommerce was an extremely positive experience. From the very first stages of the project, the team stood out for its clear communication, technical expertise, and listening skills. Every step, from graphic design to going live, was handled with professionalism\u2026',
         },
         {
           name: 'Camilla Dudine',
           role: 'DDglobal Store - B2B eCommerce Owner',
           image: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
-          quote: 'Collaborating with Antonio on the creation of our e-commerce website was an extremely positive experience. He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing e-commerce website.',
+          quote: 'Collaborating with Antonio on the creation of our eCommerce website was an extremely positive experience. He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing eCommerce website.',
         },
       ],
     },
@@ -677,7 +677,7 @@ const it: Dictionary = {
     line3pre: 'eCommerce dovrebbe esserlo ',
     line3em: 'anche lui',
     description:
-      'Ricostruiamo il tuo store dalle fondamenta e mettiamo a disposizione un team dedicato in Sviluppo, Marketing e Strategia \u2014 insieme o separatamente, in base alle tue esigenze.',
+      'Costruiamo, miglioriamo e facciamo crescere il tuo eCommerce su Shopify, con un team dedicato in sviluppo, marketing e strategia. Insieme o separatamente, in base alle tue esigenze.',
     ctaPrimary: 'Prenota una call',
     ctaPrimaryHref: '/it/contatti',
     ctaSecondary: 'Scopri cosa facciamo',
@@ -689,7 +689,7 @@ const it: Dictionary = {
     label: 'Problema',
     heading: 'Dimentica la',
     headingStrike: 'agenzia marketing all-in-one',
-    body: 'Certo, tutti vogliono un eCommerce che funziona. Ma se ti fidi dell\u2019hype, finisci a gestire bug, dati inutili e un supporto che sparisce. La qualit\u00e0 solida in ogni area fondamentale batte i trucchi magici in un singolo punto.',
+    body: 'Certo, tutti vogliono un eCommerce che spacca. Ma se ti fidi dell\u2019hype, finisci a rincorrere bug, dati inutili e un supporto che sparisce. Una base solida in ogni area conta pi\u00f9 di un singolo trucco che brilla.',
     items: [
       {
         title: 'Stack Tecnologico Frammentato',
@@ -712,7 +712,7 @@ const it: Dictionary = {
     items: [
       {
         title: 'Integrazione Tech. Zero Caos',
-        description: 'Un unico partner. Team full-stack \u2014 sviluppo, design, dati e strategia. Tutto gestito per te.',
+        description: 'Un unico partner. Team full-stack: sviluppo, design, dati e strategia. Tutto gestito per te.',
       },
       {
         title: 'Supporto Reale, Risultati Reali',
@@ -736,7 +736,7 @@ const it: Dictionary = {
   pricing: {
     label: 'Pricing',
     heading: 'Piani intelligenti per brand eCommerce seri',
-    subheading: 'Che il tuo eCommerce stia crescendo o abbia bisogno di un rebuild completo, il nostro team tecnico ti guida a ogni passo.',
+    subheading: 'Che il tuo eCommerce stia crescendo o sia ancora tutto da costruire, il nostro team tecnico ti guida a ogni passo.',
     plans: [
       {
         badge: 'Hai gi\u00e0 un buon eCommerce?',
@@ -753,14 +753,14 @@ const it: Dictionary = {
       },
       {
         badge: 'Vuoi costruire il tuo eCommerce?',
-        name: 'eCommerce Rebuild',
-        price: '5.795\u20ac',
-        period: '',
+        name: 'Sviluppo Shopify',
+        price: 'da \u20ac1.850',
+        period: '/mese',
         description:
-          'Ricostruiamo il tuo eCommerce dal design alle performance, creando una piattaforma pensata per crescere. Tu ti concentri sull\u2019elevare il tuo brand. Noi gestiamo tutto il lato tecnico, dalla manutenzione all\u2019ottimizzazione.',
-        features: ['Supporto 7/7', 'Firma NDA', '100% Risk-Free'],
-        cta: 'Avvia il tuo eCommerce Rebuild',
-        ctaHref: '/it/contatti',
+          'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, pronto a convertire dal primo giorno. Tu pensi al brand, noi al lato tecnico. Manutenzione a vita inclusa.',
+        features: ['Supporto 7/7', 'Manutenzione a vita inclusa', 'Garanzia 30 giorni'],
+        cta: 'Candidati per il progetto',
+        ctaHref: '/it/sviluppo-shopify#candidatura',
         secondary: 'Scopri di pi\u00f9 sul piano',
         secondaryHref: '/it/sviluppo-shopify',
       },
@@ -783,7 +783,7 @@ const it: Dictionary = {
         'Ricostruiamo il tuo eCommerce dalle fondamenta, creando uno store veloce, stabile e pronto a convertire. Tu concentrati sulla crescita. ',
       descriptionPart2: 'Noi ci occupiamo del lavoro tecnico.',
       cta: 'Voglio un rebuild',
-      trustedCount: 'Scelto da oltre 33 brand',
+      trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
     },
     problem: {
       label: 'problema',
@@ -889,9 +889,9 @@ const it: Dictionary = {
       ],
       nobrobItems: [
         'Sempre guidati da un Senior eCommerce Manager',
-        'Supporto reattivo e costante — disponibilità 7/7',
+        'Supporto reattivo e costante, disponibilità 7/7',
         'Copywriter eCommerce esperto in ogni build',
-        'Consegne rapide — giorni, non settimane',
+        'Consegne rapide, giorni, non settimane',
         'Team modulare costruito sui tuoi obiettivi reali',
       ],
       featuresDescription:
@@ -900,10 +900,10 @@ const it: Dictionary = {
         'Specializzati in verticali fashion, beauty & DTC',
         'Manutenzione a vita su ogni build',
         'Sconto trial disponibile per iniziare con fiducia',
-        'Prezzi mensili fissi — niente costi imprevisti',
+        'Prezzi mensili fissi, niente costi imprevisti',
         'Optional NDA per la massima riservatezza',
-        'Mindset performance-first — tech costruito per convertire',
-        'Team completamente indipendente — zero onboarding lato tuo',
+        'Mindset performance-first, tech costruito per convertire',
+        'Team completamente indipendente, zero onboarding lato tuo',
         'Accesso a strumenti, dashboard e report leader di settore',
         'Ogni collaborazione strutturata per la crescita del brand',
       ],
@@ -924,7 +924,7 @@ const it: Dictionary = {
       description:
         'Per brand affermati che hanno bisogno di crescita stabile, costi fissi e un unico punto di contatto che gestisca tutto.',
       cta: 'Candidati per il tuo Team eCommerce on-demand',
-      trustedCount: 'Scelto da oltre 33 brand',
+      trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
     },
     problem: {
       label: 'problema',
@@ -965,7 +965,7 @@ const it: Dictionary = {
         {
           title: 'Team Sempre Allineato',
           description:
-            'Esperti Meta, Google, strategist, email specialist, SEO, social—tutti che spingono nella stessa direzione, ogni giorno.',
+            'Esperti Meta, Google, strategist, email specialist, SEO e social, tutti nella stessa direzione, ogni giorno.',
         },
         {
           title: 'Risultati Oltre il Caos',
@@ -1006,9 +1006,9 @@ const it: Dictionary = {
           'Offriamo retainer mensili flessibili con costi fissi e prevedibili. Zero commissioni nascoste, zero fatture a sorpresa. Puoi scalare il team verso l\u2019alto o il basso in base alle tue esigenze.',
       },
       {
-        question: 'Qual \u00e8 la differenza tra Data Driven Team e eCommerce Rebuild?',
+        question: 'Qual \u00e8 la differenza tra Data Driven Team e Sviluppo Shopify?',
         answer:
-          'Il Data-Driven Team \u00e8 un retainer mensile per brand con un eCommerce esistente che vogliono un team dedicato. L\u2019eCommerce Rebuild \u00e8 un progetto di rebuild completo per brand che partono da zero o hanno bisogno di una revisione totale.',
+          'Il Data-Driven Team \u00e8 un retainer mensile per brand con un eCommerce esistente che vogliono un team dedicato. Lo Sviluppo Shopify \u00e8 un progetto completo di costruzione dello store per brand che partono da zero o vogliono finalmente farlo bene.',
       },
       {
         question: 'Chi sar\u00e0 il mio principale punto di contatto e come viene gestita la comunicazione?',
@@ -1023,12 +1023,12 @@ const it: Dictionary = {
       {
         question: 'Garantite risultati o rimborsi?',
         answer:
-          'Offriamo una garanzia 100% Risk-Free sul piano eCommerce Rebuild. Se non manteniamo quanto promesso, ottieni un rimborso completo. Il piano Data-Driven Team include uno sconto trial per i nuovi clienti.',
+          'Offriamo una garanzia 100% Risk-Free sul piano Sviluppo Shopify. Se non manteniamo quanto promesso, ottieni un rimborso completo. Il piano Data-Driven Team include uno sconto trial per i nuovi clienti.',
       },
       {
         question: 'Lavorate anche con brand nuovi che non hanno ancora un eCommerce?',
         answer:
-          'S\u00ec. Il piano eCommerce Rebuild copre i brand che partono da zero, dal design al lancio e oltre. Costruiamo l\u2019intera infrastruttura eCommerce dalle fondamenta.',
+          'S\u00ec. Il piano Sviluppo Shopify copre i brand che partono da zero, dal design al lancio e oltre. Costruiamo l\u2019intera infrastruttura eCommerce dalle fondamenta.',
       },
       {
         question: 'Cosa \u00e8 incluso (e cosa no) nel lavoro del vostro team?',
@@ -1049,7 +1049,7 @@ const it: Dictionary = {
     headingPre: 'Consistency\nThat\u2019s ',
     headingEm: 'noprobagency',
     description:
-      'Ricostruiamo il tuo store dalle fondamenta e mettiamo a disposizione un team dedicato in Sviluppo, Marketing e Strategia \u2014 insieme o separatamente, in base alle tue esigenze.',
+      'Costruiamo, miglioriamo e facciamo crescere il tuo eCommerce su Shopify, con un team dedicato in sviluppo, marketing e strategia. Insieme o separatamente, in base alle tue esigenze.',
     links: [
       { label: 'Chi Siamo', href: '/it/chi-siamo' },
       { label: 'Casi Studio', href: '/it/casi-studio' },
@@ -1065,7 +1065,7 @@ const it: Dictionary = {
     contacts: { title: 'Contattaci | Prenota una call', description: 'Apri una conversazione con NoProb. Prenota una call per costruire il tuo eCommerce su Shopify o attivare un team dedicato a lungo termine.' },
     blog: { title: 'Blog NoProb | Shopify, eCommerce e Crescita', description: 'Articoli su sviluppo Shopify, migrazioni, tracking e CRO per brand fashion, integratori e DTC. Scritti dal team NoProb.' },
     useCases: { title: "Casi d'Uso eCommerce e Risultati Reali | NoProb", description: 'Risultati concreti da partnership Shopify a lungo termine. Come abbiamo fatto crescere brand fashion e DTC su fatturato, MER e operations eCommerce.' },
-    dataDrivenTeam: { title: 'Data-Driven Team \u2014 Retainer eCommerce Dedicato | NoProb', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare senza assumere internamente.' },
+    dataDrivenTeam: { title: 'Data-Driven Team: Retainer eCommerce Dedicato | NoProb', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare senza assumere internamente.' },
     sviluppoShopify: { title: 'Sviluppo Shopify: creiamo il tuo eCommerce | NoProb', description: 'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, ottimizzato per convertire dal primo giorno. Manutenzione a vita inclusa.' },
     migrazioneShopify: { title: 'Migrazione a Shopify senza perdere vendite | NoProb', description: 'Migra il tuo eCommerce su Shopify in 4 mesi senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, un solo interlocutore. Garanzia 30 giorni.' },
   },
@@ -1084,7 +1084,7 @@ const it: Dictionary = {
       card2Title: 'Visione a lungo termine e focus strategico',
       card2Body: 'Siamo costruiti per brand Fashion, Integratori e DTC. Il nostro approccio valorizza la qualit\u00e0 sopra il rumore: crescita stabile, decisioni guidate dai dati, un partner strategico costante nel tempo. Il nostro obiettivo per il 2026? Essere il partner di performance pi\u00f9 affidabile nel tuo settore.',
       card3Title: 'Sostanza, stabilit\u00e0 ed esperienza',
-      card3Body1: 'Con oltre 7 anni di esecuzione internazionale e un modello basato su costi fissi e prevedibili, ti aiutiamo a scalare senza sorprese sui margini. Niente fuffa \u2014 solo infrastruttura, strategia e talenti nativi del settore.',
+      card3Body1: 'Con oltre 7 anni di esecuzione internazionale e un modello basato su costi fissi e prevedibili, ti aiutiamo a scalare senza sorprese sui margini. Niente fuffa, solo infrastruttura, strategia e talenti nativi del settore.',
       card3Body2: 'Per questo lavoriamo esclusivamente con un gruppo selezionato di brand.',
     },
     testimonials: {
@@ -1094,13 +1094,13 @@ const it: Dictionary = {
           name: 'Antonio Cali',
           role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
           image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
-          quote: "Collaborare con NoProb Agency per lo sviluppo del nostro e-commerce \u00e8 stata un\u2019esperienza estremamente positiva. Fin dalle prime fasi del progetto, il team si \u00e8 distinto per chiarezza nella comunicazione, competenza tecnica e capacit\u00e0 di ascolto. Ogni passaggio, dalla progettazione grafica al go-live, \u00e8 stato gestito con professionalit\u00e0\u2026",
+          quote: "Collaborare con NoProb Agency per lo sviluppo del nostro eCommerce \u00e8 stata un\u2019esperienza estremamente positiva. Fin dalle prime fasi del progetto, il team si \u00e8 distinto per chiarezza nella comunicazione, competenza tecnica e capacit\u00e0 di ascolto. Ogni passaggio, dalla progettazione grafica al go-live, \u00e8 stato gestito con professionalit\u00e0\u2026",
         },
         {
           name: 'Camilla Dudine',
           role: 'DDglobal Store - B2B eCommerce Owner',
           image: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
-          quote: 'Collaborare con Antonio per la creazione del nostro sito e-commerce \u00e8 stata un\u2019esperienza estremamente positiva. Ha dimostrato grande professionalit\u00e0, competenza tecnica e una notevole attenzione al dettaglio, riuscendo a trasformare le nostre idee in un e-commerce funzionale, moderno e performante.',
+          quote: 'Collaborare con Antonio per la creazione del nostro sito eCommerce \u00e8 stata un\u2019esperienza estremamente positiva. Ha dimostrato grande professionalit\u00e0, competenza tecnica e una notevole attenzione al dettaglio, riuscendo a trasformare le nostre idee in un eCommerce funzionale, moderno e performante.',
         },
       ],
     },

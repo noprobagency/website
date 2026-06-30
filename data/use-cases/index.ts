@@ -335,7 +335,7 @@ export const useCases: UseCase[] = [
       {
         type: 'image',
         src: '/images/use-case-cumini/use-case-cumini6.png',
-        alt: 'Dashboard metriche mensili — ROAS, MER, margine',
+        alt: 'Dashboard metriche mensili: ROAS, MER, margine',
       },
       {
         type: 'image',

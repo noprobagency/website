@@ -145,7 +145,7 @@ const it: MigrazioneCopy = {
       'Non un semplice “ricostruiamo il tuo sito”. Impostiamo il tuo store su Shopify per vendere meglio: design, tracciamento, performance, affidabilità, flessibilità, SEO. Con un solo interlocutore, un report di conferma per ogni area di lavoro, garanzia di rimborso e manutenzione inclusa.',
     microBenefits: ['Nemmeno un secondo offline', 'Redirect SEO 1:1', 'Garanzia rimborso 30 giorni'],
     cta: 'Candidati per la migrazione',
-    trustedCount: 'Scelti da 33+ brand',
+    trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
   },
   problem: {
     label: 'il problema',
@@ -408,7 +408,7 @@ const en: MigrazioneCopy = {
       'Not just “we’ll rebuild your site.” We set up your store on Shopify to sell better: design, tracking, performance, reliability, flexibility, SEO. One point of contact, a confirmation report for every work area, money-back guarantee and maintenance included.',
     microBenefits: ['Never a second offline', '1:1 SEO redirects', '30-day money-back guarantee'],
     cta: 'Apply for your migration',
-    trustedCount: 'Chosen by 33+ brands',
+    trustedCount: 'Chosen by Fashion, Supplements and DTC brands',
   },
   problem: {
     label: 'the problem',

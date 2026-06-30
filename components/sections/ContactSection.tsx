@@ -111,7 +111,7 @@ const reviews = {
     cristiana:
       'I am very satisfied with my collaboration with the agency, and especially with Antonio, who <strong>supported me every step</strong> of the way with my website redesign and the promotion of my products via eCommerce.||Whenever I need help, Antonio is always very available, which I really appreciate. <strong>A very positive experience!</strong>',
     camilla:
-      'Collaborating with Antonio on the creation of our <strong>e-commerce website</strong> was an extremely positive experience.||He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing <strong>e-commerce website</strong>…',
+      'Collaborating with Antonio on the creation of our <strong>eCommerce website</strong> was an extremely positive experience.||He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing <strong>eCommerce website</strong>…',
     antonioRole: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
     cristianaRole: 'Terapia Flterapiafloreale.it - Supplement eCommerce',
     camillaRole: 'DDglobal Store - B2B eCommerce Owner',
@@ -120,7 +120,7 @@ const reviews = {
     cristiana:
       'Sono molto soddisfatta della collaborazione con l’agenzia e in particolare con Antonio, che mi <strong>ha supportata in ogni fase</strong> del rifacimento del mio sito e della promozione dei miei prodotti tramite eCommerce.||Ogni volta che ho bisogno di aiuto, Antonio è sempre molto disponibile, cosa che apprezzo davvero. <strong>Un’esperienza molto positiva!</strong>',
     camilla:
-      'Collaborare con Antonio per la creazione del nostro <strong>sito e-commerce</strong> è stata un’esperienza estremamente positiva.||Ha dimostrato grande professionalità, competenza tecnica e una notevole attenzione ai dettagli, riuscendo a trasformare le nostre idee in un <strong>sito e-commerce</strong> funzionale, moderno e performante…',
+      'Collaborare con Antonio per la creazione del nostro <strong>sito eCommerce</strong> è stata un’esperienza estremamente positiva.||Ha dimostrato grande professionalità, competenza tecnica e una notevole attenzione ai dettagli, riuscendo a trasformare le nostre idee in un <strong>sito eCommerce</strong> funzionale, moderno e performante…',
     antonioRole: 'Sfogliate&Sfogliatelle - Titolare eCommerce DTC',
     cristianaRole: 'terapiafloreale.it - eCommerce di integratori',
     camillaRole: 'DDglobal Store - Titolare eCommerce B2B',

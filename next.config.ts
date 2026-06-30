@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
       { source: '/use-cases/ecommerce-growth-secrets',         destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
       { source: '/it/casi-studio/ecommerce-growth-secrets',    destination: '/it/blog/strategia-ecommerce-long-term',    permanent: true },
       // Blog post slugs rebranded to SEO-optimized (every historical slug points
-      // directly at the current slug — no redirect chains)
+      // directly at the current slug - no redirect chains)
       { source: '/blog/ecommerce-growth-secrets',              destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
       { source: '/blog/ecommerce-long-term-strategy',          destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
       { source: '/it/blog/ecommerce-growth-secrets',           destination: '/it/blog/strategia-ecommerce-long-term',    permanent: true },

@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const dataDrivenTeamJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Data-Driven Team — Dedicated eCommerce Retainer',
+  name: 'Data-Driven Team, Dedicated eCommerce Retainer',
   provider: { '@type': 'Organization', name: 'NoProb Agency', url: 'https://noprob.agency' },
   serviceType: 'eCommerce management retainer',
   areaServed: ['IT', 'EU', 'US'],

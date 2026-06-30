@@ -26,7 +26,7 @@ for (const file of FILES) {
     }
 
     if (inItBlock) {
-      if (line.includes('—')) {
+      if (line.includes('\u2014')) {
         console.error(`${file}:${idx + 1}: ${line.trim()}`)
         hits++
       }

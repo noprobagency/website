@@ -100,8 +100,8 @@
 
 ### Analytics active
 
-- Google Analytics 4 — ID: G-JD0T1HWWWV (env: `NEXT_PUBLIC_GA4_ID`)
-- Meta Pixel — ID: 1174058738142037 (env: `NEXT_PUBLIC_META_PIXEL_ID`)
+- Google Analytics 4 - ID: G-JD0T1HWWWV (env: `NEXT_PUBLIC_GA4_ID`)
+- Meta Pixel - ID: 1174058738142037 (env: `NEXT_PUBLIC_META_PIXEL_ID`)
 - Meta Conversions API server-side (endpoint: `/api/meta-capi`)
   - Token in env `META_CAPI_ACCESS_TOKEN` (server-only, never exposed)
   - Deduplication browser Pixel + CAPI via `event_id` UUID shared per event
@@ -110,10 +110,10 @@
 ### Event tracking
 
 Helper in `lib/analytics/events.ts`:
-- `trackEvent(name, params)` — fires Pixel + GA4 + CAPI with same `event_id`
-- `trackPageView(url)` — automatic on route change via `RouteChangeTracker`
-- `trackContactClick(location)` — triggered on CTA clicks
-- `trackPricingView()`, `trackCaseStudyView(slug)` — content-specific events
+- `trackEvent(name, params)` - fires Pixel + GA4 + CAPI with same `event_id`
+- `trackPageView(url)` - automatic on route change via `RouteChangeTracker`
+- `trackContactClick(location)` - triggered on CTA clicks
+- `trackPricingView()`, `trackCaseStudyView(slug)` - content-specific events
 - `ClickTrackingDelegator` intercepts all `[data-tracking]` elements in DOM
 
 ### SEO infrastructure
@@ -121,7 +121,7 @@ Helper in `lib/analytics/events.ts`:
 - Sitemap: `/sitemap.xml` generated from `app/sitemap.ts` + `lib/sitemap/routes.ts`
   - Single source of truth: add page to `ROUTES` array → sitemap auto-updates
   - Includes hreflang `en`/`it`/`x-default` alternates inline
-- Robots: `/robots.txt` (`app/robots.ts`) — explicit allow for GPTBot, ClaudeBot, PerplexityBot, Google-Extended
+- Robots: `/robots.txt` (`app/robots.ts`) - explicit allow for GPTBot, ClaudeBot, PerplexityBot, Google-Extended
 - Hreflang: EN root + `/it/` subfolder, `x-default` → EN
 - GSC verification: meta tag via env `GSC_VERIFICATION_TOKEN`
 - Canonical: self-referencing per page via `buildMetadata()`
@@ -138,7 +138,7 @@ Helper in `lib/analytics/events.ts`:
 - `ConsentGate` component currently in **pass-through mode** (analytics always load)
 - TODO: install Iubenda Consent Solution, change `consentGranted` default to `false`, wire `_iub` callbacks
 
-### Runbook — Adding a new indexable page
+### Runbook - Adding a new indexable page
 
 1. Create page under `app/(en)/[route]/page.tsx` AND `app/it/[route]/page.tsx`
 2. Add entry in `lib/sitemap/routes.ts`
@@ -156,8 +156,8 @@ Helper in `lib/analytics/events.ts`:
 - `components/analytics/ClickTrackingDelegator.tsx`
 - `lib/analytics/events.ts`
 - `app/api/meta-capi/route.ts`
-- `app/sitemap.ts` (replaced — now uses `lib/sitemap/routes.ts`)
-- `app/robots.ts` (updated — LLM crawlers explicitly allowed)
+- `app/sitemap.ts` (replaced - now uses `lib/sitemap/routes.ts`)
+- `app/robots.ts` (updated - LLM crawlers explicitly allowed)
 - `lib/sitemap/routes.ts`
 - `public/llms.txt`
 
@@ -178,7 +178,7 @@ Every new post under `/blog/[slug]` (or `/it/blog/[slugIt]`) must include:
 - `<RelatedCTA />` and `<AuthorBio />` after the article body
 - At least 2 internal links to service pages (`/it/team-ecommerce-dedicato`, `/it/rifacimento-ecommerce`, `/it/casi-studio`, `/it/contatti`)
 - At least 2 outbound links to authoritative sources (McKinsey, Bain, HBR, Shopify, etc.)
-- Sitemap is generated dynamically from the `articles` array in `app/sitemap.ts` — no manual entry required
+- Sitemap is generated dynamically from the `articles` array in `app/sitemap.ts` - no manual entry required
 
 ### Inline content syntax
 
@@ -190,10 +190,10 @@ Paragraphs and list items support markdown-style inline tokens via `parseInline`
 
 ### Reusable blog components
 
-- `components/blog/StructuredData.tsx` — emits one or more JSON-LD `<script>` tags
-- `components/blog/BlogPostMeta.tsx` — author + date + reading time row under H1
-- `components/blog/AuthorBio.tsx` — Antonio Manitta bio card (locale-aware)
-- `components/blog/RelatedCTA.tsx` — contextual CTA (defaults to Data-Driven Team)
+- `components/blog/StructuredData.tsx` - emits one or more JSON-LD `<script>` tags
+- `components/blog/BlogPostMeta.tsx` - author + date + reading time row under H1
+- `components/blog/AuthorBio.tsx` - Antonio Manitta bio card (locale-aware)
+- `components/blog/RelatedCTA.tsx` - contextual CTA (defaults to Data-Driven Team)
 
 ### Keyword strategy primaria (Italia)
 

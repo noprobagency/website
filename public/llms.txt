@@ -1,6 +1,6 @@
 # NoProb Agency
 
-NoProb Agency is a Shopify technical partner for B2C brands in fashion, supplements, and DTC sectors. We build, migrate, and manage eCommerce stores as a long-term technical partner — not a performance agency.
+NoProb Agency is a Shopify technical partner for B2C brands in fashion, supplements, and DTC sectors. We build, migrate, and manage eCommerce stores as a long-term technical partner, not a performance agency.
 
 ## About
 
@@ -52,6 +52,6 @@ Working with a maximum of three long-term clients at a time. This is a real oper
 
 ## Resources
 
-- About: Team, principles, approach — https://noprob.agency/about
-- Use Cases: Real case studies with measurable results — https://noprob.agency/use-cases
-- Blog: Articles on Shopify development, migration, tracking, CRO — https://noprob.agency/blog
+- About: Team, principles, approach. https://noprob.agency/about
+- Use Cases: Real case studies with measurable results. https://noprob.agency/use-cases
+- Blog: Articles on Shopify development, migration, tracking, CRO. https://noprob.agency/blog

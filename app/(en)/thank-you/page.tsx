@@ -29,7 +29,7 @@ export default function ThankYouPage() {
 
         <p className="mb-10 max-w-[600px] text-center font-sans text-[17px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-text">
           Antonio, our senior eCommerce manager, will review your details and get
-          in touch shortly. If you have urgency, write directly on WhatsApp — he
+          in touch shortly. If you have urgency, write directly on WhatsApp and he
           will prioritise your message.
         </p>
 

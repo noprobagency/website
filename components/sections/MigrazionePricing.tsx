@@ -159,7 +159,7 @@ export default function MigrazionePricing({
                     {d.priceBadge}
                   </span>
 
-                  {/* Guarantee — right below the label */}
+                  {/* Guarantee - right below the label */}
                   <div className="mt-4 flex items-start gap-2 rounded-[12px] bg-[rgb(206,232,204)] px-4 py-3">
                     <CheckIcon />
                     <p className="font-sans text-[13px] font-semibold leading-[1.5em] tracking-[-0.02em] text-noprob-text">

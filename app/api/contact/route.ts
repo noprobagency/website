@@ -55,26 +55,26 @@ export async function POST(req: NextRequest) {
   } = parsed.data
   const locale = parsed.data.locale ?? 'en'
 
-  // 1) Admin notification — must succeed for the request to be considered OK
+  // 1) Admin notification - must succeed for the request to be considered OK
   try {
     const { error } = await resend.emails.send({
       from: ADMIN_FROM,
       to: [ADMIN_TO],
       replyTo: email,
-      subject: `New contact request from ${name} — ${company || 'no company'}`,
+      subject: `New contact request from ${name} · ${company || 'no company'}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:system-ui,sans-serif;font-size:14px">
           <tr><td><strong>Name:</strong></td><td>${name}</td></tr>
-          <tr><td><strong>Company:</strong></td><td>${company || '—'}</td></tr>
+          <tr><td><strong>Company:</strong></td><td>${company || 'n/d'}</td></tr>
           <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
-          <tr><td><strong>Phone:</strong></td><td>${phone || '—'}</td></tr>
-          <tr><td><strong>Website:</strong></td><td>${websiteUrl || '—'}</td></tr>
-          <tr><td><strong>Interest:</strong></td><td>${interest || '—'}</td></tr>
-          <tr><td><strong>Revenue:</strong></td><td>${revenue || '—'}</td></tr>
-          <tr><td><strong>Ads Spend:</strong></td><td>${adsSpend || '—'}</td></tr>
+          <tr><td><strong>Phone:</strong></td><td>${phone || 'n/d'}</td></tr>
+          <tr><td><strong>Website:</strong></td><td>${websiteUrl || 'n/d'}</td></tr>
+          <tr><td><strong>Interest:</strong></td><td>${interest || 'n/d'}</td></tr>
+          <tr><td><strong>Revenue:</strong></td><td>${revenue || 'n/d'}</td></tr>
+          <tr><td><strong>Ads Spend:</strong></td><td>${adsSpend || 'n/d'}</td></tr>
           <tr><td><strong>Locale:</strong></td><td>${locale}</td></tr>
-          <tr><td valign="top"><strong>Notes:</strong></td><td>${additionalInfo || '—'}</td></tr>
+          <tr><td valign="top"><strong>Notes:</strong></td><td>${additionalInfo || 'n/d'}</td></tr>
         </table>
       `,
     })
@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 
-  // 2) Welcome email to the lead — best-effort. A bounce or invalid-recipient
+  // 2) Welcome email to the lead - best-effort. A bounce or invalid-recipient
   // shouldn't fail the whole request because the admin already has the lead.
   const isIT = locale === 'it'
   try {
@@ -97,8 +97,8 @@ export async function POST(req: NextRequest) {
       to: [email],
       replyTo: WELCOME_REPLY_TO,
       subject: isIT
-        ? 'Richiesta ricevuta — NoProb Agency'
-        : 'Got your request — NoProb Agency',
+        ? 'Richiesta ricevuta · NoProb Agency'
+        : 'Got your request · NoProb Agency',
       html: buildWelcomeEmail({
         name,
         isIT,

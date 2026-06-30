@@ -84,7 +84,7 @@ export default function EcommerceRebuildWhyUs({
 
           {/* Comparison cards container */}
           <div className="relative mx-auto mt-10 max-w-[900px]">
-            {/* Conic gradient glow — positioned relative to the container */}
+            {/* Conic gradient glow - positioned relative to the container */}
             <div
               aria-hidden="true"
               className="pointer-events-none absolute left-full top-1/2 min-[810px]:-mt-[50px]"
@@ -102,7 +102,7 @@ export default function EcommerceRebuildWhyUs({
             />
 
             <div className="relative z-10 grid grid-cols-1 gap-x-8 gap-y-12 min-[810px]:grid-cols-2">
-              {/* Left column — Other Agency */}
+              {/* Left column - Other Agency */}
               <div className="flex flex-col gap-5">
                 <p
                   className="text-center font-sans italic text-[1.1rem] font-medium leading-[1.2em] tracking-[-0.04em] text-np-dark"
@@ -131,7 +131,7 @@ export default function EcommerceRebuildWhyUs({
                 </motion.div>
               </div>
 
-              {/* Right column — noprob */}
+              {/* Right column - noprob */}
               <div className="flex flex-col gap-5">
                 <p className="text-center font-serif italic text-[2.2rem] font-medium leading-[1em] tracking-[-0.04em] text-np-dark">
                   noprob<sup className="text-[0.5em]">®</sup>

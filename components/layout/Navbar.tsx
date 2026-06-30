@@ -52,7 +52,7 @@ function Logo({ href, size = '35px' }: { href: string; size?: string }) {
   return (
     <Link
       href={href}
-      aria-label="noprob agency — torna alla home"
+      aria-label="noprob agency, torna alla home"
       className="inline-flex items-center"
     >
       <div className="relative" style={{ height: size }}>

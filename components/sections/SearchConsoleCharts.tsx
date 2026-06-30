@@ -3,7 +3,7 @@ import { type Locale } from '@/lib/i18n'
 import { getMigrazioneCopy, type MigrazioneCopy } from '@/lib/i18n/migrazione'
 
 /*
-  COMPONENTE GRAFICI "SEARCH CONSOLE" — sezione comparativa migrazione.
+  COMPONENTE GRAFICI "SEARCH CONSOLE" - sezione comparativa migrazione.
   Colori fedeli a GSC: clic #4793F0 (blu), impressioni #5E3FBE (viola).
   Tutto il testo è localizzato dal blocco `charts` del copy module (IT/EN).
   Tracciato volutamente a zig-zag fitto (dato giornaliero): non smussare.
@@ -37,7 +37,7 @@ function GscChart({
       </div>
 
       <div className="overflow-hidden rounded-[14px] border border-[#E4E6EB] bg-white">
-        {/* Metrics row — responsive: tighter padding + smaller type on mobile */}
+        {/* Metrics row - responsive: tighter padding + smaller type on mobile */}
         <div className="grid grid-cols-4">
           <div className="bg-[#4793F0] px-2 py-2.5 text-white min-[520px]:px-[15px] min-[520px]:py-3">
             <div className="text-[10px] leading-[1.2] min-[520px]:text-[12px]">{c.metricClicks}</div>

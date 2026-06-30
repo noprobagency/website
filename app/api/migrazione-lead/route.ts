@@ -47,13 +47,13 @@ export async function POST(req: NextRequest) {
   const source = parsed.data.source ?? 'migrazione'
   const isSviluppo = source === 'sviluppo'
   const adminSubject = isSviluppo
-    ? `Nuova candidatura sviluppo — ${brand}`
-    : `Nuova candidatura migrazione — ${brand}`
+    ? `Nuova candidatura sviluppo: ${brand}`
+    : `Nuova candidatura migrazione: ${brand}`
   const adminHeading = isSviluppo
     ? 'Nuova candidatura sviluppo Shopify'
     : 'Nuova candidatura migrazione Shopify'
 
-  // 1) Admin notification — must succeed for the request to be considered OK
+  // 1) Admin notification - must succeed for the request to be considered OK
   try {
     const { error } = await resend.emails.send({
       from: ADMIN_FROM,
@@ -85,14 +85,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 
-  // 2) Welcome email to the lead — best-effort (never fails the request)
+  // 2) Welcome email to the lead - best-effort (never fails the request)
   const isIT = locale === 'it'
   try {
     const { error } = await resend.emails.send({
       from: WELCOME_FROM,
       to: [email],
       replyTo: WELCOME_REPLY_TO,
-      subject: isIT ? 'Candidatura ricevuta — NoProb Agency' : 'Application received — NoProb Agency',
+      subject: isIT ? 'Candidatura ricevuta · NoProb Agency' : 'Application received · NoProb Agency',
       html: buildWelcomeEmail({
         name,
         isIT,

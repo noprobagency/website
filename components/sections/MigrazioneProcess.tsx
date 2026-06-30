@@ -38,7 +38,7 @@ export default function MigrazioneProcess({
           </p>
         </div>
 
-        {/* Phase cards — single column, label + title on one line, full-width description */}
+        {/* Phase cards - single column, label + title on one line, full-width description */}
         <div className="mx-auto mt-8 flex max-w-[800px] flex-col gap-4">
           {d.phases.map((phase, i) => (
             <motion.article
@@ -69,7 +69,7 @@ export default function MigrazioneProcess({
           ))}
         </div>
 
-        {/* Why 4 months — full-width horizontal card (yellow border) */}
+        {/* Why 4 months - full-width horizontal card (yellow border) */}
         <motion.article
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
