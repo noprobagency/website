@@ -41,13 +41,13 @@ function GscChart({
         <div className="grid grid-cols-4">
           <div className="bg-[#4793F0] px-2 py-2.5 text-white min-[520px]:px-[15px] min-[520px]:py-3">
             <div className="text-[10px] leading-[1.2] min-[520px]:text-[12px]">{c.metricClicks}</div>
-            <div className="mt-[2px] whitespace-nowrap text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:text-[26px]">
+            <div className="mt-[2px] text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:whitespace-nowrap min-[520px]:text-[26px]">
               {data.clicks}
             </div>
           </div>
           <div className="bg-[#5E3FBE] px-2 py-2.5 text-white min-[520px]:px-[15px] min-[520px]:py-3">
             <div className="text-[10px] leading-[1.2] min-[520px]:text-[12px]">{c.metricImpressions}</div>
-            <div className="mt-[2px] whitespace-nowrap text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:text-[26px]">
+            <div className="mt-[2px] text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:whitespace-nowrap min-[520px]:text-[26px]">
               {data.impressions}
             </div>
           </div>

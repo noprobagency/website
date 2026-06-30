@@ -96,7 +96,7 @@
 - Site live: https://noprob.agency
 - Hosting: Vercel (branch main → production)
 - Framework: Next.js 15 App Router, route groups `(en)` + `it/`
-- Current version: v0.7.1
+- Current version: see `siteConfig.version` in `lib/site.ts` (source of truth; bump minor on every change)
 
 ### Analytics active
 
@@ -223,3 +223,13 @@ Paragraphs and list items support markdown-style inline tokens via `parseInline`
 - The Sanity CLI syntax has changed from the one in the brief, so a local Sanity scaffold was created manually with `sanity.config.ts`, `sanity.cli.ts`, and an empty schema entrypoint to keep the codebase ready without blocking the homepage sprint.
 - Visual reference for this redesign was taken from the live `https://noprob.agency` homepage plus the Framer-extracted CSS/HTML values provided in the brief.
 - The temporary zip-export mounting phase has been fully rolled back in favor of a local pure-component build, so future work should extend the React sections/routes directly rather than reintroducing static Framer exports.
+
+---
+
+## 15. Migration landing (IT `/it/migrazione-shopify` + EN `/shopify-migration`)
+
+- Bilingual landing built from shared `components/sections/Migrazione*` + `SearchConsoleCharts` components, rendered by both `app/it/migrazione-shopify/page.tsx` (locale `it`) and `app/(en)/shopify-migration/page.tsx` (locale `en`). Style changes to a component apply to both languages automatically; copy is per-locale.
+- Copy lives in a dedicated module `lib/i18n/migrazione.ts` (`getMigrazioneCopy(locale)`, typed `MigrazioneCopy`, both `it` and `en` filled). This is intentionally separate from the giant shared dictionary; only `seo.migrazioneShopify` is added to `lib/i18n/index.ts`.
+- Section order: Hero, Problem, Solution, Cumini case study (`CaseStudy compact`), Process (3 phases + "Perché 4 mesi" card), Pricing (stepped tier bar + offer card + **qualification form `#candidatura`** + Testimonials), Search Console charts, FAQ, Footer.
+- Qualification form: `MigrazioneForm` (inside the black Pricing section), `lib/schemas/migrazione.ts` (locale-aware zod factory), posts to `app/api/migrazione-lead/route.ts` (Resend, same pattern/recipient as `/api/contact`). Success redirects to the localized thank-you (`/it/grazie` / `/thank-you`) which fire the Meta Pixel Lead event. All page CTAs smooth-scroll to `#candidatura`.
+- Routing/hreflang: `ROUTE_PATHS.migrazioneShopify` maps `en -> /shopify-migration`, `it -> /it/migrazione-shopify`; `buildMetadata` generates cross hreflang + self canonical (x-default -> EN). Added to `lib/sitemap/routes.ts` with `hasIt: true`. Listed under the navbar Services dropdown via `navbar.serviceItems`.

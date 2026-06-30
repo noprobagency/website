@@ -97,6 +97,39 @@ export type MigrazioneCopy = {
     subheading: string
     items: { question: string; answer: string }[]
   }
+  form: {
+    label: string
+    heading: string
+    subheading: string
+    intro: string
+    fields: {
+      name: { label: string; placeholder: string }
+      email: { label: string; placeholder: string }
+      brand: { label: string; placeholder: string }
+      websiteUrl: { label: string; placeholder: string }
+      platform: { label: string; placeholder: string }
+      revenue: { label: string; placeholder: string; options: string[] }
+      timeline: { label: string; placeholder: string; options: string[] }
+      reason: { label: string; placeholder: string }
+    }
+    privacyBefore: string
+    privacyLinkLabel: string
+    submit: string
+    submitting: string
+    errors: {
+      name: string
+      email: string
+      brand: string
+      websiteUrl: string
+      platform: string
+      revenue: string
+      timeline: string
+      reason: string
+      privacy: string
+    }
+    errorGeneric: string
+    errorNetwork: string
+  }
 }
 
 const it: MigrazioneCopy = {
@@ -313,6 +346,53 @@ const it: MigrazioneCopy = {
       },
     ],
   },
+  form: {
+    label: 'candidatura',
+    heading: 'Candidati per la migrazione',
+    subheading: 'Pochi slot per trimestre. Candidati e vediamo se sei il progetto giusto.',
+    intro: 'Più dettagli ci dai, più la valutazione è rapida. Leggiamo ogni candidatura.',
+    fields: {
+      name: { label: 'Nome e cognome', placeholder: 'Mario Rossi' },
+      email: { label: 'Email aziendale', placeholder: 'nome@brand.com' },
+      brand: { label: 'Nome del brand / azienda', placeholder: 'Brand srl' },
+      websiteUrl: { label: 'URL del sito eCommerce attuale', placeholder: 'brand.com' },
+      platform: {
+        label: 'Su quale piattaforma sei ora?',
+        placeholder: 'es. WooCommerce, Magento, PrestaShop, Atelier…',
+      },
+      revenue: {
+        label: 'Fatturato online annuo indicativo',
+        placeholder: 'Seleziona…',
+        options: ['< 100k', '100k - 300k', '300k - 1M', '1M - 3M', '3M+'],
+      },
+      timeline: {
+        label: 'Da quando vuoi partire?',
+        placeholder: 'Seleziona…',
+        options: ['Il prima possibile', 'Entro 1-3 mesi', 'Sto solo valutando'],
+      },
+      reason: {
+        label: 'Qual è il motivo principale per cui vuoi passare a Shopify?',
+        placeholder: 'Raccontaci cosa ti blocca oggi e cosa vuoi ottenere con la migrazione.',
+      },
+    },
+    privacyBefore: 'Ho letto e accetto la ',
+    privacyLinkLabel: 'Privacy Policy',
+    submit: 'Candidati ora',
+    submitting: 'Invio in corso…',
+    errors: {
+      name: 'Inserisci nome e cognome',
+      email: 'Inserisci un indirizzo email valido',
+      brand: 'Inserisci il nome del brand',
+      websiteUrl: 'Inserisci l’URL del tuo sito',
+      platform: 'Indica la piattaforma attuale',
+      revenue: 'Seleziona un’opzione',
+      timeline: 'Seleziona un’opzione',
+      reason: 'Spiega in almeno 30 caratteri il motivo del passaggio',
+      privacy: 'Devi accettare la Privacy Policy',
+    },
+    errorGeneric: 'Qualcosa è andato storto. Riprova tra un momento.',
+    errorNetwork: 'Errore di rete. Controlla la connessione e riprova.',
+  },
 }
 
 const en: MigrazioneCopy = {
@@ -383,7 +463,7 @@ const en: MigrazioneCopy = {
     title1: 'After every migration, traffic drops. ',
     titleEm: 'What matters is what happens next.',
     subtitle:
-      'Google re-processes the site: the drop is physiological. The recovery depends on how the migration is done.',
+      'Google re-processes the site: the drop is normal. The recovery depends on how the migration is done.',
     axisClicks: 'Clicks',
     axisImpressions: 'Impressions',
     metricClicks: 'Total clicks',
@@ -528,6 +608,53 @@ const en: MigrazioneCopy = {
           'It can’t finish earlier: four months is exactly what’s needed to handle every last detail, and it’s the right time to do everything well (and to let you pay in installments with peace of mind). If there’s time left over, we invest it in analysis and performance strategy: we already have the team ready, so we start studying how to grow you. If it needs more time, which is extremely rare given our experience, the team keeps working at no extra cost until we reach the highest quality.',
       },
     ],
+  },
+  form: {
+    label: 'application',
+    heading: 'Apply for your migration',
+    subheading: 'A few slots per quarter. Apply and let’s see if you’re the right fit.',
+    intro: 'The more details you give us, the faster the review. We read every application.',
+    fields: {
+      name: { label: 'Full name', placeholder: 'John Smith' },
+      email: { label: 'Business email', placeholder: 'name@brand.com' },
+      brand: { label: 'Brand / company name', placeholder: 'Brand Ltd' },
+      websiteUrl: { label: 'Current eCommerce URL', placeholder: 'brand.com' },
+      platform: {
+        label: 'Which platform are you on now?',
+        placeholder: 'e.g. WooCommerce, Magento, PrestaShop, Atelier…',
+      },
+      revenue: {
+        label: 'Approximate annual online revenue',
+        placeholder: 'Select…',
+        options: ['< 100k', '100k - 300k', '300k - 1M', '1M - 3M', '3M+'],
+      },
+      timeline: {
+        label: 'When do you want to start?',
+        placeholder: 'Select…',
+        options: ['As soon as possible', 'Within 1-3 months', 'Just exploring'],
+      },
+      reason: {
+        label: 'What’s the main reason you want to move to Shopify?',
+        placeholder: 'Tell us what’s blocking you today and what you want to achieve with the migration.',
+      },
+    },
+    privacyBefore: 'I have read and accept the ',
+    privacyLinkLabel: 'Privacy Policy',
+    submit: 'Apply now',
+    submitting: 'Sending…',
+    errors: {
+      name: 'Enter your full name',
+      email: 'Enter a valid email address',
+      brand: 'Enter your brand name',
+      websiteUrl: 'Enter your site URL',
+      platform: 'Tell us your current platform',
+      revenue: 'Select an option',
+      timeline: 'Select an option',
+      reason: 'Explain in at least 30 characters',
+      privacy: 'You must accept the Privacy Policy',
+    },
+    errorGeneric: 'Something went wrong. Please try again.',
+    errorNetwork: 'Network error. Check your connection and try again.',
   },
 }
 

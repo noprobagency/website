@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 import Testimonials from '@/components/sections/Testimonials'
+import MigrazioneForm from '@/components/sections/MigrazioneForm'
 import { siteAssets } from '@/lib/site'
 import { type Locale } from '@/lib/i18n'
 import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
@@ -111,12 +112,11 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
 
           {/* Pricing card */}
           <motion.div
-            id="candidatura"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 'some' }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-10 w-full scroll-mt-32 overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
+            className="mt-10 w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
           >
             <div className="grid gap-8 rounded-[20px] bg-white p-[32px] shadow-pricing-inner max-[809px]:px-5 min-[810px]:grid-cols-2 min-[810px]:gap-10">
               {/* Left: project summary (reads first, left to right) */}
@@ -189,7 +189,10 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
             </div>
           </motion.div>
 
-          {/* Testimonials (on the black section, under the pricing card) */}
+          {/* Application form card (anchor target for all CTAs) */}
+          <MigrazioneForm locale={locale} />
+
+          {/* Testimonials (on the black section, under the application card) */}
           <Testimonials locale={locale} />
         </div>
       </div>

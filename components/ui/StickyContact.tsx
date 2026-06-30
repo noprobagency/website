@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { getDictionary } from '@/lib/i18n'
+import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
 
 export default function StickyContact() {
   const [visible, setVisible] = useState(false)
@@ -15,11 +16,11 @@ export default function StickyContact() {
   // Don't show on contact pages
   const isContactPage = pathname === '/contacts' || pathname === '/it/contatti'
 
-  // Page-specific behavior: on the Shopify migration landing the floating CTA
-  // scrolls to the in-page application section instead of the contact page.
-  const isMigrazione = pathname === '/it/migrazione-shopify'
+  // Page-specific behavior: on the Shopify migration landing (IT + EN) the
+  // floating CTA scrolls to the in-page application form instead of the contact page.
+  const isMigrazione = pathname === '/it/migrazione-shopify' || pathname === '/shopify-migration'
   const href = isMigrazione ? '#candidatura' : t.hero.ctaPrimaryHref
-  const label = isMigrazione ? 'Candidati per la migrazione' : 'Contact Us'
+  const label = isMigrazione ? getMigrazioneCopy(locale).hero.cta : 'Contact Us'
 
   useEffect(() => {
     if (isContactPage) return

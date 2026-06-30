@@ -54,7 +54,7 @@ type MetadataOptions = {
   locale: Locale
   pageKey?: PageKey
   noIndex?: boolean
-  /** Optional per-page OG/Twitter image (relative path). Defaults to /og-image.svg. */
+  /** Optional per-page OG/Twitter image (relative path). Defaults to /images/og-image.png. */
   image?: string
   /** Optional alt text for the OG/Twitter image. */
   imageAlt?: string
@@ -84,7 +84,7 @@ export function buildMetadata({
   const itUrl = absoluteUrl(itPath)
   const ogLocale = locale === 'it' ? 'it_IT' : 'en_US'
 
-  const ogImageUrl = absoluteUrl(image ?? '/og-image.svg')
+  const ogImageUrl = absoluteUrl(image ?? '/images/og-image.png')
   const ogImageAlt = imageAlt ?? siteConfig.name
 
   return {

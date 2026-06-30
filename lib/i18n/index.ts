@@ -209,6 +209,7 @@ const en: Dictionary = {
     serviceItems: [
       { label: 'eCommerce ReBuild', href: '/ecommerce-rebuild' },
       { label: 'Data Drive Team', href: '/data-driven-team' },
+      { label: 'Shopify Migration', href: '/shopify-migration' },
     ],
     langSwitcher: { label: 'Switch to Italian', display: 'EN' },
   },
@@ -665,6 +666,7 @@ const it: Dictionary = {
     serviceItems: [
       { label: 'eCommerce ReBuild', href: '/it/rifacimento-ecommerce' },
       { label: 'Data Drive Team', href: '/it/team-ecommerce-dedicato' },
+      { label: 'Migrazione Shopify', href: '/it/migrazione-shopify' },
     ],
     langSwitcher: { label: 'Passa alla versione inglese', display: 'IT' },
   },
