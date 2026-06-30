@@ -20,6 +20,13 @@ function CheckIcon() {
   )
 }
 
+// Per-plan badge colors: green, purple, pastel blue.
+const BADGE_BG = [
+  'bg-[rgb(206,232,204)]',
+  'bg-[rgb(219,204,232)]',
+  'bg-[rgb(204,225,232)]',
+]
+
 const cardVariants: Variants = {
   hidden: { opacity: 0 },
   visible: (i: number) => ({
@@ -47,7 +54,7 @@ export default function Pricing({
   return (
     <section id="pricing" data-header-theme="dark" className="scroll-mt-40 bg-black py-[80px]">
       <div className="container-noprob">
-        <div className="mx-auto max-w-[850px]">
+        <div className={(rebuildOnly || teamOnly) ? "mx-auto max-w-[850px]" : "mx-auto max-w-[1120px]"}>
           <div className="mx-auto max-w-[650px] text-center">
             <SectionLabel>{t.pricing.label}</SectionLabel>
             <h2 className="mt-5 text-np-h2 text-center text-[#f9f9f9]">
@@ -58,7 +65,7 @@ export default function Pricing({
             </p>
           </div>
 
-          <div className={(rebuildOnly || teamOnly) ? "mt-10 mx-auto max-w-[450px]" : "mt-10 grid gap-3 xl:grid-cols-2"}>
+          <div className={(rebuildOnly || teamOnly) ? "mt-10 mx-auto max-w-[450px]" : "mt-10 grid gap-3 md:grid-cols-2 lg:grid-cols-3"}>
             {plans.map((plan, index) => (
               <motion.article
                 key={plan.name}
@@ -72,11 +79,7 @@ export default function Pricing({
                 <div className="rounded-[20px] bg-white p-[32px] max-[809px]:px-5 shadow-pricing-inner">
                   <div className="flex flex-col gap-3">
                     <div
-                      className={
-                        index === 0
-                          ? 'inline-flex self-start rounded-[5px] bg-[rgb(206,232,204)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
-                          : 'inline-flex self-start rounded-[5px] bg-[rgb(219,204,232)] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text'
-                      }
+                      className={`inline-flex self-start rounded-[5px] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text ${BADGE_BG[index % BADGE_BG.length]}`}
                     >
                       {plan.badge}
                     </div>

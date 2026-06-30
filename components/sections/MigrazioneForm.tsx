@@ -50,6 +50,8 @@ export default function MigrazioneForm({
 
   const revenueValue = watch('revenue')
   const timelineValue = watch('timeline')
+  const platformValue = watch('platform')
+  const platformOptions = d.fields.platform.options
 
   const thankYouPath = locale === 'it' ? '/it/grazie' : '/thank-you'
 
@@ -128,12 +130,29 @@ export default function MigrazioneForm({
 
           <div className="flex flex-col gap-[2px]">
             <label className={labelClass}>{d.fields.platform.label}</label>
-            <input
-              {...register('platform')}
-              type="text"
-              placeholder={d.fields.platform.placeholder}
-              className={inputClass(!!errors.platform)}
-            />
+            {platformOptions ? (
+              <select
+                {...register('platform')}
+                defaultValue=""
+                className={selectClass(!!errors.platform, !!platformValue)}
+              >
+                <option value="" disabled>
+                  {d.fields.platform.placeholder}
+                </option>
+                {platformOptions.map((opt) => (
+                  <option key={opt} value={opt} className="text-[#181818]">
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <input
+                {...register('platform')}
+                type="text"
+                placeholder={d.fields.platform.placeholder}
+                className={inputClass(!!errors.platform)}
+              />
+            )}
             {errors.platform && <span className={errorClass}>{errors.platform.message}</span>}
           </div>
 

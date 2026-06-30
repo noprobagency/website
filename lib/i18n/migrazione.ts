@@ -107,7 +107,7 @@ export type MigrazioneCopy = {
       email: { label: string; placeholder: string }
       brand: { label: string; placeholder: string }
       websiteUrl: { label: string; placeholder: string }
-      platform: { label: string; placeholder: string }
+      platform: { label: string; placeholder: string; options?: string[] }
       revenue: { label: string; placeholder: string; options: string[] }
       timeline: { label: string; placeholder: string; options: string[] }
       reason: { label: string; placeholder: string }

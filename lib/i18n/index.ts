@@ -285,8 +285,8 @@ const en: Dictionary = {
       {
         badge: 'Already with a good eCommerce?',
         name: 'Data-Driven Team',
-        price: '\u20ac1,495',
-        period: '/month',
+        price: '',
+        period: '',
         description:
           'A tailor-made eCommerce team that evolves with you. Your eCommerce Manager is your single point of contact, leading a flexible, well-tuned group of specialists. You focus on your brand, he takes care of everything else, including hiring.',
         features: ['7/7 support', 'NDA sign', 'Trial Discount'],
@@ -298,8 +298,8 @@ const en: Dictionary = {
       {
         badge: 'Want to build your eCommerce?',
         name: 'Shopify Development',
-        price: 'from \u20ac1,850',
-        period: '/month',
+        price: '',
+        period: '',
         description:
           'We build your eCommerce on Shopify from design to tracking, ready to convert from day one. You focus on your brand, we handle the technical side. Lifetime maintenance included.',
         features: ['7/7 support', 'Lifetime maintenance included', '30-day guarantee'],
@@ -307,6 +307,19 @@ const en: Dictionary = {
         ctaHref: '/shopify-development#candidatura',
         secondary: 'Learn more about the plan',
         secondaryHref: '/shopify-development',
+      },
+      {
+        badge: 'Need to migrate to Shopify?',
+        name: 'Shopify Migration',
+        price: '',
+        period: '',
+        description:
+          'We migrate your eCommerce to Shopify without losing sales or customers: 1:1 redirects, no downtime, server-side tracking, design and SEO. Managed end to end, with a single point of contact.',
+        features: ['1:1 SEO redirects', 'Never offline', '30-day guarantee'],
+        cta: 'Apply for your migration',
+        ctaHref: '/shopify-migration#candidatura',
+        secondary: 'Learn more about the plan',
+        secondaryHref: '/shopify-migration',
       },
     ],
     from: 'From',
@@ -741,8 +754,8 @@ const it: Dictionary = {
       {
         badge: 'Hai gi\u00e0 un buon eCommerce?',
         name: 'Data-Driven Team',
-        price: '\u20ac1.495',
-        period: '/mese',
+        price: '',
+        period: '',
         description:
           'Un team eCommerce su misura che cresce con te. Il tuo eCommerce Manager \u00e8 il tuo unico punto di riferimento: guida un gruppo flessibile e affiatato di specialisti. Tu ti concentri sul brand, lui si occupa di tutto il resto, compreso il recruiting.',
         features: ['Supporto 7/7', 'Firma NDA', 'Sconto Trial'],
@@ -754,8 +767,8 @@ const it: Dictionary = {
       {
         badge: 'Vuoi costruire il tuo eCommerce?',
         name: 'Sviluppo Shopify',
-        price: 'da \u20ac1.850',
-        period: '/mese',
+        price: '',
+        period: '',
         description:
           'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, pronto a convertire dal primo giorno. Tu pensi al brand, noi al lato tecnico. Manutenzione a vita inclusa.',
         features: ['Supporto 7/7', 'Manutenzione a vita inclusa', 'Garanzia 30 giorni'],
@@ -763,6 +776,19 @@ const it: Dictionary = {
         ctaHref: '/it/sviluppo-shopify#candidatura',
         secondary: 'Scopri di pi\u00f9 sul piano',
         secondaryHref: '/it/sviluppo-shopify',
+      },
+      {
+        badge: 'Devi migrare a Shopify?',
+        name: 'Migrazione Shopify',
+        price: '',
+        period: '',
+        description:
+          'Migriamo il tuo eCommerce su Shopify senza perdere vendite o clienti: redirect 1:1, nessuna interruzione, tracciamento server-side, design e SEO. Gestita end to end, con un solo interlocutore.',
+        features: ['Redirect SEO 1:1', 'Mai offline', 'Garanzia 30 giorni'],
+        cta: 'Candidati per la migrazione',
+        ctaHref: '/it/migrazione-shopify#candidatura',
+        secondary: 'Scopri di pi\u00f9 sul piano',
+        secondaryHref: '/it/migrazione-shopify',
       },
     ],
     from: 'A partire da',

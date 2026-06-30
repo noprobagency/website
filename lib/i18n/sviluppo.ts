@@ -240,12 +240,13 @@ const it: SviluppoCopy = {
       websiteUrl: { label: 'Sito o profilo del brand (se ce l’hai)', placeholder: 'brand.com oppure @brand' },
       platform: {
         label: 'A che punto sei con lo store?',
-        placeholder: 'es. Parto da zero / nuovo progetto, oppure store già avviato…',
+        placeholder: 'Seleziona…',
+        options: ['Parto da zero, nuovo progetto', 'Ho un’idea ma non ho ancora uno store', 'Ho già uno store da rifare'],
       },
       revenue: {
         label: 'Fatturato online annuo indicativo',
         placeholder: 'Seleziona…',
-        options: ['Sto partendo ora', '< 100k', '100k - 300k', '300k - 1M', '1M+'],
+        options: ['Non ancora online', '< 100k', '100k - 300k', '300k - 1M', '1M+'],
       },
       timeline: {
         label: 'Da quando vuoi partire?',
@@ -499,12 +500,13 @@ const en: SviluppoCopy = {
       websiteUrl: { label: 'Brand site or profile (if you have one)', placeholder: 'brand.com or @brand' },
       platform: {
         label: 'Where are you with the store?',
-        placeholder: 'e.g. Starting from scratch / new project, or store already live…',
+        placeholder: 'Select…',
+        options: ['Starting from scratch, new project', 'I have an idea but no store yet', 'I have an existing store to rebuild'],
       },
       revenue: {
         label: 'Approximate annual online revenue',
         placeholder: 'Select…',
-        options: ['Just starting out', '< 100k', '100k - 300k', '300k - 1M', '1M+'],
+        options: ['Not online yet', '< 100k', '100k - 300k', '300k - 1M', '1M+'],
       },
       timeline: {
         label: 'When do you want to start?',
