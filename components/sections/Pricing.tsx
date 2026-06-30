@@ -74,9 +74,9 @@ export default function Pricing({
                 whileInView="visible"
                 viewport={{ once: true, amount: 'some' }}
                 variants={cardVariants}
-                className="w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
+                className="flex h-full w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
               >
-                <div className="rounded-[20px] bg-white p-[32px] max-[809px]:px-5 shadow-pricing-inner">
+                <div className="flex h-full w-full flex-col rounded-[20px] bg-white p-[32px] max-[809px]:px-5 shadow-pricing-inner">
                   <div className="flex flex-col gap-3">
                     <div
                       className={`inline-flex self-start rounded-[5px] px-2 py-[5px] font-serif text-[14px] font-semibold italic tracking-[-0.06em] text-noprob-text ${BADGE_BG[index % BADGE_BG.length]}`}
@@ -105,7 +105,7 @@ export default function Pricing({
                     </ul>
                   </div>
 
-                  <div className="mt-8 flex flex-col gap-3">
+                  <div className="mt-auto pt-8 flex flex-col gap-3">
                     <div className="flex flex-col gap-3 max-[809px]:w-full min-[810px]:items-center">
                       <Link
                         href={plan.ctaHref}
