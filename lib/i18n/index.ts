@@ -197,7 +197,7 @@ export type Dictionary = {
 const en: Dictionary = {
   navbar: {
     services: 'Services',
-    reserveCta: 'Reserve Your Sprint',
+    reserveCta: 'Book a call',
     menuOpen: 'Menu',
     menuClose: 'Close',
     navLinks: [
@@ -221,7 +221,7 @@ const en: Dictionary = {
     line3em: 'too',
     description:
       'We rebuild your store from the ground up and offer a dedicated team in Development, Marketing, and Strategy, available together or separately based on your needs.',
-    ctaPrimary: 'Reserve your sprint',
+    ctaPrimary: 'Book a call',
     ctaPrimaryHref: '/contacts',
     ctaSecondary: 'Explore what we do',
     ctaSecondaryHref: '/#pricing',
@@ -586,7 +586,7 @@ const en: Dictionary = {
     headingSub: "",
     headingEm: "slowing",
     headingPost: ' you down?',
-    buttonLabel: 'Reserve Your Sprint',
+    buttonLabel: 'Book a call',
     availability: 'Limited slots available',
   },
   footer: {
@@ -606,7 +606,7 @@ const en: Dictionary = {
   seo: {
     home: { title: 'Shopify Development & eCommerce Growth Agency | NoProb', description: 'Shopify Partner for fashion, supplement, and DTC brands. We build, migrate, and manage eCommerce stores as your long-term technical partner.' },
     about: { title: 'About NoProb | Your Technical eCommerce Partner', description: 'Meet the team behind NoProb. A technical Shopify partner helping B2C brands scale with development, migration, and dedicated retainer teams.' },
-    contacts: { title: 'Contact NoProb | Book Your Sprint', description: 'Start a conversation with NoProb. Reserve a sprint to rebuild your eCommerce on Shopify or activate a long-term dedicated team.' },
+    contacts: { title: 'Contact NoProb | Book a Call', description: 'Start a conversation with NoProb. Book a call to build your eCommerce on Shopify or activate a long-term dedicated team.' },
     blog: { title: 'NoProb Blog | Shopify, eCommerce & Growth', description: 'Articles on Shopify development, migration, tracking, and CRO for fashion, supplement, and DTC brands. Written by the NoProb team.' },
     useCases: { title: 'eCommerce Case Studies & Results | NoProb', description: 'Real results from long-term Shopify partnerships. See how we helped fashion and DTC brands grow revenue, improve MER, and scale eCommerce operations.' },
     dataDrivenTeam: { title: 'Data-Driven Team — Dedicated eCommerce Retainer | NoProb', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
@@ -654,7 +654,7 @@ const en: Dictionary = {
 const it: Dictionary = {
   navbar: {
     services: 'Servizi',
-    reserveCta: 'Prenota il tuo Sprint',
+    reserveCta: 'Prenota una call',
     menuOpen: 'Menu',
     menuClose: 'Chiudi',
     navLinks: [
@@ -678,7 +678,7 @@ const it: Dictionary = {
     line3em: 'anche lui',
     description:
       'Ricostruiamo il tuo store dalle fondamenta e mettiamo a disposizione un team dedicato in Sviluppo, Marketing e Strategia \u2014 insieme o separatamente, in base alle tue esigenze.',
-    ctaPrimary: 'Prenota il tuo Sprint',
+    ctaPrimary: 'Prenota una call',
     ctaPrimaryHref: '/it/contatti',
     ctaSecondary: 'Scopri cosa facciamo',
     ctaSecondaryHref: '/it#pricing',
@@ -1042,7 +1042,7 @@ const it: Dictionary = {
     headingSub: "ciò che ti ",
     headingEm: "frena",
     headingPost: '?',
-    buttonLabel: 'Prenota il tuo Sprint',
+    buttonLabel: 'Prenota una call',
     availability: 'Slot disponibili',
   },
   footer: {
@@ -1062,7 +1062,7 @@ const it: Dictionary = {
   seo: {
     home: { title: 'Agenzia Shopify per Brand eCommerce Fashion e DTC | NoProb', description: 'Partner tecnico Shopify per brand fashion, integratori e DTC. Sviluppo, migrazione e gestione eCommerce con un team dedicato a lungo termine.' },
     about: { title: 'Chi Siamo | Il tuo partner tecnico eCommerce', description: 'Il team dietro NoProb. Partner tecnico Shopify che aiuta i brand B2C a scalare con sviluppo, migrazioni e team dedicati in retainer.' },
-    contacts: { title: 'Contattaci | Prenota il tuo Sprint', description: 'Apri una conversazione con NoProb. Prenota uno sprint per ricostruire il tuo eCommerce su Shopify o attivare un team dedicato a lungo termine.' },
+    contacts: { title: 'Contattaci | Prenota una call', description: 'Apri una conversazione con NoProb. Prenota una call per costruire il tuo eCommerce su Shopify o attivare un team dedicato a lungo termine.' },
     blog: { title: 'Blog NoProb | Shopify, eCommerce e Crescita', description: 'Articoli su sviluppo Shopify, migrazioni, tracking e CRO per brand fashion, integratori e DTC. Scritti dal team NoProb.' },
     useCases: { title: "Casi d'Uso eCommerce e Risultati Reali | NoProb", description: 'Risultati concreti da partnership Shopify a lungo termine. Come abbiamo fatto crescere brand fashion e DTC su fatturato, MER e operations eCommerce.' },
     dataDrivenTeam: { title: 'Data-Driven Team \u2014 Retainer eCommerce Dedicato | NoProb', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare senza assumere internamente.' },
