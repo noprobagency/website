@@ -358,7 +358,7 @@ const it: MigrazioneCopy = {
       websiteUrl: { label: 'URL del sito eCommerce attuale', placeholder: 'brand.com' },
       platform: {
         label: 'Su quale piattaforma sei ora?',
-        placeholder: 'es. WooCommerce, Magento, PrestaShop, Atelier…',
+        placeholder: 'es. WooCommerce, Magento, PrestaShop, Custom…',
       },
       revenue: {
         label: 'Fatturato online annuo indicativo',
@@ -621,7 +621,7 @@ const en: MigrazioneCopy = {
       websiteUrl: { label: 'Current eCommerce URL', placeholder: 'brand.com' },
       platform: {
         label: 'Which platform are you on now?',
-        placeholder: 'e.g. WooCommerce, Magento, PrestaShop, Atelier…',
+        placeholder: 'e.g. WooCommerce, Magento, PrestaShop, Custom…',
       },
       revenue: {
         label: 'Approximate annual online revenue',
