@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import SectionLabel from '@/components/ui/SectionLabel'
 import { type Locale } from '@/lib/i18n'
 import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
 import { makeMigrazioneSchema, type MigrazioneFormData } from '@/lib/schemas/migrazione'
@@ -65,20 +64,8 @@ export default function MigrazioneForm({ locale = 'it' }: { locale?: Locale }) {
   }
 
   return (
-    <div
-      id="candidatura"
-      className="mt-4 w-full scroll-mt-32 overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
-    >
-      <div className="rounded-[20px] bg-white p-6 shadow-pricing-inner min-[810px]:p-[32px]">
-        <div className="text-center">
-          <SectionLabel>{d.label}</SectionLabel>
-          <h3 className="mt-4 font-sans text-[26px] font-semibold tracking-[-0.05em] text-noprob-text">
-            {d.heading}
-          </h3>
-          <p className="mt-3 font-sans text-body-sm font-medium text-noprob-text">{d.subheading}</p>
-        </div>
-
-        <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <div id="candidatura" className="scroll-mt-32">
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)} noValidate>
           <p className="font-sans text-[13px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-muted">
             {d.intro}
           </p>
@@ -226,8 +213,7 @@ export default function MigrazioneForm({ locale = 'it' }: { locale?: Locale }) {
           {serverError && (
             <p className="text-center font-sans text-[10px] font-medium text-red-500">{serverError}</p>
           )}
-        </form>
-      </div>
+      </form>
     </div>
   )
 }

@@ -118,79 +118,84 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             className="mt-10 w-full overflow-hidden rounded-[24px] border border-[rgb(54,54,54)] bg-[rgb(24,24,24)] p-2"
           >
-            <div className="grid gap-8 rounded-[20px] bg-white p-[32px] shadow-pricing-inner max-[809px]:px-5 min-[810px]:grid-cols-2 min-[810px]:gap-10">
-              {/* Left: project summary (reads first, left to right) */}
-              <div className="flex flex-col">
-                <h3 className="text-np-pricing text-noprob-text">{d.cardTitle}</h3>
-                <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
-                  {d.cardDescription}
-                </p>
-                <ul className="mt-5 flex flex-col gap-3">
-                  {d.cardChecks.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
-                    >
-                      <CheckIcon />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Right: badge + guarantee + price + CTA + trust */}
-              <div className="flex flex-col min-[810px]:border-l min-[810px]:border-[#ececec] min-[810px]:pl-10">
-                <span className="inline-flex self-start rounded-pill border border-[#d6d6d6] bg-white px-3 py-[6px] font-serif text-[14px] font-normal italic tracking-[-0.02em] text-noprob-text">
-                  {d.priceBadge}
-                </span>
-
-                {/* Guarantee — right below the label */}
-                <div className="mt-4 flex items-start gap-2 rounded-[12px] bg-[rgb(206,232,204)] px-4 py-3">
-                  <CheckIcon />
-                  <p className="font-sans text-[13px] font-semibold leading-[1.5em] tracking-[-0.02em] text-noprob-text">
-                    {d.guarantee}
+            <div className="rounded-[20px] bg-white p-6 shadow-pricing-inner min-[810px]:p-[32px]">
+              <div className="grid gap-8 min-[810px]:grid-cols-2 min-[810px]:gap-10">
+                {/* Left: project summary (reads first, left to right) */}
+                <div className="flex flex-col">
+                  <h3 className="text-np-pricing text-noprob-text">{d.cardTitle}</h3>
+                  <p className="mt-3 font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+                    {d.cardDescription}
                   </p>
+                  <ul className="mt-5 flex flex-col gap-3">
+                    {d.cardChecks.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-center gap-3 font-sans text-body-sm font-medium text-noprob-text"
+                      >
+                        <CheckIcon />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <div className="mt-5 flex items-end gap-1">
-                  <span className="text-np-pricing text-noprob-text">{current.price}</span>
-                  <span className="mb-2 font-sans text-[14px] font-medium tracking-[-0.02em] text-noprob-muted">
-                    {d.priceSuffix}
+                {/* Right: badge + guarantee + price + CTA + trust */}
+                <div className="flex flex-col min-[810px]:border-l min-[810px]:border-[#ececec] min-[810px]:pl-10">
+                  <span className="inline-flex self-start rounded-pill border border-[#d6d6d6] bg-white px-3 py-[6px] font-serif text-[14px] font-normal italic tracking-[-0.02em] text-noprob-text">
+                    {d.priceBadge}
                   </span>
-                </div>
 
-                <Link
-                  href="#candidatura"
-                  data-tracking="migrazione_pricing_cta"
-                  className="button-principal mt-5 !w-full"
-                >
-                  {d.cta}
-                </Link>
+                  {/* Guarantee — right below the label */}
+                  <div className="mt-4 flex items-start gap-2 rounded-[12px] bg-[rgb(206,232,204)] px-4 py-3">
+                    <CheckIcon />
+                    <p className="font-sans text-[13px] font-semibold leading-[1.5em] tracking-[-0.02em] text-noprob-text">
+                      {d.guarantee}
+                    </p>
+                  </div>
 
-                {/* Trustpilot */}
-                <div className="mt-4 flex flex-col items-center gap-[8px]">
-                  <div className="flex items-center gap-[5px]">
-                    <Image
-                      src={siteAssets.trustpilotWordmark}
-                      alt="Trustpilot"
-                      width={72}
-                      height={16}
-                      className="h-4 w-auto object-contain"
-                    />
-                    <span className="font-sans text-[12px] font-semibold tracking-[-0.03em] text-np-green-trust">
-                      4,9
+                  <div className="mt-5 flex items-end gap-1">
+                    <span className="text-np-pricing text-noprob-text">{current.price}</span>
+                    <span className="mb-2 font-sans text-[14px] font-medium tracking-[-0.02em] text-noprob-muted">
+                      {d.priceSuffix}
                     </span>
                   </div>
-                  <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-text">
-                    {d.trustLabel}
-                  </p>
+
+                  <Link
+                    href="#candidatura"
+                    data-tracking="migrazione_pricing_cta"
+                    className="button-principal mt-5 !w-full"
+                  >
+                    {d.cta}
+                  </Link>
+
+                  {/* Trustpilot */}
+                  <div className="mt-4 flex flex-col items-center gap-[8px]">
+                    <div className="flex items-center gap-[5px]">
+                      <Image
+                        src={siteAssets.trustpilotWordmark}
+                        alt="Trustpilot"
+                        width={72}
+                        height={16}
+                        className="h-4 w-auto object-contain"
+                      />
+                      <span className="font-sans text-[12px] font-semibold tracking-[-0.03em] text-np-green-trust">
+                        4,9
+                      </span>
+                    </div>
+                    <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-text">
+                      {d.trustLabel}
+                    </p>
+                  </div>
                 </div>
               </div>
+
+              {/* Light divider between the offer and the application form */}
+              <div className="my-8 border-t border-[#ececec]" />
+
+              {/* Application form (anchor target for all CTAs) */}
+              <MigrazioneForm locale={locale} />
             </div>
           </motion.div>
-
-          {/* Application form card (anchor target for all CTAs) */}
-          <MigrazioneForm locale={locale} />
 
           {/* Testimonials (on the black section, under the application card) */}
           <Testimonials locale={locale} />
