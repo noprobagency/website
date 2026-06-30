@@ -1,7 +1,29 @@
 'use client'
 
+type Locale = 'en' | 'it'
 
-export default function ContactsHero() {
+const copy = {
+  en: {
+    trust: 'Trusted by Fashion, Supplements, and DTC eCommerce brands',
+    headingPre: 'Book Your Call With an',
+    headingMid: 'eCommerce ',
+    headingEm: 'Expert',
+    description:
+      'Once you submit the form, you’ll be contacted by our senior ecommerce manager. Together, you’ll analyze your current situation and define the best next steps for your growth.',
+  },
+  it: {
+    trust: 'Scelti da brand eCommerce di Fashion, Integratori e DTC',
+    headingPre: 'Prenota la tua call con un',
+    headingMid: '',
+    headingEm: 'esperto eCommerce',
+    description:
+      'Una volta inviato il modulo, verrai contattato dal nostro senior ecommerce manager. Insieme analizzerete la tua situazione attuale e definirete i passi migliori per la tua crescita.',
+  },
+} as const
+
+export default function ContactsHero({ locale = 'en' }: { locale?: Locale }) {
+  const t = copy[locale]
+
   return (
     <section
       id="hero"
@@ -29,7 +51,7 @@ export default function ContactsHero() {
             </span>
           </div>
           <p className="font-sans text-[12px] font-medium leading-[1.4em] tracking-[-0.04em] text-noprob-dark">
-            Trusted by Fashion, Supplements, and DTC eCommerce brands
+            {t.trust}
           </p>
         </div>
 
@@ -38,14 +60,15 @@ export default function ContactsHero() {
           className="text-center font-sans text-[1.79rem] font-semibold leading-[1.2em] tracking-[-0.05em] text-black [text-wrap:balance] min-[810px]:text-[2.8rem]"
           style={{ fontFeatureSettings: "'blwf' on, 'cv09' on, 'cv03' on, 'cv04' on, 'cv11' on" }}
         >
-          Book Your Call With an <br className="hidden sm:block" />
-          eCommerce <em className="font-serif italic font-normal">Expert</em>
+          {t.headingPre} <br className="hidden sm:block" />
+          {t.headingMid}
+          <em className="font-serif italic font-normal">{t.headingEm}</em>
         </h1>
 
         {/* Description */}
         <div className="mt-[20px] w-[550px] max-w-full">
           <p className="font-sans text-[18px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
-            Once you submit the form, you’ll be contacted by our senior ecommerce manager. Together, you’ll analyze your current situation and define the best next steps for your growth.
+            {t.description}
           </p>
         </div>
       </div>

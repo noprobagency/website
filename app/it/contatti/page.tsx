@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function ItalianContactsPage() {
   return (
     <main>
-      <ContactsHero />
+      <ContactsHero locale="it" />
       <ContactSection successRedirect="/it/grazie" locale="it" />
       <Footer locale="it" />
     </main>

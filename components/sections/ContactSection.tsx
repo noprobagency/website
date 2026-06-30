@@ -15,6 +15,118 @@ type ContactSectionProps = {
   locale?: 'en' | 'it'
 }
 
+const copy = {
+  en: {
+    trustedBy: 'Trusted by 23+ founders',
+    consistency: 'Consistency.',
+    thatsPre: 'That’s ',
+    thatsEm: 'noprob agency',
+    intro:
+      'NoProb Agency is the technical partner that makes eCommerce simple. A 7/7 team of developers, designers, and strategists combining code, data, and creativity to help Shopify brands scale without stress.',
+    nameLabel: 'Name and Surname',
+    companyLabel: 'Company Name',
+    emailLabel: 'Email send you more info',
+    phoneLabel: 'Phone number',
+    urlLabel: 'eCommerce’s URL',
+    interestLabel: 'Are you interested in?',
+    interestOptions: [
+      'I want to launch my first eCommerce',
+      'I want to implement an expert eCommerce team inside my company',
+      'I want to rebuild my eCommerce website',
+      'Other',
+    ],
+    revenueLabel: 'How much does your eCommerce generate in annual revenue?',
+    revenueOptions: [
+      'Not generating revenue yet',
+      'Less than €100,000',
+      'Between €100,000 and €500,000',
+      'More than €500,000',
+    ],
+    adsLabel: 'How much do you currently spend on ads each month?',
+    adsOptions: [
+      'I’m not spending anything on ads',
+      'Less than €2,500/month',
+      'Between €2,500 and €5,000/month',
+      'More than €5,000/month',
+    ],
+    additionalLabel: 'Add any additional information or data that could be useful for the call',
+    select: 'Select…',
+    badgeSupport: '7/7 support',
+    badgeNda: 'NDA pre-signed after submission',
+    badgeTrial: 'Trial Discount',
+    submit: 'Send Your Request',
+    submitting: 'Sending...',
+    afterSubmit: 'You’ll get direct access to our eCommerce manager in the next step.',
+    genericError: 'Something went wrong. Please try again.',
+    networkError: 'Network error. Please try again.',
+  },
+  it: {
+    trustedBy: 'Scelti da oltre 23 founder',
+    consistency: 'Costanza.',
+    thatsPre: 'Questa è ',
+    thatsEm: 'noprob agency',
+    intro:
+      'NoProb Agency è il partner tecnico che rende l’eCommerce semplice. Un team 7/7 di sviluppatori, designer e strategist che unisce codice, dati e creatività per far crescere i brand Shopify senza stress.',
+    nameLabel: 'Nome e cognome',
+    companyLabel: 'Nome azienda',
+    emailLabel: 'Email per inviarti maggiori informazioni',
+    phoneLabel: 'Numero di telefono',
+    urlLabel: 'URL del tuo eCommerce',
+    interestLabel: 'A cosa sei interessato?',
+    interestOptions: [
+      'Voglio lanciare il mio primo eCommerce',
+      'Voglio inserire un team eCommerce esperto nella mia azienda',
+      'Voglio rifare il mio sito eCommerce',
+      'Altro',
+    ],
+    revenueLabel: 'Quanto fattura annualmente il tuo eCommerce?',
+    revenueOptions: [
+      'Non genera ancora fatturato',
+      'Meno di 100.000 €',
+      'Tra 100.000 € e 500.000 €',
+      'Più di 500.000 €',
+    ],
+    adsLabel: 'Quanto spendi attualmente in ads ogni mese?',
+    adsOptions: [
+      'Non sto spendendo nulla in ads',
+      'Meno di 2.500 €/mese',
+      'Tra 2.500 € e 5.000 €/mese',
+      'Più di 5.000 €/mese',
+    ],
+    additionalLabel: 'Aggiungi qualsiasi informazione o dato utile per la call',
+    select: 'Seleziona…',
+    badgeSupport: 'Supporto 7/7',
+    badgeNda: 'NDA pre-firmato dopo l’invio',
+    badgeTrial: 'Sconto di prova',
+    submit: 'Invia la tua richiesta',
+    submitting: 'Invio in corso...',
+    afterSubmit: 'Avrai accesso diretto al nostro eCommerce manager nel passaggio successivo.',
+    genericError: 'Qualcosa è andato storto. Riprova.',
+    networkError: 'Errore di rete. Riprova.',
+  },
+} as const
+
+const reviews = {
+  en: {
+    cristiana:
+      'I am very satisfied with my collaboration with the agency, and especially with Antonio, who <strong>supported me every step</strong> of the way with my website redesign and the promotion of my products via eCommerce.||Whenever I need help, Antonio is always very available, which I really appreciate. <strong>A very positive experience!</strong>',
+    camilla:
+      'Collaborating with Antonio on the creation of our <strong>e-commerce website</strong> was an extremely positive experience.||He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing <strong>e-commerce website</strong>…',
+    antonioRole: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
+    cristianaRole: 'Terapia Flterapiafloreale.it - Supplement eCommerce',
+    camillaRole: 'DDglobal Store - B2B eCommerce Owner',
+  },
+  it: {
+    cristiana:
+      'Sono molto soddisfatta della collaborazione con l’agenzia e in particolare con Antonio, che mi <strong>ha supportata in ogni fase</strong> del rifacimento del mio sito e della promozione dei miei prodotti tramite eCommerce.||Ogni volta che ho bisogno di aiuto, Antonio è sempre molto disponibile, cosa che apprezzo davvero. <strong>Un’esperienza molto positiva!</strong>',
+    camilla:
+      'Collaborare con Antonio per la creazione del nostro <strong>sito e-commerce</strong> è stata un’esperienza estremamente positiva.||Ha dimostrato grande professionalità, competenza tecnica e una notevole attenzione ai dettagli, riuscendo a trasformare le nostre idee in un <strong>sito e-commerce</strong> funzionale, moderno e performante…',
+    antonioRole: 'Sfogliate&Sfogliatelle - Titolare eCommerce DTC',
+    cristianaRole: 'terapiafloreale.it - eCommerce di integratori',
+    camillaRole: 'DDglobal Store - Titolare eCommerce B2B',
+  },
+} as const
+
 const avatars = [
   '/images/originals/mEIBGBqwotHJ35YaPhM5ljuLc2U.png',
   '/images/originals/2B9gp2gJnBjBX44Yovd3HRxqiXM.png',
@@ -23,12 +135,27 @@ const avatars = [
   '/images/originals/38I07rfLJ4DXJRQZ7YXCanY6ko.png',
 ]
 
+function ReviewText({ text }: { text: string }) {
+  const html = text
+    .split('||')
+    .map((p) => p.trim())
+    .join('<br /><br />')
+  return (
+    <p
+      className="font-sans text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-noprob-text"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  )
+}
+
 export default function ContactSection({
   successRedirect = '/thank-you',
   locale = 'en',
 }: ContactSectionProps = {}) {
   const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
+  const t = copy[locale]
+  const r = reviews[locale]
 
   const {
     register,
@@ -56,7 +183,7 @@ export default function ContactSection({
 
       if (!res.ok) {
         const { error } = (await res.json().catch(() => ({}))) as { error?: string }
-        setServerError(error ?? 'Something went wrong. Please try again.')
+        setServerError(error ?? t.genericError)
         return
       }
 
@@ -64,7 +191,7 @@ export default function ContactSection({
       router.push(successRedirect)
     } catch (err) {
       console.error('[contact-form] submit error:', err)
-      setServerError('Network error. Please try again.')
+      setServerError(t.networkError)
     }
   }
 
@@ -104,31 +231,25 @@ export default function ContactSection({
                     ))}
                   </div>
                   <span className="font-sans text-[11px] font-semibold tracking-[-0.03em] text-noprob-text lg:text-[13px]">
-                    Trusted by 23+ founders
+                    {t.trustedBy}
                   </span>
                 </div>
               </div>
 
               <div className="flex flex-col gap-[15px]">
                 <h2 className="text-[34px] font-semibold leading-[1.1] tracking-[-0.07em] text-noprob-text">
-                  Consistency. <br />
-                  That&apos;s <span className="font-serif italic font-normal">noprob agency</span>
+                  {t.consistency} <br />
+                  {t.thatsPre}<span className="font-serif italic font-normal">{t.thatsEm}</span>
                 </h2>
                 <p className="font-sans text-[17px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text">
-                  NoProb Agency is the technical partner that makes eCommerce simple. A 7/7 team
-                  of developers, designers, and strategists combining code, data, and creativity
-                  to help Shopify brands scale without stress.
+                  {t.intro}
                 </p>
               </div>
             </div>
 
             {/* Testimonial Card */}
             <article className="flex h-auto flex-col items-start justify-between rounded-[16px] border-[6px] border-[#f8f8f8] bg-noprob-card p-[24px] shadow-none overflow-visible gap-[15px]">
-              <p className="font-sans text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-noprob-text">
-                I am very satisfied with my collaboration with the agency, and especially with Antonio, who <strong className="font-bold">supported me every step</strong> of the way with my website redesign and the promotion of my products via eCommerce.
-                <br /><br />
-                Whenever I need help, Antonio is always very available, which I really appreciate. <strong className="font-bold">A very positive experience!</strong>
-              </p>
+              <ReviewText text={r.cristiana} />
 
               <div className="mt-0 w-full flex flex-col gap-[15px]">
                 <div className="h-5 w-auto">
@@ -156,7 +277,7 @@ export default function ContactSection({
                       Antonio Cali
                     </p>
                     <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted">
-                      Sfogliate&Sfogliatelle - DTC eCommerce Owner
+                      {r.antonioRole}
                     </p>
                   </div>
                 </div>
@@ -170,7 +291,7 @@ export default function ContactSection({
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="flex flex-col gap-[2px]">
                   <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                    Name and Surname
+                    {t.nameLabel}
                   </label>
                   <input
                     {...register('name')}
@@ -182,7 +303,7 @@ export default function ContactSection({
                 </div>
                 <div className="flex flex-col gap-[2px]">
                   <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                    Company Name
+                    {t.companyLabel}
                   </label>
                   <input
                     {...register('company')}
@@ -197,7 +318,7 @@ export default function ContactSection({
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="flex flex-col gap-[3px]">
                   <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                    Email send you more info
+                    {t.emailLabel}
                   </label>
                   <input
                     {...register('email')}
@@ -209,7 +330,7 @@ export default function ContactSection({
                 </div>
                 <div className="flex flex-col gap-[2px]">
                   <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                    Phone number
+                    {t.phoneLabel}
                   </label>
                   <input
                     {...register('phone')}
@@ -223,7 +344,7 @@ export default function ContactSection({
 
               <div className="flex flex-col gap-[2px]">
                 <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                  eCommerce&apos;s URL
+                  {t.urlLabel}
                 </label>
                 <input
                   {...register('websiteUrl')}
@@ -236,7 +357,7 @@ export default function ContactSection({
 
               <div className="flex flex-col gap-[2px]">
                 <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                  Are you interested in?
+                  {t.interestLabel}
                 </label>
                 <div className="relative">
                   <select
@@ -245,12 +366,13 @@ export default function ContactSection({
                     className={`w-full appearance-none rounded-[12px] border bg-white p-[10px] font-sans text-[14px] font-medium leading-[1.2] tracking-[-0.02em] focus:outline-none ${errors.interest ? 'border-red-500' : 'border-black'} ${interestValue ? 'text-[#181818]' : 'text-[#999999]'}`}
                   >
                     <option value="" disabled className="text-[#999999]">
-                      Select…
+                      {t.select}
                     </option>
-                    <option value="I want to launch my first eCommerce" className="text-[#181818]">I want to launch my first eCommerce</option>
-                    <option value="I want to implement an expert eCommerce team inside my company" className="text-[#181818]">I want to implement an expert eCommerce team inside my company</option>
-                    <option value="I want to rebuild my eCommerce website" className="text-[#181818]">I want to rebuild my eCommerce website</option>
-                    <option value="Other" className="text-[#181818]">Other</option>
+                    {t.interestOptions.map((opt) => (
+                      <option key={opt} value={opt} className="text-[#181818]">
+                        {opt}
+                      </option>
+                    ))}
                   </select>
                   {errors.interest && <span className="text-[10px] text-red-500">{errors.interest.message}</span>}
                 </div>
@@ -258,7 +380,7 @@ export default function ContactSection({
 
               <div className="flex flex-col gap-[2px]">
                 <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                  How much does your eCommerce generate in annual revenue?
+                  {t.revenueLabel}
                 </label>
                 <div className="relative">
                   <select
@@ -267,12 +389,13 @@ export default function ContactSection({
                     className={`w-full appearance-none rounded-[12px] border bg-white p-[10px] font-sans text-[14px] font-medium leading-[1.2] tracking-[-0.02em] focus:outline-none ${errors.revenue ? 'border-red-500' : 'border-black'} ${revenueValue ? 'text-[#181818]' : 'text-[#999999]'}`}
                   >
                     <option value="" disabled className="text-[#999999]">
-                      Select…
+                      {t.select}
                     </option>
-                    <option value="Not generating revenue yet" className="text-[#181818]">Not generating revenue yet</option>
-                    <option value="Less than €100,000" className="text-[#181818]">Less than €100,000</option>
-                    <option value="Between €100,000 and €500,000" className="text-[#181818]">Between €100,000 and €500,000</option>
-                    <option value="More than €500,000" className="text-[#181818]">More than €500,000</option>
+                    {t.revenueOptions.map((opt) => (
+                      <option key={opt} value={opt} className="text-[#181818]">
+                        {opt}
+                      </option>
+                    ))}
                   </select>
                   {errors.revenue && <span className="text-[10px] text-red-500">{errors.revenue.message}</span>}
                 </div>
@@ -280,7 +403,7 @@ export default function ContactSection({
 
               <div className="flex flex-col gap-[2px]">
                 <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                  How much do you currently spend on ads each month?
+                  {t.adsLabel}
                 </label>
                 <div className="relative">
                   <select
@@ -289,12 +412,13 @@ export default function ContactSection({
                     className={`w-full appearance-none rounded-[12px] border bg-white p-[10px] font-sans text-[14px] font-medium leading-[1.2] tracking-[-0.02em] focus:outline-none ${errors.adsSpend ? 'border-red-500' : 'border-black'} ${adsSpendValue ? 'text-[#181818]' : 'text-[#999999]'}`}
                   >
                     <option value="" disabled className="text-[#999999]">
-                      Select…
+                      {t.select}
                     </option>
-                    <option value="I’m not spending anything on ads" className="text-[#181818]">I’m not spending anything on ads</option>
-                    <option value="Less than €2,500/month" className="text-[#181818]">Less than €2,500/month</option>
-                    <option value="Between €2,500 and €5,000/month" className="text-[#181818]">Between €2,500 and €5,000/month</option>
-                    <option value="More than €5,000/month" className="text-[#181818]">More than €5,000/month</option>
+                    {t.adsOptions.map((opt) => (
+                      <option key={opt} value={opt} className="text-[#181818]">
+                        {opt}
+                      </option>
+                    ))}
                   </select>
                   {errors.adsSpend && <span className="text-[10px] text-red-500">{errors.adsSpend.message}</span>}
                 </div>
@@ -302,7 +426,7 @@ export default function ContactSection({
 
               <div className="flex flex-col gap-[2px]">
                 <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">
-                  Add any additional information or data that could be useful for the call
+                  {t.additionalLabel}
                 </label>
                 <textarea
                   {...register('additionalInfo')}
@@ -321,7 +445,7 @@ export default function ContactSection({
                     />
                   </svg>
                   <span className="font-sans text-[12px] font-medium text-noprob-text">
-                    7/7 support
+                    {t.badgeSupport}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -332,7 +456,7 @@ export default function ContactSection({
                     />
                   </svg>
                   <span className="font-sans text-[12px] font-medium text-noprob-text">
-                    NDA pre-signed after submission
+                    {t.badgeNda}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -343,7 +467,7 @@ export default function ContactSection({
                     />
                   </svg>
                   <span className="font-sans text-[12px] font-medium text-noprob-text">
-                    Trial Discount
+                    {t.badgeTrial}
                   </span>
                 </div>
               </div>
@@ -354,11 +478,11 @@ export default function ContactSection({
                   disabled={isSubmitting}
                   className="button-principal !w-full disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Your Request'}
+                  {isSubmitting ? t.submitting : t.submit}
                 </button>
 
                 <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-text">
-                  You’ll get direct access to our eCommerce manager in the next step.
+                  {t.afterSubmit}
                 </p>
                 {serverError && (
                   <p className="text-center font-sans text-[10px] font-medium text-red-500">
@@ -375,11 +499,7 @@ export default function ContactSection({
       <div className="mx-auto grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Card Cristiana Z. */}
         <article className="flex h-auto flex-col items-start justify-between rounded-[16px] border-[6px] border-[#f8f8f8] bg-white p-[24px] shadow-xl shadow-black/5 overflow-visible gap-[15px]">
-          <p className="font-sans text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-noprob-text">
-            I am very satisfied with my collaboration with the agency, and especially with Antonio, who <strong className="font-bold">supported me every step</strong> of the way with my website redesign and the promotion of my products via eCommerce.
-            <br /><br />
-            Whenever I need help, Antonio is always very available, which I really appreciate. <strong className="font-bold">A very positive experience!</strong>
-          </p>
+          <ReviewText text={r.cristiana} />
 
           <div className="mt-0 w-full flex flex-col gap-[15px]">
             <div className="h-5 w-auto">
@@ -407,7 +527,7 @@ export default function ContactSection({
                   Cristiana Z.
                 </p>
                 <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted sm:whitespace-nowrap">
-                  Terapia Flterapiafloreale.it - Supplement eCommerce
+                  {r.cristianaRole}
                 </p>
               </div>
             </div>
@@ -416,11 +536,7 @@ export default function ContactSection({
 
         {/* Card Camilla Dudine */}
         <article className="flex h-auto flex-col items-start justify-between rounded-[16px] border-[6px] border-[#f8f8f8] bg-white p-[24px] shadow-xl shadow-black/5 overflow-visible gap-[15px]">
-          <p className="font-sans text-[1rem] font-normal leading-[1.5em] tracking-[-0.02em] text-noprob-text">
-            Collaborating with Antonio on the creation of our <strong className="font-bold">e-commerce website</strong> was an extremely positive experience.
-            <br /><br />
-            He demonstrated great professionalism, technical competence, and remarkable attention to detail, managing to transform our ideas into a functional, modern, and high-performing <strong className="font-bold">e-commerce website</strong>…
-          </p>
+          <ReviewText text={r.camilla} />
 
           <div className="mt-0 w-full flex flex-col gap-[15px]">
             <div className="h-5 w-auto">
@@ -448,7 +564,7 @@ export default function ContactSection({
                   Camilla Dudine
                 </p>
                 <p className="font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-muted">
-                  DDglobal Store - B2B eCommerce Owner
+                  {r.camillaRole}
                 </p>
               </div>
             </div>
