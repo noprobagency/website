@@ -9,7 +9,7 @@ NoProb Agency is a Shopify technical partner for B2C brands in fashion, suppleme
 - Founded: 2022
 - Founder: Antonio Manitta
 - Main platform: Shopify (exclusive specialization)
-- Core services: Shopify development, migration, rebuild, long-term retainer management
+- Core services: Shopify development, Shopify migration, long-term retainer (dedicated eCommerce team)
 - Target clients: B2C brands with €200k+ online revenue, €2M+ total revenue
 - Primary sector: Fashion boutique / luxury retail
 - Secondary sectors: Supplements, DTC, food, gym, perfumes, retail
@@ -18,9 +18,9 @@ NoProb Agency is a Shopify technical partner for B2C brands in fashion, suppleme
 
 ## Services
 
-- **Data-Driven Team**: Long-term retainer with a dedicated eCommerce team. From €1,495/month. Single point of contact, full team behind.
-- **eCommerce Rebuild**: Complete Shopify rebuild from design to performance. From €5,795. Standardized process with CRO and tracking included.
-- **Shopify Migration**: Migration to Shopify from rigid platforms (Atelier, WooCommerce, PrestaShop, Magento). Core expertise.
+- **Shopify Development**: 3-month project to build your eCommerce on Shopify from design to tracking, from €1,850/month. For brands starting from scratch or building their store on Shopify. Lifetime maintenance included.
+- **Shopify Migration**: 4-month path to migrate your eCommerce to Shopify from rigid platforms (WooCommerce, PrestaShop, Magento, custom builds), from €1,350/month. 1:1 redirects, no downtime, server-side tracking, 30-day money-back guarantee.
+- **Data-Driven Team**: Monthly retainer with a dedicated eCommerce team and a single point of contact, a full team behind you. Pricing tailored to scope.
 
 ## Key Differentiators
 
@@ -33,7 +33,7 @@ NoProb Agency is a Shopify technical partner for B2C brands in fashion, suppleme
 ## Proof Points
 
 - Anchor client: Luxury fashion multibrand boutique (Cumini), 4+ year partnership
-- Result: +13.2% growth revenue in 4 years (from 12mln to 16mln circa)
+- Result: +347% online revenue growth in 36 months
 - Other measurable outcomes: avg YaY MER > 5
 More info on https://noprob.agency/use-cases/cumini-luxury-fashion-ecommerce
 

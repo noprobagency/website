@@ -8,7 +8,7 @@ export const siteConfig = {
   name: 'noprob agency™',
   companyName: 'NOPROB AGENCY LLC',
   url: 'https://noprob.agency',
-  version: 'v0.33.0',
+  version: 'v0.34.0',
   ga4Id: 'G-JD0T1HWWWV',
   metaPixelId: '1174058738142037',
   defaultTitle: 'Your eCommerce Partner. From Build to Scale.',
@@ -170,6 +170,7 @@ export const organizationJsonLd = {
     'Server-side tracking',
     'eCommerce management',
   ],
+  areaServed: ['IT', 'EU', 'US'],
   sameAs: [
     'https://www.linkedin.com/company/noprobagency',
     'https://www.trustpilot.com/review/noprob.agency',
