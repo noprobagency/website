@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 import { type Locale } from '@/lib/i18n'
-import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
+import { getMigrazioneCopy, type MigrazioneCopy } from '@/lib/i18n/migrazione'
 
 // Per-phase label colors (green / purple / blue), dark text.
 const BADGE_COLORS = [
@@ -14,8 +14,14 @@ const BADGE_COLORS = [
   'bg-[rgb(204,225,232)] text-[rgb(24,24,24)]',
 ]
 
-export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }) {
-  const d = getMigrazioneCopy(locale).process
+export default function MigrazioneProcess({
+  locale = 'it',
+  copy,
+}: {
+  locale?: Locale
+  copy?: MigrazioneCopy['process']
+}) {
+  const d = copy ?? getMigrazioneCopy(locale).process
 
   return (
     <section className="pb-[32px] pt-[40px]">
@@ -47,7 +53,7 @@ export default function MigrazioneProcess({ locale = 'it' }: { locale?: Locale }
                 <span
                   className={`inline-flex shrink-0 rounded-[8px] px-3 py-[5px] font-sans text-[12px] font-bold tracking-[0.04em] ${BADGE_COLORS[i % BADGE_COLORS.length]}`}
                 >
-                  Fase {phase.number}
+                  {locale === 'it' ? 'Fase' : 'Phase'} {phase.number}
                 </span>
                 <h3 className="font-serif text-[24px] font-medium leading-[1.2em] tracking-[-0.05em] text-noprob-text">
                   {phase.title}

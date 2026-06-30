@@ -19,7 +19,7 @@ const ROUTE_DEFS: Array<{
   { key: 'about',            priority: 0.8, changeFrequency: 'monthly', hasIt: true },
   { key: 'useCases',         priority: 0.9, changeFrequency: 'weekly',  hasIt: true },
   { key: 'dataDrivenTeam',   priority: 0.9, changeFrequency: 'monthly', hasIt: true },
-  { key: 'ecommerceRebuild', priority: 0.9, changeFrequency: 'monthly', hasIt: true },
+  { key: 'sviluppoShopify', priority: 0.9, changeFrequency: 'monthly', hasIt: true },
   { key: 'migrazioneShopify', priority: 0.9, changeFrequency: 'monthly', hasIt: true },
   { key: 'blog',             priority: 0.7, changeFrequency: 'weekly',  hasIt: true },
   { key: 'contacts',         priority: 0.6, changeFrequency: 'yearly',  hasIt: true },

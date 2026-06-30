@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { type Locale } from '@/lib/i18n'
-import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
+import { getMigrazioneCopy, type MigrazioneCopy } from '@/lib/i18n/migrazione'
 import { makeMigrazioneSchema, type MigrazioneFormData } from '@/lib/schemas/migrazione'
 
 const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
@@ -24,8 +24,18 @@ const selectClass = (hasError: boolean, hasValue: boolean) =>
 const labelClass = 'font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black'
 const errorClass = 'text-[10px] text-red-500'
 
-export default function MigrazioneForm({ locale = 'it' }: { locale?: Locale }) {
-  const d = getMigrazioneCopy(locale).form
+export default function MigrazioneForm({
+  locale = 'it',
+  copy,
+  source = 'migrazione',
+  submitTracking = 'migrazione_form_submit',
+}: {
+  locale?: Locale
+  copy?: MigrazioneCopy['form']
+  source?: 'migrazione' | 'sviluppo'
+  submitTracking?: string
+}) {
+  const d = copy ?? getMigrazioneCopy(locale).form
   const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
 
@@ -49,7 +59,7 @@ export default function MigrazioneForm({ locale = 'it' }: { locale?: Locale }) {
       const res = await fetch('/api/migrazione-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, locale }),
+        body: JSON.stringify({ ...data, locale, source }),
       })
       if (!res.ok) {
         const { error } = (await res.json().catch(() => ({}))) as { error?: string }
@@ -204,7 +214,7 @@ export default function MigrazioneForm({ locale = 'it' }: { locale?: Locale }) {
 
           <button
             type="submit"
-            data-tracking="migrazione_form_submit"
+            data-tracking={submitTracking}
             disabled={isSubmitting}
             className="button-principal mt-1 !w-full disabled:cursor-not-allowed disabled:opacity-50"
           >

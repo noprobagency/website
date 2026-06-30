@@ -9,7 +9,7 @@ import Testimonials from '@/components/sections/Testimonials'
 import MigrazioneForm from '@/components/sections/MigrazioneForm'
 import { siteAssets } from '@/lib/site'
 import { type Locale } from '@/lib/i18n'
-import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
+import { getMigrazioneCopy, type MigrazioneCopy } from '@/lib/i18n/migrazione'
 
 function CheckIcon() {
   return (
@@ -22,8 +22,22 @@ function CheckIcon() {
   )
 }
 
-export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }) {
-  const d = getMigrazioneCopy(locale).pricing
+export default function MigrazionePricing({
+  locale = 'it',
+  copy,
+  ctaTracking = 'migrazione_pricing_cta',
+  formCopy,
+  formSource = 'migrazione',
+  formSubmitTracking = 'migrazione_form_submit',
+}: {
+  locale?: Locale
+  copy?: MigrazioneCopy['pricing']
+  ctaTracking?: string
+  formCopy?: MigrazioneCopy['form']
+  formSource?: 'migrazione' | 'sviluppo'
+  formSubmitTracking?: string
+}) {
+  const d = copy ?? getMigrazioneCopy(locale).pricing
   const tiers = d.tiers
   const currentIndex = Math.max(0, tiers.findIndex((t) => t.state === 'current'))
   const current = tiers[currentIndex] ?? tiers[0]
@@ -162,7 +176,7 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
 
                   <Link
                     href="#candidatura"
-                    data-tracking="migrazione_pricing_cta"
+                    data-tracking={ctaTracking}
                     className="button-principal mt-5 !w-full"
                   >
                     {d.cta}
@@ -193,7 +207,12 @@ export default function MigrazionePricing({ locale = 'it' }: { locale?: Locale }
               <div className="my-8 border-t border-[#ececec]" />
 
               {/* Application form (anchor target for all CTAs) */}
-              <MigrazioneForm locale={locale} />
+              <MigrazioneForm
+                locale={locale}
+                copy={formCopy}
+                source={formSource}
+                submitTracking={formSubmitTracking}
+              />
             </div>
           </motion.div>
 

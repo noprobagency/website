@@ -166,7 +166,7 @@ export type Dictionary = {
     blog: { title: string; description: string }
     useCases: { title: string; description: string }
     dataDrivenTeam: { title: string; description: string }
-    ecommerceRebuild: { title: string; description: string }
+    sviluppoShopify: { title: string; description: string }
     migrazioneShopify: { title: string; description: string }
   }
   about: {
@@ -207,7 +207,7 @@ const en: Dictionary = {
       { label: 'Contacts', href: '/contacts' },
     ],
     serviceItems: [
-      { label: 'eCommerce ReBuild', href: '/ecommerce-rebuild' },
+      { label: 'Shopify Development', href: '/shopify-development' },
       { label: 'Data Drive Team', href: '/data-driven-team' },
       { label: 'Shopify Migration', href: '/shopify-migration' },
     ],
@@ -306,7 +306,7 @@ const en: Dictionary = {
         cta: 'Start your eCommerce Rebuild',
         ctaHref: '/contacts',
         secondary: 'Learn more about the plan',
-        secondaryHref: '/ecommerce-rebuild',
+        secondaryHref: '/shopify-development',
       },
     ],
     from: 'From',
@@ -610,7 +610,7 @@ const en: Dictionary = {
     blog: { title: 'NoProb Blog | Shopify, eCommerce & Growth', description: 'Articles on Shopify development, migration, tracking, and CRO for fashion, supplement, and DTC brands. Written by the NoProb team.' },
     useCases: { title: 'eCommerce Case Studies & Results | NoProb', description: 'Real results from long-term Shopify partnerships. See how we helped fashion and DTC brands grow revenue, improve MER, and scale eCommerce operations.' },
     dataDrivenTeam: { title: 'Data-Driven Team — Dedicated eCommerce Retainer | NoProb', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
-    ecommerceRebuild: { title: 'eCommerce Rebuild on Shopify | NoProb', description: 'We rebuild your eCommerce from design to performance, built to convert and to grow. A standardized Shopify rebuild process with CRO and tracking included.' },
+    sviluppoShopify: { title: 'Shopify Development Services: We Build Your Store | NoProb', description: 'We build your eCommerce on Shopify from design to tracking, optimized to convert from day one. Lifetime maintenance included. Shopify development company for fashion, supplements and DTC brands.' },
     migrazioneShopify: { title: 'Shopify Migration Without Losing Sales | NoProb', description: 'Migrate your eCommerce to Shopify in 4 months without losing sales or customers. 1:1 redirects, no downtime, one point of contact. 30-day money-back guarantee.' },
   },
   about: {
@@ -664,7 +664,7 @@ const it: Dictionary = {
       { label: 'Contatti', href: '/it/contatti' },
     ],
     serviceItems: [
-      { label: 'eCommerce ReBuild', href: '/it/rifacimento-ecommerce' },
+      { label: 'Sviluppo Shopify', href: '/it/sviluppo-shopify' },
       { label: 'Data Drive Team', href: '/it/team-ecommerce-dedicato' },
       { label: 'Migrazione Shopify', href: '/it/migrazione-shopify' },
     ],
@@ -762,7 +762,7 @@ const it: Dictionary = {
         cta: 'Avvia il tuo eCommerce Rebuild',
         ctaHref: '/it/contatti',
         secondary: 'Scopri di pi\u00f9 sul piano',
-        secondaryHref: '/it/rifacimento-ecommerce',
+        secondaryHref: '/it/sviluppo-shopify',
       },
     ],
     from: 'A partire da',
@@ -1046,7 +1046,7 @@ const it: Dictionary = {
     availability: 'Slot disponibili',
   },
   footer: {
-    headingPre: 'Consistenza.\nEcco cos\u2019\u00e8 ',
+    headingPre: 'Consistency\nThat\u2019s ',
     headingEm: 'noprobagency',
     description:
       'Ricostruiamo il tuo store dalle fondamenta e mettiamo a disposizione un team dedicato in Sviluppo, Marketing e Strategia \u2014 insieme o separatamente, in base alle tue esigenze.',
@@ -1066,7 +1066,7 @@ const it: Dictionary = {
     blog: { title: 'Blog NoProb | Shopify, eCommerce e Crescita', description: 'Articoli su sviluppo Shopify, migrazioni, tracking e CRO per brand fashion, integratori e DTC. Scritti dal team NoProb.' },
     useCases: { title: "Casi d'Uso eCommerce e Risultati Reali | NoProb", description: 'Risultati concreti da partnership Shopify a lungo termine. Come abbiamo fatto crescere brand fashion e DTC su fatturato, MER e operations eCommerce.' },
     dataDrivenTeam: { title: 'Data-Driven Team \u2014 Retainer eCommerce Dedicato | NoProb', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare senza assumere internamente.' },
-    ecommerceRebuild: { title: 'Rebuild eCommerce su Shopify | NoProb', description: 'Ricostruiamo il tuo eCommerce dal design alle performance, per convertire e crescere. Processo standardizzato con CRO e tracking inclusi.' },
+    sviluppoShopify: { title: 'Sviluppo Shopify: creiamo il tuo eCommerce | NoProb', description: 'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, ottimizzato per convertire dal primo giorno. Manutenzione a vita inclusa.' },
     migrazioneShopify: { title: 'Migrazione a Shopify senza perdere vendite | NoProb', description: 'Migra il tuo eCommerce su Shopify in 4 mesi senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, un solo interlocutore. Garanzia 30 giorni.' },
   },
   about: {

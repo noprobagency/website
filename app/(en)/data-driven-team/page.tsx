@@ -3,8 +3,9 @@ import type { Metadata } from 'next'
 import DataDrivenTeamHero from '@/components/sections/DataDrivenTeamHero'
 import DataDrivenTeamProblem from '@/components/sections/DataDrivenTeamProblem'
 import DataDrivenTeamSolution from '@/components/sections/DataDrivenTeamSolution'
-import EcommerceRebuildProcess from '@/components/sections/EcommerceRebuildProcess'
+import MigrazioneProcess from '@/components/sections/MigrazioneProcess'
 import EcommerceRebuildWhyUs from '@/components/sections/EcommerceRebuildWhyUs'
+import { getTeamRoadmapCopy } from '@/lib/i18n/teamRoadmap'
 import CaseStudy from '@/components/sections/CaseStudy'
 import Pricing from '@/components/sections/Pricing'
 import FAQ from '@/components/sections/FAQ'
@@ -46,7 +47,7 @@ export default function DataDrivenTeamPage() {
       <DataDrivenTeamHero />
       <DataDrivenTeamProblem />
       <DataDrivenTeamSolution />
-      <EcommerceRebuildProcess />
+      <MigrazioneProcess locale="en" copy={getTeamRoadmapCopy('en')} />
       <EcommerceRebuildWhyUs />
       <CaseStudy noPadding={true} />
       <Pricing teamOnly={true} />

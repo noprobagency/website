@@ -31,8 +31,13 @@ const nextConfig: NextConfig = {
       { source: '/it/contacts',               destination: '/it/contatti',                 permanent: true },
       { source: '/it/data-driven-team',       destination: '/it/team-ecommerce-dedicato',  permanent: true },
       { source: '/it/data-driven-team/:path*',destination: '/it/team-ecommerce-dedicato/:path*', permanent: true },
-      { source: '/it/ecommerce-rebuild',      destination: '/it/rifacimento-ecommerce',    permanent: true },
-      { source: '/it/ecommerce-rebuild/:path*',destination: '/it/rifacimento-ecommerce/:path*', permanent: true },
+      { source: '/it/ecommerce-rebuild',      destination: '/it/sviluppo-shopify',         permanent: true },
+      { source: '/it/ecommerce-rebuild/:path*',destination: '/it/sviluppo-shopify/:path*',  permanent: true },
+      // Rebuild page repositioned as Shopify Development (slug + intent change)
+      { source: '/it/rifacimento-ecommerce',  destination: '/it/sviluppo-shopify',         permanent: true },
+      { source: '/it/rifacimento-ecommerce/:path*', destination: '/it/sviluppo-shopify/:path*', permanent: true },
+      { source: '/ecommerce-rebuild',         destination: '/shopify-development',          permanent: true },
+      { source: '/ecommerce-rebuild/:path*',  destination: '/shopify-development/:path*',   permanent: true },
       // Misclassified content moved from use-cases to blog (single-hop to current slug)
       { source: '/use-cases/ecommerce-growth-secrets',         destination: '/blog/ecommerce-growth-strategy-long-term', permanent: true },
       { source: '/it/casi-studio/ecommerce-growth-secrets',    destination: '/it/blog/strategia-ecommerce-long-term',    permanent: true },

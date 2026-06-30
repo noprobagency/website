@@ -6,7 +6,7 @@ export type RouteKey =
   | 'about'
   | 'useCases'
   | 'dataDrivenTeam'
-  | 'ecommerceRebuild'
+  | 'sviluppoShopify'
   | 'migrazioneShopify'
   | 'blog'
   | 'contacts'
@@ -17,7 +17,7 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   about:            { en: '/about',              it: '/it/chi-siamo' },
   useCases:         { en: '/use-cases',          it: '/it/casi-studio' },
   dataDrivenTeam:   { en: '/data-driven-team',   it: '/it/team-ecommerce-dedicato' },
-  ecommerceRebuild: { en: '/ecommerce-rebuild',  it: '/it/rifacimento-ecommerce' },
+  sviluppoShopify:  { en: '/shopify-development', it: '/it/sviluppo-shopify' },
   migrazioneShopify: { en: '/shopify-migration', it: '/it/migrazione-shopify' },
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },

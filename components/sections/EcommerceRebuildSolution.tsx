@@ -23,9 +23,16 @@ const solutionImages = [
   '/images/originals/Vcll2J5RvsXWeyROzs7IjM4yiY.png',
 ]
 
-export default function EcommerceRebuildSolution({ locale = 'en' }: { locale?: Locale }) {
-  const t = getDictionary(locale)
-  const d = t.ecommerceRebuild.solution
+type SolutionCopy = ReturnType<typeof getDictionary>['ecommerceRebuild']['solution']
+
+export default function EcommerceRebuildSolution({
+  locale = 'en',
+  copy,
+}: {
+  locale?: Locale
+  copy?: SolutionCopy
+}) {
+  const d = copy ?? getDictionary(locale).ecommerceRebuild.solution
 
   return (
     <section className="pb-0 pt-[80px]">

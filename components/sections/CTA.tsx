@@ -62,8 +62,18 @@ function RevealWords({ text }: { text: string }) {
   )
 }
 
-export default function CTA({ locale = 'en' }: { locale?: Locale }) {
+export default function CTA({
+  locale = 'en',
+  buttonLabel,
+  buttonHref,
+}: {
+  locale?: Locale
+  buttonLabel?: string
+  buttonHref?: string
+}) {
   const t = getDictionary(locale)
+  const resolvedButtonLabel = buttonLabel ?? t.cta.buttonLabel
+  const resolvedButtonHref = buttonHref ?? t.hero.ctaPrimaryHref
   const containerRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -175,7 +185,7 @@ export default function CTA({ locale = 'en' }: { locale?: Locale }) {
           </motion.h2>
 
           <Link
-            href={t.hero.ctaPrimaryHref}
+            href={resolvedButtonHref}
             className="flex items-center gap-3 overflow-hidden rounded-[50px] border-2 border-[#181818] bg-[#121212] py-2 pl-2 pr-6 hover:opacity-90"
           >
             <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[50px]">
@@ -189,7 +199,7 @@ export default function CTA({ locale = 'en' }: { locale?: Locale }) {
             </div>
             <div className="flex flex-col text-left">
               <span className="text-[16px] font-semibold tracking-tight text-[#f0f0f0]">
-                {t.cta.buttonLabel}
+                {resolvedButtonLabel}
               </span>
               <div className="flex items-center gap-1.5">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[#1dcc5d]"></span>

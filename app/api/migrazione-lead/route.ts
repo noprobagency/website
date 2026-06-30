@@ -44,6 +44,14 @@ export async function POST(req: NextRequest) {
 
   const { name, email, brand, websiteUrl, platform, revenue, timeline, reason } = parsed.data
   const locale = parsed.data.locale ?? 'it'
+  const source = parsed.data.source ?? 'migrazione'
+  const isSviluppo = source === 'sviluppo'
+  const adminSubject = isSviluppo
+    ? `Nuova candidatura sviluppo — ${brand}`
+    : `Nuova candidatura migrazione — ${brand}`
+  const adminHeading = isSviluppo
+    ? 'Nuova candidatura sviluppo Shopify'
+    : 'Nuova candidatura migrazione Shopify'
 
   // 1) Admin notification — must succeed for the request to be considered OK
   try {
@@ -51,9 +59,9 @@ export async function POST(req: NextRequest) {
       from: ADMIN_FROM,
       to: [ADMIN_TO],
       replyTo: email,
-      subject: `Nuova candidatura migrazione — ${brand}`,
+      subject: adminSubject,
       html: `
-        <h2>Nuova candidatura migrazione Shopify</h2>
+        <h2>${adminHeading}</h2>
         <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:system-ui,sans-serif;font-size:14px">
           <tr><td><strong>Nome:</strong></td><td>${name}</td></tr>
           <tr><td><strong>Brand:</strong></td><td>${brand}</td></tr>

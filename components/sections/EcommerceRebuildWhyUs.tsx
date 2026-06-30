@@ -55,9 +55,16 @@ const fadeIn: Variants = {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function EcommerceRebuildWhyUs({ locale = 'en' }: { locale?: Locale }) {
-  const t = getDictionary(locale)
-  const d = t.ecommerceRebuild.whyUs
+type WhyUsCopy = ReturnType<typeof getDictionary>['ecommerceRebuild']['whyUs']
+
+export default function EcommerceRebuildWhyUs({
+  locale = 'en',
+  copy,
+}: {
+  locale?: Locale
+  copy?: WhyUsCopy
+}) {
+  const d = copy ?? getDictionary(locale).ecommerceRebuild.whyUs
 
   return (
     <>

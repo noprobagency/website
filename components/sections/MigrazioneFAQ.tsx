@@ -1,10 +1,16 @@
 import Accordion from '@/components/ui/Accordion'
 import SectionLabel from '@/components/ui/SectionLabel'
 import { type Locale } from '@/lib/i18n'
-import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
+import { getMigrazioneCopy, type MigrazioneCopy } from '@/lib/i18n/migrazione'
 
-export default function MigrazioneFAQ({ locale = 'it' }: { locale?: Locale }) {
-  const d = getMigrazioneCopy(locale).faq
+export default function MigrazioneFAQ({
+  locale = 'it',
+  copy,
+}: {
+  locale?: Locale
+  copy?: MigrazioneCopy['faq']
+}) {
+  const d = copy ?? getMigrazioneCopy(locale).faq
 
   const faqJsonLd = {
     '@context': 'https://schema.org',

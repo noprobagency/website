@@ -5,9 +5,21 @@ import PartnerLogos from '@/components/ui/PartnerLogos'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
-export default function EcommerceRebuildHero({ locale = 'en' }: { locale?: Locale }) {
-  const t = getDictionary(locale)
-  const d = t.ecommerceRebuild.hero
+type HeroCopy = ReturnType<typeof getDictionary>['ecommerceRebuild']['hero']
+
+export default function EcommerceRebuildHero({
+  locale = 'en',
+  copy,
+  ctaHref,
+  ctaTracking = 'ecommerce_rebuild_hero_cta',
+}: {
+  locale?: Locale
+  copy?: HeroCopy
+  ctaHref?: string
+  ctaTracking?: string
+}) {
+  const d = copy ?? getDictionary(locale).ecommerceRebuild.hero
+  const resolvedCtaHref = ctaHref ?? ROUTE_PATHS.contacts[locale]
 
   return (
     <section className="flex flex-col items-center overflow-hidden px-5 pt-[65px] pb-[65px] min-[810px]:px-[34px] min-[810px]:pt-[100px] min-[810px]:pb-[60px]">
@@ -168,8 +180,8 @@ export default function EcommerceRebuildHero({ locale = 'en' }: { locale?: Local
         {/* CTA */}
         <div className="flex flex-col items-center gap-[9px] min-[810px]:w-auto min-[810px]:flex-row min-[810px]:flex-nowrap min-[810px]:items-center min-[810px]:gap-2">
           <Link
-            href={ROUTE_PATHS.contacts[locale]}
-            data-tracking="ecommerce_rebuild_hero_cta"
+            href={resolvedCtaHref}
+            data-tracking={ctaTracking}
             className="button-principal"
           >
             {d.cta}
