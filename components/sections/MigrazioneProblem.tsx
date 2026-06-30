@@ -35,6 +35,7 @@ export default function MigrazioneProblem({ locale = 'it' }: { locale?: Locale }
           <SectionLabel>{d.label}</SectionLabel>
           <h2 className="mt-5 text-np-h2 text-center text-np-dark">
             {d.heading}
+            <br className="min-[810px]:hidden" />
             <em
               className="font-serif italic"
               style={{ background: 'rgb(232, 204, 204)', borderRadius: '4px', padding: '0 6px' }}

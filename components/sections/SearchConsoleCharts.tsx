@@ -37,32 +37,36 @@ function GscChart({
       </div>
 
       <div className="overflow-hidden rounded-[14px] border border-[#E4E6EB] bg-white">
-        {/* Metrics row */}
+        {/* Metrics row — responsive: tighter padding + smaller type on mobile */}
         <div className="grid grid-cols-4">
-          <div className="bg-[#4793F0] px-[15px] py-3 text-white">
-            <div className="text-[12px]">{c.metricClicks}</div>
-            <div className="mt-[3px] text-[26px] font-normal leading-[1.1]">{data.clicks}</div>
+          <div className="bg-[#4793F0] px-2 py-2.5 text-white min-[520px]:px-[15px] min-[520px]:py-3">
+            <div className="text-[10px] leading-[1.2] min-[520px]:text-[12px]">{c.metricClicks}</div>
+            <div className="mt-[2px] whitespace-nowrap text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:text-[26px]">
+              {data.clicks}
+            </div>
           </div>
-          <div className="bg-[#5E3FBE] px-[15px] py-3 text-white">
-            <div className="text-[12px]">{c.metricImpressions}</div>
-            <div className="mt-[3px] text-[26px] font-normal leading-[1.1]">{data.impressions}</div>
+          <div className="bg-[#5E3FBE] px-2 py-2.5 text-white min-[520px]:px-[15px] min-[520px]:py-3">
+            <div className="text-[10px] leading-[1.2] min-[520px]:text-[12px]">{c.metricImpressions}</div>
+            <div className="mt-[2px] whitespace-nowrap text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:text-[26px]">
+              {data.impressions}
+            </div>
           </div>
-          <div className="border-l border-t border-[#E4E6EB] px-[15px] py-3 text-[#5F6368]">
-            <div className="text-[12px]">{c.metricCtr}</div>
-            <div className="mt-[3px] text-[20px] font-normal leading-[1.1] min-[520px]:text-[26px]">
+          <div className="border-l border-t border-[#E4E6EB] px-2 py-2.5 text-[#5F6368] min-[520px]:px-[15px] min-[520px]:py-3">
+            <div className="text-[10px] leading-[1.2] min-[520px]:text-[12px]">{c.metricCtr}</div>
+            <div className="mt-[2px] text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:text-[26px]">
               {data.ctr}
             </div>
           </div>
-          <div className="border-l border-t border-[#E4E6EB] px-[15px] py-3 text-[#5F6368]">
-            <div className="text-[12px]">{c.metricPosition}</div>
-            <div className="mt-[3px] text-[20px] font-normal leading-[1.1] min-[520px]:text-[26px]">
+          <div className="border-l border-t border-[#E4E6EB] px-2 py-2.5 text-[#5F6368] min-[520px]:px-[15px] min-[520px]:py-3">
+            <div className="text-[10px] leading-[1.2] min-[520px]:text-[12px]">{c.metricPosition}</div>
+            <div className="mt-[2px] text-[15px] font-normal leading-[1.1] min-[520px]:mt-[3px] min-[520px]:text-[26px]">
               {data.position}
             </div>
           </div>
         </div>
 
         {/* Chart */}
-        <div className="px-4 pb-2 pt-4">
+        <div className="px-2 pb-2 pt-4 min-[520px]:px-4">
           <svg
             viewBox="0 0 640 230"
             className="h-auto w-full font-sans"
@@ -117,7 +121,7 @@ function GscChart({
             <polyline fill="none" stroke="#4793F0" strokeWidth="1.5" points={clicksPoints} />
             <polyline fill="none" stroke="#5E3FBE" strokeWidth="1.5" points={imprPoints} />
           </svg>
-          <div className="mt-1 flex gap-[18px] pl-[34px] text-[11px] text-[#5F6368]">
+          <div className="mt-1 flex flex-wrap gap-x-[18px] gap-y-1 pl-[20px] text-[11px] text-[#5F6368] min-[520px]:pl-[34px]">
             <span>{c.checkpoint1}</span>
             <span>{c.checkpoint2}</span>
           </div>
