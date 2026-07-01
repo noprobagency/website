@@ -273,7 +273,7 @@ const en: Dictionary = {
     category: 'eCommerce Luxury Fashion Retail',
     description:
       'Started with no tech team or structure. Built, launched, and scaled eCommerce with a dedicated team, turning a marginal channel into a key driver of brand growth.',
-    metric: '\u2191 347% revenue growth',
+    metric: '\u2191 347% online revenue growth',
     metricNote: 'In 36 months of full partnership with noprob agency',
   },
   pricing: {
@@ -289,7 +289,7 @@ const en: Dictionary = {
         period: '',
         description:
           'A tailor-made eCommerce team led by an eCommerce Manager who is your single point of contact. You focus on the brand, we coordinate everything else.',
-        features: ['Fast support, 7 days a week', 'One single eCommerce Manager', 'First sprint at half price'],
+        features: ['Fast support, 7 days a week', 'One dedicated eCommerce Manager', 'First sprint at half price'],
         cta: 'Get Your custom Data Team',
         ctaHref: '/data-driven-team',
         secondary: 'Contact us',
@@ -470,64 +470,64 @@ const en: Dictionary = {
     hero: {
       features: [
         'Fast support, 7 days a week',
-        'Lifetime Maintenance Included',
-        '30-day Refund Guarantee',
+        'One dedicated eCommerce Manager',
+        'First sprint at half price',
       ],
       doodle: 'So it finally matches your brand',
-      trustLabel: 'Trusted by Fashion, Supplements, and DTC eCommerce brands',
+      trustLabel: 'Chosen by Fashion, Supplements and DTC brands',
       titlePart1: 'Stop juggling freelancers.',
       titlePart2: 'Get a dedicated eCommerce',
       titleEm: 'Growth Team.',
       description:
-        'For established brands with a working store that need stable growth, fixed costs, and one point of contact managing everything.',
-      cta: 'Apply for on-demand eCommerce Team',
+        'Hiring one person gets you one skill. With us you get a full team, led by an eCommerce Manager who coordinates everything. One point of contact, every skill your growth needs.',
+      cta: 'Apply for your eCommerce team',
       trustedCount: 'Chosen by Fashion, Supplements and DTC brands',
     },
     problem: {
       label: 'problem',
-      heading: 'Too many people touching your growth.',
-      headingEm: 'Nobody truly owns it.',
+      heading: 'Too many hands on your growth.',
+      headingEm: 'No one is truly accountable.',
       description:
-        "Juggling freelancers, chasing campaign results, waiting for fixes. Your store works. Your team doesn't.",
+        'Scattered freelancers, agencies to coordinate, tech you wait on. Your store works, but growth stalls because there is no single direction.',
       items: [
         {
-          title: 'The Chaos',
+          title: 'Fragmented skills',
           description:
-            '5+ freelancers, each working independently. No alignment. No continuity. Every handoff is a restart.',
+            'One freelancer for the site, one for ads, one for design. None of them talk to each other, none of them see the whole picture.',
         },
         {
-          title: 'Invisible Ownership',
+          title: 'No real owner',
           description:
-            'Nobody owns your growth. Problems pile up. Decisions slow down. Momentum dies.',
+            'When something breaks, everyone blames someone else. Coordination stays on your plate.',
         },
         {
-          title: 'Wasted Potential',
+          title: 'Decisions without data',
           description:
-            "Your store has traffic. Your data has insights. But nobody's connecting the dots. Revenue gets left on the table.",
+            'Campaigns and choices made on gut feeling, with no real sense of what drives profit and what does not.',
         },
       ],
     },
     solution: {
-      label: 'Solution',
-      heading: 'What if your ideas had',
-      headingMark: 'a Single Partner?',
+      label: 'solution',
+      heading: 'What if you had',
+      headingMark: 'one partner?',
       description:
-        'A dedicated eCommerce Manager who turns your ideas into clear priorities, aligns the right people, and drives execution every day, so you stop overthinking and your brand moves forward instead of staying stuck.',
+        'A complete eCommerce team, led by an eCommerce Manager who becomes your point of reference. We do not hand off tasks and disappear: we join the project as partners and stay.',
       items: [
         {
-          title: 'Full Ownership',
+          title: 'A partner, not a vendor',
           description:
-            'Antonio takes ownership of your growth. He coordinates the team, makes decisions, and moves fast. Result: clarity, speed, accountability.',
+            'We become your eCommerce team. One point of contact accountable for the whole project, from strategy to execution.',
         },
         {
-          title: 'Team Always Aligned',
+          title: 'Every area covered',
           description:
-            'Meta expert, Google expert, strategist, email specialist, SEO and social, all pulling in the same direction, every day.',
+            'Development, tracking and CRO, but also branding, photography, shooting and sales. We find and coordinate the right people for every need.',
         },
         {
-          title: 'Results Over Chaos',
+          title: 'Driven by data',
           description:
-            'No more firefighting. No more missed opportunities. Just steady, predictable growth tied to real strategy.',
+            'Custom dashboards, sheets and CRM with every metric that matters. We always know when we are profitable and where to act. Clear goals, continuous review.',
         },
       ],
     },

@@ -75,7 +75,7 @@ export default function DataDrivenTeamSolution({ locale = 'en' }: { locale?: Loc
         </div>
 
         {/* Partner Venn: from team + brand comes the partner (with a face) */}
-        {locale === 'it' && (
+        {(locale === 'it' || locale === 'en') && (
           <div className="mx-auto mt-14 flex w-full max-w-[560px] flex-col items-center">
             {/* Antonio: right-aligned above the diagram on desktop, centered on mobile (no overlap with the label) */}
             <div className="mb-8 flex items-center gap-3 min-[720px]:self-end">
@@ -93,7 +93,7 @@ export default function DataDrivenTeamSolution({ locale = 'en' }: { locale?: Loc
                   <span className="font-semibold">Antonio Manitta</span> - eCommerce Manager
                 </p>
                 <p className="font-sans text-[12px] font-medium leading-[1.35em] tracking-[-0.02em] text-noprob-muted">
-                  Sarà il direttore del tuo progetto
+                  {locale === 'it' ? 'Sarà il direttore del tuo progetto' : 'He will run your project'}
                 </p>
               </div>
             </div>
@@ -102,7 +102,11 @@ export default function DataDrivenTeamSolution({ locale = 'en' }: { locale?: Loc
               viewBox="0 0 800 560"
               className="w-full max-w-[520px]"
               role="img"
-              aria-label="Dall'incontro tra il team e il tuo brand nasce il partner"
+              aria-label={
+                locale === 'it'
+                  ? "Dall'incontro tra il team e il tuo brand nasce il partner"
+                  : 'Where the team and your brand meet, the partner is born'
+              }
             >
               <defs>
                 <clipPath id="ddt-venn-left">

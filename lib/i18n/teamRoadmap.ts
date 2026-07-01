@@ -37,41 +37,34 @@ const it: ProcessCopy = {
 }
 
 const en: ProcessCopy = {
-  label: 'how we work',
-  headingPart1: '90 days to ',
-  headingEm: 'get fully in.',
+  label: 'how we start',
+  headingPart1: 'Thirty days to get in. ',
+  headingEm: 'Then we stay for years.',
   description:
-    'Three phases, one logical order. From onboarding to the first measurable results.\nThe tested method our team uses to take ownership of your ecommerce.',
+    'The first month is an onboarding sprint: we get into the project, set up the team, connect the data and build the foundations.\nFrom there begins a partnership that, with our clients, lasts for years.',
   phases: [
     {
       number: '01',
-      title: 'Onboarding',
-      duration: 'first ~15 days',
+      title: 'The onboarding sprint',
+      duration: '30 days',
       description:
-        'We get into your ecommerce: a full audit of data, tracking, analytics, design and development. We map the current state, define the KPIs that matter and set up an efficient way to communicate. Nothing starts until we know exactly where to act.',
+        'In 30 days we truly get inside your eCommerce. We analyze data, store and channels. We set up the right team for the areas that matter. We connect tracking, dashboards and reporting. Together we define clear goals and the first priorities. By the end of the sprint the project has direction, a team and a lead.',
     },
     {
       number: '02',
-      title: 'Execution',
-      duration: '~45 days',
+      title: 'A partnership that lasts',
+      duration: 'for years',
       description:
-        'The team at work on every front: development, design, CRO, server-side tracking and continuous optimization. Every move starts from data, not a guess. You see the work progress week after week, with steps shared and confirmed before each release.',
-    },
-    {
-      number: '03',
-      title: 'Growth',
-      duration: '~30 days',
-      description:
-        'Continuous monitoring and data-driven iteration. The full team stays on development, SEO, tracking and design, ready to act on every bottleneck. Every possible optimization, we find it and we do it. Day after day, we get to perfection.',
+        'When the sprint ends, nothing ends: the real work begins. We follow your eCommerce growth month after month and adapt the team and strategy based on data and goals. We have clients who have stayed with us for years, because you do not swap partners every season.',
     },
   ],
   fourMonths: {
-    title: 'Why 90 days to really get started?',
+    title: 'Your first 30-day sprint is half price.',
     description:
-      'Ninety days isn’t how long it takes us to “fix” something. It’s the time we dedicate to getting fully into your ecommerce: understand, execute, grow. We find the bottlenecks, we check day after day, we perfect every detail. Not a vendor that delivers and disappears, but a team that stays until everything works the way it should.',
+      'We want to get in with no barriers and show you how we work. That is why the first sprint month is 50%: in 30 days you set up the whole team and see our method with your own eyes. No commitment after the first month: you decide whether to continue.',
   },
   closingLine:
-    'Not a vendor that just executes.\nA team that stays inside your ecommerce, day after day.',
+    'Cumini has trusted us for 4 years.\nYou do not swap a partner every season.',
 }
 
 export function getTeamRoadmapCopy(locale: Locale): ProcessCopy {

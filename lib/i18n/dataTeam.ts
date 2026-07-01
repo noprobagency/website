@@ -39,7 +39,7 @@ const it: DataTeamCopy = {
     priceBadge: 'metodo noprobagency',
     guarantee:
       'Il primo sprint di 30 giorni lo fai a metà prezzo: entri a rischio dimezzato.',
-    trustLabel: 'Scelti da brand Fashion, Integratori e DTC',
+    trustLabel: 'Scelti da brand di Moda, Integratori e DTC',
     cardTitle: 'Data-Driven Team',
     cardDescription:
       'Un eCommerce Manager dedicato che guida un team full-stack sul tuo store. Sviluppo, marketing, CRO, branding e dati, gestiti per te con un solo punto di riferimento.',
@@ -146,22 +146,22 @@ const it: DataTeamCopy = {
 
 const en: DataTeamCopy = {
   pricing: {
-    label: 'get started',
-    heading: 'A dedicated eCommerce team.\nOne point of contact.',
+    label: 'pricing',
+    heading: 'The price starts from the cost of one hire.\nIt only grows if you decide so.',
     subheading:
-      'Not a packaged service, but a team that steps into your brand and grows it over time. Pricing is built around the scope: apply and let’s talk.',
+      'There is no price list: every project has different needs. It starts from a clear point, around the cost of one employee. From there the team can grow, but only when we decide together to add skills or push into new areas. You pay for the team in play. No surprise costs.',
     tiers: [],
     priceSuffix: '',
     priceBadge: 'noprobagency method',
     guarantee:
-      'Trial discount to start with confidence: begin, review the results and decide with no pressure.',
+      'Your first 30-day sprint is half price: you get in at half the risk.',
     trustLabel: 'Chosen by Fashion, Supplements and DTC brands',
     cardTitle: 'Data-Driven Team',
     cardDescription:
-      'A dedicated eCommerce Manager leading a full-stack team on your store. Development, marketing, CRO and data, managed for you through a single point of contact.',
+      'An eCommerce Manager leading a full-stack team on your store. Development, marketing, CRO, branding and data, managed for you through a single point of contact.',
     cardChecks: [
       'Fast support, 7 days a week',
-      'One single eCommerce Manager',
+      'One dedicated eCommerce Manager',
       'First sprint at half price',
     ],
     scarcity: '',
@@ -170,16 +170,24 @@ const en: DataTeamCopy = {
   form: {
     label: 'application',
     heading: 'Apply for your dedicated team',
-    subheading: 'We work with a few brands at a time. Apply and let’s see if you’re the right fit.',
-    intro: 'The more detail you give, the sharper our assessment. We read every application.',
+    subheading: 'We work with a few brands at a time, to truly follow them.',
+    intro: 'Tell us about the project: if it is a fit, we will reach out for a call.',
     fields: {
       name: { label: 'Full name', placeholder: 'John Smith' },
       email: { label: 'Business email', placeholder: 'name@brand.com' },
       brand: { label: 'Brand / company name', placeholder: 'Brand ltd' },
       websiteUrl: { label: 'Your eCommerce URL', placeholder: 'brand.com' },
       platform: {
-        label: 'What platform are you on now?',
-        placeholder: 'e.g. Shopify, WooCommerce, Magento…',
+        label: 'Which areas do you need most support in?',
+        placeholder: 'Select…',
+        options: [
+          'Development',
+          'Marketing & advertising',
+          'Branding & creative',
+          'Data & tracking',
+          'Sales',
+          'A bit of everything',
+        ],
       },
       revenue: {
         label: 'Approximate annual online revenue',
@@ -192,8 +200,8 @@ const en: DataTeamCopy = {
         options: ['As soon as possible', 'Within 1-3 months', 'Just exploring'],
       },
       reason: {
-        label: 'What do you want from a dedicated eCommerce team?',
-        placeholder: 'Tell us where you are today, what’s blocking you and the goals you want to reach.',
+        label: 'What is your main goal for the next 12 months?',
+        placeholder: 'Tell us where you want to get to and what is blocking you today.',
       },
     },
     privacyBefore: 'I have read and accept the ',
@@ -205,10 +213,10 @@ const en: DataTeamCopy = {
       email: 'Enter a valid email address',
       brand: 'Enter the brand name',
       websiteUrl: 'Enter your site URL',
-      platform: 'Tell us your current platform',
+      platform: 'Select an area',
       revenue: 'Select an option',
       timeline: 'Select an option',
-      reason: 'Explain your goals in at least 30 characters',
+      reason: 'Explain your goal in at least 30 characters',
       privacy: 'You must accept the Privacy Policy',
     },
     errorGeneric: 'Something went wrong. Please try again in a moment.',

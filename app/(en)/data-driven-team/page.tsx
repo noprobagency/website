@@ -25,17 +25,8 @@ const dataDrivenTeamJsonLd = {
   provider: { '@type': 'Organization', name: 'NoProb Agency', url: 'https://noprob.agency' },
   serviceType: 'eCommerce management retainer',
   areaServed: ['IT', 'EU', 'US'],
-  offers: {
-    '@type': 'Offer',
-    price: '1495',
-    priceCurrency: 'EUR',
-    priceSpecification: {
-      '@type': 'UnitPriceSpecification',
-      price: '1495',
-      priceCurrency: 'EUR',
-      unitText: 'MONTH',
-    },
-  },
+  description:
+    'A dedicated eCommerce team on retainer, led by an eCommerce Manager as your single point of contact. Development, marketing, CRO, branding and data, managed end to end.',
 }
 
 export default function DataDrivenTeamPage() {
@@ -45,11 +36,11 @@ export default function DataDrivenTeamPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(dataDrivenTeamJsonLd) }}
       />
-      <DataDrivenTeamHero />
+      <DataDrivenTeamHero ctaHref="#candidatura" ctaTracking="datateam_hero_cta" />
       <DataDrivenTeamProblem />
       <DataDrivenTeamSolution />
       <MigrazioneProcess locale="en" copy={getTeamRoadmapCopy('en')} />
-      <EcommerceRebuildWhyUs />
+      <EcommerceRebuildWhyUs copy={getDataTeamCopy('en').whyUs} />
       <CaseStudy noPadding={true} />
       <MigrazionePricing
         locale="en"
