@@ -120,9 +120,18 @@ export default function DataDrivenTeamHero({
 
         {/* Hero title */}
         <h1 className="max-w-[800px] text-center font-display text-[32px] font-semibold leading-[1.1em] tracking-[-0.07em] text-black min-[810px]:text-[4rem]">
-          {d.titlePart1} <br />
-          {d.titlePart2} <br />
-          <em className="font-serif italic font-semibold">{d.titleEm}</em>
+          {locale === 'it' ? (
+            <>
+              {d.titlePart1} {d.titlePart2}{' '}
+              <em className="font-serif italic font-semibold">{d.titleEm}</em>
+            </>
+          ) : (
+            <>
+              {d.titlePart1} <br />
+              {d.titlePart2} <br />
+              <em className="font-serif italic font-semibold">{d.titleEm}</em>
+            </>
+          )}
         </h1>
 
         {/* Description */}
