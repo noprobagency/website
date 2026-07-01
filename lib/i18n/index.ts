@@ -942,7 +942,7 @@ const it: Dictionary = {
         'Un unico eCommerce Manager',
         'Primo sprint a metà prezzo',
       ],
-      doodle: 'al costo di un singolo dipendente',
+      doodle: 'al costo di un dipendente',
       trustLabel: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
       titlePart1: 'Un team eCommerce completo,',
       titlePart2: 'dedicato alla',

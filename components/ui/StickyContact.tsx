@@ -5,7 +5,18 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { getDictionary } from '@/lib/i18n'
-import { getMigrazioneCopy } from '@/lib/i18n/migrazione'
+
+// Landing pages carry an in-page application form (#candidatura). The floating
+// CTA there is page-specific and scrolls to that form. Everywhere else it points
+// to the contact page with a generic "request info" label.
+const LANDING_LABELS: Record<string, string> = {
+  '/it/sviluppo-shopify': 'Candidati per il progetto',
+  '/shopify-development': 'Apply for the project',
+  '/it/migrazione-shopify': 'Candidati per la migrazione',
+  '/shopify-migration': 'Apply for your migration',
+  '/it/team-ecommerce-dedicato': 'Candidati per il team',
+  '/data-driven-team': 'Apply for the team',
+}
 
 export default function StickyContact() {
   const [visible, setVisible] = useState(false)
@@ -16,11 +27,13 @@ export default function StickyContact() {
   // Don't show on contact pages
   const isContactPage = pathname === '/contacts' || pathname === '/it/contatti'
 
-  // Page-specific behavior: on the Shopify migration landing (IT + EN) the
-  // floating CTA scrolls to the in-page application form instead of the contact page.
-  const isMigrazione = pathname === '/it/migrazione-shopify' || pathname === '/shopify-migration'
-  const href = isMigrazione ? '#candidatura' : t.hero.ctaPrimaryHref
-  const label = isMigrazione ? getMigrazioneCopy(locale).hero.cta : 'Contact Us'
+  const isLanding = pathname in LANDING_LABELS
+  const href = isLanding ? '#candidatura' : t.hero.ctaPrimaryHref
+  const label = isLanding
+    ? LANDING_LABELS[pathname]
+    : locale === 'it'
+      ? 'Richiedi informazioni'
+      : 'Request information'
 
   useEffect(() => {
     if (isContactPage) return
