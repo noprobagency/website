@@ -743,7 +743,7 @@ const it: Dictionary = {
     category: 'eCommerce Fashion Retail di Lusso',
     description:
       'Partiti senza team tecnico n\u00e9 struttura. Costruito, lanciato e scalato un eCommerce con un team dedicato, trasformando un canale marginale in un driver chiave della crescita del brand.',
-    metric: '\u2191 347% crescita del fatturato',
+    metric: '\u2191 347% crescita del fatturato online',
     metricNote: 'In 36 mesi di partnership con noprob agency',
   },
   pricing: {
@@ -939,17 +939,17 @@ const it: Dictionary = {
     hero: {
       features: [
         'Supporto rapido, 7 giorni su 7',
-        'Manutenzione a vita inclusa',
-        '30 giorni di garanzia di rimborso',
+        'Un unico eCommerce Manager',
+        'Primo sprint a metà prezzo',
       ],
-      doodle: 'Perché finalmente rispecchi il tuo brand',
+      doodle: 'Un team completo, un solo interlocutore',
       trustLabel: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
-      titlePart1: 'Smetti di rincorrere freelancer.',
-      titlePart2: 'Ottieni un team eCommerce',
-      titleEm: 'dedicato alla crescita.',
+      titlePart1: 'Un team eCommerce dedicato',
+      titlePart2: 'alla crescita,',
+      titleEm: 'al costo di un dipendente.',
       description:
-        'Per brand affermati che hanno bisogno di crescita stabile, costi fissi e un unico punto di contatto che gestisca tutto.',
-      cta: 'Candidati per il tuo Team eCommerce on-demand',
+        'Assumere una persona ti dà una competenza sola. Con noi hai un team completo, guidato da un eCommerce Manager che coordina tutto. Un solo interlocutore, tutte le competenze che servono per crescere.',
+      cta: 'Candidati per il tuo team eCommerce',
       trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
     },
     problem: {
@@ -957,46 +957,46 @@ const it: Dictionary = {
       heading: 'Troppe persone mettono mano alla tua crescita.',
       headingEm: 'Nessuno ne è davvero responsabile.',
       description:
-        'Gestire freelancer, inseguire i risultati delle campagne, aspettare fix tecnici. Il tuo store funziona. Il tuo team no.',
+        'Gestire freelancer sparsi, coordinare agenzie, aspettare i tecnici. Il tuo store funziona, ma la crescita resta ferma perché manca una regia unica.',
       items: [
         {
-          title: 'Il Caos',
+          title: 'Competenze frammentate',
           description:
-            'Più di 5 freelancer che lavorano in modo indipendente. Nessun allineamento. Nessuna continuità. Ogni passaggio è un nuovo inizio.',
+            'Un freelancer per il sito, uno per le ads, uno per la grafica. Nessuno che parli con gli altri, nessuno che guardi il quadro completo.',
         },
         {
-          title: 'Responsabilità Invisibile',
+          title: 'Nessun vero responsabile',
           description:
-            'Nessuno possiede davvero la tua crescita. I problemi si accumulano. Le decisioni rallentano. Il momentum svanisce.',
+            'Quando qualcosa non funziona, ognuno dà la colpa all’altro. Il coordinamento resta sulle tue spalle.',
         },
         {
-          title: 'Potenziale Sprecato',
+          title: 'Decisioni senza dati',
           description:
-            'Il tuo store ha traffico. I tuoi dati hanno insight. Ma nessuno sta unendo i puntini. Fatturato che resta sul tavolo.',
+            'Campagne e scelte fatte a sensazione, senza sapere davvero cosa porta profitto e cosa no.',
         },
       ],
     },
     solution: {
       label: 'soluzione',
-      heading: 'E se le tue idee avessero',
-      headingMark: 'un Unico Partner?',
+      heading: 'E se avessi un',
+      headingMark: 'unico partner?',
       description:
-        'Un eCommerce Manager dedicato che trasforma le tue idee in priorità chiare, allinea le persone giuste e guida l’esecuzione ogni giorno, così smetti di sovrapensare e il tuo brand avanza invece di restare bloccato.',
+        'Un team eCommerce completo, coordinato da un eCommerce Manager che diventa il tuo punto di riferimento. Non consegniamo task e spariamo: entriamo nel progetto come partner e restiamo.',
       items: [
         {
-          title: 'Responsabilità Totale',
+          title: 'Un partner, non un fornitore',
           description:
-            'Antonio si assume la responsabilità della tua crescita. Coordina il team, prende decisioni e agisce velocemente. Risultato: chiarezza, velocità, accountability.',
+            'Diventiamo il tuo team eCommerce. Un solo interlocutore che risponde di tutto il progetto, dalla strategia all’esecuzione.',
         },
         {
-          title: 'Team Sempre Allineato',
+          title: 'Ogni area coperta',
           description:
-            'Esperti Meta, Google, strategist, email specialist, SEO e social, tutti nella stessa direzione, ogni giorno.',
+            'Sviluppo, tracciamento e CRO, ma anche branding, fotografia, shooting e parte commerciale. Troviamo e coordiniamo le persone giuste per ogni esigenza.',
         },
         {
-          title: 'Risultati Oltre il Caos',
+          title: 'Tutto guidato dai dati',
           description:
-            'Niente più emergenze da spegnere. Niente più opportunità perse. Solo una crescita costante e prevedibile legata a una vera strategia.',
+            'Dashboard, fogli e CRM su misura con ogni metrica che conta. Sappiamo sempre quando siamo in profitto e dove intervenire. Obiettivi chiari, revisione continua.',
         },
       ],
     },

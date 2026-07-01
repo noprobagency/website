@@ -6,41 +6,34 @@ import { type MigrazioneCopy } from '@/lib/i18n/migrazione'
 type ProcessCopy = MigrazioneCopy['process']
 
 const it: ProcessCopy = {
-  label: 'come lavoriamo',
-  headingPart1: '90 giorni per ',
-  headingEm: 'entrare nel vivo.',
+  label: 'come entriamo',
+  headingPart1: 'Trenta giorni per entrare. ',
+  headingEm: 'Poi restiamo per anni.',
   description:
-    'Tre fasi, un ordine logico. Dall’onboarding ai primi risultati misurabili.\nIl metodo testato con cui il team prende in mano il tuo ecommerce.',
+    'Il primo mese è uno sprint di ingresso: entriamo nel progetto, impostiamo il team, colleghiamo i dati e costruiamo le fondamenta.\nDa lì parte una collaborazione che, con i nostri clienti, dura anni.',
   phases: [
     {
       number: '01',
-      title: 'Onboarding',
-      duration: 'primi ~15 giorni',
+      title: 'Il primo sprint di ingresso',
+      duration: '30 giorni',
       description:
-        'Entriamo nel tuo ecommerce: audit completo di dati, tracciamento, analytics, design e sviluppo. Mappiamo lo stato attuale, definiamo i KPI che contano e impostiamo un metodo di comunicazione efficiente. Niente parte finché non sappiamo esattamente dove intervenire.',
+        'In 30 giorni entriamo davvero nel tuo eCommerce. Analizziamo dati, store e canali. Impostiamo il team giusto per le aree che servono. Colleghiamo tracciamento, dashboard e reportistica. Definiamo insieme obiettivi chiari e le prime priorità. Alla fine dello sprint il progetto ha una regia, un team e una direzione.',
     },
     {
       number: '02',
-      title: 'Operatività',
-      duration: '~45 giorni',
+      title: 'Una collaborazione che dura nel tempo',
+      duration: 'per anni',
       description:
-        'Il team al lavoro su ogni fronte: sviluppo, design, CRO, tracciamento server-side e ottimizzazioni continue. Ogni intervento parte da un dato, non da un’ipotesi. Tu vedi avanzare il lavoro settimana dopo settimana, con step inviati e confermati prima di ogni rilascio.',
-    },
-    {
-      number: '03',
-      title: 'Crescita',
-      duration: '~30 giorni',
-      description:
-        'Monitoraggio continuo e iterazione data-driven. Il team completo resta su sviluppo, SEO, tracciamento e design, pronto a intervenire su ogni collo di bottiglia. Ogni ottimizzazione possibile, la troviamo e la facciamo. Giorno dopo giorno, arriviamo alla perfezione.',
+        'Finito lo sprint non finisce niente: comincia il lavoro vero. Seguiamo la crescita dell’eCommerce mese dopo mese e adattiamo team e strategia in base ai dati e agli obiettivi. Abbiamo clienti che ci seguono da anni, perché un partner non si cambia ogni stagione.',
     },
   ],
   fourMonths: {
-    title: 'Perché 90 giorni per partire davvero?',
+    title: 'Il primo sprint di 30 giorni lo fai a metà prezzo.',
     description:
-      'Novanta giorni non sono il tempo che ci mettiamo a “sistemare” qualcosa. È il tempo che dedichiamo a entrare a 360° nel tuo ecommerce: capire, operare, far crescere. Troviamo i colli di bottiglia, controlliamo giorno dopo giorno, perfezioniamo ogni dettaglio. Non un fornitore che esegue e sparisce, ma un team che resta finché tutto funziona come deve.',
+      'Vogliamo entrare senza barriere e dimostrarti come lavoriamo. Per questo il primo mese di sprint costa il 50%: in 30 giorni imposti tutto il team e vedi con i tuoi occhi il nostro metodo. Nessun vincolo dopo il primo mese: decidi tu se continuare.',
   },
   closingLine:
-    'Non un fornitore che esegue e basta.\nUn team che resta dentro al tuo ecommerce, giorno dopo giorno.',
+    'Cumini ci segue da 4 anni.\nUn partner non si cambia ogni stagione.',
 }
 
 const en: ProcessCopy = {

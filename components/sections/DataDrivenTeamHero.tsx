@@ -4,9 +4,18 @@ import PartnerLogos from '@/components/ui/PartnerLogos'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
-export default function DataDrivenTeamHero({ locale = 'en' }: { locale?: Locale }) {
+export default function DataDrivenTeamHero({
+  locale = 'en',
+  ctaHref,
+  ctaTracking = 'data_driven_team_hero_cta',
+}: {
+  locale?: Locale
+  ctaHref?: string
+  ctaTracking?: string
+}) {
   const t = getDictionary(locale)
   const d = t.dataDrivenTeam.hero
+  const resolvedCtaHref = ctaHref ?? ROUTE_PATHS.contacts[locale]
 
   return (
     <section className="flex flex-col items-center overflow-hidden px-5 pt-[65px] pb-[65px] min-[810px]:px-[34px] min-[810px]:pt-[100px] min-[810px]:pb-[60px]">
@@ -144,8 +153,8 @@ export default function DataDrivenTeamHero({ locale = 'en' }: { locale?: Locale 
         {/* CTA */}
         <div className="flex flex-col items-center gap-[9px] max-[809px]:w-full min-[810px]:w-auto min-[810px]:flex-row min-[810px]:flex-nowrap min-[810px]:items-center min-[810px]:gap-2">
           <Link
-            href={ROUTE_PATHS.contacts[locale]}
-            data-tracking="data_driven_team_hero_cta"
+            href={resolvedCtaHref}
+            data-tracking={ctaTracking}
             className="button-principal text-center max-[809px]:!w-full max-[809px]:![white-space:normal]"
           >
             {d.cta}

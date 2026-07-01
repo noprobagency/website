@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion, Variants } from 'framer-motion'
 import { getDictionary, type Locale } from '@/lib/i18n'
+import { siteAssets } from '@/lib/site'
 import SectionLabel from '@/components/ui/SectionLabel'
 
 const cardVariants: Variants = {
@@ -72,6 +73,60 @@ export default function DataDrivenTeamSolution({ locale = 'en' }: { locale?: Loc
             </motion.article>
           ))}
         </div>
+
+        {/* Partner Venn: from noprob team + brand comes the partner (with a face) */}
+        {locale === 'it' && (
+          <div className="mx-auto mt-14 flex max-w-[560px] flex-col items-center text-center">
+            <div className="relative h-[84px] w-[84px] shrink-0 overflow-hidden rounded-full border-2 border-white shadow-card">
+              <Image
+                src={siteAssets.heroAntonio}
+                alt="Antonio Manitta"
+                fill
+                sizes="84px"
+                className="object-cover grayscale"
+              />
+            </div>
+            <p className="mt-3 font-sans text-[13px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-text">
+              <span className="font-semibold">Antonio Manitta</span>, eCommerce Manager.
+              <br className="min-[520px]:hidden" /> Seguirà il tuo progetto.
+            </p>
+
+            <svg
+              viewBox="0 0 800 560"
+              className="mt-1 w-full max-w-[520px]"
+              role="img"
+              aria-label="Dall'incontro tra il team noprob e il tuo brand nasce il partner"
+            >
+              <defs>
+                <clipPath id="ddt-venn-left">
+                  <circle cx="250" cy="360" r="200" />
+                </clipPath>
+              </defs>
+              <circle cx="250" cy="360" r="200" fill="rgb(206,232,204)" />
+              <circle cx="560" cy="360" r="200" fill="rgb(219,204,232)" />
+              <g clipPath="url(#ddt-venn-left)">
+                <circle cx="560" cy="360" r="200" fill="#121212" />
+              </g>
+
+              {/* arrow from the intersection up to the "partner" label */}
+              <line x1="405" y1="234" x2="405" y2="96" stroke="#121212" strokeWidth="2.5" />
+              <path d="M405 82 L398 98 L412 98 Z" fill="#121212" />
+
+              <g
+                fill="#1a1a1a"
+                fontFamily='"Source Serif 4", Georgia, serif'
+                fontStyle="italic"
+                textAnchor="middle"
+              >
+                <text x="405" y="40" fontSize="26">noprob</text>
+                <text x="405" y="68" fontSize="26">partner</text>
+                <text x="196" y="348" fontSize="30">noprob</text>
+                <text x="196" y="384" fontSize="30">team</text>
+                <text x="620" y="372" fontSize="30">brand</text>
+              </g>
+            </svg>
+          </div>
+        )}
       </div>
     </section>
   )

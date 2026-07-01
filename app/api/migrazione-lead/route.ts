@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
   const SUBJECTS: Record<string, string> = {
     migrazione: `Nuova candidatura migrazione: ${brand}`,
     sviluppo: `Nuova candidatura sviluppo: ${brand}`,
-    datateam: `Nuova candidatura team dedicato: ${brand}`,
+    datateam: `Nuova candidatura Data Team: ${brand}`,
   }
   const HEADINGS: Record<string, string> = {
     migrazione: 'Nuova candidatura migrazione Shopify',

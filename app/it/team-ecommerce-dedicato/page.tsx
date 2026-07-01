@@ -22,11 +22,11 @@ export default function ItalianDataDrivenTeamPage() {
   const locale = 'it'
   return (
     <main>
-      <DataDrivenTeamHero locale={locale} />
+      <DataDrivenTeamHero locale={locale} ctaHref="#candidatura" ctaTracking="datateam_hero_cta" />
       <DataDrivenTeamProblem locale={locale} />
       <DataDrivenTeamSolution locale={locale} />
       <MigrazioneProcess locale={locale} copy={getTeamRoadmapCopy(locale)} />
-      <EcommerceRebuildWhyUs locale={locale} />
+      <EcommerceRebuildWhyUs locale={locale} copy={getDataTeamCopy(locale).whyUs} />
       <CaseStudy locale={locale} noPadding={true} />
       <MigrazionePricing
         locale={locale}
