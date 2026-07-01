@@ -28,7 +28,7 @@ const it: ProcessCopy = {
     },
   ],
   fourMonths: {
-    title: 'Il primo sprint di 30 giorni lo fai a metà prezzo.',
+    title: 'I primi 30 giorni a 50% del prezzo.',
     description:
       'Vogliamo entrare senza barriere e dimostrarti come lavoriamo. Per questo il primo mese di sprint costa il 50%: in 30 giorni imposti tutto il team e vedi con i tuoi occhi il nostro metodo. Nessun vincolo dopo il primo mese: decidi tu se continuare.',
   },
@@ -59,7 +59,7 @@ const en: ProcessCopy = {
     },
   ],
   fourMonths: {
-    title: 'Your first 30-day sprint is half price.',
+    title: 'Your first 30 days at 50% off.',
     description:
       'We want to get in with no barriers and show you how we work. That is why the first sprint month is 50%: in 30 days you set up the whole team and see our method with your own eyes. No commitment after the first month: you decide whether to continue.',
   },
