@@ -32,7 +32,7 @@ export default function MigrazioneForm({
 }: {
   locale?: Locale
   copy?: MigrazioneCopy['form']
-  source?: 'migrazione' | 'sviluppo'
+  source?: 'migrazione' | 'sviluppo' | 'datateam'
   submitTracking?: string
 }) {
   const d = copy ?? getMigrazioneCopy(locale).form

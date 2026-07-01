@@ -30,7 +30,7 @@ export function makeMigrazioneSchema(e: MigrazioneErrors) {
     reason: z.string().min(30, e.reason),
     privacy: z.boolean().refine((val) => val === true, { message: e.privacy }),
     locale: z.enum(['en', 'it']).optional(),
-    source: z.enum(['migrazione', 'sviluppo']).optional(),
+    source: z.enum(['migrazione', 'sviluppo', 'datateam']).optional(),
   })
 }
 

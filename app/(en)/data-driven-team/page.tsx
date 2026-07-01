@@ -7,7 +7,8 @@ import MigrazioneProcess from '@/components/sections/MigrazioneProcess'
 import EcommerceRebuildWhyUs from '@/components/sections/EcommerceRebuildWhyUs'
 import { getTeamRoadmapCopy } from '@/lib/i18n/teamRoadmap'
 import CaseStudy from '@/components/sections/CaseStudy'
-import Pricing from '@/components/sections/Pricing'
+import MigrazionePricing from '@/components/sections/MigrazionePricing'
+import { getDataTeamCopy } from '@/lib/i18n/dataTeam'
 import FAQ from '@/components/sections/FAQ'
 import CTA from '@/components/sections/CTA'
 import Footer from '@/components/layout/Footer'
@@ -50,7 +51,16 @@ export default function DataDrivenTeamPage() {
       <MigrazioneProcess locale="en" copy={getTeamRoadmapCopy('en')} />
       <EcommerceRebuildWhyUs />
       <CaseStudy noPadding={true} />
-      <Pricing teamOnly={true} />
+      <MigrazionePricing
+        locale="en"
+        copy={getDataTeamCopy('en').pricing}
+        formCopy={getDataTeamCopy('en').form}
+        formSource="datateam"
+        ctaTracking="datateam_pricing_cta"
+        formSubmitTracking="datateam_form_submit"
+        showTiers={false}
+        showPrice={false}
+      />
       <FAQ />
       <CTA />
       <Footer />

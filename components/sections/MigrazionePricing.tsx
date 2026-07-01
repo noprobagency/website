@@ -29,13 +29,17 @@ export default function MigrazionePricing({
   formCopy,
   formSource = 'migrazione',
   formSubmitTracking = 'migrazione_form_submit',
+  showTiers = true,
+  showPrice = true,
 }: {
   locale?: Locale
   copy?: MigrazioneCopy['pricing']
   ctaTracking?: string
   formCopy?: MigrazioneCopy['form']
-  formSource?: 'migrazione' | 'sviluppo'
+  formSource?: 'migrazione' | 'sviluppo' | 'datateam'
   formSubmitTracking?: string
+  showTiers?: boolean
+  showPrice?: boolean
 }) {
   const d = copy ?? getMigrazioneCopy(locale).pricing
   const tiers = d.tiers
@@ -58,6 +62,7 @@ export default function MigrazionePricing({
           </div>
 
           {/* Tiered price bar */}
+          {showTiers && (
           <div className="mt-12">
             <div className="grid grid-cols-4">
               {tiers.map((tier) => (
@@ -118,11 +123,14 @@ export default function MigrazionePricing({
               ))}
             </div>
           </div>
+          )}
 
           {/* Scarcity line */}
+          {showTiers && d.scarcity && (
           <p className="mx-auto mt-8 max-w-[620px] text-center font-sans text-[14px] font-medium leading-[1.6em] tracking-[-0.02em] text-[#c9c9c9]">
             {d.scarcity}
           </p>
+          )}
 
           {/* Pricing card */}
           <motion.div
@@ -167,12 +175,14 @@ export default function MigrazionePricing({
                     </p>
                   </div>
 
+                  {showPrice && current && (
                   <div className="mt-5 flex items-end gap-1">
                     <span className="text-np-pricing text-noprob-text">{current.price}</span>
                     <span className="mb-2 font-sans text-[14px] font-medium tracking-[-0.02em] text-noprob-muted">
                       {d.priceSuffix}
                     </span>
                   </div>
+                  )}
 
                   <Link
                     href="#candidatura"

@@ -45,13 +45,18 @@ export async function POST(req: NextRequest) {
   const { name, email, brand, websiteUrl, platform, revenue, timeline, reason } = parsed.data
   const locale = parsed.data.locale ?? 'it'
   const source = parsed.data.source ?? 'migrazione'
-  const isSviluppo = source === 'sviluppo'
-  const adminSubject = isSviluppo
-    ? `Nuova candidatura sviluppo: ${brand}`
-    : `Nuova candidatura migrazione: ${brand}`
-  const adminHeading = isSviluppo
-    ? 'Nuova candidatura sviluppo Shopify'
-    : 'Nuova candidatura migrazione Shopify'
+  const SUBJECTS: Record<string, string> = {
+    migrazione: `Nuova candidatura migrazione: ${brand}`,
+    sviluppo: `Nuova candidatura sviluppo: ${brand}`,
+    datateam: `Nuova candidatura team dedicato: ${brand}`,
+  }
+  const HEADINGS: Record<string, string> = {
+    migrazione: 'Nuova candidatura migrazione Shopify',
+    sviluppo: 'Nuova candidatura sviluppo Shopify',
+    datateam: 'Nuova candidatura Data-Driven Team',
+  }
+  const adminSubject = SUBJECTS[source] ?? SUBJECTS.migrazione
+  const adminHeading = HEADINGS[source] ?? HEADINGS.migrazione
 
   // 1) Admin notification - must succeed for the request to be considered OK
   try {
