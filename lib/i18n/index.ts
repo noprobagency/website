@@ -288,7 +288,7 @@ const en: Dictionary = {
         price: '',
         period: '',
         description:
-          'A tailor-made eCommerce team that evolves with you. Your eCommerce Manager is your single point of contact, leading a flexible, well-tuned group of specialists. You focus on your brand, he takes care of everything else, including hiring.',
+          'A tailor-made eCommerce team led by an eCommerce Manager who is your single point of contact. You focus on the brand, we coordinate everything else.',
         features: ['7/7 support', 'NDA sign', 'Trial Discount'],
         cta: 'Get Your custom Data Team',
         ctaHref: '/data-driven-team',
@@ -301,7 +301,7 @@ const en: Dictionary = {
         price: '',
         period: '',
         description:
-          'We build your eCommerce on Shopify from design to tracking, ready to convert from day one. You focus on your brand, we handle the technical side. Lifetime maintenance included.',
+          'We build your eCommerce on Shopify from design to tracking, ready to convert from day one. Lifetime maintenance included.',
         features: ['7/7 support', 'Lifetime maintenance included', '30-day guarantee'],
         cta: 'Apply for the project',
         ctaHref: '/shopify-development',
@@ -314,7 +314,7 @@ const en: Dictionary = {
         price: '',
         period: '',
         description:
-          'We migrate your eCommerce to Shopify without losing sales or customers: 1:1 redirects, no downtime, server-side tracking, design and SEO. Managed end to end, with a single point of contact.',
+          'We migrate your eCommerce to Shopify without losing sales or customers. 1:1 redirects, no downtime, managed end to end with a single point of contact.',
         features: ['1:1 SEO redirects', 'Never offline', '30-day guarantee'],
         cta: 'Apply for your migration',
         ctaHref: '/shopify-migration',
@@ -757,7 +757,7 @@ const it: Dictionary = {
         price: '',
         period: '',
         description:
-          'Un team eCommerce su misura che cresce con te. Il tuo eCommerce Manager \u00e8 il tuo unico punto di riferimento: guida un gruppo flessibile e affiatato di specialisti. Tu ti concentri sul brand, lui si occupa di tutto il resto, compreso il recruiting.',
+          'Un team eCommerce su misura, guidato da un eCommerce Manager che \u00e8 il tuo unico punto di riferimento. Tu pensi al brand, noi coordiniamo tutto il resto.',
         features: ['Supporto 7/7', 'Firma NDA', 'Sconto Trial'],
         cta: 'Ottieni il tuo Data Team',
         ctaHref: '/it/team-ecommerce-dedicato',
@@ -770,7 +770,7 @@ const it: Dictionary = {
         price: '',
         period: '',
         description:
-          'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, pronto a convertire dal primo giorno. Tu pensi al brand, noi al lato tecnico. Manutenzione a vita inclusa.',
+          'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, pronto a convertire dal primo giorno. Manutenzione a vita inclusa.',
         features: ['Supporto 7/7', 'Manutenzione a vita inclusa', 'Garanzia 30 giorni'],
         cta: 'Candidati per il progetto',
         ctaHref: '/it/sviluppo-shopify',
@@ -783,7 +783,7 @@ const it: Dictionary = {
         price: '',
         period: '',
         description:
-          'Migriamo il tuo eCommerce su Shopify senza perdere vendite o clienti: redirect 1:1, nessuna interruzione, tracciamento server-side, design e SEO. Gestita end to end, con un solo interlocutore.',
+          'Migriamo il tuo eCommerce su Shopify senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, gestita end to end con un solo interlocutore.',
         features: ['Redirect SEO 1:1', 'Mai offline', 'Garanzia 30 giorni'],
         cta: 'Candidati per la migrazione',
         ctaHref: '/it/migrazione-shopify',
