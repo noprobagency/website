@@ -97,12 +97,9 @@ export default function Hero({ locale = 'en' }: { locale?: Locale }) {
             </div>
           </div>
 
-          <h1 className="max-w-[650px] text-center text-np-hero text-noprob-text min-[810px]:text-left" style={{ lineHeight: '1.2em', fontFeatureSettings: "'blwf' on, 'cv09' on, 'cv03' on, 'cv04' on, 'cv11' on" }}>
-            <span className="block">{t.hero.line1}</span>
-            <span className="block">{t.hero.line2}</span>
-            <span className="block">
-              {t.hero.line3pre}<em className="font-serif italic">{t.hero.line3em}</em>.
-            </span>
+          <h1 className="max-w-[650px] text-center text-np-hero text-noprob-text min-[810px]:text-left" style={{ lineHeight: '1.1em', letterSpacing: '-0.07em', fontFeatureSettings: "'blwf' on, 'cv09' on, 'cv03' on, 'cv04' on, 'cv11' on" }}>
+            {t.hero.line1} {t.hero.line2} {t.hero.line3pre}
+            <em className="font-serif italic">{t.hero.line3em}</em>.
           </h1>
 
           <p className="max-w-[550px] text-center font-sans text-[16px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-text min-[810px]:text-left min-[810px]:text-[18px]">
