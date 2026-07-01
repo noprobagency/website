@@ -685,10 +685,10 @@ const it: Dictionary = {
   },
   hero: {
     trustpilotLabel: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
-    line1: 'Il tuo Brand \u00e8 premium.',
-    line2: 'Il tuo partner',
-    line3pre: 'eCommerce dovrebbe esserlo ',
-    line3em: 'anche lui',
+    line1: 'Al tuo brand serve un',
+    line2: 'partner eCommerce,',
+    line3pre: "non l'ennesimo ",
+    line3em: 'fornitore',
     description:
       'Costruiamo, miglioriamo e facciamo crescere il tuo eCommerce su Shopify, con un team dedicato in sviluppo, marketing e strategia. Insieme o separatamente, in base alle tue esigenze.',
     ctaPrimary: 'Prenota una call',
