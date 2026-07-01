@@ -76,23 +76,23 @@ export default function DataDrivenTeamSolution({ locale = 'en' }: { locale?: Loc
 
         {/* Partner Venn: from team + brand comes the partner (with a face) */}
         {locale === 'it' && (
-          <div className="mx-auto mt-14 flex max-w-[520px] flex-col items-center">
-            {/* Antonio: photo left, text right on two lines */}
-            <div className="flex items-center gap-3">
-              <div className="relative h-[56px] w-[56px] shrink-0 overflow-hidden rounded-full border-2 border-white shadow-card">
+          <div className="relative mx-auto mt-14 flex w-full max-w-[560px] flex-col items-center">
+            {/* Antonio: on desktop, off to the right next to "noprob partner"; on mobile, centered above */}
+            <div className="mb-6 flex items-center gap-3 min-[720px]:absolute min-[720px]:right-0 min-[720px]:top-1 min-[720px]:mb-0">
+              <div className="relative h-[52px] w-[52px] shrink-0 overflow-hidden rounded-full border-2 border-white shadow-card">
                 <Image
                   src={siteAssets.heroAntonio}
                   alt="Antonio Manitta"
                   fill
-                  sizes="56px"
+                  sizes="52px"
                   className="object-cover grayscale"
                 />
               </div>
               <div className="text-left">
-                <p className="font-sans text-[14px] font-medium leading-[1.35em] tracking-[-0.02em] text-noprob-text">
+                <p className="font-sans text-[13px] font-medium leading-[1.35em] tracking-[-0.02em] text-noprob-text">
                   <span className="font-semibold">Antonio Manitta</span> - eCommerce Manager
                 </p>
-                <p className="font-sans text-[13px] font-medium leading-[1.35em] tracking-[-0.02em] text-noprob-muted">
+                <p className="font-sans text-[12px] font-medium leading-[1.35em] tracking-[-0.02em] text-noprob-muted">
                   Sarà il direttore del tuo progetto
                 </p>
               </div>
@@ -100,7 +100,7 @@ export default function DataDrivenTeamSolution({ locale = 'en' }: { locale?: Loc
 
             <svg
               viewBox="0 0 800 560"
-              className="mt-4 w-full max-w-[520px]"
+              className="w-full max-w-[520px]"
               role="img"
               aria-label="Dall'incontro tra il team e il tuo brand nasce il partner"
             >

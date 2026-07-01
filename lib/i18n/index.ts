@@ -289,7 +289,7 @@ const en: Dictionary = {
         period: '',
         description:
           'A tailor-made eCommerce team led by an eCommerce Manager who is your single point of contact. You focus on the brand, we coordinate everything else.',
-        features: ['One single point of contact', 'Every area covered, not just marketing', 'First 30 days at 50% off'],
+        features: ['Fast support, 7 days a week', 'One single eCommerce Manager', 'First sprint at half price'],
         cta: 'Get Your custom Data Team',
         ctaHref: '/data-driven-team',
         secondary: 'Contact us',
@@ -758,7 +758,7 @@ const it: Dictionary = {
         period: '',
         description:
           'Un team eCommerce su misura, guidato da un eCommerce Manager che \u00e8 il tuo unico punto di riferimento. Tu pensi al brand, noi coordiniamo tutto il resto.',
-        features: ['Un solo interlocutore', 'Ogni area coperta, non solo marketing', 'Primi 30 giorni al 50% di sconto'],
+        features: ['Supporto rapido, 7 giorni su 7', 'Un unico eCommerce Manager', 'Primo sprint a metà prezzo'],
         cta: 'Ottieni il tuo Data Team',
         ctaHref: '/it/team-ecommerce-dedicato',
         secondary: 'Contattaci',
