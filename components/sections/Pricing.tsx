@@ -85,7 +85,9 @@ export default function Pricing({
                     </div>
 
                     <h3 className="text-np-pricing text-noprob-text">
-                      {plan.name}
+                      {plan.name.split(' ').slice(0, -1).join(' ')}
+                      <br />
+                      {plan.name.split(' ').slice(-1)}
                     </h3>
 
                     <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
