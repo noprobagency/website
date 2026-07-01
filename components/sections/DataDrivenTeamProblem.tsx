@@ -30,7 +30,7 @@ export default function DataDrivenTeamProblem({ locale = 'en' }: { locale?: Loca
   return (
     <section id="problem" className="pb-0 pt-0">
       <div className="container-noprob">
-        <div className="mx-auto max-w-[800px] text-center">
+        <div className="mx-auto max-w-[800px] text-center min-[1024px]:max-w-[1040px]">
           <SectionLabel>{d.label}</SectionLabel>
           <h2 className="mt-5 text-np-h2 text-np-dark text-center">
             {d.heading}{' '}
@@ -46,7 +46,7 @@ export default function DataDrivenTeamProblem({ locale = 'en' }: { locale?: Loca
               {d.headingEm}
             </em>
           </h2>
-          <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">
+          <p className="mx-auto mt-5 max-w-[680px] font-sans text-body-lg font-medium text-noprob-text">
             {d.description}
           </p>
         </div>
