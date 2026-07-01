@@ -76,9 +76,9 @@ export default function DataDrivenTeamSolution({ locale = 'en' }: { locale?: Loc
 
         {/* Partner Venn: from team + brand comes the partner (with a face) */}
         {locale === 'it' && (
-          <div className="relative mx-auto mt-14 flex w-full max-w-[560px] flex-col items-center">
-            {/* Antonio: on desktop, off to the right next to "noprob partner"; on mobile, centered above */}
-            <div className="mb-6 flex items-center gap-3 min-[720px]:absolute min-[720px]:right-0 min-[720px]:top-1 min-[720px]:mb-0">
+          <div className="mx-auto mt-14 flex w-full max-w-[560px] flex-col items-center">
+            {/* Antonio: right-aligned above the diagram on desktop, centered on mobile (no overlap with the label) */}
+            <div className="mb-8 flex items-center gap-3 min-[720px]:self-end">
               <div className="relative h-[52px] w-[52px] shrink-0 overflow-hidden rounded-full border-2 border-white shadow-card">
                 <Image
                   src={siteAssets.heroAntonio}
