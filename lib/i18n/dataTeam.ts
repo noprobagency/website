@@ -44,10 +44,9 @@ const it: DataTeamCopy = {
     cardDescription:
       'Un eCommerce Manager dedicato che guida un team full-stack sul tuo store. Sviluppo, marketing, CRO, branding e dati, gestiti per te con un solo punto di riferimento.',
     cardChecks: [
-      'Un eCommerce Manager dedicato come unico interlocutore',
-      'Team full-stack: sviluppo, marketing, CRO e analytics',
-      'Branding, fotografia e parte commerciale coordinati',
-      'Tracciamento server-side e report chiari sulle performance',
+      'Un solo interlocutore',
+      'Ogni area coperta, non solo marketing',
+      'Primi 30 giorni al 50% di sconto',
     ],
     scarcity: '',
     cta: 'Candidati per il team',
@@ -161,10 +160,9 @@ const en: DataTeamCopy = {
     cardDescription:
       'A dedicated eCommerce Manager leading a full-stack team on your store. Development, marketing, CRO and data, managed for you through a single point of contact.',
     cardChecks: [
-      'A dedicated eCommerce Manager as your single point of contact',
-      'Full-stack team: development, marketing, CRO and analytics',
-      'Server-side tracking and clear performance reporting',
-      '7/7 support, fixed costs and no surprises',
+      'One single point of contact',
+      'Every area covered, not just marketing',
+      'First 30 days at 50% off',
     ],
     scarcity: '',
     cta: 'Apply for the team',

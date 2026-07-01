@@ -219,10 +219,9 @@ const it: SviluppoCopy = {
     cardDescription:
       'Il progetto completo di 3 mesi: strategia, design su misura, sviluppo, tracciamento e SEO. Gestito end to end, con un solo interlocutore.',
     cardChecks: [
+      'Paga in 3 mesi',
       'Manutenzione a vita inclusa',
-      'Tracciamento server-side (GA4 e Meta CAPI)',
-      'SEO base on-page e CRO incluse',
-      'Garanzia rimborso 30 giorni',
+      'Garanzia 30 giorni',
     ],
     scarcity:
       'Gli scaglioni si riferiscono al numero di progetti che seguiamo: il prezzo sale col crescere dell’esperienza e della richiesta, non per urgenza artificiale. Chi entra ora blocca la tariffa, prima che salga. Nessun countdown: lo slot resta tuo finché c’è.',
@@ -479,10 +478,9 @@ const en: SviluppoCopy = {
     cardDescription:
       'The complete 3-month project: strategy, custom design, development, tracking and SEO. Managed end to end, with a single point of contact.',
     cardChecks: [
+      'Pay over 3 months',
       'Lifetime maintenance included',
-      'Server-side tracking (GA4 and Meta CAPI)',
-      'Base on-page SEO and CRO included',
-      '30-day money-back guarantee',
+      '30-day guarantee',
     ],
     scarcity:
       'The tiers refer to the number of projects we take on: the price rises with experience and demand, not artificial urgency. Apply now and lock the rate before it goes up. No countdown: your slot stays yours while it lasts.',

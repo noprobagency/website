@@ -289,9 +289,9 @@ const it: MigrazioneCopy = {
     cardDescription:
       'Il percorso completo di 4 mesi: migrazione tecnica, design, tracciamento e SEO. Gestito end to end, con un solo interlocutore.',
     cardChecks: [
-      'Migrazione dati, redirect 301 1:1 e nessuna interruzione del sito',
-      'Tracciamento server-side, SEO tecnica e design CRO-first',
-      'Un solo interlocutore dedicato per tutto il percorso',
+      'Redirect SEO 1:1',
+      'Il sito non si ferma mai',
+      'Garanzia 30 giorni',
     ],
     scarcity:
       'Ogni progetto aggiunge esperienza, metodo, efficienza. È il valore di chi entra dopo. Chi parte ora blocca la tariffa, prima che salga. Nessun countdown: lo slot resta tuo finché c’è.',
@@ -553,9 +553,9 @@ const en: MigrazioneCopy = {
     cardDescription:
       'The complete 4-month journey: technical migration, design, tracking and SEO. Managed end to end, with one point of contact.',
     cardChecks: [
-      'Data migration, 1:1 301 redirects and no site interruption',
-      'Server-side tracking, technical SEO and CRO-first design',
-      'One dedicated point of contact for the whole journey',
+      '1:1 SEO redirects',
+      'Your store never goes down',
+      '30-day guarantee',
     ],
     scarcity:
       'Every project adds experience, method, efficiency. That’s the value for whoever comes next. Whoever starts now locks in the rate before it goes up. No countdown: your slot stays yours as long as it’s there.',

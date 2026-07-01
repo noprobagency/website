@@ -289,7 +289,7 @@ const en: Dictionary = {
         period: '',
         description:
           'A tailor-made eCommerce team led by an eCommerce Manager who is your single point of contact. You focus on the brand, we coordinate everything else.',
-        features: ['7/7 support', 'NDA sign', 'Trial Discount'],
+        features: ['One single point of contact', 'Every area covered, not just marketing', 'First 30 days at 50% off'],
         cta: 'Get Your custom Data Team',
         ctaHref: '/data-driven-team',
         secondary: 'Contact us',
@@ -302,7 +302,7 @@ const en: Dictionary = {
         period: '',
         description:
           'We build your eCommerce on Shopify from design to tracking, ready to convert from day one. Lifetime maintenance included.',
-        features: ['7/7 support', 'Lifetime maintenance included', '30-day guarantee'],
+        features: ['Pay over 3 months', 'Lifetime maintenance included', '30-day guarantee'],
         cta: 'Apply for the project',
         ctaHref: '/shopify-development',
         secondary: 'Contact us',
@@ -315,7 +315,7 @@ const en: Dictionary = {
         period: '',
         description:
           'We migrate your eCommerce to Shopify without losing sales or customers. 1:1 redirects, no downtime, managed end to end with a single point of contact.',
-        features: ['1:1 SEO redirects', 'Never offline', '30-day guarantee'],
+        features: ['1:1 SEO redirects', 'Your store never goes down', '30-day guarantee'],
         cta: 'Apply for your migration',
         ctaHref: '/shopify-migration',
         secondary: 'Contact us',
@@ -758,7 +758,7 @@ const it: Dictionary = {
         period: '',
         description:
           'Un team eCommerce su misura, guidato da un eCommerce Manager che \u00e8 il tuo unico punto di riferimento. Tu pensi al brand, noi coordiniamo tutto il resto.',
-        features: ['Supporto 7/7', 'Firma NDA', 'Sconto Trial'],
+        features: ['Un solo interlocutore', 'Ogni area coperta, non solo marketing', 'Primi 30 giorni al 50% di sconto'],
         cta: 'Ottieni il tuo Data Team',
         ctaHref: '/it/team-ecommerce-dedicato',
         secondary: 'Contattaci',
@@ -771,7 +771,7 @@ const it: Dictionary = {
         period: '',
         description:
           'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, pronto a convertire dal primo giorno. Manutenzione a vita inclusa.',
-        features: ['Supporto 7/7', 'Manutenzione a vita inclusa', 'Garanzia 30 giorni'],
+        features: ['Paga in 3 mesi', 'Manutenzione a vita inclusa', 'Garanzia 30 giorni'],
         cta: 'Candidati per il progetto',
         ctaHref: '/it/sviluppo-shopify',
         secondary: 'Contattaci',
@@ -784,7 +784,7 @@ const it: Dictionary = {
         period: '',
         description:
           'Migriamo il tuo eCommerce su Shopify senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, gestita end to end con un solo interlocutore.',
-        features: ['Redirect SEO 1:1', 'Mai offline', 'Garanzia 30 giorni'],
+        features: ['Redirect SEO 1:1', 'Il sito non si ferma mai', 'Garanzia 30 giorni'],
         cta: 'Candidati per la migrazione',
         ctaHref: '/it/migrazione-shopify',
         secondary: 'Contattaci',
