@@ -214,7 +214,7 @@ const en: Dictionary = {
     langSwitcher: { label: 'Switch to Italian', display: 'EN' },
   },
   hero: {
-    trustpilotLabel: 'Trusted by Fashion, Supplements, and DTC eCommerce brands',
+    trustpilotLabel: 'Chosen by Fashion, Supplements and DTC brands',
     line1: 'Your Brand is premium.',
     line2: 'Your eCommerce',
     line3pre: 'partner should be ',
@@ -323,7 +323,7 @@ const en: Dictionary = {
       },
     ],
     from: 'From',
-    trustpilotLabel: 'Trusted by Fashion, Supplements, and DTC eCommerce brands',
+    trustpilotLabel: 'Chosen by Fashion, Supplements and DTC brands',
   },
   ecommerceRebuild: {
     hero: {
@@ -333,7 +333,7 @@ const en: Dictionary = {
         '30-day Refund Guarantee',
       ],
       doodle: 'So it finally matches your brand',
-      trustLabel: 'Trusted by Fashion, Supplements, and DTC eCommerce brands',
+      trustLabel: 'Chosen by Fashion, Supplements and DTC brands',
       titlePart1: "Let's rebuild your messy eCommerce with ",
       titlePart2: 'noprob',
       descriptionPart1:
@@ -617,18 +617,18 @@ const en: Dictionary = {
     cookiePolicy: 'Cookie Policy',
   },
   seo: {
-    home: { title: 'Shopify Development & eCommerce Growth Agency | NoProb', description: 'Shopify Partner for fashion, supplement, and DTC brands. We build, migrate, and manage eCommerce stores as your long-term technical partner.' },
-    about: { title: 'About NoProb | Your Technical eCommerce Partner', description: 'Meet the team behind NoProb. A technical Shopify partner helping B2C brands scale with development, migration, and dedicated retainer teams.' },
-    contacts: { title: 'Contact NoProb | Book a Call', description: 'Start a conversation with NoProb. Book a call to build your eCommerce on Shopify or activate a long-term dedicated team.' },
-    blog: { title: 'NoProb Blog | Shopify, eCommerce & Growth', description: 'Articles on Shopify development, migration, tracking, and CRO for fashion, supplement, and DTC brands. Written by the NoProb team.' },
-    useCases: { title: 'eCommerce Case Studies & Results | NoProb', description: 'Real results from long-term Shopify partnerships. See how we helped fashion and DTC brands grow revenue, improve MER, and scale eCommerce operations.' },
-    dataDrivenTeam: { title: 'Data-Driven Team: Dedicated eCommerce Retainer | NoProb', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
-    sviluppoShopify: { title: 'Shopify Development Services: We Build Your Store | NoProb', description: 'Shopify development services to build your eCommerce from design to tracking, optimized to convert from day one. Lifetime maintenance included.' },
-    migrazioneShopify: { title: 'Shopify Migration Without Losing Sales | NoProb', description: 'Migrate your eCommerce to Shopify in 4 months without losing sales or customers. 1:1 redirects, no downtime, one point of contact. 30-day money-back guarantee.' },
+    home: { title: 'Shopify Development & eCommerce Agency | noprob agency™', description: 'Shopify Partner for fashion, supplement, and DTC brands. We build, migrate, and manage eCommerce stores as your long-term technical partner.' },
+    about: { title: 'Your Technical eCommerce Partner', description: 'Meet the team behind NoProb. A technical Shopify partner helping B2C brands scale with development, migration, and dedicated retainer teams.' },
+    contacts: { title: 'Contact Us & Book a Call', description: 'Start a conversation with NoProb. Book a call to build your eCommerce on Shopify or activate a long-term dedicated team.' },
+    blog: { title: 'Shopify, eCommerce & Growth Blog', description: 'Articles on Shopify development, migration, tracking, and CRO for fashion, supplement, and DTC brands. Written by the NoProb team.' },
+    useCases: { title: 'eCommerce Case Studies & Results', description: 'Real results from long-term Shopify partnerships. See how we helped fashion and DTC brands grow revenue, improve MER, and scale eCommerce operations.' },
+    dataDrivenTeam: { title: 'Dedicated eCommerce Team on Retainer', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
+    sviluppoShopify: { title: 'Shopify Development Services', description: 'Shopify development services to build your eCommerce from design to tracking, optimized to convert from day one. Lifetime maintenance included.' },
+    migrazioneShopify: { title: 'Shopify Migration Without Losing Sales', description: 'Migrate your eCommerce to Shopify in 4 months without losing sales or customers. 1:1 redirects, no downtime, one point of contact. 30-day money-back guarantee.' },
   },
   about: {
     hero: {
-      trustLabel: 'Trusted by Fashion, Supplements, and DTC eCommerce brands',
+      trustLabel: 'Chosen by Fashion, Supplements and DTC brands',
       h1pre: 'Your technical partner that makes eCommerce ',
       h1em: 'simple',
       body1: 'A 7/7 team of developers, designers, and strategists combining code, data, and creativity to help Shopify brands scale without stress.',
@@ -809,7 +809,7 @@ const it: Dictionary = {
         'Ricostruiamo il tuo eCommerce dalle fondamenta, creando uno store veloce, stabile e pronto a convertire. Tu concentrati sulla crescita. ',
       descriptionPart2: 'Noi ci occupiamo del lavoro tecnico.',
       cta: 'Voglio un rebuild',
-      trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
+      trustedCount: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
     },
     problem: {
       label: 'problema',
@@ -950,7 +950,7 @@ const it: Dictionary = {
       description:
         'Assumere una persona ti dà una competenza sola. Con noi hai un team completo, guidato da un eCommerce Manager che coordina tutto. Un solo interlocutore, tutte le competenze che servono per crescere.',
       cta: 'Candidati per il tuo team eCommerce',
-      trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
+      trustedCount: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
     },
     problem: {
       label: 'problema',
@@ -1086,18 +1086,18 @@ const it: Dictionary = {
     cookiePolicy: 'Cookie Policy',
   },
   seo: {
-    home: { title: 'Agenzia Shopify per Brand eCommerce Fashion e DTC | NoProb', description: 'Partner tecnico Shopify per brand fashion, integratori e DTC. Sviluppo, migrazione e gestione eCommerce con un team dedicato a lungo termine.' },
-    about: { title: 'Chi Siamo | Il tuo partner tecnico eCommerce', description: 'Il team dietro NoProb. Partner tecnico Shopify che aiuta i brand B2C a scalare con sviluppo, migrazioni e team dedicati in retainer.' },
-    contacts: { title: 'Contattaci | Prenota una call', description: 'Apri una conversazione con NoProb. Prenota una call per costruire il tuo eCommerce su Shopify o attivare un team dedicato a lungo termine.' },
-    blog: { title: 'Blog NoProb | Shopify, eCommerce e Crescita', description: 'Guide e articoli su sviluppo Shopify, migrazioni, tracking server-side e CRO per brand fashion, integratori e DTC. Scritti dal team tecnico NoProb.' },
-    useCases: { title: "Casi d'Uso eCommerce e Risultati Reali | NoProb", description: 'Risultati concreti da partnership Shopify a lungo termine. Come abbiamo fatto crescere brand fashion e DTC su fatturato, MER e operations eCommerce.' },
-    dataDrivenTeam: { title: 'Data-Driven Team: Retainer eCommerce Dedicato | NoProb', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare.' },
-    sviluppoShopify: { title: 'Sviluppo Shopify: creiamo il tuo eCommerce | NoProb', description: 'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, ottimizzato per convertire dal primo giorno. Manutenzione a vita inclusa.' },
-    migrazioneShopify: { title: 'Migrazione a Shopify senza perdere vendite | NoProb', description: 'Migra il tuo eCommerce su Shopify in 4 mesi senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, un solo interlocutore. Garanzia 30 giorni.' },
+    home: { title: 'Agenzia Shopify per Brand eCommerce | noprob agency™', description: 'Partner tecnico Shopify per brand fashion, integratori e DTC. Sviluppo, migrazione e gestione eCommerce con un team dedicato a lungo termine.' },
+    about: { title: 'Chi Siamo: partner tecnico eCommerce', description: 'Il team dietro NoProb. Partner tecnico Shopify che aiuta i brand B2C a scalare con sviluppo, migrazioni e team dedicati in retainer.' },
+    contacts: { title: 'Contattaci: prenota una call', description: 'Apri una conversazione con NoProb. Prenota una call per costruire il tuo eCommerce su Shopify o attivare un team dedicato a lungo termine.' },
+    blog: { title: 'Blog Shopify, eCommerce e Crescita', description: 'Guide e articoli su sviluppo Shopify, migrazioni, tracking server-side e CRO per brand fashion, integratori e DTC. Scritti dal team tecnico NoProb.' },
+    useCases: { title: "Casi d'Uso eCommerce e Risultati Reali", description: 'Risultati concreti da partnership Shopify a lungo termine. Come abbiamo fatto crescere brand fashion e DTC su fatturato, MER e operations eCommerce.' },
+    dataDrivenTeam: { title: 'Retainer eCommerce Dedicato', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare.' },
+    sviluppoShopify: { title: 'Sviluppo Shopify: creiamo il tuo eCommerce', description: 'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, ottimizzato per convertire dal primo giorno. Manutenzione a vita inclusa.' },
+    migrazioneShopify: { title: 'Migrazione a Shopify senza perdere vendite', description: 'Migra il tuo eCommerce su Shopify in 4 mesi senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, un solo interlocutore. Garanzia 30 giorni.' },
   },
   about: {
     hero: {
-      trustLabel: 'Scelti da brand Fashion, Integratori e DTC eCommerce',
+      trustLabel: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
       h1pre: "Il tuo partner tecnico che rende l\u2019eCommerce ",
       h1em: 'semplice',
       body1: 'Un team 7/7 di sviluppatori, designer e strategist che unisce codice, dati e creativit\u00e0 per aiutare i brand Shopify a scalare senza stress.',

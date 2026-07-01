@@ -135,7 +135,7 @@ export type MigrazioneCopy = {
 const it: MigrazioneCopy = {
   hero: {
     trustRatingLabel: '4,9',
-    trustSectors: 'Scelti da brand Fashion, Integratori e DTC eCommerce',
+    trustSectors: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
     titlePart1: 'Migra a Shopify senza perdere ',
     titleEm1: 'vendite',
     titleMid: ' e ',
@@ -145,7 +145,7 @@ const it: MigrazioneCopy = {
       'Non un semplice “ricostruiamo il tuo sito”. Impostiamo il tuo store su Shopify per vendere meglio: design, tracciamento, performance, affidabilità, flessibilità, SEO. Con un solo interlocutore, un report di conferma per ogni area di lavoro, garanzia di rimborso e manutenzione inclusa.',
     microBenefits: ['Nemmeno un secondo offline', 'Redirect SEO 1:1', 'Garanzia rimborso 30 giorni'],
     cta: 'Candidati per la migrazione',
-    trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
+    trustedCount: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
   },
   problem: {
     label: 'il problema',
@@ -284,7 +284,7 @@ const it: MigrazioneCopy = {
     priceBadge: 'metodo noprobagency',
     guarantee:
       'Garanzia 30 giorni: se entro 30 giorni il progetto non ti convince, ti rimborsiamo, senza domande.',
-    trustLabel: 'Scelti da brand Fashion, Integratori e DTC',
+    trustLabel: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
     cardTitle: 'Migrazione Shopify',
     cardDescription:
       'Il percorso completo di 4 mesi: migrazione tecnica, design, tracciamento e SEO. Gestito end to end, con un solo interlocutore.',
@@ -398,7 +398,7 @@ const it: MigrazioneCopy = {
 const en: MigrazioneCopy = {
   hero: {
     trustRatingLabel: '4.9',
-    trustSectors: 'Chosen by Fashion, Supplements and DTC eCommerce brands',
+    trustSectors: 'Chosen by Fashion, Supplements and DTC brands',
     titlePart1: 'Migrate to Shopify without losing ',
     titleEm1: 'sales',
     titleMid: ' or ',

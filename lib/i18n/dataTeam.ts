@@ -39,7 +39,7 @@ const it: DataTeamCopy = {
     priceBadge: 'metodo noprobagency',
     guarantee:
       'Il primo sprint di 30 giorni lo fai a metà prezzo: entri a rischio dimezzato.',
-    trustLabel: 'Scelti da brand di Moda, Integratori e DTC',
+    trustLabel: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
     cardTitle: 'Data-Driven Team',
     cardDescription:
       'Un eCommerce Manager dedicato che guida un team full-stack sul tuo store. Sviluppo, marketing, CRO, branding e dati, gestiti per te con un solo punto di riferimento.',

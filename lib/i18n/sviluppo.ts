@@ -81,7 +81,7 @@ const it: SviluppoCopy = {
       'Costruiamo il tuo store dalle fondamenta: design su misura, tracciamento completo, SEO e performance. Tu pensi al brand. ',
     descriptionPart2: 'Noi al lato tecnico.',
     cta: 'Candidati per il progetto',
-    trustedCount: 'Scelti da brand di Moda, Integratori e DTC',
+    trustedCount: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
   },
   problem: {
     label: 'problema',
@@ -214,7 +214,7 @@ const it: SviluppoCopy = {
     priceBadge: 'metodo noprobagency',
     guarantee:
       'Garanzia 30 giorni: se entro 30 giorni il progetto non ti convince, ti rimborsiamo, senza domande.',
-    trustLabel: 'Scelti da brand Fashion, Integratori e DTC',
+    trustLabel: 'Scelti da brand di Moda, Integratori e DTC eCommerce',
     cardTitle: 'Sviluppo Shopify',
     cardDescription:
       'Il progetto completo di 3 mesi: strategia, design su misura, sviluppo, tracciamento e SEO. Gestito end to end, con un solo interlocutore.',
@@ -333,7 +333,7 @@ const en: SviluppoCopy = {
       '30-day money-back guarantee',
     ],
     doodle: 'Built to match your brand',
-    trustLabel: 'Chosen by Fashion, Supplements and DTC eCommerce brands',
+    trustLabel: 'Chosen by Fashion, Supplements and DTC brands',
     titlePart1: 'We build your Shopify eCommerce, ready to ',
     titlePart2: 'convert',
     descriptionPart1:
