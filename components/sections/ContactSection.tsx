@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
@@ -154,6 +154,7 @@ export default function ContactSection({
 }: ContactSectionProps = {}) {
   const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
+  const mountedAtRef = useRef<number>(Date.now())
   const t = copy[locale]
   const r = reviews[locale]
 
@@ -178,7 +179,7 @@ export default function ContactSection({
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, locale }),
+        body: JSON.stringify({ ...data, locale, elapsedMs: Date.now() - mountedAtRef.current }),
       })
 
       if (!res.ok) {
@@ -288,6 +289,16 @@ export default function ContactSection({
           {/* Right Column: Contact Form (Now First on Mobile) */}
           <div className="flex flex-[1_0_0px] flex-col gap-5 rounded-[16px] border-[6px] border-[#f8f8f8] bg-white p-5 w-full">
             <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+              {/* Honeypot — hidden from real users, bots fill it and get silently dropped */}
+              <input
+                {...register('hp')}
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] top-[-9999px] h-0 w-0 opacity-0"
+              />
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="flex flex-col gap-[2px]">
                   <label className="font-sans text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-black">

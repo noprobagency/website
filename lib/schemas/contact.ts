@@ -11,6 +11,9 @@ export const contactSchema = z.object({
   adsSpend: z.string().min(1, 'Please select an option'),
   additionalInfo: z.string().optional(),
   locale: z.enum(['en', 'it']).optional(),
+  // Anti-spam: honeypot field (must stay empty) + time the form was on screen.
+  hp: z.string().optional(),
+  elapsedMs: z.number().optional(),
 })
 
 export type ContactFormData = z.infer<typeof contactSchema>

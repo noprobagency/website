@@ -20,13 +20,6 @@ const BOOKING_URL_EN = 'https://noprob.agency/thank-you'
 const BOOKING_URL_IT = 'https://noprob.agency/it/grazie'
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) {
-    console.error('[contact] RESEND_API_KEY missing')
-    return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
-  }
-  const resend = new Resend(apiKey)
-
   let body: unknown
   try {
     body = await req.json()
@@ -41,6 +34,24 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     )
   }
+
+  // Anti-spam gate: honeypot filled OR submitted implausibly fast = bot.
+  // Runs before anything else. Respond 200 so the bot thinks it succeeded,
+  // but send nothing.
+  const isBot =
+    (parsed.data.hp ?? '').trim() !== '' ||
+    (typeof parsed.data.elapsedMs === 'number' && parsed.data.elapsedMs < 2500)
+  if (isBot) {
+    console.warn('[contact] Dropped spam submission (honeypot/timing)')
+    return NextResponse.json({ ok: true })
+  }
+
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error('[contact] RESEND_API_KEY missing')
+    return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
+  }
+  const resend = new Resend(apiKey)
 
   const {
     name,
