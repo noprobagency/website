@@ -31,6 +31,9 @@ export function makeMigrazioneSchema(e: MigrazioneErrors) {
     privacy: z.boolean().refine((val) => val === true, { message: e.privacy }),
     locale: z.enum(['en', 'it']).optional(),
     source: z.enum(['migrazione', 'sviluppo', 'datateam']).optional(),
+    // Anti-spam: honeypot field (must stay empty) + time the form was on screen.
+    hp: z.string().optional(),
+    elapsedMs: z.number().optional(),
   })
 }
 

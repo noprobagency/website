@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -38,6 +38,7 @@ export default function MigrazioneForm({
   const d = copy ?? getMigrazioneCopy(locale).form
   const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
+  const mountedAtRef = useRef<number>(Date.now())
 
   const schema = useMemo(() => makeMigrazioneSchema(d.errors), [d.errors])
 
@@ -61,7 +62,7 @@ export default function MigrazioneForm({
       const res = await fetch('/api/migrazione-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, locale, source }),
+        body: JSON.stringify({ ...data, locale, source, elapsedMs: Date.now() - mountedAtRef.current }),
       })
       if (!res.ok) {
         const { error } = (await res.json().catch(() => ({}))) as { error?: string }
@@ -78,6 +79,15 @@ export default function MigrazioneForm({
   return (
     <div id="candidatura" className="scroll-mt-32">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+          {/* Honeypot — hidden from real users, bots fill it and get silently dropped */}
+          <input
+            {...register('hp')}
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute left-[-9999px] top-[-9999px] h-0 w-0 opacity-0"
+          />
           <p className="font-sans text-[13px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-muted">
             {d.intro}
           </p>
