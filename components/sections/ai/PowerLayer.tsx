@@ -1,6 +1,33 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+/**
+ * Defer decorative animations until after the window load event (plus a small
+ * delay): keeps the hero visually stable while loading, so LCP/Speed Index
+ * are not penalized by moving pixels.
+ */
+function useAfterLoad(delayMs = 400): boolean {
+  const [on, setOn] = useState(false)
+
+  useEffect(() => {
+    let timer: number | undefined
+    const arm = () => {
+      timer = window.setTimeout(() => setOn(true), delayMs)
+    }
+    if (document.readyState === 'complete') {
+      arm()
+      return () => window.clearTimeout(timer)
+    }
+    window.addEventListener('load', arm, { once: true })
+    return () => {
+      window.removeEventListener('load', arm)
+      if (timer !== undefined) window.clearTimeout(timer)
+    }
+  }, [delayMs])
+
+  return on
+}
 
 /*
   "Power layer" decorative primitives for the AI Accelerator landing.
@@ -34,12 +61,14 @@ const PATHS: PulsePath[] = [
 
 /** Neural-circuit network behind the hero. Purely decorative. */
 export function NeuralCircuits() {
+  const live = useAfterLoad()
+
   return (
     <svg
       viewBox="0 0 1200 520"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      className={`pointer-events-none absolute inset-0 h-full w-full ${live ? 'ai-on' : 'ai-off'}`}
     >
       {PATHS.map((p, i) => (
         <g key={i} className={p.desktopOnly ? 'ai-circuit-desktop' : undefined}>
@@ -68,8 +97,13 @@ export function NeuralCircuits() {
 
 /** Two thin vertical cables along the page margins (desktop >= 1280px only). */
 export function SideCables() {
+  const live = useAfterLoad()
+
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${live ? 'ai-on' : 'ai-off'}`}
+    >
       <span className="ai-side-cable left-[18px]" style={{ '--ai-delay': '0s' } as React.CSSProperties} />
       <span className="ai-side-cable right-[18px]" style={{ '--ai-delay': '4.5s' } as React.CSSProperties} />
     </div>

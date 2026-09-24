@@ -962,3 +962,12 @@
   background-size: 200% 100%;
   animation: ai-underline-travel 3.5s linear infinite;
 }
+
+/* Decorative pulses stay frozen until after the window load event (class
+   toggled by useAfterLoad in PowerLayer.tsx) so Speed Index / LCP are not
+   penalized by moving pixels during page load. */
+.ai-off .ai-circuit-pulse,
+.ai-off .ai-circuit-node,
+.ai-off .ai-side-cable::after {
+  animation-play-state: paused;
+}
