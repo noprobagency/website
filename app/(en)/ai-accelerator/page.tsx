@@ -7,7 +7,6 @@ import AiAudience from '@/components/sections/ai/AiAudience'
 import AiStartSteps from '@/components/sections/ai/AiStartSteps'
 import AiTimeline from '@/components/sections/ai/AiTimeline'
 import AiWho from '@/components/sections/ai/AiWho'
-import AiFormSection from '@/components/sections/ai/AiFormSection'
 import AiDeliverables from '@/components/sections/ai/AiDeliverables'
 import AiScope from '@/components/sections/ai/AiScope'
 import AiContrast from '@/components/sections/ai/AiContrast'
@@ -98,13 +97,12 @@ export default function AiAcceleratorPage() {
           </>
         }
       />
-      <AiFormSection locale={locale} />
+      <AiPricing locale={locale} />
+      <AiAfter locale={locale} />
       <AiDeliverables locale={locale} />
       <AiScope locale={locale} />
       <AiContrast locale={locale} />
       <ElectricDivider className="py-6 pt-12" />
-      <AiAfter locale={locale} />
-      <AiPricing locale={locale} />
       <MigrazioneFAQ locale={locale} copy={copy.faq} />
       <AiFinalCta locale={locale} />
       <Footer locale={locale} />

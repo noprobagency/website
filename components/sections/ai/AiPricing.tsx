@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 import Testimonials from '@/components/sections/Testimonials'
+import AiApplicationForm from '@/components/sections/ai/AiApplicationForm'
 import { ZapIcon } from '@/components/sections/ai/PowerLayer'
 import { siteAssets } from '@/lib/site'
 import { type Locale } from '@/lib/i18n'
@@ -185,6 +186,11 @@ export default function AiPricing({ locale = 'it' }: { locale?: Locale }) {
                 </div>
               </div>
 
+              {/* Application form (#candidatura target for every CTA), framed as
+                  its own electric card inside the pricing card */}
+              <div className="ai-form-card mt-8 rounded-[16px] p-5 min-[810px]:p-8">
+                <AiApplicationForm locale={locale} />
+              </div>
             </div>
           </motion.div>
 
