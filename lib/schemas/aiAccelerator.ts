@@ -5,11 +5,6 @@ import { z } from 'zod'
  * Same validation runs on the client (per-step checks) and on the server
  * (/api/ai-accelerator-lead). Messages are injected from the i18n copy so the
  * schema is locale-aware (factory pattern, same as lib/schemas/migrazione.ts).
- *
- * VAT: the Italian client normalizes to `IT` + 11 digits before submitting;
- * the English client accepts free-form international formats (min 5
- * alphanumerics). The server schema stays permissive (min 5 chars) to cover
- * both locales.
  */
 export type AiErrors = {
   choice: string
@@ -17,19 +12,20 @@ export type AiErrors = {
   name: string
   email: string
   legalName: string
-  vat: string
+  phone: string
+  website: string
   privacy: string
 }
 
-/** IT VAT: 11 digits, optional IT prefix and spaces. Returns `IT<digits>` or null. */
-export function normalizeItalianVat(raw: string): string | null {
-  const cleaned = raw.replace(/\s+/g, '').toUpperCase().replace(/^IT/, '')
-  return /^\d{11}$/.test(cleaned) ? `IT${cleaned}` : null
+/** Accepts bare domains ("azienda.com") as well as full URLs. */
+function isWebsite(raw: string): boolean {
+  return /^(https?:\/\/)?[^\s./]+(\.[^\s./]+)+(\/\S*)?$/i.test(raw.trim())
 }
 
-/** EN: free-form VAT / registration number with at least 5 alphanumerics. */
-export function isValidInternationalVat(raw: string): boolean {
-  return (raw.match(/[A-Za-z0-9]/g) ?? []).length >= 5
+/** Optional phone: empty, or at least 6 digits with the usual separators. */
+function isPhoneOrEmpty(raw: string | undefined): boolean {
+  if (!raw || raw.trim() === '') return true
+  return /^[+\d][\d\s().-]*$/.test(raw.trim()) && (raw.match(/\d/g) ?? []).length >= 6
 }
 
 export function makeAiSchema(e: AiErrors) {
@@ -37,15 +33,15 @@ export function makeAiSchema(e: AiErrors) {
     businessType: z.string().min(1, e.choice),
     role: z.string().min(1, e.choice),
     aiUsage: z.string().min(1, e.choice),
+    // Kept as `mainPain` for backend compatibility; now holds the goal / context answer.
     mainPain: z.string().min(20, e.pain),
     name: z.string().min(2, e.name),
     email: z.string().email(e.email),
     legalName: z.string().min(2, e.legalName),
-    vatNumber: z.string().refine(isValidInternationalVat, { message: e.vat }),
+    phone: z.string().optional().refine(isPhoneOrEmpty, { message: e.phone }),
+    website: z.string().refine(isWebsite, { message: e.website }),
     // Backward compatibility: mirrors legalName for anything reading `company`.
     company: z.string().optional(),
-    // Optional URL; accepts bare domains without protocol.
-    website: z.string().optional(),
     privacy: z.boolean().refine((val) => val === true, { message: e.privacy }),
     locale: z.enum(['en', 'it']).optional(),
     formType: z.literal('ai-accelerator').optional(),
@@ -63,7 +59,8 @@ export const aiSchema = makeAiSchema({
   name: 'Invalid name',
   email: 'Invalid email',
   legalName: 'Invalid company name',
-  vat: 'Invalid VAT number',
+  phone: 'Invalid phone',
+  website: 'Invalid website',
   privacy: 'Privacy required',
 })
 

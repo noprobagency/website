@@ -31,7 +31,12 @@ export default function StickyContact() {
   const t = getDictionary(locale)
 
   // Don't show on contact pages
-  const isContactPage = pathname === '/contacts' || pathname === '/it/contatti'
+  // Also hidden on the AI Accelerator booking step: booking is the only action there.
+  const isContactPage =
+    pathname === '/contacts' ||
+    pathname === '/it/contatti' ||
+    pathname === '/ai-accelerator/thank-you' ||
+    pathname === '/it/ai-accelerator/grazie'
 
   const isLanding = pathname in LANDING_LABELS
   const href = isLanding ? '#candidatura' : t.hero.ctaPrimaryHref

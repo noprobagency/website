@@ -9,6 +9,7 @@ export type RouteKey =
   | 'sviluppoShopify'
   | 'migrazioneShopify'
   | 'aiAccelerator'
+  | 'aiThankYou'
   | 'blog'
   | 'contacts'
   | 'thankYou'
@@ -22,6 +23,8 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   migrazioneShopify: { en: '/shopify-migration', it: '/it/migrazione-shopify' },
   // Product name, same slug in both locales.
   aiAccelerator:    { en: '/ai-accelerator',     it: '/it/ai-accelerator' },
+  // Booking step after a successful AI Accelerator application (noindex).
+  aiThankYou:       { en: '/ai-accelerator/thank-you', it: '/it/ai-accelerator/grazie' },
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },
   thankYou:         { en: '/thank-you',          it: '/it/grazie' },

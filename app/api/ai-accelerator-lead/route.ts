@@ -43,38 +43,34 @@ export async function POST(req: NextRequest) {
   }
   const resend = new Resend(apiKey)
 
-  const { businessType, role, aiUsage, mainPain, name, email, legalName, vatNumber, website } = parsed.data
+  const { businessType, role, aiUsage, mainPain, name, email, legalName, phone, website } = parsed.data
   const locale = parsed.data.locale ?? 'it'
-  const isItalianVat = /^IT\d{11}$/.test(vatNumber)
+  const siteHref = /^https?:\/\//i.test(website) ? website : `https://${website}`
 
   try {
     const { error } = await resend.emails.send({
       from: ADMIN_FROM,
       to: [ADMIN_TO],
       replyTo: email,
-      subject: `[AI Accelerator] Nuova candidatura — ${legalName}`,
+      subject: `[AI Accelerator] Nuova candidatura \u2014 ${legalName}`,
       html: `
         <p style="font-family:system-ui,sans-serif;font-size:15px;font-weight:600;margin:0 0 8px;padding:8px 12px;background:#eef3ff;border-left:3px solid #2f6bff">
-          ${businessType} · ${role} · ${aiUsage} · ${legalName}
+          ${businessType} \u00b7 ${role} \u00b7 ${aiUsage} \u00b7 ${legalName}
         </p>
         <p style="font-family:system-ui,sans-serif;font-size:13px;margin:0 0 12px;padding:0 12px">
-          P.IVA: <strong>${vatNumber}</strong>${
-            isItalianVat
-              ? ' · <a href="https://www.registroimprese.it">verifica su registroimprese.it</a>'
-              : ''
-          }
+          Sito: <a href="${siteHref}">${website}</a>${phone ? ` \u00b7 Tel: <a href="tel:${phone.replace(/[^\d+]/g, '')}">${phone}</a>` : ''}
         </p>
         <h2>Nuova candidatura AI Accelerator</h2>
         <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:system-ui,sans-serif;font-size:14px">
           <tr><td><strong>Nome:</strong></td><td>${name}</td></tr>
           <tr><td><strong>Ragione sociale:</strong></td><td>${legalName}</td></tr>
-          <tr><td><strong>Partita IVA:</strong></td><td>${vatNumber}</td></tr>
           <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
-          <tr><td><strong>Sito web:</strong></td><td>${website || '-'}</td></tr>
+          <tr><td><strong>Telefono:</strong></td><td>${phone || '-'}</td></tr>
+          <tr><td><strong>Sito web:</strong></td><td>${website}</td></tr>
           <tr><td><strong>Tipo attività:</strong></td><td>${businessType}</td></tr>
           <tr><td><strong>Ruolo:</strong></td><td>${role}</td></tr>
           <tr><td><strong>Uso attuale AI:</strong></td><td>${aiUsage}</td></tr>
-          <tr><td valign="top"><strong>Cosa fa perdere tempo/clienti:</strong></td><td>${mainPain}</td></tr>
+          <tr><td valign="top"><strong>Obiettivo / contesto:</strong></td><td>${mainPain}</td></tr>
           <tr><td><strong>Lingua:</strong></td><td>${locale}</td></tr>
         </table>
       `,

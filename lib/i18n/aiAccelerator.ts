@@ -15,6 +15,9 @@ import type { Locale } from '@/lib/i18n'
  * a raw revenue figure.
  */
 
+/** TidyCal booking page embedded on the AI Accelerator thank-you page. */
+export const AI_TIDYCAL_PATH = 'noprobagency/ai-call'
+
 /** Feature flag: show the "NEW" badge next to the AI Accelerator nav item. */
 export const AI_NAV_SHOW_NEW_BADGE = true
 
@@ -173,14 +176,18 @@ export type AiCopy = {
       qBusiness: QuestionCards & { notice: string }
       qRole: QuestionCards
     }
-    step2: { title: string; qUsage: QuestionCards; qPain: { label: string; placeholder: string } }
+    step2: {
+      title: string
+      qUsage: QuestionCards
+      qPain: { label: string; helper: string; placeholder: string }
+    }
     step3: {
       title: string
       fields: {
         name: { label: string; placeholder: string }
         email: { label: string; placeholder: string }
         legalName: { label: string; placeholder: string }
-        vatNumber: { label: string; placeholder: string; helper: string }
+        phone: { label: string; placeholder: string }
         website: { label: string; placeholder: string }
       }
       privacyBefore: string
@@ -195,12 +202,22 @@ export type AiCopy = {
       name: string
       email: string
       legalName: string
-      vat: string
+      phone: string
+      website: string
       privacy: string
     }
     errorGeneric: string
     errorNetwork: string
-    success: { title: string; text: string }
+  }
+  /** Dedicated thank-you page (booking step) shown after a successful application. */
+  thankYou: {
+    metaTitle: string
+    eyebrow: string
+    titlePart1: string
+    titleEm: string
+    titleEnd: string
+    text: string
+    note: string
   }
   finalCta: { heading: string; text: string; cta: string }
   sticky: { priceLine: string; cta: string }
@@ -306,7 +323,8 @@ const it: AiCopy = {
     steps: [
       {
         title: 'Candidatura e pre-call',
-        description: 'Ci racconti la tua azienda. Se c’è fit, fissiamo una pre-call gratuita di 40 minuti.',
+        description:
+          'Ci racconti la tua azienda e fissi subito una pre-call gratuita di 40 minuti per capire insieme se c’è fit.',
       },
       {
         title: 'Kick-off',
@@ -486,7 +504,7 @@ const it: AiCopy = {
       priceNote: '€550 alla firma + €550 alla consegna',
       cta: 'Candida la tua azienda',
     },
-    trustLine: 'Leggiamo ogni candidatura e rispondiamo entro 1 giorno lavorativo.',
+    trustLine: 'Dopo la candidatura fissi subito la pre-call gratuita.',
     trustLine2: 'Solo aziende ed eCommerce già avviati, con fatturato consolidato.',
   },
   after: {
@@ -589,9 +607,11 @@ const it: AiCopy = {
         options: ['Quasi per niente', 'A spot, senza metodo', 'Ogni giorno, ma senza sistema'],
       },
       qPain: {
-        label: 'Qual è la cosa che oggi vi fa perdere più tempo o più clienti?',
+        label: 'Cosa vorresti ottenere integrando l’AI nella tua attività?',
+        helper:
+          'Due righe su obiettivi, idee o dubbi. Se non hai ancora le idee chiare, raccontaci in breve la tua attività: arriviamo alla pre-call già preparati.',
         placeholder:
-          'Es. prepariamo i preventivi a mano, non riusciamo a pubblicare con costanza, il team usa l’AI ognuno a modo suo…',
+          'Es. vogliamo automatizzare i preventivi e rispondere prima ai clienti. Oppure: siamo un eCommerce moda di 6 persone e facciamo quasi tutto a mano…',
       },
     },
     step3: {
@@ -600,18 +620,14 @@ const it: AiCopy = {
         name: { label: 'Nome e cognome', placeholder: 'Mario Rossi' },
         email: { label: 'Email aziendale', placeholder: 'nome@azienda.com' },
         legalName: { label: 'Ragione sociale', placeholder: 'Es. Rossi S.r.l.' },
-        vatNumber: {
-          label: 'Partita IVA',
-          placeholder: 'Es. IT01234567890',
-          helper: 'Serve solo a verificare che l’attività sia già avviata.',
-        },
-        website: { label: 'Sito web (facoltativo)', placeholder: 'azienda.com' },
+        phone: { label: 'Telefono (facoltativo)', placeholder: '+39 333 123 4567' },
+        website: { label: 'Sito web', placeholder: 'azienda.com' },
       },
       privacyBefore: 'Ho letto e accetto la ',
       privacyLinkLabel: 'Privacy Policy',
       submit: 'Invia candidatura',
       submitting: 'Invio in corso…',
-      micro: 'Risposta entro 1 giorno lavorativo.',
+      micro: 'Dopo l’invio scegli subito giorno e orario della pre-call.',
     },
     errors: {
       choice: 'Seleziona un’opzione',
@@ -619,15 +635,21 @@ const it: AiCopy = {
       name: 'Inserisci nome e cognome',
       email: 'Inserisci un indirizzo email valido',
       legalName: 'Inserisci la ragione sociale',
-      vat: 'Inserisci una Partita IVA valida (11 cifre).',
+      phone: 'Inserisci un numero di telefono valido',
+      website: 'Inserisci il sito web della tua attività',
       privacy: 'Devi accettare la Privacy Policy',
     },
     errorGeneric: 'Qualcosa è andato storto. Riprova tra un momento.',
     errorNetwork: 'Errore di rete. Controlla la connessione e riprova.',
-    success: {
-      title: 'Candidatura ricevuta ⚡',
-      text: 'Grazie. Valutiamo la tua candidatura entro 1 giorno lavorativo. Se c’è fit, ti mandiamo via email il link per fissare la pre-call di 40 minuti.',
-    },
+  },
+  thankYou: {
+    metaTitle: 'Candidatura ricevuta · AI Accelerator',
+    eyebrow: 'Candidatura ricevuta ⚡',
+    titlePart1: 'Ultimo passo: ',
+    titleEm: 'fissa la pre-call',
+    titleEnd: '.',
+    text: 'Scegli giorno e orario per la pre-call gratuita di 40 minuti. Nel frattempo leggiamo la tua candidatura, così arriviamo già preparati.',
+    note: 'Solo aziende ed eCommerce già avviati: se non c’è fit, ti avvisiamo e annulliamo la prenotazione.',
   },
   finalCta: {
     heading: 'Pronto a mettere ordine nella tua azienda?',
@@ -737,7 +759,8 @@ const en: AiCopy = {
     steps: [
       {
         title: 'Application & intro call',
-        description: 'Tell us about your company. If there’s a fit, we book a free 40-minute intro call.',
+        description:
+          'Tell us about your company and book a free 40-minute intro call right away to see together if there’s a fit.',
       },
       {
         title: 'Kick-off',
@@ -914,7 +937,7 @@ const en: AiCopy = {
       priceNote: '€550 on signing + €550 on delivery',
       cta: 'Apply with your company',
     },
-    trustLine: 'We read every application and reply within 1 business day.',
+    trustLine: 'Right after applying, you book your free intro call.',
     trustLine2: 'Established companies and eCommerce brands with consolidated revenue only.',
   },
   after: {
@@ -1015,9 +1038,11 @@ const en: AiCopy = {
         options: ['Barely at all', 'Here and there, no method', 'Every day, but no system'],
       },
       qPain: {
-        label: 'What’s the one thing costing you the most time or clients today?',
+        label: 'What would you like to achieve by bringing AI into your business?',
+        helper:
+          'A couple of lines on your goals, ideas or doubts. Not sure yet? Just tell us briefly about your company: we’ll come to the intro call prepared.',
         placeholder:
-          'E.g. we write quotes by hand, we can’t publish consistently, everyone on the team uses AI their own way…',
+          'E.g. we want to automate quotes and reply to clients faster. Or: we’re a 6-person fashion eCommerce brand doing most things by hand…',
       },
     },
     step3: {
@@ -1026,18 +1051,14 @@ const en: AiCopy = {
         name: { label: 'Full name', placeholder: 'John Smith' },
         email: { label: 'Work email', placeholder: 'name@company.com' },
         legalName: { label: 'Company legal name', placeholder: 'e.g. Acme Ltd' },
-        vatNumber: {
-          label: 'VAT or company registration number',
-          placeholder: 'e.g. GB123456789',
-          helper: 'Only used to verify that the business is already established.',
-        },
-        website: { label: 'Website (optional)', placeholder: 'company.com' },
+        phone: { label: 'Phone (optional)', placeholder: '+44 20 1234 5678' },
+        website: { label: 'Website', placeholder: 'company.com' },
       },
       privacyBefore: 'I have read and accept the ',
       privacyLinkLabel: 'Privacy Policy',
       submit: 'Send application',
       submitting: 'Sending…',
-      micro: 'Reply within 1 business day.',
+      micro: 'After sending, you pick a day and time for your intro call.',
     },
     errors: {
       choice: 'Select an option',
@@ -1045,15 +1066,21 @@ const en: AiCopy = {
       name: 'Enter your full name',
       email: 'Enter a valid email address',
       legalName: 'Enter your company legal name',
-      vat: 'Please enter a valid VAT or company registration number.',
+      phone: 'Enter a valid phone number',
+      website: 'Enter your company website',
       privacy: 'You must accept the Privacy Policy',
     },
     errorGeneric: 'Something went wrong. Please try again.',
     errorNetwork: 'Network error. Check your connection and try again.',
-    success: {
-      title: 'Application received ⚡',
-      text: 'Thank you. We’ll review your application within 1 business day. If there’s a fit, we’ll email you the link to book your 40-minute intro call.',
-    },
+  },
+  thankYou: {
+    metaTitle: 'Application received · AI Accelerator',
+    eyebrow: 'Application received ⚡',
+    titlePart1: 'Last step: ',
+    titleEm: 'book your intro call',
+    titleEnd: '.',
+    text: 'Pick a day and time for your free 40-minute intro call. Meanwhile we’ll read your application, so we come prepared.',
+    note: 'Established companies and eCommerce brands only: if there’s no fit, we’ll let you know and cancel the booking.',
   },
   finalCta: {
     heading: 'Ready to bring order to your company?',

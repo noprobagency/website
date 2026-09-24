@@ -1,11 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { type Locale } from '@/lib/i18n'
 import { getAiCopy } from '@/lib/i18n/aiAccelerator'
-import { makeAiSchema, normalizeItalianVat, isValidInternationalVat } from '@/lib/schemas/aiAccelerator'
+import { makeAiSchema } from '@/lib/schemas/aiAccelerator'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 import { trackEvent } from '@/lib/analytics/events'
 
 const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
@@ -20,7 +22,7 @@ type Values = {
   name: string
   email: string
   legalName: string
-  vatNumber: string
+  phone: string
   website: string
 }
 
@@ -32,7 +34,7 @@ const EMPTY: Values = {
   name: '',
   email: '',
   legalName: '',
-  vatNumber: '',
+  phone: '',
   website: '',
 }
 
@@ -115,6 +117,7 @@ const errorClass = 'text-[10px] text-red-500'
 
 export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }) {
   const d = getAiCopy(locale).form
+  const router = useRouter()
   const [step, setStep] = useState(0) // 0..2
   const [direction, setDirection] = useState(1)
   const [values, setValues] = useState<Values>(EMPTY)
@@ -122,7 +125,6 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
   const [errors, setErrors] = useState<Partial<Record<keyof Values | 'privacy', string>>>({})
   const [serverError, setServerError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
-  const [done, setDone] = useState(false)
   const [hp, setHp] = useState('')
   const mountedAtRef = useRef<number>(Date.now())
   const headingRef = useRef<HTMLParagraphElement>(null)
@@ -181,26 +183,13 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
   async function submit(e: React.FormEvent) {
     e.preventDefault()
 
-    // Locale-aware VAT validation: IT normalizes to `IT` + 11 digits,
-    // EN accepts free-form international formats (min 5 alphanumerics).
-    let vat: string | null = values.vatNumber.trim()
-    if (locale === 'it') {
-      vat = normalizeItalianVat(vat)
-    } else if (!isValidInternationalVat(vat)) {
-      vat = null
-    }
-    if (!vat) {
-      setErrors((prev) => ({ ...prev, vatNumber: d.errors.vat }))
-      return
-    }
-
     const schema = makeAiSchema(d.errors)
     const payload = {
       ...values,
-      vatNumber: vat,
+      phone: values.phone.trim() || undefined,
+      website: values.website.trim(),
       // Backward compatibility for anything reading `company`.
       company: values.legalName,
-      website: values.website || undefined,
       privacy,
       locale,
       formType: 'ai-accelerator' as const,
@@ -236,28 +225,14 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
         return
       }
       // Lead event: Pixel + GA4 + CAPI with shared event_id for deduplication.
+      // Client-side navigation keeps the CAPI request alive after the redirect.
       void trackEvent('Lead', { content_category: 'ai-accelerator', content_name: 'AI Accelerator' })
-      setDone(true)
+      router.push(ROUTE_PATHS.aiThankYou[locale])
     } catch (err) {
       console.error('[ai-form] submit error:', err)
       setServerError(d.errorNetwork)
       setSubmitting(false)
     }
-  }
-
-  if (done) {
-    return (
-      <div id="candidatura" className="scroll-mt-32">
-        <div aria-live="polite" className="flex flex-col items-center gap-4 py-8 text-center">
-          <h3 className="font-display text-[26px] font-semibold leading-[1.2em] tracking-[-0.04em] text-black min-[810px]:text-[32px]">
-            {d.success.title}
-          </h3>
-          <p className="max-w-[480px] font-sans text-[15px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-text">
-            {d.success.text}
-          </p>
-        </div>
-      </div>
-    )
   }
 
   return (
@@ -356,8 +331,12 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
                       {d.step2.qPain.label}
                       <span aria-hidden className="ml-1 text-[color:var(--ai-accent-text)]">*</span>
                     </label>
+                    <p id="ai-mainPain-helper" className="font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-grey">
+                      {d.step2.qPain.helper}
+                    </p>
                     <textarea
                       id="ai-mainPain"
+                      aria-describedby="ai-mainPain-helper"
                       rows={4}
                       value={values.mainPain}
                       onChange={(e) => setValue('mainPain', e.target.value)}
@@ -446,28 +425,22 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
                       )}
                     </div>
                     <div className="flex flex-col gap-[2px]">
-                      <label htmlFor="ai-vatNumber" className={labelClass}>
-                        {d.step3.fields.vatNumber.label}
+                      <label htmlFor="ai-phone" className={labelClass}>
+                        {d.step3.fields.phone.label}
                       </label>
                       <input
-                        id="ai-vatNumber"
-                        type="text"
-                        inputMode={locale === 'it' ? 'numeric' : 'text'}
-                        value={values.vatNumber}
-                        onChange={(e) => setValue('vatNumber', e.target.value)}
-                        placeholder={d.step3.fields.vatNumber.placeholder}
-                        aria-describedby="ai-vat-helper"
-                        className={inputClass(!!errors.vatNumber)}
+                        id="ai-phone"
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        value={values.phone}
+                        onChange={(e) => setValue('phone', e.target.value)}
+                        placeholder={d.step3.fields.phone.placeholder}
+                        className={inputClass(!!errors.phone)}
                       />
-                      <span
-                        id="ai-vat-helper"
-                        className="font-sans text-[11px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-grey"
-                      >
-                        {d.step3.fields.vatNumber.helper}
-                      </span>
-                      {errors.vatNumber && (
+                      {errors.phone && (
                         <span role="alert" className={errorClass}>
-                          {errors.vatNumber}
+                          {errors.phone}
                         </span>
                       )}
                     </div>
@@ -484,8 +457,13 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
                       value={values.website}
                       onChange={(e) => setValue('website', e.target.value)}
                       placeholder={d.step3.fields.website.placeholder}
-                      className={inputClass(false)}
+                      className={inputClass(!!errors.website)}
                     />
+                    {errors.website && (
+                      <span role="alert" className={errorClass}>
+                        {errors.website}
+                      </span>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-[2px]">
