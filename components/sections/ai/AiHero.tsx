@@ -31,25 +31,15 @@ export default function AiHero({ locale = 'it' }: { locale?: Locale }) {
           <span className="block">
             {d.titleLine2Pre}
             <em className="font-serif italic font-semibold">{d.titleEm1}</em>
-            {d.titleMid1}
+            {d.titleMid}
             <em className="font-serif italic font-semibold">{d.titleEm2}</em>
-            {d.titleMid2}
-            <em className="font-serif italic font-semibold">{d.titleEm3}</em>
             {d.titleEnd}
           </span>
         </h1>
 
-        {/* Lead line (larger than the description) */}
-        <p className="relative z-[1] w-full max-w-[820px] text-center font-sans text-[16px] font-semibold leading-[1.45em] tracking-[-0.02em] text-np-dark min-[810px]:text-[20px]">
+        {/* Lead line: the single supporting paragraph (how + who + objection) */}
+        <p className="relative z-[1] w-full max-w-[760px] text-center font-sans text-[16px] font-medium leading-[1.45em] tracking-[-0.02em] text-np-dark min-[810px]:text-[19px]">
           {d.leadLine}
-        </p>
-
-        {/* Subtitle */}
-        <p
-          className="relative z-[1] w-full max-w-[840px] text-center font-sans text-[14.4px] font-medium leading-[1.4em] tracking-[-0.02em] text-[#181818] min-[810px]:text-[18px]"
-          style={{ wordBreak: 'break-word', wordWrap: 'break-word' }}
-        >
-          {d.subtitle}
         </p>
 
         {/* Micro-benefits */}

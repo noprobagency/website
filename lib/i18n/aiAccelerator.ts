@@ -1,16 +1,18 @@
 import type { Locale } from '@/lib/i18n'
 
 /**
- * Copy module for the "AI Accelerator" landing page (v2, B2B positioning).
+ * Copy module for the "AI Accelerator" landing page (v4, compressed copy).
  * Routes: it -> /it/ai-accelerator, en -> /ai-accelerator.
  *
  * Follows the same convention as `lib/i18n/migrazione.ts`: a typed,
  * locale-keyed object consumed through a `get*` accessor, isolated from the
  * shared dictionary. Only `seo.aiAccelerator` lives in `lib/i18n/index.ts`.
  *
- * IT copy rules (v2): no "business" (use azienda/attività/eCommerce),
+ * IT copy rules: no "business" (use azienda/attività/eCommerce),
  * "call" -> "videochiamate" (only exception: "pre-call"), "noi" voice
- * everywhere except "Chi ti segue" (third person).
+ * everywhere except "Chi ti segue" (third person). The qualification is
+ * worded qualitatively ("già avviati, con fatturato consolidato"), never as
+ * a raw revenue figure.
  */
 
 /** Feature flag: show the "NEW" badge next to the AI Accelerator nav item. */
@@ -24,13 +26,10 @@ export type AiCopy = {
     titleLine1: string
     titleLine2Pre: string
     titleEm1: string
-    titleMid1: string
+    titleMid: string
     titleEm2: string
-    titleMid2: string
-    titleEm3: string
     titleEnd: string
     leadLine: string
-    subtitle: string
     benefits: string[]
     cta: string
     ctaNote: string
@@ -170,8 +169,8 @@ export type AiCopy = {
     continue: string
     step1: {
       title: string
-      qRevenue: { label: string; helper: string; options: string[] }
-      qBusiness: QuestionCards
+      /** `notice` is the qualification line shown in red under the question. */
+      qBusiness: QuestionCards & { notice: string }
       qRole: QuestionCards
     }
     step2: { title: string; qUsage: QuestionCards; qPain: { label: string; placeholder: string } }
@@ -202,8 +201,6 @@ export type AiCopy = {
     errorGeneric: string
     errorNetwork: string
     success: { title: string; text: string }
-    /** Under-threshold block shown when monthly revenue is below the minimum. */
-    dq: { title: string; text: string; blogCta: string; blogHref: string; back: string }
   }
   finalCta: { heading: string; text: string; cta: string }
   sticky: { priceLine: string; cta: string }
@@ -211,23 +208,18 @@ export type AiCopy = {
 
 const it: AiCopy = {
   hero: {
-    eyebrow: 'AI Accelerator · Percorso one-to-one di 30 giorni per aziende ed eCommerce',
-    titleLine1: 'Smetti di rincorrere tool e novità.',
-    titleLine2Pre: 'In 30 giorni sai come usare l’AI per ',
+    eyebrow: 'AI Accelerator · 30 giorni one-to-one per aziende ed eCommerce',
+    titleLine1: 'Smetti di rincorrere tool.',
+    titleLine2Pre: 'In 30 giorni portiamo l’AI dove ti fa ',
     titleEm1: 'risparmiare tempo',
-    titleMid1: ', ',
-    titleEm2: 'acquisire clienti',
-    titleMid2: ' e ',
-    titleEm3: 'vendere di più',
+    titleMid: ' e ',
+    titleEm2: 'vendere di più',
     titleEnd: '.',
     leadLine:
-      'Ogni settimana esce un modello nuovo. Noi facciamo il contrario: studiamo la tua azienda one-to-one e costruiamo un piano AI su misura, sull’obiettivo che conta per te: tempo, clienti o fatturato.',
-    subtitle:
-      'Non un corso, non un guru, non un altro abbonamento. Un mese di lavoro one-to-one sulla tua azienda, con chi lo fa di mestiere ogni giorno. Analizziamo acquisizione, vendite, processi e strumenti, poi decidiamo insieme quali soluzioni AI adottare, in che ordine e con quale obiettivo. Prima il contesto, poi gli strumenti.',
+      'Lavoriamo one-to-one sulla tua azienda: analizziamo vendite, acquisizione e processi, mettiamo in fila le priorità e attiviamo con te le prime soluzioni AI. Niente corsi, niente abbonamenti.',
     benefits: ['One-to-one, su misura', '4 videochiamate in 30 giorni', 'Prezzo fisso, zero vincoli'],
     cta: 'Candida la tua azienda',
-    ctaNote:
-      'Per aziende ed eCommerce già avviati, con almeno €30.000 di fatturato al mese. Valutiamo ogni candidatura.',
+    ctaNote: 'Solo aziende ed eCommerce già avviati. Valutiamo ogni candidatura.',
     trustRatingLabel: '4,9',
     trustLine: 'Scelti da brand eCommerce, aziende e team marketing',
   },
@@ -237,57 +229,49 @@ const it: AiCopy = {
     headingEm: 'nessun sistema',
     headingEnd: '.',
     intro:
-      'Ogni settimana esce un tool nuovo, ogni giorno qualcuno ti spiega che sei in ritardo. Intanto il tempo passa, il team fa le stesse cose a mano e l’AI resta un esperimento. Il problema non è la mancanza di strumenti: è l’eccesso.',
+      'Ogni settimana esce un tool nuovo. Intanto il team fa ancora tutto a mano e l’AI resta un esperimento. Il problema non è la mancanza di strumenti: è l’eccesso.',
     items: [
       {
         title: 'Sovraccarico di informazioni',
-        description:
-          'Video, newsletter, thread, corsi. Mille consigli che si contraddicono e nessun punto di partenza. Più studi, più sei confuso.',
+        description: 'Mille consigli che si contraddicono e nessun punto di partenza.',
       },
       {
         title: 'Tool provati e abbandonati',
-        description:
-          'Abbonamenti attivati con entusiasmo e lasciati lì dopo due settimane. Ogni tool risolve un pezzo, nessuno parla con l’altro.',
+        description: 'Abbonamenti attivati e dimenticati. Ognuno risolve un pezzo, nessuno parla con l’altro.',
       },
       {
         title: 'Tempo perso in attività ripetitive',
-        description:
-          'Preventivi, report, contenuti, email, passaggi manuali. Il team è sommerso da lavoro che una macchina potrebbe fare in minuti.',
+        description: 'Preventivi, report, email: lavoro che una macchina fa in pochi minuti.',
       },
       {
         title: 'Consulenti poco trasparenti',
-        description:
-          'Prezzi fuori scala, nessuna referenza, promesse vaghe. Hai paura di spendere e ritrovarti con un PDF generico e nessun risultato.',
+        description: 'Prezzi fuori scala, promesse vaghe e alla fine un PDF generico.',
       },
     ],
   },
   solution: {
     label: 'la soluzione',
-    headingPart1: 'Un partner, ',
+    headingPart1: 'Un partner AI, ',
     headingEm: 'non un guru',
     headingEnd: '.',
     intro:
-      'Non ti insegniamo cose che potresti studiare da solo e non ti riempiamo di tool strani. Entriamo nella tua azienda: studiamo dati, processi e come funziona ogni area, poi costruiamo il piano per portare l’AI nei processi giusti. Per velocizzarli, automatizzarli o standardizzarli, con un obiettivo preciso: un risultato misurabile in tempo o in soldi.',
+      'Entriamo nella tua azienda, studiamo dati e processi e portiamo l’AI dove genera un risultato misurabile: tempo recuperato o fatturato in più.',
     items: [
       {
         title: 'Contesto prima dei tool',
-        description:
-          'L’AI senza contesto produce risposte generiche. Partiamo da come funziona la tua azienda (offerta, clienti, acquisizione, vendite, processi) e solo dopo scegliamo gli strumenti.',
+        description: 'Partiamo da offerta, clienti e processi. Solo dopo scegliamo gli strumenti.',
       },
       {
-        title: 'Dati e processi, non teoria',
-        description:
-          'Guardiamo i tuoi numeri, i tuoi strumenti e il lavoro reale del team, settimana dopo settimana. Ogni scelta nasce da quello che vediamo, non da una tendenza.',
+        title: 'Dati, non teoria',
+        description: 'Ogni scelta nasce dai tuoi numeri e dal lavoro reale del team, non da una tendenza.',
       },
       {
-        title: 'Marketing, vendite, tech e AI insieme',
-        description:
-          'Un solo partner che conosce acquisizione, sito, dati, tracciamenti e automazioni. Niente tre fornitori che non si parlano.',
+        title: 'Marketing, vendite e AI insieme',
+        description: 'Un solo partner per acquisizione, sito, dati e automazioni.',
       },
       {
         title: 'Autonomia, non dipendenza',
-        description:
-          'A fine mese il tuo team sa andare avanti da solo, con priorità chiare, procedure scritte e un documento di contesto che resta a te.',
+        description: 'A fine mese il team va avanti da solo, con priorità chiare e procedure scritte.',
       },
     ],
   },
@@ -296,23 +280,22 @@ const it: AiCopy = {
     headingPart1: 'Per chi usa l’AI, ma ',
     headingEm: 'non di mestiere',
     headingEnd: '.',
-    intro:
-      'Il tuo lavoro non è studiare ogni settimana gli aggiornamenti dell’AI: è far crescere la tua azienda. Che tu sia già pratico o parta quasi da zero, l’AI deve lavorare per te, nei punti giusti.',
+    intro: 'Il tuo lavoro è far crescere l’azienda, non inseguire gli aggiornamenti dell’AI.',
     cards: [
       {
         title: 'Founder e titolari',
         description:
-          'Guidi un’azienda, un eCommerce avviato o una PMI. Usi ChatGPT o Claude a spot, senti che potresti fare molto di più ma non sai da dove partire. Vuoi più clienti e meno ore perse, non un nuovo hobby.',
+          'Guidi un’azienda o un eCommerce avviato. Usi l’AI a spot e sai che potresti farci molto di più: più clienti, meno ore perse.',
       },
       {
         title: 'Uffici marketing',
         description:
-          'Lavori nel marketing di un’azienda strutturata. Ti chiedono di “integrare l’AI”, ma nessuno ti ha detto come. Vuoi un metodo chiaro, strumenti scelti con criterio e processi che il team possa seguire.',
+          'Ti hanno chiesto di “integrare l’AI” senza dirti come. Ti servono un metodo e processi che tutto il team possa seguire.',
       },
     ],
     notForTitle: 'Non fa per te se…',
     notForItems: [
-      'sei una startup, un privato o fatturi meno di €30.000 al mese',
+      'sei una startup, un privato o un progetto ancora in fase di lancio',
       'cerchi il “prompt magico” che risolve tutto',
       'vuoi un corso generico uguale per tutti',
       'vuoi delegare tutto senza coinvolgere il team',
@@ -323,18 +306,15 @@ const it: AiCopy = {
     steps: [
       {
         title: 'Candidatura e pre-call',
-        description:
-          'Ci racconti la tua azienda o il tuo eCommerce e cosa vuoi ottenere. Lavoriamo solo con aziende ed eCommerce già avviati, con almeno €30.000 di fatturato al mese: valutiamo ogni candidatura e, se c’è fit, ti confermiamo una pre-call di 40 minuti per analizzare il bisogno e capire insieme se il percorso è quello giusto.',
+        description: 'Ci racconti la tua azienda. Se c’è fit, fissiamo una pre-call gratuita di 40 minuti.',
       },
       {
         title: 'Kick-off',
-        description:
-          'Prima videochiamata fissata: impostiamo il mese (calendario delle 4 videochiamate, accessi agli strumenti, task manager condiviso) e iniziamo a esplorare l’azienda.',
+        description: 'Calendario delle videochiamate, accessi e task manager condiviso: il mese parte.',
       },
       {
-        title: 'Partenza',
-        description:
-          '4 settimane di lavoro one-to-one, una videochiamata a settimana, con contatto diretto nel mezzo.',
+        title: '4 settimane one-to-one',
+        description: 'Una videochiamata a settimana, contatto diretto nel mezzo.',
       },
     ],
   },
@@ -344,10 +324,10 @@ const it: AiCopy = {
     headingEm: 'fare chiarezza',
     headingEnd: '.',
     intro:
-      '4 videochiamate da circa 60 minuti, una a settimana. Ogni videochiamata scava un’area, raccoglie dati e porta al livello successivo. In mezzo: contatto diretto via email e messaggi e un task manager condiviso.',
+      '4 videochiamate da 60 minuti, una a settimana. In mezzo, contatto diretto e un task manager condiviso.',
     goalBox: {
       title: 'L’obiettivo del mese',
-      text: 'Mappare tutta la tua attività (numeri, KPI, processi e opportunità), metterla in ordine di priorità insieme a te e trovare il primo collo di bottiglia da attaccare con l’AI. La soluzione può essere un processo automatico, un messaggio automatico o un intervento tecnico: lo decidiamo quando le priorità sono chiare. Prima capiamo cosa conta, poi agiamo.',
+      text: 'Mappare numeri, processi e opportunità, metterli in ordine di priorità con te e attaccare con l’AI il primo collo di bottiglia. Prima capiamo cosa conta, poi agiamo.',
     },
     phaseLabel: 'Fase',
     phases: [
@@ -356,44 +336,42 @@ const it: AiCopy = {
         title: 'Contesto e obiettivi',
         week: 'Settimana 1',
         description:
-          'Costruiamo il quadro completo della tua azienda o del tuo eCommerce: modello, offerta, clienti ideali, team e ruoli, numeri e KPI, obiettivi a 6-12 mesi e uso attuale dell’AI. Prima della videochiamata compili un breve questionario e ci dai gli accessi principali. Dopo, il team annota per 5 giorni le attività ripetitive e il tempo che richiedono: è la base per misurare il tempo che recuperiamo.',
+          'Modello, offerta, clienti, team, KPI e obiettivi a 6-12 mesi. Per 5 giorni il team annota le attività ripetitive: è la base per misurare il tempo recuperato.',
         outputLabel: 'Output',
-        output: 'Mappa dell’azienda, KPI di partenza e prima bozza del Context Document.',
+        output: 'Mappa dell’azienda e prima bozza del Context Document.',
       },
       {
         number: '02',
         title: 'Acquisizione, vendite e retention',
         week: 'Settimana 2',
-        description:
-          'Capiamo come arrivano oggi i clienti, come comprano e come tornano, e dove si perdono opportunità: canali attivi e storico dei risultati, posizionamento e comunicazione, sito, tracciamenti e dati, processo commerciale, fidelizzazione e clienti di ritorno.',
+        description: 'Come arrivano i clienti, come comprano, come tornano e dove si perdono opportunità.',
         outputLabel: 'Output',
-        output: 'Diagnosi di acquisizione, vendite e retention, con opportunità e aree critiche.',
+        output: 'Diagnosi con opportunità e aree critiche.',
       },
       {
         number: '03',
         title: 'Operatività e AI',
         week: 'Settimana 3',
         description:
-          'Troviamo dove si perde tempo e dove l’AI porta un vantaggio concreto: processi chiave (preventivi, gestione clienti, contenuti, customer care, reportistica), strumenti in uso, cosa adottare e cosa evitare. Parte pratica: in videochiamata impostiamo insieme fino a 2 quick win scelte tra quelle a maggiore impatto.',
+          'Dove si perde tempo e dove l’AI porta un vantaggio concreto. In videochiamata attiviamo insieme fino a 2 quick win.',
         outputLabel: 'Output',
-        output: 'Mappa dei colli di bottiglia, strumenti consigliati, prime soluzioni AI già attive.',
+        output: 'Colli di bottiglia, strumenti consigliati, prime soluzioni AI attive.',
       },
       {
         number: '04',
         title: 'Priorità e roadmap',
         week: 'Settimana 4',
         description:
-          'Mettiamo tutto in fila nel documento finale: tutte le opportunità e tutto ciò che si può implementare con l’AI, in ordine di impatto e impegno, con la roadmap a 90 giorni, i protocolli operativi e il Context Document. Da qui sei autonomo: puoi andare avanti da solo. Continuare a lavorare insieme è un’opzione, non un obbligo.',
+          'Tutto in un documento finale: opportunità in ordine di impatto, roadmap a 90 giorni, protocolli e Context Document. Da qui sei autonomo.',
         outputLabel: 'Output',
-        output: 'Documento delle priorità, roadmap a 90 giorni, protocolli e Context Document.',
+        output: 'Documento delle priorità, roadmap, protocolli e Context Document.',
       },
     ],
     note: {
       title: 'Perché un mese e non una videochiamata?',
-      text: 'Perché per portare l’AI nei punti giusti dobbiamo conoscere davvero la tua azienda: entrare nei suoi meccanismi, vedere settimana dopo settimana cosa cambia, cosa c’è e cosa manca. Nel mese ci sono piccoli compiti interni e piccoli test sul campo. L’implementazione è la parte veloce: il tempo serve a lavorare in sintonia con il tuo team e a capire cosa conta davvero. Più fino a 2 videochiamate extra, se servono.',
+      text: 'Perché i punti giusti per l’AI si trovano solo vedendo l’azienda lavorare, settimana dopo settimana. L’implementazione è la parte veloce.',
     },
-    tagline:
-      'Non ti lasciamo una lista di tool. Ti lasciamo priorità chiare e un sistema per andare avanti da solo.',
+    tagline: 'Non ti lasciamo una lista di tool. Ti lasciamo un sistema.',
   },
   deliverables: {
     label: 'cosa ricevi',
@@ -404,21 +382,19 @@ const it: AiCopy = {
       {
         title: 'Documento delle priorità e roadmap',
         description:
-          'Il documento finale del percorso: situazione di ogni area, colli di bottiglia e tempo recuperabile, tutte le opportunità e tutto ciò che si può implementare con l’AI in ordine di impatto e impegno, strumenti consigliati e da evitare con costi indicativi, rischi su dati e privacy, roadmap a 90 giorni con priorità e responsabili, KPI da monitorare.',
+          'Ogni area analizzata, colli di bottiglia, opportunità in ordine di impatto, strumenti da usare ed evitare con i costi, roadmap a 90 giorni e KPI.',
       },
       {
         title: 'Protocolli operativi',
-        description:
-          'Procedure passo per passo per le attività prioritarie: cosa fare, con quale strumento, con quali istruzioni (prompt) e come verificare il risultato. Diventano parte dei tuoi processi e tutto il team lavora allo stesso modo.',
+        description: 'Procedure passo per passo con strumenti, prompt e controlli. Tutto il team lavora allo stesso modo.',
       },
       {
         title: 'Context Document aziendale',
         description:
-          'Il documento che descrive la tua azienda (offerta, clienti, tono di voce, processi, numeri) strutturato per ChatGPT, Claude e simili. Trasforma risposte generiche in risposte su misura, e lo usi ogni giorno, anche dopo di noi.',
+          'La tua azienda descritta per ChatGPT, Claude e simili: risposte su misura, non generiche. Resta a te.',
       },
     ],
-    extra:
-      'In più: le prime soluzioni AI (fino a 2 quick win) impostate insieme durante il mese, già attive nel lavoro quotidiano. E alla fine sei autonomo: continuare insieme è un’opzione, non un obbligo.',
+    extra: 'In più: fino a 2 quick win già attive nel lavoro quotidiano.',
   },
   scope: {
     headingPart1: 'Chiaro fin dall’inizio: ',
@@ -426,37 +402,35 @@ const it: AiCopy = {
     headingEnd: '.',
     includedTitle: 'Incluso',
     included: [
-      '4 videochiamate da circa 60 minuti + fino a 2 videochiamate extra',
-      'Contatto diretto via email e messaggi per 30 giorni, risposta entro 1 giorno lavorativo',
-      'Task manager condiviso e riepilogo scritto dopo ogni videochiamata',
-      'Analisi dell’azienda: acquisizione, sito e dati, processi e strumenti',
+      '4 videochiamate da 60 minuti + fino a 2 extra',
+      'Contatto diretto per 30 giorni, risposta entro 1 giorno lavorativo',
+      'Task manager condiviso e riepilogo dopo ogni videochiamata',
       'Fino a 2 quick win impostate insieme',
-      'Documento delle priorità, protocolli operativi e Context Document, che restano tuoi',
+      'Documento delle priorità, protocolli e Context Document, che restano tuoi',
     ],
     excludedTitle: 'Non incluso',
     excluded: [
-      'Sviluppo di siti, software o automazioni oltre le quick win',
+      'Sviluppo oltre le quick win',
       'Gestione delle campagne e budget pubblicitario',
-      'Produzione di contenuti (foto, video, testi)',
-      'Acquisto di licenze e abbonamenti AI',
-      'Corsi preregistrati o formazione generica',
+      'Produzione di contenuti',
+      'Licenze e abbonamenti AI',
+      'Corsi preregistrati',
     ],
-    note: 'Tutto ciò che emerge come prossimo passo lo valutiamo insieme, con una proposta separata e solo se ha senso.',
+    note: 'Ogni passo successivo lo valutiamo insieme, con una proposta separata.',
   },
   contrast: {
     label: 'la differenza',
     headingPart1: 'Stessi strumenti. ',
     headingEm: 'Risultato opposto',
     headingEnd: '.',
-    intro: 'L’AI è la stessa per tutti. Cambia il modo in cui la usi.',
+    intro: 'L’AI è la stessa per tutti. Cambia come la usi.',
     left: {
       tag: '↓ AI senza contesto',
       items: [
         'Prompt generici, risposte generiche',
         'Un tool diverso per ogni problema',
-        'Abbonamenti che si accumulano',
         'Ognuno nel team fa a modo suo',
-        'Tempo speso a sperimentare, non a produrre',
+        'Tempo speso a sperimentare',
       ],
     },
     right: {
@@ -464,12 +438,11 @@ const it: AiCopy = {
       items: [
         'Il Context Document guida ogni risposta',
         'Pochi strumenti, scelti per un motivo',
-        'Costi sotto controllo',
         'Procedure condivise da tutto il team',
-        'Ore recuperate ogni settimana, reinvestite in clienti',
+        'Ore recuperate ogni settimana',
       ],
     },
-    closing: 'Stesso punto di partenza. Esito opposto. La differenza è il metodo.',
+    closing: 'Stessa AI. La differenza è il metodo.',
   },
   who: {
     label: 'chi ti segue',
@@ -477,9 +450,9 @@ const it: AiCopy = {
     headingEm: 'dall’inizio alla fine',
     headingEnd: '.',
     text1:
-      'Antonio Manitta, fondatore di NoProb Agency. Nasce sviluppatore (laurea in Informatica), diventa eCommerce manager e oggi guida un’agenzia che costruisce e fa crescere eCommerce e aziende in settori molto diversi: moda di lusso, food, integratori, B2B industriale. Usa l’AI ogni giorno per far lavorare agenti, dashboard e processi della propria agenzia.',
+      'Antonio Manitta, fondatore di NoProb Agency. Sviluppatore di formazione (laurea in Informatica), poi eCommerce manager, oggi guida un’agenzia che fa crescere aziende ed eCommerce nella moda di lusso, nel food, negli integratori e nel B2B industriale.',
     text2:
-      'È questa visione a 360° (acquisizione, vendite, tecnologia, dati e AI) che permette di capire dove l’AI va implementata subito e dove invece serve ancora una persona.',
+      'Usa l’AI ogni giorno per far lavorare agenti, dashboard e processi: sa dove va implementata subito e dove serve ancora una persona.',
     imageAlt: 'Antonio Manitta, fondatore di NoProb Agency',
   },
   caseStudyHeading: {
@@ -493,142 +466,115 @@ const it: AiCopy = {
     headingEm: 'Nessun conteggio a ore',
     headingEnd: '.',
     intro:
-      'A ore si contano i minuti e si evita di fare domande. Con un prezzo fisso usi il percorso fino in fondo e sai dall’inizio quanto investi. Il prezzo sale man mano che il metodo si consolida con nuovi clienti: chi entra ora blocca la tariffa.',
+      'Sai dall’inizio quanto investi e usi il percorso fino in fondo. Il prezzo sale con i nuovi clienti: chi entra ora blocca la tariffa.',
     tiers: [
       { price: '€750', slot: 'Fase MVP · Primi clienti pilota', tag: 'Chiuso', state: 'completed' },
       { price: '€1.100', slot: 'Post-MVP · Fino al 15° cliente', tag: 'Disponibile ora', state: 'current' },
       { price: '€2.500', slot: 'Clienti 16-30', tag: 'Prossimo scaglione', state: 'upcoming' },
       { price: '€4.000', slot: 'Dal 31° in poi', tag: 'Prezzo a regime', state: 'upcoming' },
     ],
-    tiersNote:
-      'Ogni percorso aggiunge metodo, modelli ed esperienza: è il valore di chi entra dopo. Nessun countdown: lo slot resta tuo finché c’è.',
+    tiersNote: 'Nessun countdown: lo slot resta tuo finché c’è.',
     card: {
       title: 'AI Accelerator',
       subtitle:
         'Il percorso one-to-one di 30 giorni: priorità, roadmap e prime soluzioni AI attive. Un solo interlocutore.',
       features: ['4 videochiamate + fino a 2 extra', '3 deliverable che restano tuoi', '2 quick win impostate insieme'],
       badge:
-        'Zero rischio d’ingresso: pre-call gratuita, prezzo fisso, nessun rinnovo automatico. Paghi il 50% alla firma e il 50% alla consegna.',
+        'Zero rischio d’ingresso: pre-call gratuita, prezzo fisso, nessun rinnovo automatico. 50% alla firma, 50% alla consegna.',
       price: '€1.100',
       priceSuffix: 'una tantum',
       priceNote: '€550 alla firma + €550 alla consegna',
       cta: 'Candida la tua azienda',
     },
     trustLine: 'Leggiamo ogni candidatura e rispondiamo entro 1 giorno lavorativo.',
-    trustLine2: 'Solo aziende ed eCommerce con almeno €30.000 di fatturato al mese.',
+    trustLine2: 'Solo aziende ed eCommerce già avviati, con fatturato consolidato.',
   },
   after: {
     label: 'e dopo?',
     headingPart1: 'Il mese finisce. ',
     headingEm: 'Il percorso no',
     headingEnd: '.',
-    intro:
-      'AI Accelerator è l’audit iniziale: mette ordine, toglie il superfluo e ti fa lavorare solo su ciò che serve davvero. Dopo, sei autonomo. Se vuoi, andiamo avanti insieme.',
+    intro: 'L’audit non ti lega a niente: alla fine sei autonomo. Se vuoi, andiamo avanti insieme.',
     cards: [
       {
         title: 'Autonomia',
-        description:
-          'Hai roadmap, protocolli e Context Document: il tuo team applica il piano da solo. Nessun vincolo, nessun rinnovo automatico.',
+        description: 'Roadmap, protocolli e Context Document: il team applica il piano da solo.',
       },
       {
         title: 'Affiancamento continuo',
         description:
-          'Restiamo al tuo fianco mese per mese: videochiamate periodiche, aggiornamenti sui nuovi strumenti che contano davvero, supporto quando serve e revisione della roadmap. L’AI cambia ogni mese: tu resti aggiornato senza inseguirla.',
+          'Videochiamate periodiche, nuovi strumenti che contano e revisione della roadmap. Resti aggiornato senza inseguire l’AI.',
       },
       {
         title: 'Implementazione',
         description:
-          'Automazioni, agenti AI, sito, tracciamenti, campagne: se un intervento della roadmap richiede un team operativo, lo realizziamo noi con una proposta dedicata.',
+          'Automazioni, agenti AI, sito, tracciamenti: se la roadmap richiede un team operativo, lo realizziamo noi.',
       },
     ],
-    note: 'Le opzioni 2 e 3 sono su proposta, definite insieme nella videochiamata finale in base a ciò che è emerso.',
+    note: 'Le opzioni 2 e 3 sono su proposta, dopo la videochiamata finale.',
   },
   testimonialsHeading: 'Scelti da imprenditori affermati',
   faq: {
     label: 'domande frequenti',
     heading: 'Le risposte alle ',
     headingEm: 'domande più comuni',
-    subheading: 'Le domande più comuni prima di partire. Senza giri di parole.',
+    subheading: 'Senza giri di parole.',
     items: [
       {
         question: 'Lavorate anche con startup o privati?',
         answer:
-          'No. Lavoriamo con aziende ed eCommerce già avviati, con almeno €30.000 di fatturato al mese e processi da migliorare. Sotto questa soglia l’investimento difficilmente si ripaga: per questo valutiamo ogni candidatura prima della pre-call.',
+          'No. Solo aziende ed eCommerce già avviati, con fatturato consolidato e processi da migliorare. Per questo valutiamo ogni candidatura.',
       },
       {
         question: 'Serve essere tecnici?',
-        answer:
-          'No. Il percorso si adatta al tuo livello: se sei già pratico ottieni metodo e priorità, se parti da zero una base solida. Documento e protocolli sono scritti per essere compresi da chiunque.',
+        answer: 'No. Il percorso si adatta al tuo livello e documento e protocolli sono scritti per chiunque.',
       },
       {
         question: 'In 30 giorni vedo già un risultato?',
         answer:
-          'L’obiettivo del mese è trovare il primo collo di bottiglia e attaccarlo con le prime soluzioni AI, impostate insieme. Se una soluzione richiede sviluppo più ampio, la mettiamo in roadmap con tempi e costi chiari.',
-      },
-      {
-        question: 'Perché un prezzo fisso e non a ore?',
-        answer:
-          'A ore si contano i minuti e si evita di fare domande. Con un prezzo fisso il team usa il percorso fino in fondo e tu sai dall’inizio quanto investi.',
-      },
-      {
-        question: 'È un corso?',
-        answer:
-          'No. Non ci sono lezioni preregistrate né contenuti uguali per tutti. Lavoriamo sulla tua azienda, sui tuoi numeri e sui tuoi processi.',
+          'L’obiettivo del mese è attaccare il primo collo di bottiglia con le prime soluzioni AI. Ciò che richiede sviluppo più ampio va in roadmap, con tempi e costi chiari.',
       },
       {
         question: 'Quali strumenti di AI usate?',
-        answer:
-          'Quelli giusti per il tuo caso. Non siamo legati a nessun fornitore: valutiamo ciò che usi già e consigliamo solo ciò che serve, dicendoti anche cosa evitare.',
+        answer: 'Quelli giusti per il tuo caso. Non siamo legati a nessun fornitore e ti diciamo anche cosa evitare.',
       },
       {
         question: 'Funziona anche se non ho un eCommerce?',
-        answer:
-          'Sì. Il metodo vale per qualsiasi azienda già avviata con un’attività di marketing: servizi, agenzie, studi, PMI. Cambiano le aree su cui scaviamo, non il metodo.',
+        answer: 'Sì. Vale per qualsiasi azienda avviata con attività di marketing: servizi, agenzie, studi, PMI.',
       },
       {
-        question: 'Chi deve partecipare alle videochiamate?',
+        question: 'Quanto tempo serve e chi partecipa?',
         answer:
-          'Chi prende le decisioni e chi lavora ogni giorno sulle aree che analizziamo. Di solito 1-3 persone: founder, responsabile marketing, una figura operativa.',
-      },
-      {
-        question: 'Quanto tempo devo dedicarci?',
-        answer:
-          'Circa 1 ora di videochiamate a settimana, più 1-2 ore per questionario, accessi e le attività da annotare. Il lavoro di analisi lo facciamo noi.',
+          'Circa 1 ora di videochiamata a settimana più 1-2 ore di compiti; l’analisi la facciamo noi. Di solito partecipano 1-3 persone: chi decide e chi lavora sulle aree analizzate.',
       },
       {
         question: 'I nostri dati sono al sicuro?',
         answer:
-          'Sì. Gli accessi servono solo per l’analisi, senza modifiche non concordate, e tutto è coperto da riservatezza contrattuale. Nel report ti indichiamo anche quali dati è meglio non inserire negli strumenti AI.',
+          'Sì. Gli accessi servono solo all’analisi, senza modifiche non concordate, con riservatezza contrattuale.',
       },
       {
-        question: 'Lavoriamo già con un’agenzia o un consulente: ha senso?',
-        answer:
-          'Sì. L’audit ti dà una visione indipendente e una roadmap che puoi condividere con i fornitori attuali.',
+        question: 'Lavoriamo già con un’agenzia: ha senso?',
+        answer: 'Sì. Ottieni una visione indipendente e una roadmap da condividere con i fornitori attuali.',
       },
       {
         question: 'Cosa succede dopo il mese?',
         answer:
-          'Sei autonomo: hai priorità, roadmap e protocolli per andare avanti da solo. Se vuoi, puoi scegliere l’affiancamento continuo o l’implementazione di interventi specifici. Nessun rinnovo automatico: decidi tu, alla fine.',
+          'Sei autonomo. Se vuoi, scegli l’affiancamento continuo o l’implementazione. Nessun rinnovo automatico.',
       },
     ],
   },
   form: {
     title: 'AI Accelerator',
-    subtitle:
-      '3 passaggi, 2 minuti. Per aziende ed eCommerce con almeno €30.000 di fatturato al mese. Investimento: €1.100, prezzo fisso.',
+    subtitle: '3 passaggi, 2 minuti. Investimento: €1.100, prezzo fisso.',
     stepLabel: 'Passaggio',
     back: '← Indietro',
     continue: 'Avanti',
     step1: {
       title: 'Di cosa si tratta?',
-      qRevenue: {
-        label: 'Qual è il fatturato mensile della tua attività?',
-        helper:
-          'Lavoriamo solo con aziende ed eCommerce che fatturano almeno €30.000 al mese (circa €360.000 l’anno). Sotto questa soglia non possiamo prendere in carico la candidatura.',
-        options: ['Meno di €30.000', '€30.000 – €100.000', '€100.000 – €300.000', 'Oltre €300.000'],
-      },
       qBusiness: {
         label: 'Che tipo di attività è?',
+        notice:
+          'Lavoriamo esclusivamente con aziende ed eCommerce già avviati, con fatturato consolidato. Non prendiamo in considerazione startup o progetti in fase di lancio.',
         options: ['eCommerce', 'Attività online o servizi', 'Azienda / PMI', 'Agenzia o freelance'],
       },
       qRole: {
@@ -682,17 +628,10 @@ const it: AiCopy = {
       title: 'Candidatura ricevuta ⚡',
       text: 'Grazie. Valutiamo la tua candidatura entro 1 giorno lavorativo. Se c’è fit, ti mandiamo via email il link per fissare la pre-call di 40 minuti.',
     },
-    dq: {
-      title: 'Per ora AI Accelerator non fa per te',
-      text: 'Il percorso è pensato per aziende ed eCommerce con almeno €30.000 di fatturato al mese: sotto questa soglia l’investimento difficilmente si ripaga. Nel frattempo trovi guide pratiche sul nostro blog.',
-      blogCta: 'Vai al blog',
-      blogHref: '/it/blog',
-      back: '← Ho sbagliato risposta',
-    },
   },
   finalCta: {
     heading: 'Pronto a mettere ordine nella tua azienda?',
-    text: '30 giorni, one-to-one, prezzo fisso. Per aziende ed eCommerce con almeno €30.000 di fatturato al mese.',
+    text: '30 giorni, one-to-one, prezzo fisso. Solo aziende ed eCommerce già avviati.',
     cta: 'Candida la tua azienda',
   },
   sticky: { priceLine: '€1.100 · 30 giorni', cta: 'Candida la tua azienda' },
@@ -700,23 +639,18 @@ const it: AiCopy = {
 
 const en: AiCopy = {
   hero: {
-    eyebrow: 'AI Accelerator · A 30-day one-to-one program for companies and eCommerce brands',
-    titleLine1: 'Stop chasing tools and hype.',
-    titleLine2Pre: 'In 30 days you’ll know how to use AI to ',
+    eyebrow: 'AI Accelerator · 30 days one-to-one for companies and eCommerce brands',
+    titleLine1: 'Stop chasing tools.',
+    titleLine2Pre: 'In 30 days we put AI where it helps you ',
     titleEm1: 'save time',
-    titleMid1: ', ',
-    titleEm2: 'win clients',
-    titleMid2: ' and ',
-    titleEm3: 'sell more',
+    titleMid: ' and ',
+    titleEm2: 'sell more',
     titleEnd: '.',
     leadLine:
-      'A new model launches every week. We do the opposite: we study your company one-to-one and build a tailored AI plan around the goal that matters to you: time, clients or revenue.',
-    subtitle:
-      'Not a course, not a guru, not another subscription. One month of one-to-one work on your company, with people who do this every day. We analyze acquisition, sales, processes and tools, then decide together which AI solutions to adopt, in what order and to what end. Context first, tools second.',
+      'We work one-to-one on your company: we analyze sales, acquisition and processes, rank the priorities and switch on your first AI solutions with you. No courses, no subscriptions.',
     benefits: ['One-to-one, tailored', '4 video calls in 30 days', 'Fixed price, no lock-in'],
     cta: 'Apply with your company',
-    ctaNote:
-      'For established companies and eCommerce brands with at least €30,000 in monthly revenue. We review every application.',
+    ctaNote: 'Established companies and eCommerce brands only. We review every application.',
     trustRatingLabel: '4.9',
     trustLine: 'Chosen by eCommerce brands, companies and marketing teams',
   },
@@ -726,57 +660,49 @@ const en: AiCopy = {
     headingEm: 'no system',
     headingEnd: '.',
     intro:
-      'A new tool launches every week, and every day someone tells you you’re falling behind. Meanwhile time goes by, your team still does the same things by hand and AI stays an experiment. The problem isn’t a lack of tools: it’s too many of them.',
+      'A new tool launches every week. Meanwhile your team still does everything by hand and AI stays an experiment. The problem isn’t a lack of tools: it’s too many of them.',
     items: [
       {
         title: 'Information overload',
-        description:
-          'Videos, newsletters, threads, courses. A thousand contradicting tips and no starting point. The more you study, the more confused you get.',
+        description: 'A thousand contradicting tips and no starting point.',
       },
       {
         title: 'Tools tried and abandoned',
-        description:
-          'Subscriptions started with enthusiasm and forgotten after two weeks. Each tool solves one piece, none of them talk to each other.',
+        description: 'Subscriptions started and forgotten. Each solves one piece, none talk to each other.',
       },
       {
         title: 'Time lost on repetitive work',
-        description:
-          'Quotes, reports, content, emails, manual handoffs. Your team is buried in work a machine could do in minutes.',
+        description: 'Quotes, reports, emails: work a machine does in minutes.',
       },
       {
         title: 'Opaque consultants',
-        description:
-          'Sky-high prices, no references, vague promises. You’re afraid of paying and ending up with a generic PDF and no results.',
+        description: 'Sky-high prices, vague promises and, in the end, a generic PDF.',
       },
     ],
   },
   solution: {
     label: 'the solution',
-    headingPart1: 'A partner, ',
+    headingPart1: 'An AI partner, ',
     headingEm: 'not a guru',
     headingEnd: '.',
     intro:
-      'We won’t teach you things you could learn on your own, and we won’t bury you in obscure tools. We step inside your company: we study data, processes and how every area works, then build the plan to bring AI into the right processes. To speed them up, automate them or standardize them, with one clear goal: a measurable result in time or money.',
+      'We step inside your company, study data and processes, and bring AI where it drives a measurable result: time saved or extra revenue.',
     items: [
       {
         title: 'Context before tools',
-        description:
-          'AI without context produces generic answers. We start from how your company works (offer, clients, acquisition, sales, processes) and only then choose the tools.',
+        description: 'We start from your offer, clients and processes. Only then do we pick the tools.',
       },
       {
-        title: 'Data and processes, not theory',
-        description:
-          'We look at your numbers, your tools and your team’s real work, week after week. Every choice comes from what we see, not from a trend.',
+        title: 'Data, not theory',
+        description: 'Every choice comes from your numbers and your team’s real work, not from a trend.',
       },
       {
-        title: 'Marketing, sales, tech and AI together',
-        description:
-          'One partner who knows acquisition, website, data, tracking and automation. No three vendors who never talk to each other.',
+        title: 'Marketing, sales and AI together',
+        description: 'One partner for acquisition, website, data and automation.',
       },
       {
         title: 'Autonomy, not dependency',
-        description:
-          'By the end of the month your team can move forward on its own, with clear priorities, written procedures and a context document that stays with you.',
+        description: 'By the end of the month your team moves on its own, with clear priorities and written procedures.',
       },
     ],
   },
@@ -785,23 +711,22 @@ const en: AiCopy = {
     headingPart1: 'For people who use AI, but ',
     headingEm: 'not for a living',
     headingEnd: '.',
-    intro:
-      'Your job isn’t keeping up with AI updates every week: it’s growing your company. Whether you’re already hands-on or starting almost from scratch, AI should work for you, in the right places.',
+    intro: 'Your job is growing your company, not keeping up with AI updates.',
     cards: [
       {
         title: 'Founders and owners',
         description:
-          'You run an established company or eCommerce brand, or an SME. You use ChatGPT or Claude here and there, you feel you could do much more but don’t know where to start. You want more clients and fewer wasted hours, not a new hobby.',
+          'You run an established company or eCommerce brand. You use AI here and there and know it could do much more: more clients, fewer wasted hours.',
       },
       {
         title: 'Marketing teams',
         description:
-          'You work in marketing at an established company. You’ve been asked to “integrate AI”, but nobody told you how. You want a clear method, carefully chosen tools and processes the whole team can follow.',
+          'You’ve been asked to “integrate AI” without being told how. You need a method and processes the whole team can follow.',
       },
     ],
     notForTitle: 'Not for you if…',
     notForItems: [
-      'you’re a startup, an individual, or your revenue is under €30,000 per month',
+      'you’re a startup, an individual or a project still in launch phase',
       'you’re looking for the “magic prompt” that fixes everything',
       'you want a one-size-fits-all course',
       'you want to hand everything off without involving your team',
@@ -812,17 +737,15 @@ const en: AiCopy = {
     steps: [
       {
         title: 'Application & intro call',
-        description:
-          'Tell us about your company or eCommerce brand and what you want to achieve. We only work with established companies and eCommerce brands with at least €30,000 in monthly revenue: we review every application and, if there’s a fit, confirm a 40-minute intro call to assess your needs and decide together whether the program is right for you.',
+        description: 'Tell us about your company. If there’s a fit, we book a free 40-minute intro call.',
       },
       {
         title: 'Kick-off',
-        description:
-          'First video call scheduled: we set up the month (calendar of the 4 video calls, tool access, shared task manager) and start exploring your company.',
+        description: 'Call calendar, tool access and a shared task manager: the month starts.',
       },
       {
-        title: 'Start',
-        description: '4 weeks of one-to-one work, one video call per week, with direct contact in between.',
+        title: '4 weeks one-to-one',
+        description: 'One video call per week, direct contact in between.',
       },
     ],
   },
@@ -831,11 +754,10 @@ const en: AiCopy = {
     headingPart1: '30 days to ',
     headingEm: 'get clarity',
     headingEnd: '.',
-    intro:
-      '4 video calls of about 60 minutes, one per week. Each call digs into one area, collects data and moves to the next level. In between: direct contact via email and messages, and a shared task manager.',
+    intro: '4 video calls of 60 minutes, one per week. In between, direct contact and a shared task manager.',
     goalBox: {
       title: 'The goal of the month',
-      text: 'Map your whole operation (numbers, KPIs, processes and opportunities), rank it by priority together with you and find the first bottleneck to tackle with AI. The solution may be an automated process, an automated message or a technical change: we decide once priorities are clear. First we understand what matters, then we act.',
+      text: 'Map numbers, processes and opportunities, rank them by priority with you and tackle the first bottleneck with AI. First we understand what matters, then we act.',
     },
     phaseLabel: 'Phase',
     phases: [
@@ -844,43 +766,42 @@ const en: AiCopy = {
         title: 'Context & goals',
         week: 'Week 1',
         description:
-          'We build the full picture of your company or eCommerce brand: model, offer, ideal clients, team and roles, numbers and KPIs, 6-12 month goals and current AI usage. Before the call you fill in a short questionnaire and share the main accesses. After it, your team logs repetitive tasks and the time they take for 5 days: that’s the baseline for measuring the time we win back.',
+          'Model, offer, clients, team, KPIs and 6-12 month goals. For 5 days your team logs repetitive tasks: the baseline for measuring the time we win back.',
         outputLabel: 'Output',
-        output: 'Company map, starting KPIs and first draft of the Context Document.',
+        output: 'Company map and first draft of the Context Document.',
       },
       {
         number: '02',
         title: 'Acquisition, sales & retention',
         week: 'Week 2',
-        description:
-          'We understand how clients find you today, how they buy and how they come back, and where opportunities are lost: active channels and past results, positioning and messaging, website, tracking and data, sales process, loyalty and repeat customers.',
+        description: 'How clients find you, how they buy, how they come back and where opportunities are lost.',
         outputLabel: 'Output',
-        output: 'Acquisition, sales and retention diagnosis, with opportunities and critical areas.',
+        output: 'Diagnosis with opportunities and critical areas.',
       },
       {
         number: '03',
         title: 'Operations & AI',
         week: 'Week 3',
         description:
-          'We find where time is lost and where AI brings a real advantage: key processes (quotes, client management, content, customer care, reporting), current tools, what to adopt and what to avoid. Hands-on part: during the call we set up together up to 2 quick wins chosen among the highest-impact ones.',
+          'Where time is lost and where AI brings a real advantage. During the call we switch on up to 2 quick wins together.',
         outputLabel: 'Output',
-        output: 'Bottleneck map, recommended tools, first AI solutions already running.',
+        output: 'Bottlenecks, recommended tools, first AI solutions running.',
       },
       {
         number: '04',
         title: 'Priorities & roadmap',
         week: 'Week 4',
         description:
-          'We put everything in order in the final document: every opportunity and everything that can be implemented with AI, ranked by impact and effort, with a 90-day roadmap, operating protocols and the Context Document. From here you’re autonomous: you can move forward on your own. Continuing together is an option, not an obligation.',
+          'Everything in one final document: opportunities ranked by impact, a 90-day roadmap, protocols and the Context Document. From here you’re autonomous.',
         outputLabel: 'Output',
-        output: 'Priority document, 90-day roadmap, protocols and Context Document.',
+        output: 'Priority document, roadmap, protocols and Context Document.',
       },
     ],
     note: {
       title: 'Why a month and not a single call?',
-      text: 'Because bringing AI into the right places means truly knowing your company: getting inside how it works, seeing week after week what changes, what’s there and what’s missing. The month includes small internal tasks and small field tests. Implementation is the fast part: the time is for working in sync with your team and understanding what really matters. Plus up to 2 extra video calls, if needed.',
+      text: 'Because the right places for AI only show up when you watch the company work, week after week. Implementation is the fast part.',
     },
-    tagline: 'We don’t leave you a list of tools. We leave you clear priorities and a system to move forward on your own.',
+    tagline: 'We don’t leave you a list of tools. We leave you a system.',
   },
   deliverables: {
     label: 'what you get',
@@ -891,21 +812,18 @@ const en: AiCopy = {
       {
         title: 'Priority document & roadmap',
         description:
-          'The program’s final document: status of every area, bottlenecks and recoverable time, every opportunity and everything that can be implemented with AI ranked by impact and effort, tools to use and to avoid with indicative costs, data and privacy risks, a 90-day roadmap with priorities and owners, KPIs to track.',
+          'Every area analyzed, bottlenecks, opportunities ranked by impact, tools to use and avoid with costs, a 90-day roadmap and KPIs.',
       },
       {
         title: 'Operating protocols',
-        description:
-          'Step-by-step procedures for priority tasks: what to do, with which tool, with which instructions (prompts) and how to check the result. They become part of your processes and the whole team works the same way.',
+        description: 'Step-by-step procedures with tools, prompts and checks. The whole team works the same way.',
       },
       {
         title: 'Company Context Document',
-        description:
-          'The document that describes your company (offer, clients, tone of voice, processes, numbers) structured for ChatGPT, Claude and similar tools. It turns generic answers into tailored ones, and you use it every day, even after we’re done.',
+        description: 'Your company described for ChatGPT, Claude and similar tools: tailored answers, not generic ones. It stays yours.',
       },
     ],
-    extra:
-      'Plus: your first AI solutions (up to 2 quick wins) set up together during the month, already running in your daily work. And by the end you’re autonomous: continuing together is an option, not an obligation.',
+    extra: 'Plus: up to 2 quick wins already running in your daily work.',
   },
   scope: {
     headingPart1: 'Clear from day one: ',
@@ -913,22 +831,21 @@ const en: AiCopy = {
     headingEnd: '.',
     includedTitle: 'Included',
     included: [
-      '4 calls of about 60 minutes + up to 2 extra calls',
-      'Direct contact via email and messages for 30 days, reply within 1 business day',
-      'Shared task manager and written recap after every call',
-      'Analysis of business, acquisition, website and data, processes and tools',
+      '4 calls of 60 minutes + up to 2 extra',
+      'Direct contact for 30 days, reply within 1 business day',
+      'Shared task manager and recap after every call',
       'Up to 2 quick wins set up together',
-      'Priority document, operating protocols and Context Document, which stay yours',
+      'Priority document, protocols and Context Document, which stay yours',
     ],
     excludedTitle: 'Not included',
     excluded: [
-      'Building websites, software or automations beyond the quick wins',
+      'Development beyond the quick wins',
       'Running ad campaigns and ad budget',
-      'Content production (photos, videos, copy)',
+      'Content production',
       'AI licenses and subscriptions',
-      'Pre-recorded courses or generic training',
+      'Pre-recorded courses',
     ],
-    note: 'Anything that comes up as a next step, we evaluate together, with a separate proposal and only if it makes sense.',
+    note: 'Every next step, we evaluate together with a separate proposal.',
   },
   contrast: {
     label: 'the difference',
@@ -941,9 +858,8 @@ const en: AiCopy = {
       items: [
         'Generic prompts, generic answers',
         'A different tool for every problem',
-        'Subscriptions piling up',
         'Everyone on the team does it their own way',
-        'Time spent experimenting, not producing',
+        'Time spent experimenting',
       ],
     },
     right: {
@@ -951,12 +867,11 @@ const en: AiCopy = {
       items: [
         'The Context Document guides every answer',
         'Few tools, each chosen for a reason',
-        'Costs under control',
         'Procedures shared by the whole team',
-        'Hours saved every week, reinvested in clients',
+        'Hours saved every week',
       ],
     },
-    closing: 'Same starting point. Opposite outcome. The difference is the method.',
+    closing: 'Same AI. The difference is the method.',
   },
   who: {
     label: 'who you’ll work with',
@@ -964,9 +879,9 @@ const en: AiCopy = {
     headingEm: 'from start to finish',
     headingEnd: '.',
     text1:
-      'Antonio Manitta, founder of NoProb Agency. He started as a developer (Computer Science degree), became an eCommerce manager and now runs an agency that builds and grows eCommerce brands and companies across very different industries: luxury fashion, food, supplements, industrial B2B. He uses AI every day to run agents, dashboards and processes inside his own agency.',
+      'Antonio Manitta, founder of NoProb Agency. A developer by training (Computer Science degree), then an eCommerce manager, he now runs an agency that grows companies and eCommerce brands in luxury fashion, food, supplements and industrial B2B.',
     text2:
-      'This 360° view (acquisition, sales, technology, data and AI) is what makes it possible to see where AI should be implemented right away and where a person is still needed.',
+      'He uses AI every day to run agents, dashboards and processes: he knows where it should go in right away and where a person is still needed.',
     imageAlt: 'Antonio Manitta, founder of NoProb Agency',
   },
   caseStudyHeading: {
@@ -980,142 +895,112 @@ const en: AiCopy = {
     headingEm: 'No hourly billing',
     headingEnd: '.',
     intro:
-      'With hourly billing you count minutes and avoid asking questions. With a fixed price you use the program to the fullest and know upfront what you’re investing. The price goes up as the method matures with new clients: join now and lock in your rate.',
+      'You know upfront what you’re investing and use the program to the fullest. The price goes up with new clients: join now and lock in your rate.',
     tiers: [
       { price: '€750', slot: 'MVP phase · First pilot clients', tag: 'Closed', state: 'completed' },
       { price: '€1,100', slot: 'Post-MVP · Up to client #15', tag: 'Available now', state: 'current' },
       { price: '€2,500', slot: 'Clients 16-30', tag: 'Next tier', state: 'upcoming' },
       { price: '€4,000', slot: 'From client #31', tag: 'Standard price', state: 'upcoming' },
     ],
-    tiersNote:
-      'Every program adds method, templates and experience: that’s the value for whoever joins later. No countdown: the slot is yours as long as it’s available.',
+    tiersNote: 'No countdown: the slot is yours as long as it’s available.',
     card: {
       title: 'AI Accelerator',
       subtitle:
         'The 30-day one-to-one program: priorities, roadmap and your first AI solutions running. One point of contact.',
       features: ['4 calls + up to 2 extra', '3 deliverables you keep', '2 quick wins set up together'],
-      badge:
-        'Zero entry risk: free intro call, fixed price, no auto-renewal. Pay 50% on signing and 50% on delivery.',
+      badge: 'Zero entry risk: free intro call, fixed price, no auto-renewal. 50% on signing, 50% on delivery.',
       price: '€1,100',
       priceSuffix: 'one-off',
       priceNote: '€550 on signing + €550 on delivery',
       cta: 'Apply with your company',
     },
     trustLine: 'We read every application and reply within 1 business day.',
-    trustLine2: 'Only companies and eCommerce brands with at least €30,000 in monthly revenue.',
+    trustLine2: 'Established companies and eCommerce brands with consolidated revenue only.',
   },
   after: {
     label: 'what’s next?',
     headingPart1: 'The month ends. ',
     headingEm: 'The journey doesn’t',
     headingEnd: '.',
-    intro:
-      'AI Accelerator is the starting audit: it brings order, strips away what you don’t need and has you work only on what really matters. After that, you’re autonomous. If you want, we keep going together.',
+    intro: 'The audit doesn’t tie you to anything: by the end you’re autonomous. If you want, we keep going together.',
     cards: [
       {
         title: 'Autonomy',
-        description:
-          'You have the roadmap, protocols and Context Document: your team runs the plan on its own. No lock-in, no auto-renewal.',
+        description: 'Roadmap, protocols and Context Document: your team runs the plan on its own.',
       },
       {
         title: 'Ongoing support',
         description:
-          'We stay by your side month after month: regular calls, updates on the new tools that actually matter, support when you need it and roadmap reviews. AI changes every month: you stay up to date without chasing it.',
+          'Regular calls, the new tools that matter and roadmap reviews. You stay up to date without chasing AI.',
       },
       {
         title: 'Implementation',
         description:
-          'Automations, AI agents, website, tracking, campaigns: if a roadmap item needs an operating team, we build it for you with a dedicated proposal.',
+          'Automations, AI agents, website, tracking: if the roadmap needs an operating team, we build it.',
       },
     ],
-    note: 'Options 2 and 3 are by proposal, defined together in the final call based on what emerged.',
+    note: 'Options 2 and 3 are by proposal, after the final call.',
   },
   testimonialsHeading: 'Chosen by established entrepreneurs',
   faq: {
     label: 'FAQ',
     heading: 'Answers to the ',
     headingEm: 'most common questions',
-    subheading: 'The most common questions before getting started. Straight answers.',
+    subheading: 'Straight answers.',
     items: [
       {
         question: 'Do you work with startups or individuals?',
         answer:
-          'No. We work with established companies and eCommerce brands with at least €30,000 in monthly revenue and processes to improve. Below that, the investment rarely pays back: that’s why we review every application before the intro call.',
+          'No. Only established companies and eCommerce brands with consolidated revenue and processes to improve. That’s why we review every application.',
       },
       {
         question: 'Do I need to be technical?',
-        answer:
-          'No. The program adapts to your level: if you’re already hands-on you get method and priorities, if you’re starting from scratch you get a solid foundation. The document and protocols are written for anyone to understand.',
+        answer: 'No. The program adapts to your level and the document and protocols are written for anyone.',
       },
       {
         question: 'Will I see a result within 30 days?',
         answer:
-          'The goal of the month is to find the first bottleneck and tackle it with your first AI solutions, set up together. If a solution needs broader development, we put it in the roadmap with clear timing and costs.',
-      },
-      {
-        question: 'Why a fixed price instead of hourly?',
-        answer:
-          'With hourly billing you count minutes and avoid asking questions. With a fixed price your team uses the program to the fullest and you know upfront what you’re investing.',
-      },
-      {
-        question: 'Is it a course?',
-        answer:
-          'No. There are no pre-recorded lessons and no one-size-fits-all content. We work on your business, your numbers and your processes.',
+          'The goal of the month is to tackle the first bottleneck with your first AI solutions. Anything needing broader development goes in the roadmap, with clear timing and costs.',
       },
       {
         question: 'Which AI tools do you use?',
-        answer:
-          'The right ones for your case. We’re not tied to any vendor: we assess what you already use and recommend only what you need, including what to avoid.',
+        answer: 'The right ones for your case. We’re not tied to any vendor and we tell you what to avoid too.',
       },
       {
         question: 'Does it work if I don’t run an eCommerce store?',
-        answer:
-          'Yes. The method works for any established business with marketing activity: services, agencies, studios, SMEs. The areas we dig into change, the method doesn’t.',
+        answer: 'Yes. It works for any established business with marketing activity: services, agencies, studios, SMEs.',
       },
       {
-        question: 'Who should join the calls?',
+        question: 'How much time does it take and who joins?',
         answer:
-          'The decision-makers and the people who work every day on the areas we analyze. Usually 1-3 people: founder, marketing lead, an operations person.',
-      },
-      {
-        question: 'How much time does it take?',
-        answer:
-          'About 1 hour of calls per week, plus 1-2 hours for the questionnaire, accesses and task logging. We do the analysis work.',
+          'About 1 hour of calls per week plus 1-2 hours of tasks; we do the analysis. Usually 1-3 people join: the decision-makers and those working on the areas we analyze.',
       },
       {
         question: 'Is our data safe?',
-        answer:
-          'Yes. Accesses are used only for the analysis, with no unagreed changes, and everything is covered by contractual confidentiality. In the report we also tell you which data is best kept out of AI tools.',
+        answer: 'Yes. Accesses are used only for the analysis, with no unagreed changes and contractual confidentiality.',
       },
       {
-        question: 'We already work with an agency or consultant: does it make sense?',
-        answer:
-          'Yes. The audit gives you an independent view and a roadmap you can share with your current vendors.',
+        question: 'We already work with an agency: does it make sense?',
+        answer: 'Yes. You get an independent view and a roadmap to share with your current vendors.',
       },
       {
         question: 'What happens after the month?',
-        answer:
-          'You’re autonomous: you have priorities, a roadmap and protocols to move forward on your own. If you want, you can choose ongoing support or implementation of specific projects. No auto-renewal: you decide, at the end.',
+        answer: 'You’re autonomous. If you want, choose ongoing support or implementation. No auto-renewal.',
       },
     ],
   },
   form: {
     title: 'AI Accelerator',
-    subtitle:
-      '3 steps, 2 minutes. For companies and eCommerce brands with at least €30,000 in monthly revenue. Investment: €1,100, fixed price.',
+    subtitle: '3 steps, 2 minutes. Investment: €1,100, fixed price.',
     stepLabel: 'Step',
     back: '← Back',
     continue: 'Continue',
     step1: {
       title: 'What are we talking about?',
-      qRevenue: {
-        label: 'What’s your company’s monthly revenue?',
-        helper:
-          'We only work with companies and eCommerce brands generating at least €30,000 per month (about €360,000 a year). Below that threshold we can’t take on your application.',
-        options: ['Under €30,000', '€30,000 – €100,000', '€100,000 – €300,000', 'Over €300,000'],
-      },
       qBusiness: {
         label: 'What kind of business is it?',
+        notice:
+          'We work exclusively with established companies and eCommerce brands with consolidated revenue. We don’t consider startups or early-stage projects.',
         options: ['eCommerce', 'Online business or services', 'Company / SME', 'Agency or freelancer'],
       },
       qRole: {
@@ -1169,17 +1054,10 @@ const en: AiCopy = {
       title: 'Application received ⚡',
       text: 'Thank you. We’ll review your application within 1 business day. If there’s a fit, we’ll email you the link to book your 40-minute intro call.',
     },
-    dq: {
-      title: 'AI Accelerator isn’t the right fit yet',
-      text: 'The program is built for companies and eCommerce brands with at least €30,000 in monthly revenue: below that, the investment rarely pays back. In the meantime, you’ll find practical guides on our blog.',
-      blogCta: 'Go to the blog',
-      blogHref: '/blog',
-      back: '← I picked the wrong answer',
-    },
   },
   finalCta: {
     heading: 'Ready to bring order to your company?',
-    text: '30 days, one-to-one, fixed price. For companies and eCommerce brands with at least €30,000 in monthly revenue.',
+    text: '30 days, one-to-one, fixed price. Established companies and eCommerce brands only.',
     cta: 'Apply with your company',
   },
   sticky: { priceLine: '€1,100 · 30 days', cta: 'Apply with your company' },

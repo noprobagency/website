@@ -34,7 +34,6 @@ export function isValidInternationalVat(raw: string): boolean {
 
 export function makeAiSchema(e: AiErrors) {
   return z.object({
-    monthlyRevenue: z.string().min(1, e.choice),
     businessType: z.string().min(1, e.choice),
     role: z.string().min(1, e.choice),
     aiUsage: z.string().min(1, e.choice),

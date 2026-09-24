@@ -3,8 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import Link from 'next/link'
-
 import { type Locale } from '@/lib/i18n'
 import { getAiCopy } from '@/lib/i18n/aiAccelerator'
 import { makeAiSchema, normalizeItalianVat, isValidInternationalVat } from '@/lib/schemas/aiAccelerator'
@@ -12,10 +10,9 @@ import { trackEvent } from '@/lib/analytics/events'
 
 const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
 
-type ChoiceField = 'monthlyRevenue' | 'businessType' | 'role' | 'aiUsage'
+type ChoiceField = 'businessType' | 'role' | 'aiUsage'
 
 type Values = {
-  monthlyRevenue: string
   businessType: string
   role: string
   aiUsage: string
@@ -28,7 +25,6 @@ type Values = {
 }
 
 const EMPTY: Values = {
-  monthlyRevenue: '',
   businessType: '',
   role: '',
   aiUsage: '',
@@ -53,7 +49,7 @@ const trackStep = (step: 1 | 2) => trackCustom(`ai_form_step_${step}`)
 function ChoiceCards({
   name,
   label,
-  helper,
+  notice,
   options,
   value,
   onChoose,
@@ -61,7 +57,8 @@ function ChoiceCards({
 }: {
   name: string
   label: string
-  helper?: string
+  /** Qualification line shown in red under the question. */
+  notice?: string
   options: string[]
   value: string
   onChoose: (v: string) => void
@@ -73,9 +70,9 @@ function ChoiceCards({
         {label}
         <span aria-hidden className="ml-1 text-[color:var(--ai-accent-text)]">*</span>
       </legend>
-      {helper && (
-        <p className="-mt-1 mb-1 font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-grey">
-          {helper}
+      {notice && (
+        <p className="-mt-1 mb-1 font-sans text-[13px] font-semibold leading-[1.5em] tracking-[-0.02em] text-[#C0392B]">
+          {notice}
         </p>
       )}
       <div role="radiogroup" aria-labelledby={`ai-q-${name}`} className="grid gap-2 min-[520px]:grid-cols-2">
@@ -126,7 +123,6 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
   const [serverError, setServerError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
-  const [disqualified, setDisqualified] = useState(false)
   const [hp, setHp] = useState('')
   const mountedAtRef = useRef<number>(Date.now())
   const headingRef = useRef<HTMLParagraphElement>(null)
@@ -153,39 +149,19 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
     window.setTimeout(() => headingRef.current?.focus(), 60)
   }
 
-  // First option of the revenue question = under threshold.
-  const underThreshold = d.step1.qRevenue.options[0]
-
   function choose(field: ChoiceField, v: string) {
     if (autoAdvanceRef.current !== null) window.clearTimeout(autoAdvanceRef.current)
     const nextValues = { ...values, [field]: v }
     setValues(nextValues)
     setErrors((prev) => ({ ...prev, [field]: undefined }))
 
-    // Under-threshold revenue: stop here, no API call, no Lead.
-    if (field === 'monthlyRevenue' && v === underThreshold) {
-      autoAdvanceRef.current = window.setTimeout(() => {
-        trackCustom('ai_form_disqualified')
-        setDisqualified(true)
-      }, 260)
-      return
-    }
-
     // Card click advances as soon as the step is complete.
-    if (step === 0 && nextValues.monthlyRevenue && nextValues.monthlyRevenue !== underThreshold && nextValues.businessType && nextValues.role) {
+    if (step === 0 && nextValues.businessType && nextValues.role) {
       autoAdvanceRef.current = window.setTimeout(() => {
         trackStep(1)
         go(1)
       }, 260)
     }
-  }
-
-  function resetRevenue() {
-    setDisqualified(false)
-    setValues((prev) => ({ ...prev, monthlyRevenue: '' }))
-    setDirection(-1)
-    setStep(0)
-    window.setTimeout(() => headingRef.current?.focus(), 60)
   }
 
   function validateStep2(): boolean {
@@ -240,7 +216,7 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
       }
       setErrors(errs)
       // If a choice from a previous step is somehow missing, send the user back.
-      if (errs.monthlyRevenue || errs.businessType || errs.role) go(0)
+      if (errs.businessType || errs.role) go(0)
       else if (errs.aiUsage || errs.mainPain) go(1)
       return
     }
@@ -279,34 +255,6 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
           <p className="max-w-[480px] font-sans text-[15px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-text">
             {d.success.text}
           </p>
-        </div>
-      </div>
-    )
-  }
-
-  // Under-threshold block: the form stops here, nothing is sent.
-  if (disqualified) {
-    return (
-      <div id="candidatura" className="scroll-mt-32">
-        <div aria-live="polite" className="flex flex-col items-start gap-4 py-4">
-          <h3 className="font-display text-[22px] font-semibold leading-[1.25em] tracking-[-0.04em] text-black min-[810px]:text-[26px]">
-            {d.dq.title}
-          </h3>
-          <p className="max-w-[560px] font-sans text-[15px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-text">
-            {d.dq.text}
-          </p>
-          <div className="mt-2 flex flex-wrap items-center gap-4">
-            <Link href={d.dq.blogHref} className="button-principal ai-cta">
-              {d.dq.blogCta}
-            </Link>
-            <button
-              type="button"
-              onClick={resetRevenue}
-              className="font-sans text-[14px] font-medium text-np-dark underline transition-opacity hover:opacity-60"
-            >
-              {d.dq.back}
-            </button>
-          </div>
         </div>
       </div>
     )
@@ -374,17 +322,9 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
               {step === 0 && (
                 <>
                   <ChoiceCards
-                    name="monthlyRevenue"
-                    label={d.step1.qRevenue.label}
-                    helper={d.step1.qRevenue.helper}
-                    options={d.step1.qRevenue.options}
-                    value={values.monthlyRevenue}
-                    onChoose={(v) => choose('monthlyRevenue', v)}
-                    error={errors.monthlyRevenue}
-                  />
-                  <ChoiceCards
                     name="businessType"
                     label={d.step1.qBusiness.label}
+                    notice={d.step1.qBusiness.notice}
                     options={d.step1.qBusiness.options}
                     value={values.businessType}
                     onChoose={(v) => choose('businessType', v)}

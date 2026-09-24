@@ -43,8 +43,7 @@ export async function POST(req: NextRequest) {
   }
   const resend = new Resend(apiKey)
 
-  const { monthlyRevenue, businessType, role, aiUsage, mainPain, name, email, legalName, vatNumber, website } =
-    parsed.data
+  const { businessType, role, aiUsage, mainPain, name, email, legalName, vatNumber, website } = parsed.data
   const locale = parsed.data.locale ?? 'it'
   const isItalianVat = /^IT\d{11}$/.test(vatNumber)
 
@@ -56,7 +55,7 @@ export async function POST(req: NextRequest) {
       subject: `[AI Accelerator] Nuova candidatura — ${legalName}`,
       html: `
         <p style="font-family:system-ui,sans-serif;font-size:15px;font-weight:600;margin:0 0 8px;padding:8px 12px;background:#eef3ff;border-left:3px solid #2f6bff">
-          ${monthlyRevenue} · ${businessType} · ${role} · ${aiUsage} · ${legalName}
+          ${businessType} · ${role} · ${aiUsage} · ${legalName}
         </p>
         <p style="font-family:system-ui,sans-serif;font-size:13px;margin:0 0 12px;padding:0 12px">
           P.IVA: <strong>${vatNumber}</strong>${
@@ -72,7 +71,6 @@ export async function POST(req: NextRequest) {
           <tr><td><strong>Partita IVA:</strong></td><td>${vatNumber}</td></tr>
           <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
           <tr><td><strong>Sito web:</strong></td><td>${website || '-'}</td></tr>
-          <tr><td><strong>Fatturato mensile:</strong></td><td>${monthlyRevenue}</td></tr>
           <tr><td><strong>Tipo attività:</strong></td><td>${businessType}</td></tr>
           <tr><td><strong>Ruolo:</strong></td><td>${role}</td></tr>
           <tr><td><strong>Uso attuale AI:</strong></td><td>${aiUsage}</td></tr>
