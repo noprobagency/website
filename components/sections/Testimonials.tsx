@@ -19,14 +19,21 @@ const cardVariants: Variants = {
   }),
 }
 
-export default function Testimonials({ locale = 'en' }: { locale?: Locale }) {
+export default function Testimonials({
+  locale = 'en',
+  heading,
+}: {
+  locale?: Locale
+  /** Optional heading override (defaults to the shared dictionary heading). */
+  heading?: string
+}) {
   const t = getDictionary(locale).about.testimonials
 
   return (
     <div className="mx-auto mt-16 max-w-[850px]">
       <div className="text-center">
         <h3 className="font-sans text-[1.6rem] font-bold leading-[1.4em] tracking-[-0.04em] text-[#f9f9f9]">
-          {t.heading}
+          {heading ?? t.heading}
         </h3>
       </div>
 

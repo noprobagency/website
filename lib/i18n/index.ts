@@ -168,6 +168,7 @@ export type Dictionary = {
     dataDrivenTeam: { title: string; description: string }
     sviluppoShopify: { title: string; description: string }
     migrazioneShopify: { title: string; description: string }
+    aiAccelerator: { title: string; description: string }
   }
   about: {
     hero: {
@@ -608,6 +609,7 @@ const en: Dictionary = {
     description:
       'We build, improve and grow your eCommerce on Shopify, with a dedicated team in development, marketing and strategy. Together or separately, based on your needs.',
     links: [
+      { label: 'AI Accelerator', href: '/ai-accelerator' },
       { label: 'About', href: '/about' },
       { label: 'Use Case', href: '/use-cases' },
       { label: 'Blog', href: '/blog' },
@@ -625,6 +627,7 @@ const en: Dictionary = {
     dataDrivenTeam: { title: 'Dedicated eCommerce Team on Retainer', description: 'Your dedicated eCommerce team on retainer. One point of contact, a full team behind you. For Shopify brands that want to scale without hiring in-house.' },
     sviluppoShopify: { title: 'Shopify Development Services', description: 'Shopify development services to build your eCommerce from design to tracking, optimized to convert from day one. Lifetime maintenance included.' },
     migrazioneShopify: { title: 'Shopify Migration Without Losing Sales', description: 'Migrate your eCommerce to Shopify in 4 months without losing sales or customers. 1:1 redirects, no downtime, one point of contact. 30-day money-back guarantee.' },
+    aiAccelerator: { title: 'AI Accelerator: AI Consulting for Business', description: 'Bring AI into your business with a method: audit, 90-day roadmap and your first AI solutions running in 30 days. Fixed price, no lock-in.' },
   },
   about: {
     hero: {
@@ -1077,6 +1080,7 @@ const it: Dictionary = {
     description:
       'Costruiamo, miglioriamo e facciamo crescere il tuo eCommerce su Shopify, con un team dedicato in sviluppo, marketing e strategia. Insieme o separatamente, in base alle tue esigenze.',
     links: [
+      { label: 'AI Accelerator', href: '/it/ai-accelerator' },
       { label: 'Chi Siamo', href: '/it/chi-siamo' },
       { label: 'Casi Studio', href: '/it/casi-studio' },
       { label: 'Blog', href: '/it/blog' },
@@ -1094,6 +1098,7 @@ const it: Dictionary = {
     dataDrivenTeam: { title: 'Retainer eCommerce Dedicato', description: 'Il tuo team eCommerce dedicato in retainer. Un solo interlocutore, un team completo dietro di te. Per brand Shopify che vogliono scalare.' },
     sviluppoShopify: { title: 'Sviluppo Shopify: creiamo il tuo eCommerce', description: 'Sviluppiamo il tuo eCommerce su Shopify dal design al tracciamento, ottimizzato per convertire dal primo giorno. Manutenzione a vita inclusa.' },
     migrazioneShopify: { title: 'Migrazione a Shopify senza perdere vendite', description: 'Migra il tuo eCommerce su Shopify in 4 mesi senza perdere vendite o clienti. Redirect 1:1, nessuna interruzione, un solo interlocutore. Garanzia 30 giorni.' },
+    aiAccelerator: { title: 'AI Accelerator: consulenza AI per aziende', description: "Integra l'intelligenza artificiale nel tuo business con metodo: audit, roadmap a 90 giorni e soluzioni AI attive in 30 giorni. Prezzo fisso, zero vincoli." },
   },
   about: {
     hero: {
