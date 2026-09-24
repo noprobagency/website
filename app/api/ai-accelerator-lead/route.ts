@@ -53,6 +53,9 @@ export async function POST(req: NextRequest) {
       replyTo: email,
       subject: `[AI Accelerator] Nuova candidatura — ${company}`,
       html: `
+        <p style="font-family:system-ui,sans-serif;font-size:15px;font-weight:600;margin:0 0 12px;padding:8px 12px;background:#eef3ff;border-left:3px solid #2f6bff">
+          ${businessType} · ${role} · ${aiUsage} · ${company}
+        </p>
         <h2>Nuova candidatura AI Accelerator</h2>
         <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:system-ui,sans-serif;font-size:14px">
           <tr><td><strong>Nome:</strong></td><td>${name}</td></tr>

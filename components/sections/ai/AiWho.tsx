@@ -39,9 +39,14 @@ export default function AiWho({ locale = 'it' }: { locale?: Locale }) {
               className="object-cover"
             />
           </div>
-          <p className="font-sans text-body-sm font-medium leading-[1.7em] text-noprob-text min-[810px]:text-[1rem]">
-            {d.text}
-          </p>
+          <div className="flex flex-col gap-3">
+            <p className="font-sans text-body-sm font-medium leading-[1.7em] text-noprob-text min-[810px]:text-[1rem]">
+              {d.text1}
+            </p>
+            <p className="font-sans text-body-sm font-medium leading-[1.7em] text-noprob-text min-[810px]:text-[1rem]">
+              {d.text2}
+            </p>
+          </div>
         </motion.article>
       </div>
     </section>

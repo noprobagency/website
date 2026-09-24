@@ -25,14 +25,24 @@ export default function AiHero({ locale = 'it' }: { locale?: Locale }) {
           {d.eyebrow}
         </div>
 
-        {/* Hero title (single H1) */}
-        <h1 className="relative z-[1] max-w-[860px] text-center font-display text-[32px] font-semibold leading-[1.12em] tracking-[-0.06em] text-black min-[810px]:text-[3.4rem]">
-          {d.titlePart1}
-          <em className="font-serif italic font-semibold">{d.titleEm1}</em>
-          {d.titleMid}
-          <em className="font-serif italic font-semibold">{d.titleEm2}</em>
-          {d.titleEnd}
+        {/* Hero title (single H1, two lines) */}
+        <h1 className="relative z-[1] max-w-[900px] text-center font-display text-[30px] font-semibold leading-[1.14em] tracking-[-0.06em] text-black min-[810px]:text-[3.1rem]">
+          <span className="block">{d.titleLine1}</span>
+          <span className="block">
+            {d.titleLine2Pre}
+            <em className="font-serif italic font-semibold">{d.titleEm1}</em>
+            {d.titleMid1}
+            <em className="font-serif italic font-semibold">{d.titleEm2}</em>
+            {d.titleMid2}
+            <em className="font-serif italic font-semibold">{d.titleEm3}</em>
+            {d.titleEnd}
+          </span>
         </h1>
+
+        {/* Lead line (larger than the description) */}
+        <p className="relative z-[1] w-full max-w-[820px] text-center font-sans text-[16px] font-semibold leading-[1.45em] tracking-[-0.02em] text-np-dark min-[810px]:text-[20px]">
+          {d.leadLine}
+        </p>
 
         {/* Subtitle */}
         <p

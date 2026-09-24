@@ -34,6 +34,28 @@ export default function AiTimeline({ locale = 'it' }: { locale?: Locale }) {
           <p className="mt-5 font-sans text-body-lg font-medium text-noprob-text">{d.intro}</p>
         </div>
 
+        {/* Goal of the month - highlighted with the electric accent */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 'some' }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="ai-form-card mx-auto mt-8 flex max-w-[800px] flex-col gap-3 rounded-[16px] p-6 min-[810px]:flex-row min-[810px]:items-start min-[810px]:gap-6 min-[810px]:p-8"
+        >
+          <span
+            aria-hidden
+            className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full bg-[rgba(47,107,255,0.14)] text-[color:var(--ai-accent)]"
+          >
+            <ZapIcon size={22} />
+          </span>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-np-h3 text-noprob-text">{d.goalBox.title}</h3>
+            <p className="font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
+              {d.goalBox.text}
+            </p>
+          </div>
+        </motion.div>
+
         {/* Phase cards connected by the charging cable */}
         <div ref={listRef} className="relative mx-auto mt-8 flex max-w-[800px] flex-col gap-4 pl-7 min-[810px]:pl-10">
           {/* Cable: static track + accent charge linked to scroll */}

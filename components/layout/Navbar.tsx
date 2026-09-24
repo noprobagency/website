@@ -362,9 +362,10 @@ export default function Navbar() {
   const [isOverDark, setIsOverDark] = useState(false)
 
   const alternateHref = getAlternateHref(pathname)
-  const contactsHref = ROUTE_PATHS.contacts[locale]
   const logoHref = ROUTE_PATHS.home[locale]
   const isAiPage = pathname === ROUTE_PATHS.aiAccelerator[locale]
+  // On the AI Accelerator landing the header CTA drives to the in-page form.
+  const contactsHref = isAiPage ? '#candidatura' : ROUTE_PATHS.contacts[locale]
 
   const mobileNav = [...t.navbar.serviceItems, ...t.navbar.navLinks]
 

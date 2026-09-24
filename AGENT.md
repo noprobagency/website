@@ -245,3 +245,10 @@ Paragraphs and list items support markdown-style inline tokens via `parseInline`
 - On the AI pages the global `StickyContact` pill is desktop-only; mobile uses the dedicated `AiStickyCta` bottom bar (portal to `<body>` because the page-transition transform breaks `position: fixed`).
 - SEO: `ROUTE_PATHS.aiAccelerator` (`/ai-accelerator` both locales), sitemap entry, Service + BreadcrumbList JSON-LD in the pages, FAQPage via reused `MigrazioneFAQ` (accepts a `copy` prop). Dedicated OG images `public/images/og-ai-accelerator-{it,en}.png` (regenerate with `node scripts/generate-ai-og.mjs`).
 - Reused components extended with optional backward-compatible props: `CaseStudy` (`heading`), `Testimonials` (`heading`), `MigrazioneFAQ` (`copy`, already existed).
+
+### AI Accelerator v2 (B2B repositioning)
+
+- Copy v2 in `lib/i18n/aiAccelerator.ts`: B2B one-to-one positioning ("aziende ed eCommerce già avviati"), IT rules: no "business", "call" -> "videochiamate" (except "pre-call"), "noi" voice; "Chi ti segue" in third person (the MRR claim placeholder was left out pending Antonio's confirmation).
+- Section order v2: hero (2-line H1 + lead line), problema, soluzione, per chi è, come si accede, timeline (+ "L'obiettivo del mese" electric box), chi ti segue, case study, **form standalone** (`AiFormSection`), cosa ricevi, incluso, confronto, e dopo, prezzo (tiers only, no embedded form), testimonianze, FAQ (12), CTA finale (`AiFinalCta`).
+- Prices v2: tiers €750 / €1.100 (current) / €2.500 / €4.000; card €1.100 una tantum, €550 + €550; JSON-LD Offer 1100; sticky bar and form subtitle carry the price.
+- Success state has no TidyCal link (pre-call link is sent manually by email after review); admin email starts with a fit-summary line (tipo attività · ruolo · uso AI · azienda). Navbar "Prenota una call" points to #candidatura on the AI pages.

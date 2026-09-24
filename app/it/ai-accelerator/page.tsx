@@ -2,16 +2,18 @@ import type { Metadata } from 'next'
 
 import AiHero from '@/components/sections/ai/AiHero'
 import AiProblem from '@/components/sections/ai/AiProblem'
-import AiAudience from '@/components/sections/ai/AiAudience'
 import AiSolution from '@/components/sections/ai/AiSolution'
+import AiAudience from '@/components/sections/ai/AiAudience'
 import AiStartSteps from '@/components/sections/ai/AiStartSteps'
 import AiTimeline from '@/components/sections/ai/AiTimeline'
+import AiWho from '@/components/sections/ai/AiWho'
+import AiFormSection from '@/components/sections/ai/AiFormSection'
 import AiDeliverables from '@/components/sections/ai/AiDeliverables'
 import AiScope from '@/components/sections/ai/AiScope'
 import AiContrast from '@/components/sections/ai/AiContrast'
-import AiWho from '@/components/sections/ai/AiWho'
-import AiPricing from '@/components/sections/ai/AiPricing'
 import AiAfter from '@/components/sections/ai/AiAfter'
+import AiPricing from '@/components/sections/ai/AiPricing'
+import AiFinalCta from '@/components/sections/ai/AiFinalCta'
 import AiStickyCta from '@/components/sections/ai/AiStickyCta'
 import { ElectricDivider, SideCables } from '@/components/sections/ai/PowerLayer'
 import CaseStudy from '@/components/sections/CaseStudy'
@@ -28,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     pageKey: 'aiAccelerator',
     image: '/images/og-ai-accelerator-it.png',
-    imageAlt: 'AI Accelerator - Audit e roadmap AI in 30 giorni',
+    imageAlt: 'AI Accelerator - Percorso AI one-to-one di 30 giorni per aziende ed eCommerce',
   })
 }
 
@@ -40,10 +42,10 @@ const serviceJsonLd = {
   serviceType: 'AI consulting',
   areaServed: ['IT', 'EU'],
   description:
-    'Percorso di 30 giorni per integrare l’intelligenza artificiale in azienda con metodo: audit di business, roadmap a 90 giorni, protocolli operativi e Context Document. Prezzo fisso, nessun vincolo.',
+    'Percorso one-to-one di 30 giorni per aziende ed eCommerce già avviati: analisi dell’azienda, priorità in ordine di impatto, roadmap a 90 giorni e prime soluzioni AI attive sul primo collo di bottiglia. Prezzo fisso, nessun vincolo.',
   offers: {
     '@type': 'Offer',
-    price: '1000',
+    price: '1100',
     priceCurrency: 'EUR',
     availability: 'https://schema.org/InStock',
   },
@@ -77,16 +79,12 @@ export default function AiAcceleratorPage() {
 
       <AiHero locale={locale} />
       <AiProblem locale={locale} />
+      <AiSolution locale={locale} />
       <AiAudience locale={locale} />
       <ElectricDivider className="py-6" />
-      <AiSolution locale={locale} />
       <AiStartSteps locale={locale} />
       <AiTimeline locale={locale} />
       <ElectricDivider className="py-6" />
-      <AiDeliverables locale={locale} />
-      <AiScope locale={locale} />
-      <AiContrast locale={locale} />
-      <ElectricDivider className="py-6 pt-12" />
       <AiWho locale={locale} />
       <CaseStudy
         locale={locale}
@@ -100,9 +98,15 @@ export default function AiAcceleratorPage() {
           </>
         }
       />
-      <AiPricing locale={locale} />
+      <AiFormSection locale={locale} />
+      <AiDeliverables locale={locale} />
+      <AiScope locale={locale} />
+      <AiContrast locale={locale} />
+      <ElectricDivider className="py-6 pt-12" />
       <AiAfter locale={locale} />
+      <AiPricing locale={locale} />
       <MigrazioneFAQ locale={locale} copy={copy.faq} />
+      <AiFinalCta locale={locale} />
       <Footer locale={locale} />
       <AiStickyCta locale={locale} />
     </main>

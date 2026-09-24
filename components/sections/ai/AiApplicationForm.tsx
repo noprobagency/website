@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { type Locale } from '@/lib/i18n'
-import { getAiCopy, AI_TIDYCAL_URL } from '@/lib/i18n/aiAccelerator'
+import { getAiCopy } from '@/lib/i18n/aiAccelerator'
 import { makeAiSchema } from '@/lib/schemas/aiAccelerator'
 import { trackEvent } from '@/lib/analytics/events'
 
@@ -228,15 +228,6 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
           <p className="max-w-[480px] font-sans text-[15px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-text">
             {d.success.text}
           </p>
-          <a
-            href={AI_TIDYCAL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-tracking="ai_success_tidycal"
-            className="button-principal ai-cta"
-          >
-            {d.success.cta}
-          </a>
         </div>
       </div>
     )

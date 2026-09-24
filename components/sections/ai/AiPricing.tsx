@@ -6,7 +6,6 @@ import { motion } from 'framer-motion'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 import Testimonials from '@/components/sections/Testimonials'
-import AiApplicationForm from '@/components/sections/ai/AiApplicationForm'
 import { ZapIcon } from '@/components/sections/ai/PowerLayer'
 import { siteAssets } from '@/lib/site'
 import { type Locale } from '@/lib/i18n'
@@ -144,7 +143,7 @@ export default function AiPricing({ locale = 'it' }: { locale?: Locale }) {
                     </p>
                   </div>
 
-                  <div className="mt-5 flex items-end gap-1">
+                  <div className="mt-5 flex items-end gap-2">
                     <span className="ai-number text-np-pricing">{d.card.price}</span>
                     <span className="mb-2 font-sans text-[14px] font-medium tracking-[-0.02em] text-noprob-muted">
                       {d.card.priceSuffix}
@@ -183,11 +182,6 @@ export default function AiPricing({ locale = 'it' }: { locale?: Locale }) {
                 </div>
               </div>
 
-              {/* Application form (anchor target for all CTAs), framed as its
-                  own electric card so it clearly reads as the form section */}
-              <div className="ai-form-card mt-8 rounded-[16px] p-5 min-[810px]:p-8">
-                <AiApplicationForm locale={locale} />
-              </div>
             </div>
           </motion.div>
 
