@@ -16,8 +16,8 @@ const LANDING_LABELS: Record<string, string> = {
   '/shopify-migration': 'Apply for your migration',
   '/it/team-ecommerce-dedicato': 'Candidati per il team',
   '/data-driven-team': 'Apply for the team',
-  '/it/ai-accelerator': 'Candidati per AI Accelerator',
-  '/ai-accelerator': 'Apply for AI Accelerator',
+  '/it/ai-accelerator': 'Candida la tua azienda',
+  '/ai-accelerator': 'Apply with your company',
 }
 
 // Pages with their own mobile sticky CTA bar: the floating pill stays

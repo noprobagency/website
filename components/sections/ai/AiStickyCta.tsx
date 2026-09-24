@@ -55,10 +55,15 @@ export default function AiStickyCta({ locale = 'it' }: { locale?: Locale }) {
         visible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
-      <span className="font-sans text-[15px] font-semibold tracking-[-0.03em] text-np-dark">
+      <span className="whitespace-nowrap font-sans text-[13px] font-semibold tracking-[-0.03em] text-np-dark">
         <span className="ai-number">{d.priceLine}</span>
       </span>
-      <Link href="#candidatura" data-tracking="ai_sticky_cta" className="button-principal ai-cta !py-[6px]" tabIndex={visible ? 0 : -1}>
+      <Link
+        href="#candidatura"
+        data-tracking="ai_sticky_cta"
+        className="button-principal ai-cta shrink-0 !px-4 !py-[6px] !text-[14px]"
+        tabIndex={visible ? 0 : -1}
+      >
         {d.cta}
       </Link>
     </div>,

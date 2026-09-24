@@ -178,6 +178,9 @@ export default function AiPricing({ locale = 'it' }: { locale?: Locale }) {
                     <p className="text-center font-sans text-[12px] font-medium tracking-[-0.04em] text-noprob-text">
                       {d.trustLine}
                     </p>
+                    <p className="text-center font-sans text-[11px] font-medium tracking-[-0.03em] text-noprob-grey">
+                      {d.trustLine2}
+                    </p>
                   </div>
                 </div>
               </div>

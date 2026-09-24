@@ -143,6 +143,7 @@ export type AiCopy = {
       cta: string
     }
     trustLine: string
+    trustLine2: string
   }
   after: {
     label: string
@@ -167,14 +168,20 @@ export type AiCopy = {
     stepLabel: string
     back: string
     continue: string
-    step1: { title: string; qBusiness: QuestionCards; qRole: QuestionCards }
+    step1: {
+      title: string
+      qRevenue: { label: string; helper: string; options: string[] }
+      qBusiness: QuestionCards
+      qRole: QuestionCards
+    }
     step2: { title: string; qUsage: QuestionCards; qPain: { label: string; placeholder: string } }
     step3: {
       title: string
       fields: {
         name: { label: string; placeholder: string }
         email: { label: string; placeholder: string }
-        company: { label: string; placeholder: string }
+        legalName: { label: string; placeholder: string }
+        vatNumber: { label: string; placeholder: string; helper: string }
         website: { label: string; placeholder: string }
       }
       privacyBefore: string
@@ -188,12 +195,15 @@ export type AiCopy = {
       pain: string
       name: string
       email: string
-      company: string
+      legalName: string
+      vat: string
       privacy: string
     }
     errorGeneric: string
     errorNetwork: string
     success: { title: string; text: string }
+    /** Under-threshold block shown when monthly revenue is below the minimum. */
+    dq: { title: string; text: string; blogCta: string; blogHref: string; back: string }
   }
   finalCta: { heading: string; text: string; cta: string }
   sticky: { priceLine: string; cta: string }
@@ -216,7 +226,8 @@ const it: AiCopy = {
       'Non un corso, non un guru, non un altro abbonamento. Un mese di lavoro one-to-one sulla tua azienda, con chi lo fa di mestiere ogni giorno. Analizziamo acquisizione, vendite, processi e strumenti, poi decidiamo insieme quali soluzioni AI adottare, in che ordine e con quale obiettivo. Prima il contesto, poi gli strumenti.',
     benefits: ['One-to-one, su misura', '4 videochiamate in 30 giorni', 'Prezzo fisso, zero vincoli'],
     cta: 'Candida la tua azienda',
-    ctaNote: 'Per aziende ed eCommerce già avviati. Valutiamo ogni candidatura.',
+    ctaNote:
+      'Per aziende ed eCommerce già avviati, con almeno €30.000 di fatturato al mese. Valutiamo ogni candidatura.',
     trustRatingLabel: '4,9',
     trustLine: 'Scelti da brand eCommerce, aziende e team marketing',
   },
@@ -301,7 +312,7 @@ const it: AiCopy = {
     ],
     notForTitle: 'Non fa per te se…',
     notForItems: [
-      'sei una startup senza clienti o un’idea ancora da validare',
+      'sei una startup, un privato o fatturi meno di €30.000 al mese',
       'cerchi il “prompt magico” che risolve tutto',
       'vuoi un corso generico uguale per tutti',
       'vuoi delegare tutto senza coinvolgere il team',
@@ -313,7 +324,7 @@ const it: AiCopy = {
       {
         title: 'Candidatura e pre-call',
         description:
-          'Ci racconti la tua azienda o il tuo eCommerce e cosa vuoi ottenere. Lavoriamo solo con attività già avviate: valutiamo ogni candidatura e, se c’è fit, ti confermiamo una pre-call di 40 minuti per analizzare il bisogno e capire insieme se il percorso è quello giusto.',
+          'Ci racconti la tua azienda o il tuo eCommerce e cosa vuoi ottenere. Lavoriamo solo con aziende ed eCommerce già avviati, con almeno €30.000 di fatturato al mese: valutiamo ogni candidatura e, se c’è fit, ti confermiamo una pre-call di 40 minuti per analizzare il bisogno e capire insieme se il percorso è quello giusto.',
       },
       {
         title: 'Kick-off',
@@ -420,7 +431,7 @@ const it: AiCopy = {
       'Task manager condiviso e riepilogo scritto dopo ogni videochiamata',
       'Analisi dell’azienda: acquisizione, sito e dati, processi e strumenti',
       'Fino a 2 quick win impostate insieme',
-      'Report, protocolli operativi e Context Document, che restano tuoi',
+      'Documento delle priorità, protocolli operativi e Context Document, che restano tuoi',
     ],
     excludedTitle: 'Non incluso',
     excluded: [
@@ -501,9 +512,10 @@ const it: AiCopy = {
       price: '€1.100',
       priceSuffix: 'una tantum',
       priceNote: '€550 alla firma + €550 alla consegna',
-      cta: 'Candidati ora',
+      cta: 'Candida la tua azienda',
     },
     trustLine: 'Leggiamo ogni candidatura e rispondiamo entro 1 giorno lavorativo.',
+    trustLine2: 'Solo aziende ed eCommerce con almeno €30.000 di fatturato al mese.',
   },
   after: {
     label: 'e dopo?',
@@ -541,12 +553,12 @@ const it: AiCopy = {
       {
         question: 'Lavorate anche con startup o privati?',
         answer:
-          'No. Lavoriamo con aziende ed eCommerce già avviati, con clienti, numeri e processi da migliorare. Per questo valutiamo ogni candidatura prima della pre-call.',
+          'No. Lavoriamo con aziende ed eCommerce già avviati, con almeno €30.000 di fatturato al mese e processi da migliorare. Sotto questa soglia l’investimento difficilmente si ripaga: per questo valutiamo ogni candidatura prima della pre-call.',
       },
       {
         question: 'Serve essere tecnici?',
         answer:
-          'No. Il percorso si adatta al tuo livello: se sei già smanettone ottieni metodo e priorità, se parti da zero una base solida. Report e protocolli sono scritti per essere compresi da chiunque.',
+          'No. Il percorso si adatta al tuo livello: se sei già pratico ottieni metodo e priorità, se parti da zero una base solida. Documento e protocolli sono scritti per essere compresi da chiunque.',
       },
       {
         question: 'In 30 giorni vedo già un risultato?',
@@ -603,12 +615,18 @@ const it: AiCopy = {
   form: {
     title: 'AI Accelerator',
     subtitle:
-      '3 passaggi, 2 minuti. Per aziende ed eCommerce già avviati. Investimento: €1.100, prezzo fisso.',
+      '3 passaggi, 2 minuti. Per aziende ed eCommerce con almeno €30.000 di fatturato al mese. Investimento: €1.100, prezzo fisso.',
     stepLabel: 'Passaggio',
     back: '← Indietro',
     continue: 'Avanti',
     step1: {
       title: 'Di cosa si tratta?',
+      qRevenue: {
+        label: 'Qual è il fatturato mensile della tua attività?',
+        helper:
+          'Lavoriamo solo con aziende ed eCommerce che fatturano almeno €30.000 al mese (circa €360.000 l’anno). Sotto questa soglia non possiamo prendere in carico la candidatura.',
+        options: ['Meno di €30.000', '€30.000 – €100.000', '€100.000 – €300.000', 'Oltre €300.000'],
+      },
       qBusiness: {
         label: 'Che tipo di attività è?',
         options: ['eCommerce', 'Attività online o servizi', 'Azienda / PMI', 'Agenzia o freelance'],
@@ -635,7 +653,12 @@ const it: AiCopy = {
       fields: {
         name: { label: 'Nome e cognome', placeholder: 'Mario Rossi' },
         email: { label: 'Email aziendale', placeholder: 'nome@azienda.com' },
-        company: { label: 'Nome dell’azienda / eCommerce', placeholder: 'Azienda srl' },
+        legalName: { label: 'Ragione sociale', placeholder: 'Es. Rossi S.r.l.' },
+        vatNumber: {
+          label: 'Partita IVA',
+          placeholder: 'Es. IT01234567890',
+          helper: 'Serve solo a verificare che l’attività sia già avviata.',
+        },
         website: { label: 'Sito web (facoltativo)', placeholder: 'azienda.com' },
       },
       privacyBefore: 'Ho letto e accetto la ',
@@ -649,7 +672,8 @@ const it: AiCopy = {
       pain: 'Raccontacelo in almeno 20 caratteri',
       name: 'Inserisci nome e cognome',
       email: 'Inserisci un indirizzo email valido',
-      company: 'Inserisci il nome dell’azienda',
+      legalName: 'Inserisci la ragione sociale',
+      vat: 'Inserisci una Partita IVA valida (11 cifre).',
       privacy: 'Devi accettare la Privacy Policy',
     },
     errorGeneric: 'Qualcosa è andato storto. Riprova tra un momento.',
@@ -658,13 +682,20 @@ const it: AiCopy = {
       title: 'Candidatura ricevuta ⚡',
       text: 'Grazie. Valutiamo la tua candidatura entro 1 giorno lavorativo. Se c’è fit, ti mandiamo via email il link per fissare la pre-call di 40 minuti.',
     },
+    dq: {
+      title: 'Per ora AI Accelerator non fa per te',
+      text: 'Il percorso è pensato per aziende ed eCommerce con almeno €30.000 di fatturato al mese: sotto questa soglia l’investimento difficilmente si ripaga. Nel frattempo trovi guide pratiche sul nostro blog.',
+      blogCta: 'Vai al blog',
+      blogHref: '/it/blog',
+      back: '← Ho sbagliato risposta',
+    },
   },
   finalCta: {
     heading: 'Pronto a mettere ordine nella tua azienda?',
-    text: '30 giorni, one-to-one, prezzo fisso. Valutiamo ogni candidatura entro 1 giorno lavorativo.',
+    text: '30 giorni, one-to-one, prezzo fisso. Per aziende ed eCommerce con almeno €30.000 di fatturato al mese.',
     cta: 'Candida la tua azienda',
   },
-  sticky: { priceLine: '€1.100 · 30 giorni', cta: 'Candidati' },
+  sticky: { priceLine: '€1.100 · 30 giorni', cta: 'Candida la tua azienda' },
 }
 
 const en: AiCopy = {
@@ -684,7 +715,8 @@ const en: AiCopy = {
       'Not a course, not a guru, not another subscription. One month of one-to-one work on your company, with people who do this every day. We analyze acquisition, sales, processes and tools, then decide together which AI solutions to adopt, in what order and to what end. Context first, tools second.',
     benefits: ['One-to-one, tailored', '4 video calls in 30 days', 'Fixed price, no lock-in'],
     cta: 'Apply with your company',
-    ctaNote: 'For established companies and eCommerce brands. We review every application.',
+    ctaNote:
+      'For established companies and eCommerce brands with at least €30,000 in monthly revenue. We review every application.',
     trustRatingLabel: '4.9',
     trustLine: 'Chosen by eCommerce brands, companies and marketing teams',
   },
@@ -769,7 +801,7 @@ const en: AiCopy = {
     ],
     notForTitle: 'Not for you if…',
     notForItems: [
-      'you’re a startup with no clients yet, or an idea still to validate',
+      'you’re a startup, an individual, or your revenue is under €30,000 per month',
       'you’re looking for the “magic prompt” that fixes everything',
       'you want a one-size-fits-all course',
       'you want to hand everything off without involving your team',
@@ -781,7 +813,7 @@ const en: AiCopy = {
       {
         title: 'Application & intro call',
         description:
-          'Tell us about your company or eCommerce brand and what you want to achieve. We only work with established businesses: we review every application and, if there’s a fit, confirm a 40-minute intro call to assess your needs and decide together whether the program is right for you.',
+          'Tell us about your company or eCommerce brand and what you want to achieve. We only work with established companies and eCommerce brands with at least €30,000 in monthly revenue: we review every application and, if there’s a fit, confirm a 40-minute intro call to assess your needs and decide together whether the program is right for you.',
       },
       {
         title: 'Kick-off',
@@ -886,7 +918,7 @@ const en: AiCopy = {
       'Shared task manager and written recap after every call',
       'Analysis of business, acquisition, website and data, processes and tools',
       'Up to 2 quick wins set up together',
-      'Report, operating protocols and Context Document, which stay yours',
+      'Priority document, operating protocols and Context Document, which stay yours',
     ],
     excludedTitle: 'Not included',
     excluded: [
@@ -967,9 +999,10 @@ const en: AiCopy = {
       price: '€1,100',
       priceSuffix: 'one-off',
       priceNote: '€550 on signing + €550 on delivery',
-      cta: 'Apply now',
+      cta: 'Apply with your company',
     },
     trustLine: 'We read every application and reply within 1 business day.',
+    trustLine2: 'Only companies and eCommerce brands with at least €30,000 in monthly revenue.',
   },
   after: {
     label: 'what’s next?',
@@ -1007,12 +1040,12 @@ const en: AiCopy = {
       {
         question: 'Do you work with startups or individuals?',
         answer:
-          'No. We work with established companies and eCommerce brands, with clients, numbers and processes to improve. That’s why we review every application before the intro call.',
+          'No. We work with established companies and eCommerce brands with at least €30,000 in monthly revenue and processes to improve. Below that, the investment rarely pays back: that’s why we review every application before the intro call.',
       },
       {
         question: 'Do I need to be technical?',
         answer:
-          'No. The program adapts to your level: if you’re already tinkering you get method and priorities, if you’re starting from scratch you get a solid foundation. Reports and protocols are written for anyone to understand.',
+          'No. The program adapts to your level: if you’re already hands-on you get method and priorities, if you’re starting from scratch you get a solid foundation. The document and protocols are written for anyone to understand.',
       },
       {
         question: 'Will I see a result within 30 days?',
@@ -1069,12 +1102,18 @@ const en: AiCopy = {
   form: {
     title: 'AI Accelerator',
     subtitle:
-      '3 steps, 2 minutes. For established companies and eCommerce brands. Investment: €1,100, fixed price.',
+      '3 steps, 2 minutes. For companies and eCommerce brands with at least €30,000 in monthly revenue. Investment: €1,100, fixed price.',
     stepLabel: 'Step',
     back: '← Back',
     continue: 'Continue',
     step1: {
       title: 'What are we talking about?',
+      qRevenue: {
+        label: 'What’s your company’s monthly revenue?',
+        helper:
+          'We only work with companies and eCommerce brands generating at least €30,000 per month (about €360,000 a year). Below that threshold we can’t take on your application.',
+        options: ['Under €30,000', '€30,000 – €100,000', '€100,000 – €300,000', 'Over €300,000'],
+      },
       qBusiness: {
         label: 'What kind of business is it?',
         options: ['eCommerce', 'Online business or services', 'Company / SME', 'Agency or freelancer'],
@@ -1101,7 +1140,12 @@ const en: AiCopy = {
       fields: {
         name: { label: 'Full name', placeholder: 'John Smith' },
         email: { label: 'Work email', placeholder: 'name@company.com' },
-        company: { label: 'Company / eCommerce brand name', placeholder: 'Company Ltd' },
+        legalName: { label: 'Company legal name', placeholder: 'e.g. Acme Ltd' },
+        vatNumber: {
+          label: 'VAT or company registration number',
+          placeholder: 'e.g. GB123456789',
+          helper: 'Only used to verify that the business is already established.',
+        },
         website: { label: 'Website (optional)', placeholder: 'company.com' },
       },
       privacyBefore: 'I have read and accept the ',
@@ -1115,7 +1159,8 @@ const en: AiCopy = {
       pain: 'Tell us in at least 20 characters',
       name: 'Enter your full name',
       email: 'Enter a valid email address',
-      company: 'Enter your company name',
+      legalName: 'Enter your company legal name',
+      vat: 'Please enter a valid VAT or company registration number.',
       privacy: 'You must accept the Privacy Policy',
     },
     errorGeneric: 'Something went wrong. Please try again.',
@@ -1124,13 +1169,20 @@ const en: AiCopy = {
       title: 'Application received ⚡',
       text: 'Thank you. We’ll review your application within 1 business day. If there’s a fit, we’ll email you the link to book your 40-minute intro call.',
     },
+    dq: {
+      title: 'AI Accelerator isn’t the right fit yet',
+      text: 'The program is built for companies and eCommerce brands with at least €30,000 in monthly revenue: below that, the investment rarely pays back. In the meantime, you’ll find practical guides on our blog.',
+      blogCta: 'Go to the blog',
+      blogHref: '/blog',
+      back: '← I picked the wrong answer',
+    },
   },
   finalCta: {
     heading: 'Ready to bring order to your company?',
-    text: '30 days, one-to-one, fixed price. We review every application within 1 business day.',
+    text: '30 days, one-to-one, fixed price. For companies and eCommerce brands with at least €30,000 in monthly revenue.',
     cta: 'Apply with your company',
   },
-  sticky: { priceLine: '€1,100 · 30 days', cta: 'Apply' },
+  sticky: { priceLine: '€1,100 · 30 days', cta: 'Apply with your company' },
 }
 
 const dictionaries: Record<Locale, AiCopy> = { it, en }

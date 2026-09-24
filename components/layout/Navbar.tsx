@@ -10,7 +10,7 @@ import { getDictionary, type Locale } from '@/lib/i18n'
 import { ROUTE_PATHS, getAlternateLocalePath } from '@/lib/i18n/routes'
 import { colors, dropdown, logoText } from '@/lib/design-tokens'
 import { siteAssets } from '@/lib/site'
-import { AI_NAV_SHOW_NEW_BADGE } from '@/lib/i18n/aiAccelerator'
+import { AI_NAV_SHOW_NEW_BADGE, getAiCopy } from '@/lib/i18n/aiAccelerator'
 import { ZapIcon } from '@/components/sections/ai/PowerLayer'
 
 function getLocale(pathname: string): Locale {
@@ -364,8 +364,10 @@ export default function Navbar() {
   const alternateHref = getAlternateHref(pathname)
   const logoHref = ROUTE_PATHS.home[locale]
   const isAiPage = pathname === ROUTE_PATHS.aiAccelerator[locale]
-  // On the AI Accelerator landing the header CTA drives to the in-page form.
+  // On the AI Accelerator landing the header CTA drives to the in-page form,
+  // with the landing's own label ("call"-free in Italian).
   const contactsHref = isAiPage ? '#candidatura' : ROUTE_PATHS.contacts[locale]
+  const reserveLabel = isAiPage ? getAiCopy(locale).hero.cta : t.navbar.reserveCta
 
   const mobileNav = [...t.navbar.serviceItems, ...t.navbar.navLinks]
 
@@ -448,7 +450,7 @@ export default function Navbar() {
               href={contactsHref}
               className="np-nav-desktop button-principal"
             >
-              {t.navbar.reserveCta}
+              {reserveLabel}
             </Link>
 
             <button

@@ -3,49 +3,57 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
+import Link from 'next/link'
+
 import { type Locale } from '@/lib/i18n'
 import { getAiCopy } from '@/lib/i18n/aiAccelerator'
-import { makeAiSchema } from '@/lib/schemas/aiAccelerator'
+import { makeAiSchema, normalizeItalianVat, isValidInternationalVat } from '@/lib/schemas/aiAccelerator'
 import { trackEvent } from '@/lib/analytics/events'
 
 const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
 
-type ChoiceField = 'businessType' | 'role' | 'aiUsage'
+type ChoiceField = 'monthlyRevenue' | 'businessType' | 'role' | 'aiUsage'
 
 type Values = {
+  monthlyRevenue: string
   businessType: string
   role: string
   aiUsage: string
   mainPain: string
   name: string
   email: string
-  company: string
+  legalName: string
+  vatNumber: string
   website: string
 }
 
 const EMPTY: Values = {
+  monthlyRevenue: '',
   businessType: '',
   role: '',
   aiUsage: '',
   mainPain: '',
   name: '',
   email: '',
-  company: '',
+  legalName: '',
+  vatNumber: '',
   website: '',
 }
 
-/** Fire a custom (non-standard) step event on Pixel + GA4, if available. */
-function trackStep(step: 1 | 2) {
-  const name = `ai_form_step_${step}`
+/** Fire a custom (non-standard) event on Pixel + GA4, if available. */
+function trackCustom(name: string) {
   if (typeof window !== 'undefined') {
     if (typeof window.fbq === 'function') window.fbq('trackCustom', name)
     if (typeof window.gtag === 'function') window.gtag('event', name)
   }
 }
 
+const trackStep = (step: 1 | 2) => trackCustom(`ai_form_step_${step}`)
+
 function ChoiceCards({
   name,
   label,
+  helper,
   options,
   value,
   onChoose,
@@ -53,6 +61,7 @@ function ChoiceCards({
 }: {
   name: string
   label: string
+  helper?: string
   options: string[]
   value: string
   onChoose: (v: string) => void
@@ -64,6 +73,11 @@ function ChoiceCards({
         {label}
         <span aria-hidden className="ml-1 text-[color:var(--ai-accent-text)]">*</span>
       </legend>
+      {helper && (
+        <p className="-mt-1 mb-1 font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-grey">
+          {helper}
+        </p>
+      )}
       <div role="radiogroup" aria-labelledby={`ai-q-${name}`} className="grid gap-2 min-[520px]:grid-cols-2">
         {options.map((opt) => {
           const selected = value === opt
@@ -113,6 +127,7 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
   const [serverError, setServerError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
+  const [disqualified, setDisqualified] = useState(false)
   const [hp, setHp] = useState('')
   const mountedAtRef = useRef<number>(Date.now())
   const headingRef = useRef<HTMLParagraphElement>(null)
@@ -139,19 +154,39 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
     window.setTimeout(() => headingRef.current?.focus(), 60)
   }
 
+  // First option of the revenue question = under threshold.
+  const underThreshold = d.step1.qRevenue.options[0]
+
   function choose(field: ChoiceField, v: string) {
     if (autoAdvanceRef.current !== null) window.clearTimeout(autoAdvanceRef.current)
     const nextValues = { ...values, [field]: v }
     setValues(nextValues)
     setErrors((prev) => ({ ...prev, [field]: undefined }))
 
+    // Under-threshold revenue: stop here, no API call, no Lead.
+    if (field === 'monthlyRevenue' && v === underThreshold) {
+      autoAdvanceRef.current = window.setTimeout(() => {
+        trackCustom('ai_form_disqualified')
+        setDisqualified(true)
+      }, 260)
+      return
+    }
+
     // Card click advances as soon as the step is complete.
-    if (step === 0 && nextValues.businessType && nextValues.role) {
+    if (step === 0 && nextValues.monthlyRevenue && nextValues.monthlyRevenue !== underThreshold && nextValues.businessType && nextValues.role) {
       autoAdvanceRef.current = window.setTimeout(() => {
         trackStep(1)
         go(1)
       }, 260)
     }
+  }
+
+  function resetRevenue() {
+    setDisqualified(false)
+    setValues((prev) => ({ ...prev, monthlyRevenue: '' }))
+    setDirection(-1)
+    setStep(0)
+    window.setTimeout(() => headingRef.current?.focus(), 60)
   }
 
   function validateStep2(): boolean {
@@ -170,9 +205,26 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()
+
+    // Locale-aware VAT validation: IT normalizes to `IT` + 11 digits,
+    // EN accepts free-form international formats (min 5 alphanumerics).
+    let vat: string | null = values.vatNumber.trim()
+    if (locale === 'it') {
+      vat = normalizeItalianVat(vat)
+    } else if (!isValidInternationalVat(vat)) {
+      vat = null
+    }
+    if (!vat) {
+      setErrors((prev) => ({ ...prev, vatNumber: d.errors.vat }))
+      return
+    }
+
     const schema = makeAiSchema(d.errors)
     const payload = {
       ...values,
+      vatNumber: vat,
+      // Backward compatibility for anything reading `company`.
+      company: values.legalName,
       website: values.website || undefined,
       privacy,
       locale,
@@ -189,7 +241,7 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
       }
       setErrors(errs)
       // If a choice from a previous step is somehow missing, send the user back.
-      if (errs.businessType || errs.role) go(0)
+      if (errs.monthlyRevenue || errs.businessType || errs.role) go(0)
       else if (errs.aiUsage || errs.mainPain) go(1)
       return
     }
@@ -228,6 +280,34 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
           <p className="max-w-[480px] font-sans text-[15px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-text">
             {d.success.text}
           </p>
+        </div>
+      </div>
+    )
+  }
+
+  // Under-threshold block: the form stops here, nothing is sent.
+  if (disqualified) {
+    return (
+      <div id="candidatura" className="scroll-mt-32">
+        <div aria-live="polite" className="flex flex-col items-start gap-4 py-4">
+          <h3 className="font-display text-[22px] font-semibold leading-[1.25em] tracking-[-0.04em] text-black min-[810px]:text-[26px]">
+            {d.dq.title}
+          </h3>
+          <p className="max-w-[560px] font-sans text-[15px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-text">
+            {d.dq.text}
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-4">
+            <Link href={d.dq.blogHref} data-tracking="ai_dq_blog" className="button-principal ai-cta">
+              {d.dq.blogCta}
+            </Link>
+            <button
+              type="button"
+              onClick={resetRevenue}
+              className="font-sans text-[14px] font-medium text-np-dark underline transition-opacity hover:opacity-60"
+            >
+              {d.dq.back}
+            </button>
+          </div>
         </div>
       </div>
     )
@@ -294,6 +374,15 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
 
               {step === 0 && (
                 <>
+                  <ChoiceCards
+                    name="monthlyRevenue"
+                    label={d.step1.qRevenue.label}
+                    helper={d.step1.qRevenue.helper}
+                    options={d.step1.qRevenue.options}
+                    value={values.monthlyRevenue}
+                    onChoose={(v) => choose('monthlyRevenue', v)}
+                    error={errors.monthlyRevenue}
+                  />
                   <ChoiceCards
                     name="businessType"
                     label={d.step1.qBusiness.label}
@@ -399,38 +488,65 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="flex flex-col gap-[2px]">
-                      <label htmlFor="ai-company" className={labelClass}>
-                        {d.step3.fields.company.label}
+                      <label htmlFor="ai-legalName" className={labelClass}>
+                        {d.step3.fields.legalName.label}
                       </label>
                       <input
-                        id="ai-company"
+                        id="ai-legalName"
                         type="text"
                         autoComplete="organization"
-                        value={values.company}
-                        onChange={(e) => setValue('company', e.target.value)}
-                        placeholder={d.step3.fields.company.placeholder}
-                        className={inputClass(!!errors.company)}
+                        value={values.legalName}
+                        onChange={(e) => setValue('legalName', e.target.value)}
+                        placeholder={d.step3.fields.legalName.placeholder}
+                        className={inputClass(!!errors.legalName)}
                       />
-                      {errors.company && (
+                      {errors.legalName && (
                         <span role="alert" className={errorClass}>
-                          {errors.company}
+                          {errors.legalName}
                         </span>
                       )}
                     </div>
                     <div className="flex flex-col gap-[2px]">
-                      <label htmlFor="ai-website" className={labelClass}>
-                        {d.step3.fields.website.label}
+                      <label htmlFor="ai-vatNumber" className={labelClass}>
+                        {d.step3.fields.vatNumber.label}
                       </label>
                       <input
-                        id="ai-website"
+                        id="ai-vatNumber"
                         type="text"
-                        autoComplete="url"
-                        value={values.website}
-                        onChange={(e) => setValue('website', e.target.value)}
-                        placeholder={d.step3.fields.website.placeholder}
-                        className={inputClass(false)}
+                        inputMode={locale === 'it' ? 'numeric' : 'text'}
+                        value={values.vatNumber}
+                        onChange={(e) => setValue('vatNumber', e.target.value)}
+                        placeholder={d.step3.fields.vatNumber.placeholder}
+                        aria-describedby="ai-vat-helper"
+                        className={inputClass(!!errors.vatNumber)}
                       />
+                      <span
+                        id="ai-vat-helper"
+                        className="font-sans text-[11px] font-medium leading-[1.4em] tracking-[-0.02em] text-noprob-grey"
+                      >
+                        {d.step3.fields.vatNumber.helper}
+                      </span>
+                      {errors.vatNumber && (
+                        <span role="alert" className={errorClass}>
+                          {errors.vatNumber}
+                        </span>
+                      )}
                     </div>
+                  </div>
+
+                  <div className="flex flex-col gap-[2px]">
+                    <label htmlFor="ai-website" className={labelClass}>
+                      {d.step3.fields.website.label}
+                    </label>
+                    <input
+                      id="ai-website"
+                      type="text"
+                      autoComplete="url"
+                      value={values.website}
+                      onChange={(e) => setValue('website', e.target.value)}
+                      placeholder={d.step3.fields.website.placeholder}
+                      className={inputClass(false)}
+                    />
                   </div>
 
                   <div className="flex flex-col gap-[2px]">

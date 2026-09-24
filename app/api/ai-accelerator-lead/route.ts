@@ -43,25 +43,36 @@ export async function POST(req: NextRequest) {
   }
   const resend = new Resend(apiKey)
 
-  const { businessType, role, aiUsage, mainPain, name, email, company, website } = parsed.data
+  const { monthlyRevenue, businessType, role, aiUsage, mainPain, name, email, legalName, vatNumber, website } =
+    parsed.data
   const locale = parsed.data.locale ?? 'it'
+  const isItalianVat = /^IT\d{11}$/.test(vatNumber)
 
   try {
     const { error } = await resend.emails.send({
       from: ADMIN_FROM,
       to: [ADMIN_TO],
       replyTo: email,
-      subject: `[AI Accelerator] Nuova candidatura — ${company}`,
+      subject: `[AI Accelerator] Nuova candidatura — ${legalName}`,
       html: `
-        <p style="font-family:system-ui,sans-serif;font-size:15px;font-weight:600;margin:0 0 12px;padding:8px 12px;background:#eef3ff;border-left:3px solid #2f6bff">
-          ${businessType} · ${role} · ${aiUsage} · ${company}
+        <p style="font-family:system-ui,sans-serif;font-size:15px;font-weight:600;margin:0 0 8px;padding:8px 12px;background:#eef3ff;border-left:3px solid #2f6bff">
+          ${monthlyRevenue} · ${businessType} · ${role} · ${aiUsage} · ${legalName}
+        </p>
+        <p style="font-family:system-ui,sans-serif;font-size:13px;margin:0 0 12px;padding:0 12px">
+          P.IVA: <strong>${vatNumber}</strong>${
+            isItalianVat
+              ? ' · <a href="https://www.registroimprese.it">verifica su registroimprese.it</a>'
+              : ''
+          }
         </p>
         <h2>Nuova candidatura AI Accelerator</h2>
         <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:system-ui,sans-serif;font-size:14px">
           <tr><td><strong>Nome:</strong></td><td>${name}</td></tr>
-          <tr><td><strong>Azienda:</strong></td><td>${company}</td></tr>
+          <tr><td><strong>Ragione sociale:</strong></td><td>${legalName}</td></tr>
+          <tr><td><strong>Partita IVA:</strong></td><td>${vatNumber}</td></tr>
           <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
           <tr><td><strong>Sito web:</strong></td><td>${website || '-'}</td></tr>
+          <tr><td><strong>Fatturato mensile:</strong></td><td>${monthlyRevenue}</td></tr>
           <tr><td><strong>Tipo attività:</strong></td><td>${businessType}</td></tr>
           <tr><td><strong>Ruolo:</strong></td><td>${role}</td></tr>
           <tr><td><strong>Uso attuale AI:</strong></td><td>${aiUsage}</td></tr>
