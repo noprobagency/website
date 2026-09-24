@@ -971,3 +971,14 @@
 .ai-off .ai-side-cable::after {
   animation-play-state: paused;
 }
+
+/* --- Application form card: clearly framed as its own section --- */
+.ai-form-card {
+  position: relative;
+  border: 2px solid var(--ai-accent);
+  background:
+    linear-gradient(rgba(47, 107, 255, 0.045), rgba(47, 107, 255, 0.02)) #fbfcff;
+  box-shadow:
+    0 0 0 4px rgba(47, 107, 255, 0.08),
+    0 0 26px var(--ai-accent-glow);
+}

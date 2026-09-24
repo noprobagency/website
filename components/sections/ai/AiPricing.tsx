@@ -183,11 +183,11 @@ export default function AiPricing({ locale = 'it' }: { locale?: Locale }) {
                 </div>
               </div>
 
-              {/* Divider between the offer and the multi-step application form */}
-              <div className="my-8 border-t border-[#ececec]" />
-
-              {/* Application form (anchor target for all CTAs) */}
-              <AiApplicationForm locale={locale} />
+              {/* Application form (anchor target for all CTAs), framed as its
+                  own electric card so it clearly reads as the form section */}
+              <div className="ai-form-card mt-8 rounded-[16px] p-5 min-[810px]:p-8">
+                <AiApplicationForm locale={locale} />
+              </div>
             </div>
           </motion.div>
 
