@@ -87,7 +87,6 @@ function ChoiceCards({
               type="button"
               role="radio"
               aria-checked={selected}
-              data-tracking={`ai_form_${name}`}
               onClick={() => onChoose(opt)}
               className={`rounded-[12px] border px-4 py-3 text-left font-sans text-[14px] font-medium tracking-[-0.02em] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ai-accent)] ${
                 selected
@@ -297,7 +296,7 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
             {d.dq.text}
           </p>
           <div className="mt-2 flex flex-wrap items-center gap-4">
-            <Link href={d.dq.blogHref} data-tracking="ai_dq_blog" className="button-principal ai-cta">
+            <Link href={d.dq.blogHref} className="button-principal ai-cta">
               {d.dq.blogCta}
             </Link>
             <button
@@ -580,9 +579,11 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
                     )}
                   </div>
 
+                  {/* No data-tracking inside the form: the global ClickTrackingDelegator
+                      turns every [data-tracking] click into a Lead. The real Lead is
+                      fired only after a successful submission. */}
                   <button
                     type="submit"
-                    data-tracking="ai_form_submit"
                     disabled={submitting}
                     className="button-principal ai-cta mt-1 !w-full disabled:cursor-not-allowed disabled:opacity-50"
                   >
