@@ -12,10 +12,13 @@ export default function CaseStudy({
   locale = 'en',
   noPadding = false,
   compact = false,
+  heading,
 }: {
   locale?: Locale
   noPadding?: boolean
   compact?: boolean
+  /** Optional heading override (defaults to the shared dictionary heading). */
+  heading?: React.ReactNode
 }) {
   const t = getDictionary(locale)
 
@@ -33,7 +36,7 @@ export default function CaseStudy({
         <div className="max-w-[550px] text-center">
           <SectionLabel>{t.caseStudy.label}</SectionLabel>
           <h2 className="mt-5 text-np-h2 text-center text-np-dark">
-            {t.caseStudy.heading}
+            {heading ?? t.caseStudy.heading}
           </h2>
         </div>
 

@@ -16,7 +16,13 @@ const LANDING_LABELS: Record<string, string> = {
   '/shopify-migration': 'Apply for your migration',
   '/it/team-ecommerce-dedicato': 'Candidati per il team',
   '/data-driven-team': 'Apply for the team',
+  '/it/ai-accelerator': 'Candidati per AI Accelerator',
+  '/ai-accelerator': 'Apply for AI Accelerator',
 }
+
+// Pages with their own mobile sticky CTA bar: the floating pill stays
+// desktop-only there to avoid overlapping the bar.
+const DESKTOP_ONLY_PATHS = ['/it/ai-accelerator', '/ai-accelerator']
 
 export default function StickyContact() {
   const [visible, setVisible] = useState(false)
@@ -63,7 +69,9 @@ export default function StickyContact() {
 
   return (
     <div
-      className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 transition-all duration-300"
+      className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
+        DESKTOP_ONLY_PATHS.includes(pathname) ? 'hidden min-[810px]:block' : ''
+      }`}
       style={{ opacity: visible ? 1 : 0, transform: 'translateX(-50%)', pointerEvents: visible ? 'auto' : 'none' }}
     >
       <Link href={href} className="button-principal whitespace-nowrap">

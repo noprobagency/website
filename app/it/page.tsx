@@ -10,6 +10,7 @@ import Pricing from '@/components/sections/Pricing'
 import ProblemSection from '@/components/sections/ProblemSection'
 import ResultsCarousel from '@/components/sections/ResultsCarousel'
 import SolutionSection from '@/components/sections/SolutionSection'
+import AiServiceCard from '@/components/sections/ai/AiServiceCard'
 import { buildMetadata } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,6 +26,7 @@ export default function ItalianHomePage() {
       <SolutionSection locale="it" />
       <CaseStudy locale="it" />
       <Pricing locale="it" />
+      <AiServiceCard locale="it" />
       <LogoWall locale="it" />
       <FAQ locale="it" />
       <CTA locale="it" />

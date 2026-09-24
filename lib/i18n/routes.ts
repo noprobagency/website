@@ -8,6 +8,7 @@ export type RouteKey =
   | 'dataDrivenTeam'
   | 'sviluppoShopify'
   | 'migrazioneShopify'
+  | 'aiAccelerator'
   | 'blog'
   | 'contacts'
   | 'thankYou'
@@ -19,6 +20,8 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   dataDrivenTeam:   { en: '/data-driven-team',   it: '/it/team-ecommerce-dedicato' },
   sviluppoShopify:  { en: '/shopify-development', it: '/it/sviluppo-shopify' },
   migrazioneShopify: { en: '/shopify-migration', it: '/it/migrazione-shopify' },
+  // Product name, same slug in both locales.
+  aiAccelerator:    { en: '/ai-accelerator',     it: '/it/ai-accelerator' },
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },
   thankYou:         { en: '/thank-you',          it: '/it/grazie' },

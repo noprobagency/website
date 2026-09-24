@@ -21,6 +21,7 @@ const ROUTE_DEFS: Array<{
   { key: 'dataDrivenTeam',   priority: 0.9, changeFrequency: 'monthly', hasIt: true },
   { key: 'sviluppoShopify', priority: 0.9, changeFrequency: 'monthly', hasIt: true },
   { key: 'migrazioneShopify', priority: 0.9, changeFrequency: 'monthly', hasIt: true },
+  { key: 'aiAccelerator',    priority: 0.9, changeFrequency: 'monthly', hasIt: true },
   { key: 'blog',             priority: 0.7, changeFrequency: 'weekly',  hasIt: true },
   { key: 'contacts',         priority: 0.6, changeFrequency: 'yearly',  hasIt: true },
 ]
