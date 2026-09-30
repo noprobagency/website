@@ -276,3 +276,14 @@ Paragraphs and list items support markdown-style inline tokens via `parseInline`
 - Step 3: VAT removed; `phone` optional (≥6 digits if filled), `website` required (bare domains accepted). Admin email shows site + tel links under the summary line.
 - After a successful submit the form fires Lead (Pixel+GA4+CAPI) and redirects client-side to the dedicated noindex booking page: `/it/ai-accelerator/grazie` · `/ai-accelerator/thank-you` (`ROUTE_PATHS.aiThankYou`, `AiThankYou` component). It embeds TidyCal `noprobagency/ai-call` (`AI_TIDYCAL_PATH`), fires custom `AiAcceleratorApplication` (Pixel) / `ai_accelerator_thank_you` (GA4), has no WhatsApp and hides the floating contact pill. The generic `/it/grazie` / `/thank-you` pages are unchanged for the other forms.
 - SEO titles shortened to fit 60 chars: "AI Accelerator: consulenza AI per aziende" / "AI Accelerator: AI consulting for companies".
+
+---
+
+## 17. Ambassador playbook (IT `/it/ambassador` + EN `/ambassador`)
+
+- Private referral-partner document, shared by hand: `noIndex` via `buildMetadata`, NOT in `lib/sitemap/routes.ts`, not linked from nav/footer. `ROUTE_PATHS.ambassador` exists only for the language switch/hreflang.
+- Single server component `components/sections/ambassador/AmbassadorPlaybook.tsx` (boxed sections, no CTAs, no form); copy in `lib/i18n/ambassador.ts` (`getAmbassadorCopy(locale)`).
+- Money figures are derived from `AMBASSADOR_TERMS` (monthly price, months, 20% rate, €1.000 minimum, tiers, payout days, referral validity, contact email/WhatsApp) via `ambassadorCommission()` / `formatEur()`. When the migration price or tiers change in `lib/i18n/migrazione.ts`, update `AMBASSADOR_TERMS` too.
+- Scope: Shopify migrations only (no Shopify-to-Shopify rebuilds, no startups). Recurring commissions (from the 5th client) intentionally not written yet.
+- `StickyContact` is hidden on both ambassador paths.
+- Migration price moved to €1.450/month (tier "Clienti 11-20") in the landing copy, both JSON-LD Offers and `public/llms.txt`.

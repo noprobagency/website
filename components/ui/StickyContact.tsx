@@ -36,7 +36,10 @@ export default function StickyContact() {
     pathname === '/contacts' ||
     pathname === '/it/contatti' ||
     pathname === '/ai-accelerator/thank-you' ||
-    pathname === '/it/ai-accelerator/grazie'
+    pathname === '/it/ai-accelerator/grazie' ||
+    // Private ambassador playbook: no CTAs by design.
+    pathname === '/ambassador' ||
+    pathname === '/it/ambassador'
 
   const isLanding = pathname in LANDING_LABELS
   const href = isLanding ? '#candidatura' : t.hero.ctaPrimaryHref

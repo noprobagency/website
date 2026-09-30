@@ -28,11 +28,11 @@ const migrationJsonLd = {
     'A 4-month journey to migrate your eCommerce to Shopify without losing sales or customers. 1:1 redirects, no site interruption, server-side tracking, design and SEO.',
   offers: {
     '@type': 'Offer',
-    price: '1350',
+    price: '1450',
     priceCurrency: 'EUR',
     priceSpecification: {
       '@type': 'UnitPriceSpecification',
-      price: '1350',
+      price: '1450',
       priceCurrency: 'EUR',
       unitText: 'MONTH',
     },

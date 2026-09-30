@@ -10,6 +10,7 @@ export type RouteKey =
   | 'migrazioneShopify'
   | 'aiAccelerator'
   | 'aiThankYou'
+  | 'ambassador'
   | 'blog'
   | 'contacts'
   | 'thankYou'
@@ -25,6 +26,8 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   aiAccelerator:    { en: '/ai-accelerator',     it: '/it/ai-accelerator' },
   // Booking step after a successful AI Accelerator application (noindex).
   aiThankYou:       { en: '/ai-accelerator/thank-you', it: '/it/ai-accelerator/grazie' },
+  // Private ambassador playbook (noindex, not in the sitemap).
+  ambassador:       { en: '/ambassador',         it: '/it/ambassador' },
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },
   thankYou:         { en: '/thank-you',          it: '/it/grazie' },
