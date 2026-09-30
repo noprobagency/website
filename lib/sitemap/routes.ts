@@ -26,6 +26,12 @@ const ROUTE_DEFS: Array<{
   { key: 'contacts',         priority: 0.6, changeFrequency: 'yearly',  hasIt: true },
 ]
 
+// The Zero-Loss Migration Sprint landing enters the sitemap only when the
+// indexing flag is on (it ships noindex until Antonio flips it).
+if (process.env.LP_ZERO_LOSS_INDEX === 'true') {
+  ROUTE_DEFS.push({ key: 'zeroLossMigration', priority: 0.9, changeFrequency: 'monthly', hasIt: true })
+}
+
 export const ROUTES: RouteConfig[] = ROUTE_DEFS.map((def) => ({
   ...def,
   enPath: ROUTE_PATHS[def.key].en,

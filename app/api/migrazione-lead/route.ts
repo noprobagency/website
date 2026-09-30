@@ -3,6 +3,9 @@ import { Resend } from 'resend'
 
 import { migrazioneSchema } from '@/lib/schemas/migrazione'
 import { buildWelcomeEmail } from '@/lib/emails/welcome'
+import { zeroLossSchema } from '@/lib/schemas/zeroLoss'
+import { estimateTier } from '@/lib/zero-loss/tier'
+import { ZL_SOURCE_ID } from '@/content/zero-loss-migration'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -19,12 +22,136 @@ const WA_TEXT_IT =
 const BOOKING_URL_EN = 'https://noprob.agency/thank-you'
 const BOOKING_URL_IT = 'https://noprob.agency/it/grazie'
 
+// --- Zero-Loss Migration Sprint branch -------------------------------------
+// The landing /zero-loss-migration posts to this same endpoint with
+// `source: "zero-loss-migration"`. Its form has different fields, so it gets
+// its own schema + admin email; the original migrazione/sviluppo/datateam
+// flow below is untouched.
+
+// Best-effort per-IP rate limit (in-memory, per serverless instance): the
+// landing has no visible captcha, so this plus honeypot + time trap is the
+// anti-spam layer.
+const ZL_RATE_WINDOW_MS = 10 * 60 * 1000
+const ZL_RATE_MAX = 5
+const zlRate = new Map<string, number[]>()
+
+function zlRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const hits = (zlRate.get(ip) ?? []).filter((t) => now - t < ZL_RATE_WINDOW_MS)
+  hits.push(now)
+  zlRate.set(ip, hits)
+  if (zlRate.size > 5000) zlRate.clear()
+  return hits.length > ZL_RATE_MAX
+}
+
+function esc(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+async function handleZeroLoss(req: NextRequest, body: unknown) {
+  const parsed = zeroLossSchema.safeParse(body)
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: 'Campi non validi. Controlla i dati inseriti.', issues: parsed.error.flatten().fieldErrors },
+      { status: 400 }
+    )
+  }
+  const d = parsed.data
+
+  // Never accept what the client already stops: Shopify origin or revenue under €300k.
+  if (d.platform === 'shopify' || d.revenue_band === 'under300k') {
+    return NextResponse.json({ error: 'Not eligible' }, { status: 422 })
+  }
+
+  const isBot = (d.hp ?? '').trim() !== '' || (typeof d.elapsedMs === 'number' && d.elapsedMs < 2500)
+  if (isBot) {
+    console.warn('[migrazione-lead][zero-loss] Dropped spam submission (honeypot/timing)')
+    return NextResponse.json({ ok: true })
+  }
+
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  if (zlRateLimited(ip)) {
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+  }
+
+  // Recompute the tier server-side so the email never shows a tampered price.
+  const estimate = estimateTier({ revenue: d.revenue_band, products: d.products, languages: d.languages, erp: d.erp })
+  if (!estimate) return NextResponse.json({ error: 'Not eligible' }, { status: 422 })
+  const { tier, addon } = estimate
+
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error('[migrazione-lead][zero-loss] RESEND_API_KEY missing')
+    return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
+  }
+  const resend = new Resend(apiKey)
+
+  const siteHref = /^https?:\/\//i.test(d.websiteUrl) ? d.websiteUrl : `https://${d.websiteUrl}`
+  const utm = [d.utm_source, d.utm_medium, d.utm_campaign, d.utm_term, d.utm_content].filter(Boolean).join(' / ') || '-'
+  const eur = (n: number) => `€${n.toLocaleString('it-IT')}`
+
+  try {
+    const { error } = await resend.emails.send({
+      from: ADMIN_FROM,
+      to: [ADMIN_TO],
+      replyTo: d.email,
+      subject: `[Zero-Loss Sprint] Tier ${tier.id} · ${d.platform} · ${d.websiteUrl}`,
+      html: `
+        <p style="font-family:system-ui,sans-serif;font-size:15px;font-weight:600;margin:0 0 8px;padding:8px 12px;background:#eef8ef;border-left:3px solid #1dcc5d">
+          Tier ${tier.id} · ${eur(tier.price)} (4 x ${eur(tier.installment)}, IVA esclusa)${addon ? ' · possibili add-on' : ''} · ${esc(d.revenue_band)} · ${esc(d.platform)} · ${esc(d.start_timing)}
+        </p>
+        <p style="font-family:system-ui,sans-serif;font-size:13px;margin:0 0 12px;padding:0 12px">
+          Store: <a href="${esc(siteHref)}">${esc(d.websiteUrl)}</a>${d.phone ? ` · Tel: <a href="tel:${esc(d.phone.replace(/[^\d+]/g, ''))}">${esc(d.phone)}</a>` : ''}
+        </p>
+        <h2>Nuova candidatura Zero-Loss Migration Sprint</h2>
+        <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:system-ui,sans-serif;font-size:14px">
+          <tr><td><strong>Nome:</strong></td><td>${esc(d.name)}</td></tr>
+          <tr><td><strong>Email:</strong></td><td>${esc(d.email)}</td></tr>
+          <tr><td><strong>Telefono:</strong></td><td>${esc(d.phone || '-')}</td></tr>
+          <tr><td><strong>Store:</strong></td><td>${esc(d.websiteUrl)}</td></tr>
+          <tr><td><strong>Piattaforma:</strong></td><td>${esc(d.platform)}</td></tr>
+          <tr><td><strong>Fatturato aziendale:</strong></td><td>${esc(d.revenue_band)}</td></tr>
+          <tr><td><strong>Prodotti attivi:</strong></td><td>${esc(d.products)}</td></tr>
+          <tr><td><strong>Lingue e valute:</strong></td><td>${esc(d.languages)}</td></tr>
+          <tr><td><strong>Gestionale / ERP:</strong></td><td>${d.erp === 'yes' ? esc(d.erpName || 'sì') : 'no'}</td></tr>
+          <tr><td><strong>Quando partire:</strong></td><td>${esc(d.start_timing)}</td></tr>
+          <tr><td valign="top"><strong>Perché Shopify:</strong></td><td>${esc(d.reason)}</td></tr>
+          <tr><td><strong>Scaglione stimato:</strong></td><td>Tier ${tier.id} · ${eur(tier.price)} · 4 rate da ${eur(tier.installment)}${addon ? ' · add-on da valutare (prodotti/lingue/gestionale oltre il cap)' : ''}</td></tr>
+          <tr><td><strong>Lingua:</strong></td><td>${esc(d.locale)}</td></tr>
+          <tr><td><strong>UTM:</strong></td><td>${esc(utm)}</td></tr>
+          <tr><td><strong>Source:</strong></td><td>${ZL_SOURCE_ID}</td></tr>
+        </table>
+      `,
+    })
+
+    if (error) {
+      console.error('[migrazione-lead][zero-loss] Admin email Resend error:', error)
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 502 })
+    }
+  } catch (err) {
+    console.error('[migrazione-lead][zero-loss] Admin email unexpected error:', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+
+  // No welcome email here on purpose: the landing promises a personal reply
+  // within 48 hours and has no booking step (no Calendly/TidyCal).
+  return NextResponse.json({ ok: true, tier: tier.id })
+}
+
 export async function POST(req: NextRequest) {
   let body: unknown
   try {
     body = await req.json()
   } catch {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+  }
+
+  if (body && typeof body === 'object' && (body as { source?: unknown }).source === ZL_SOURCE_ID) {
+    return handleZeroLoss(req, body)
   }
 
   const parsed = migrazioneSchema.safeParse(body)

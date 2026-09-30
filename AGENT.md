@@ -288,3 +288,15 @@ Paragraphs and list items support markdown-style inline tokens via `parseInline`
 - `StickyContact` is hidden on both ambassador paths.
 - v2: hero has 3 stats; €5.800 is the minimum price and ambassadors who close themselves may sell higher (20% on the actual price); tier table removed; offer describes a UX review for conversion rate (not a full visual redesign, the public migration landing still says "design"); "ideal contact = already decided to migrate" card; "Chi c'è dietro" block with `public/images/shopify-partners.png`, Antonio bio (Computer Science degree, 7+ years, SaaS/apps) and the 7-person Shopify team; Cumini proof without numbers; materials moved right after the offer.
 - Migration price moved to €1.450/month (tier "Clienti 11-20") in the landing copy, both JSON-LD Offers and `public/llms.txt`.
+
+---
+
+## 18. Zero-Loss Migration Sprint landing (IT `/it/zero-loss-migration` + EN `/zero-loss-migration`)
+
+- Standalone productized-service landing modeled on the Fletch PMM homepage structure (offer card, result cards, interactive checklist, alternating deliverables, day-by-day calendar, sticky-left FAQ) plus three sections of ours (guarantees, why now, included/not included). Full docs and the open placeholder TODO list in `components/sections/zero-loss/README.md`.
+- Own route groups `app/(zl-en)` and `app/(zl-it)` with their own root layouts (`ZeroLossRootLayout`): no global navbar/sticky pill/preloader, own `ZlNav` (logo, IT/EN switch, one CTA) and `Footer minimal`. Not linked from nav/footer; `ROUTE_PATHS.zeroLossMigration` exists for hreflang + language switch.
+- Copy in `content/zero-loss-migration.{it,en}.ts` (typed `ZlCopy`), constants/tiers in `content/zero-loss-migration.shared.ts`. `[[TOKEN]]` markers render as "[DA CONFERMARE]" (yellow outside Vercel production) via `renderCopy()`.
+- `LP_ZERO_LOSS_INDEX=true` removes noindex/nofollow and adds the page to the sitemap (`lib/zero-loss/metadata.ts`, `lib/sitemap/routes.ts`). Default: hidden.
+- 4-step qualification form (`ZlApplicationForm`, schema `lib/schemas/zeroLoss.ts`, tier logic `lib/zero-loss/tier.ts`) posts to `/api/migrazione-lead` with `source: "zero-loss-migration"`; the route has a dedicated branch (`handleZeroLoss`: own schema, server-side tier recompute, rate limit, admin email, no welcome email). Stops: Shopify origin, revenue under €300k. Business email only.
+- dataLayer/GA4 events in `lib/zero-loss/tracking.ts` (`lp_view`, `cta_click`, `checklist_change`, `form_start`, `form_step`, `form_disqualified`, `form_submit`, `dashboard_demo_click`) + standard Lead on submit. OG images via `node scripts/generate-zero-loss-og.mjs`.
+- Backward-compatible props added to shared components: `Footer minimal`, `Testimonials items/tone/className`, `Accordion renderText`.

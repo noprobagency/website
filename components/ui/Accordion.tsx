@@ -6,10 +6,10 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 /** Render an answer string, turning [label](url) tokens into links. */
-function renderAnswer(text: string) {
+function renderAnswer(text: string, renderText?: (text: string) => React.ReactNode) {
   return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
     const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-    if (!match) return part
+    if (!match) return renderText ? <span key={i}>{renderText(part)}</span> : part
     const [, label, href] = match
     if (href.startsWith('/')) {
       return (
@@ -40,9 +40,14 @@ type AccordionItem = {
 type AccordionProps = {
   items: AccordionItem[]
   className?: string
+  /**
+   * Optional hook applied to each plain-text chunk of an answer (link tokens
+   * are still parsed first). Used by landings that carry placeholder tokens.
+   */
+  renderText?: (text: string) => React.ReactNode
 }
 
-export default function Accordion({ items, className }: AccordionProps) {
+export default function Accordion({ items, className, renderText }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
@@ -78,7 +83,7 @@ export default function Accordion({ items, className }: AccordionProps) {
               )}
             >
               <p className="max-w-3xl font-sans text-body-sm font-medium leading-[1.6em] text-noprob-text">
-                {renderAnswer(item.answer)}
+                {renderAnswer(item.answer, renderText)}
               </p>
             </div>
           </div>

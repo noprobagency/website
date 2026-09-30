@@ -1,0 +1,94 @@
+import type { ZlCopy } from '@/content/zero-loss-migration'
+import { renderCopy } from './Placeholder'
+
+const WEEK_ACCENTS = ['bg-np-mark-green', 'bg-[#dbe9f7]'] as const
+
+/**
+ * Section 6, Fletch "Here's exactly what the sprint looks like": pre-work
+ * two columns, then one card per week with a row per day (duration only
+ * where the client is involved), then the "after the sprint" rows.
+ */
+export default function ZlCalendar({ copy }: { copy: ZlCopy['calendar'] }) {
+  return (
+    <section className="pt-20 min-[810px]:pt-28">
+      <div className="container-noprob">
+        <h2 className="text-np-h2 max-w-[820px] text-np-dark">{copy.h2}</h2>
+
+        {/* Pre-work */}
+        <div className="section-card mt-8 !gap-5 min-[810px]:mt-10">
+          <span className="np-eyebrow">{copy.prework.label}</span>
+          <div className="grid w-full gap-6 min-[810px]:grid-cols-2 min-[810px]:gap-10">
+            <div>
+              <h3 className="font-sans text-[18px] font-bold tracking-[-0.03em] text-np-dark">{copy.prework.yourTeamTitle}</h3>
+              <p className="mt-2 font-sans text-[15px] font-medium leading-[1.55em] tracking-[-0.02em] text-np-text">{copy.prework.yourTeam}</p>
+            </div>
+            <div>
+              <h3 className="font-sans text-[18px] font-bold tracking-[-0.03em] text-np-dark">{copy.prework.ourTeamTitle}</h3>
+              <p className="mt-2 font-sans text-[15px] font-medium leading-[1.55em] tracking-[-0.02em] text-np-text">{copy.prework.ourTeam}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Weeks */}
+        <div className="mt-4 flex flex-col gap-4">
+          {copy.weeks.map((week, wi) => (
+            <div key={week.badge} className="section-card !gap-0 !p-0">
+              <div className="flex w-full flex-wrap items-center gap-3 border-b border-black/[0.06] px-6 py-4">
+                <span className={`inline-flex rounded-pill px-3 py-[6px] font-serif text-[14px] italic tracking-[-0.02em] text-np-dark ${WEEK_ACCENTS[wi]}`}>
+                  {week.badge}
+                </span>
+                <h3 className="font-sans text-[18px] font-bold tracking-[-0.03em] text-np-dark">{week.title}</h3>
+              </div>
+              <ol className="grid w-full divide-y divide-black/[0.06] lg:grid-cols-5 lg:divide-x lg:divide-y-0">
+                {week.days.map((day) => (
+                  <li key={day.day} className="flex flex-col gap-1 px-6 py-4 lg:px-5 lg:py-5">
+                    <span className="font-sans text-[12px] font-bold uppercase tracking-[0.06em] text-np-grey">{day.day}</span>
+                    <h4 className="font-sans text-[16px] font-bold leading-[1.3em] tracking-[-0.03em] text-np-dark">{day.title}</h4>
+                    {day.duration && (
+                      <span className="inline-flex w-fit items-center gap-1 rounded-[6px] bg-np-mark-green px-2 py-[3px] font-sans text-[12px] font-semibold tracking-[-0.02em] text-np-dark">
+                        <ClockIcon />
+                        {day.duration} {copy.durationLabel}
+                      </span>
+                    )}
+                    <p className="mt-1 font-sans text-[14px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-grey">
+                      {renderCopy(day.detail)}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+
+          {/* After the sprint */}
+          <div className="section-card !gap-0 !p-0">
+            <div className="w-full border-b border-black/[0.06] px-6 py-4">
+              <h3 className="font-sans text-[18px] font-bold tracking-[-0.03em] text-np-dark">{copy.after.title}</h3>
+            </div>
+            <ol className="grid w-full divide-y divide-black/[0.06] min-[810px]:grid-cols-2 min-[810px]:divide-x min-[810px]:divide-y-0">
+              {copy.after.rows.map((row) => (
+                <li key={row.phase} className="flex flex-col gap-1 px-6 py-4 min-[810px]:py-5">
+                  <span className="font-sans text-[12px] font-bold uppercase tracking-[0.06em] text-np-grey">{row.phase}</span>
+                  <h4 className="font-sans text-[16px] font-bold leading-[1.3em] tracking-[-0.03em] text-np-dark">{row.title}</h4>
+                  <p className="mt-1 font-sans text-[14px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-grey">{row.detail}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+
+        <p className="mt-8 font-display text-[1.3rem] font-semibold leading-[1.3em] tracking-[-0.04em] text-np-dark min-[810px]:text-[1.6rem]">
+          {copy.closing}
+        </p>
+      </div>
+    </section>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" strokeLinecap="round" />
+    </svg>
+  )
+}

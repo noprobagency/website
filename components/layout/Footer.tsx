@@ -5,7 +5,17 @@ import { siteConfig, siteAssets } from '@/lib/site'
 import { ServicesDropdown } from '@/components/layout/Navbar'
 import { getDictionary, type Locale } from '@/lib/i18n'
 
-export default function Footer({ locale = 'en' }: { locale?: Locale }) {
+export default function Footer({
+  locale = 'en',
+  minimal = false,
+}: {
+  locale?: Locale
+  /**
+   * Standalone landings (Zero-Loss Migration Sprint): no service links, the
+   * only exits are the noprob.agency homepage (logo) and the policies.
+   */
+  minimal?: boolean
+}) {
   const t = getDictionary(locale)
   const logoHref = locale === 'it' ? '/it' : '/'
 
@@ -36,6 +46,7 @@ export default function Footer({ locale = 'en' }: { locale?: Locale }) {
           </p>
         </div>
 
+        {!minimal && (
         <nav className="mt-8 flex flex-wrap items-center gap-2 lg:mt-0 lg:justify-end border-b border-transparent">
           <ServicesDropdown locale={locale} theme="dark" direction="up" className="text-[18px] font-semibold" />
           {t.footer.links.map((link) => (
@@ -48,6 +59,7 @@ export default function Footer({ locale = 'en' }: { locale?: Locale }) {
             </Link>
           ))}
         </nav>
+        )}
       </div>
 
       <div className="flex w-full max-w-[1200px] flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
