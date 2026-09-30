@@ -1,0 +1,529 @@
+import type { ZlCopy } from './zero-loss-migration.shared'
+import { ZL_SOURCES } from './zero-loss-migration.shared'
+
+/*
+  Copy italiano della landing Zero-Loss Migration Sprint.
+  Regole: niente trattini lunghi, niente scarsità finta, niente numeri inventati.
+  I token [[N]], [[BRAND]], [[CUMINI]] sono placeholder: in pagina diventano
+  "[DA CONFERMARE]" (vedi components/sections/zero-loss/README.md).
+*/
+
+export const zeroLossIt: ZlCopy = {
+  meta: {
+    title: 'Zero-Loss Migration Sprint: il tuo eCommerce su Shopify in 10 giorni | noprob agency',
+    description:
+      'Replichiamo il tuo store 1:1 su Shopify in 10 giorni lavorativi, senza perdere vendite, clienti e posizioni su Google. Redirect 1:1, tracking server-side, 90 giorni di supporto, 4 garanzie. Prezzo pubblico.',
+    ogAlt: 'Zero-Loss Migration Sprint: store pronto in 10 giorni',
+  },
+  nav: {
+    cta: 'Candidati allo sprint',
+    langSwitchLabel: 'Cambia lingua',
+    logoLabel: 'noprob agency, vai alla home',
+  },
+  hero: {
+    eyebrow: 'Zero-Loss Migration Sprint',
+    h1: 'Porta il tuo eCommerce su Shopify senza perdere vendite, clienti e posizioni su Google.',
+    paragraph:
+      "In 10 giorni lavorativi replichiamo il tuo store 1:1 su Shopify, pronto a pubblicare: dati, redirect, tracking e flusso d'acquisto ottimizzato. Go-live quando decidi tu, 90 giorni di supporto inclusi. Oltre 10 migrazioni, zero store offline.",
+    ctaPrimary: 'Candidati allo sprint',
+    ctaNote: 'Rispondiamo in 48 ore',
+    ctaSecondary: 'Guarda i risultati',
+    logosLabel: 'Scelto da brand fashion, food e DTC',
+    trustpilotScore: '4,9',
+    trustpilotLabel: 'su Trustpilot',
+  },
+  overview: {
+    h2: 'Zero-Loss Migration Sprint',
+    paragraph:
+      "Dieci giorni lavorativi, un calendario fisso, un referente. Il lunedì ci dai gli accessi, il venerdì della settimana dopo hai lo store su Shopify pronto a pubblicare. Non è un redesign: è il tuo store, uguale, più veloce e senza bug, con il flusso d'acquisto ottimizzato per convertire di più.",
+    cta: 'Candidati allo sprint',
+    deliverablesTitle: 'Cosa ottieni al giorno 10',
+    deliverables: [
+      {
+        title: 'Store Shopify pronto a pubblicare',
+        line: "Replica 1:1 su tema premium, bug corretti, [[N]] impostazioni del flusso d'acquisto applicate.",
+      },
+      {
+        title: 'Data Migration Report',
+        line: 'Prodotti, varianti, clienti e storico ordini riconciliati al 100%.',
+      },
+      {
+        title: 'Redirect Map 1:1',
+        line: 'Ogni URL vecchio mappato al nuovo e testato in automatico. Nessun click organico perso.',
+      },
+      {
+        title: 'Tracking Spec + setup server-side',
+        line: 'GA4, Meta CAPI via Stape, email, consent mode. Dati che tornano con gli ordini.',
+      },
+      {
+        title: 'Go-live Checklist con data',
+        line: 'Tu scegli il giorno, noi il resto. Mai un secondo offline.',
+      },
+    ],
+    afterLine:
+      'Dopo lo sprint: go-live a zero downtime nella finestra che scegli tu e 90 giorni di supporto, con bug fix, modifiche minori, monitoraggio SEO e tracking.',
+    pricingTitle: 'Prezzo in base alla dimensione della tua azienda',
+    pricingSub: 'e alla complessità dello store che ne deriva',
+    tiers: [
+      { label: 'Fatturato aziendale sotto €2M', price: '€5.800', under: '4 rate da €1.450, IVA esclusa' },
+      { label: 'Fatturato tra €2M e €20M', price: '€8.800', under: '4 rate da €2.200, IVA esclusa' },
+      { label: 'Fatturato oltre €20M', price: '€12.800', under: '4 rate da €3.200, IVA esclusa' },
+    ],
+    pricingNote:
+      'Prima rata al kickoff, seconda al go-live, terza e quarta nei due mesi di supporto. Piano Shopify, tema e app a carico tuo. Nessuno sconto, nessun preventivo: questo è il prezzo.',
+    results: [
+      { value: '+347% di fatturato online in 36 mesi', attribution: 'Cumini, luxury multibrand' },
+      { value: '99,3K click organici e posizione media 9,6 dopo la migrazione', attribution: 'Cumini, Search Console' },
+      { value: 'Conversion rate da 2% a 5%, AOV +30%', attribution: '[[BRAND]], eCommerce DTC' },
+      { value: '0 minuti offline in oltre 10 migrazioni', attribution: 'noprob agency' },
+    ],
+  },
+  checklist: {
+    h2: 'Ti riconosci?',
+    sub: 'spunta quelle vere',
+    items: [
+      'Ogni modifica al sito passa da un ticket o dal developer',
+      'Hai già valutato Shopify e ti frena solo la paura di perdere SEO o vendite',
+      'Il sito si è rotto o rallentato almeno una volta in un periodo di picco',
+      'I numeri di Meta o GA4 non tornano con gli ordini reali',
+      'Paghi hosting e manutenzione più di quanto vorresti e dipendi da una persona',
+      "La tua azienda fattura almeno €300k l'anno e vende online ogni mese",
+    ],
+    reactionLow: 'Forse non è ancora il momento. Salvati la pagina.',
+    reactionHigh: 'No prob. È esattamente quello che facciamo.',
+    reactionHighCta: 'Candidati allo sprint',
+    reactionNoRevenue: 'Sotto €300k di fatturato lo sprint non conviene né a te né a noi. Ci risentiamo quando cresci.',
+    countLabel: 'spunte',
+  },
+  deliverables: {
+    h2: 'La soluzione: uno sprint di 2 settimane',
+    sub: 'ecco cosa ricevi, uno per uno',
+    labelPrefix: 'Deliverable',
+    items: [
+      {
+        title: 'Il tuo store, pronto a pubblicare su Shopify',
+        paragraph:
+          "Il tuo store ricostruito 1:1 su Shopify: stesse pagine, stessa struttura, stessi contenuti. Correggiamo bug ed errori che ti porti dietro da anni e applichiamo la nostra checklist di [[N]] impostazioni sul flusso d'acquisto: ricerca, scheda prodotto, carrello, checkout. Non è un restyling. È il tuo store, più veloce e più corto da comprare.",
+        imageAlt: 'Screenshot dello staging Shopify affiancato al sito attuale, con la checklist in overlay',
+        mockup: 'staging',
+      },
+      {
+        title: 'Data Migration Report',
+        paragraph:
+          'Prodotti, varianti, immagini, clienti, storico ordini, codici sconto, recensioni. Ogni conteggio della piattaforma vecchia confrontato con Shopify e riconciliato al 100%. Se una differenza c\'è, è scritta e spiegata.',
+        imageAlt: 'Tabella del Data Migration Report con colonne sorgente, Shopify e differenza',
+        mockup: 'report',
+      },
+      {
+        title: 'Redirect Map 1:1',
+        paragraph:
+          'Ogni URL che ha ricevuto traffico negli ultimi 12 mesi ha il suo redirect 301 verso una pagina che risponde 200. Non a mano: con un test automatico che gira prima del go-live e dopo. È il motivo per cui il traffico organico non si perde.',
+        imageAlt: 'CSV della Redirect Map e output del test automatico con 100% verde',
+        mockup: 'redirects',
+      },
+      {
+        title: 'Tracking Spec e setup server-side',
+        paragraph:
+          'GA4, Meta Conversions API via Stape, Google Ads, piattaforma email, consent mode. Un documento con ogni evento e come lo verifichiamo: purchase deduplicato, Event Match Quality Meta sopra 8, scarto tra ordini Shopify e GA4 sotto il 3%.',
+        imageAlt: 'Pagina della Tracking Spec e screenshot dell\'Event Match Quality',
+        mockup: 'tracking',
+      },
+      {
+        title: 'Go-live Checklist con la tua data',
+        paragraph:
+          'DNS, TTL, sitemap, Search Console, monitor di uptime, piano di rollback. La firmi tu con la data che scegli, dal giorno 11 al 30. Il giorno del lancio il tuo store non si ferma un secondo.',
+        imageAlt: 'Go-live Checklist firmata con la data in evidenza',
+        mockup: 'checklist',
+      },
+    ],
+    afterTitle: 'E dopo lo sprint',
+    afterCards: [
+      {
+        title: 'Go-live a zero downtime',
+        text: 'Cambio DNS, redirect attivi, sitemap inviata. Restiamo sul sito 48 ore di fila e ti mandiamo il primo report a 7 giorni.',
+      },
+      {
+        title: '90 giorni di supporto',
+        text: 'Bug fix illimitati, modifiche minori fino a 4 ore al mese, monitoraggio SEO e tracking ogni settimana. Al giorno 90 ricevi il Migration Report con il before/after.',
+      },
+    ],
+  },
+  calendar: {
+    h2: 'Ecco esattamente come funziona lo sprint',
+    prework: {
+      label: 'Pre-work',
+      yourTeamTitle: 'Il tuo team',
+      yourTeam: "Compili il form di intake (30 minuti), prepari la lista degli accessi e l'export di catalogo e ordini.",
+      ourTeamTitle: 'Il nostro team',
+      ourTeam:
+        'Apriamo il canale dedicato, prepariamo lo store di sviluppo e il piano di import. Il kickoff è sempre di lunedì: se manca un accesso, slitta al lunedì dopo. Non si parte a metà.',
+    },
+    weeks: [
+      {
+        badge: 'Settimana 01',
+        title: 'Costruzione',
+        days: [
+          {
+            day: 'Lunedì',
+            title: 'Kickoff e credenziali',
+            duration: '90 minuti',
+            detail: 'Accessi a piattaforma, DNS, Search Console, GA4 e Meta. Export. Congeliamo la baseline di traffico e vendite.',
+          },
+          {
+            day: 'Martedì',
+            title: 'Inventario e import',
+            detail: 'Inventario di ogni URL con traffico negli ultimi 12 mesi, mappa dati. Import di prodotti, clienti e ordini in staging.',
+          },
+          {
+            day: 'Mercoledì',
+            title: 'Riconciliazione e struttura',
+            duration: '10 minuti',
+            detail: 'Conteggi sorgente e Shopify al 100%. Tema, navigazione, collezioni. Ti arriva un Loom.',
+          },
+          {
+            day: 'Giovedì',
+            title: 'Replica dei template',
+            detail: 'Home, collezione, prodotto e ricerca replicate 1:1. Prima versione della Redirect Map.',
+          },
+          {
+            day: 'Venerdì',
+            title: 'Staging v1',
+            duration: '30 minuti',
+            detail: 'Ti mandiamo il link dello staging e un Loom di 10 minuti. Feedback entro lunedì.',
+          },
+        ],
+      },
+      {
+        badge: 'Settimana 02',
+        title: 'Rifinitura e consegna',
+        days: [
+          {
+            day: 'Lunedì',
+            title: 'Review live e fix',
+            duration: '60 minuti',
+            detail: 'Call sullo staging, poi carrello, checkout e account.',
+          },
+          {
+            day: 'Martedì',
+            title: 'Tracking e integrazioni',
+            detail: 'Stape, GA4, Meta CAPI, email, consent mode. Pagamenti e spedizioni.',
+          },
+          {
+            day: 'Mercoledì',
+            title: "Flusso d'acquisto",
+            detail: 'Le [[N]] impostazioni della checklist su ricerca, scheda prodotto, carrello e checkout. Velocità. SEO tecnica: meta, schema, sitemap.',
+          },
+          {
+            day: 'Giovedì',
+            title: 'QA e test',
+            detail: 'Test automatico dei 301 su tutti gli URL, ordini di prova end-to-end, 3 device, validazione del tracking.',
+          },
+          {
+            day: 'Venerdì',
+            title: 'Consegna dello sprint',
+            duration: '45 minuti',
+            detail: 'Store pronto a pubblicare, Redirect Map, Tracking Spec, Go-live Checklist. Fissiamo la data.',
+          },
+        ],
+      },
+    ],
+    durationLabel: 'per te',
+    after: {
+      title: 'Dopo lo sprint',
+      rows: [
+        {
+          phase: 'Giorni 11-30',
+          title: 'Go-live, la data la scegli tu',
+          detail: 'Cambio DNS, redirect attivi, sitemap e Search Console. Presidio 48 ore.',
+        },
+        {
+          phase: '90 giorni dal go-live',
+          title: 'Supporto',
+          detail: 'Bug fix, modifiche minori, monitoraggio SEO e tracking. Loom settimanale di 10 minuti. Report al giorno 90.',
+        },
+      ],
+    },
+    closing: 'Tempo richiesto a te in tutto: circa 8 ore. Il resto lo facciamo noi.',
+  },
+  guarantees: {
+    h2: 'Quattro garanzie, tutte misurabili',
+    sub: 'Misurate dalla dashboard che ricevi il giorno 1, non da opinioni.',
+    cards: [
+      { key: 'Sprint', text: 'Store pronto al giorno 10 o ti rimborsiamo la prima rata.' },
+      { key: 'SEO', text: 'Traffico organico sotto la baseline a 90 giorni dal go-live? Lavoriamo gratis finché non torna.' },
+      { key: 'Go-live', text: 'Store offline al lancio per colpa nostra? Una rata la paghiamo noi.' },
+      { key: 'Checkout', text: 'Il checkout converte meno di prima a 90 giorni? Lo ottimizziamo gratis finché non supera.' },
+    ],
+    line: 'Le condizioni complete stanno nel contratto, scritte in una pagina. Niente asterischi nascosti.',
+  },
+  whyNow: {
+    h2: "Perché ora, non l'anno prossimo",
+    paragraph:
+      'Non è una nostra scadenza, è del mercato. Shopify è la piattaforma su cui gli assistenti AI stanno imparando a comprare, e ogni mese sulla piattaforma vecchia è un mese di posizionamento e di dati che non recuperi.',
+    sourceLabel: 'Fonte',
+    cards: [
+      {
+        text: 'Shopify ha reso ogni store "agent-ready by default": i cataloghi dei merchant sono già dentro ChatGPT, Microsoft Copilot e Google AI Mode attraverso un solo canale in admin.',
+        sources: [
+          { label: 'Shopify', href: ZL_SOURCES.shopifyAgentic },
+          { label: 'Yahoo Finance', href: ZL_SOURCES.yahooFinance },
+        ],
+      },
+      {
+        text: 'Nel secondo trimestre 2026 il traffico e gli ordini portati dagli agenti AI agli store Shopify sono triplicati anno su anno.',
+        sources: [{ label: 'Digital Commerce 360', href: ZL_SOURCES.digitalCommerce360 }],
+      },
+      {
+        text: 'Lo standard del commercio via agenti, UCP, lo scrive Shopify insieme a Google. Le altre piattaforme lo adottano dopo, via plugin.',
+        sources: [{ label: 'Shopify', href: ZL_SOURCES.shopifyAgentic }],
+      },
+    ],
+    closing:
+      'Quando arrivano in Europa, chi è su Shopify li accende. Chi è su WooCommerce aspetta un plugin. Il costo della tua attesa, con i tuoi numeri, te lo mostriamo in call: velocità, tasso di checkout e scarto del tracking del tuo store contro la baseline dei nostri.',
+  },
+  proof: {
+    h2: 'Cosa succede dopo una migrazione fatta bene',
+    galleryTitle: 'Una card per ogni migrazione',
+    gallery: {
+      fromLabel: 'Da',
+      goLiveLabel: 'Go-live',
+      clicksLabel: 'Click organici',
+      clicksNote: '90 giorni prima e dopo',
+      lcpLabel: 'LCP mobile',
+      lcpNote: 'prima e dopo',
+      offlineLabel: 'Minuti offline',
+      beforeLabel: 'prima',
+      afterLabel: 'dopo',
+      skeletonLabel: 'prossima migrazione',
+      cumini: {
+        brand: 'Cumini',
+        from: '[[CUMINI]]',
+        goLive: '[[CUMINI]]',
+        clicksBefore: '[[CUMINI]]',
+        clicksAfter: '[[CUMINI]]',
+        lcpBefore: '[[CUMINI]]',
+        lcpAfter: '[[CUMINI]]',
+        offline: '0',
+      },
+      skeletons: 2,
+    },
+    dashboardCta: 'Guarda la dashboard che ricevi il giorno 1',
+    testimonialsHeading: 'Cosa dicono i clienti',
+    testimonials: [
+      {
+        name: 'Antonio Cali',
+        role: 'Sfogliate&Sfogliatelle - DTC eCommerce Owner',
+        image: '/images/originals/5ZClDWRqPVst2zJqghXyG33cMY0.png',
+        quote:
+          "Collaborare con NoProb Agency per lo sviluppo del nostro eCommerce è stata un’esperienza estremamente positiva. Fin dalle prime fasi del progetto, il team si è distinto per chiarezza nella comunicazione, competenza tecnica e capacità di ascolto. Ogni passaggio, dalla progettazione grafica al go-live, è stato gestito con professionalità…",
+      },
+      {
+        name: 'Camilla Dudine',
+        role: 'DDglobal Store - B2B eCommerce Owner',
+        image: '/images/originals/btYlkzRXpOBFU8seMDbnX8BY8.jpeg',
+        quote:
+          'Collaborare con Antonio per la creazione del nostro sito eCommerce è stata un’esperienza estremamente positiva. Ha dimostrato grande professionalità, competenza tecnica e una notevole attenzione al dettaglio, riuscendo a trasformare le nostre idee in un eCommerce funzionale, moderno e performante.',
+      },
+      // Slot per le prossime testimonianze sulla migrazione: nascosti finché `hidden` è true.
+      { name: '', role: '', image: '', quote: '', hidden: true },
+      { name: '', role: '', image: '', quote: '', hidden: true },
+      { name: '', role: '', image: '', quote: '', hidden: true },
+    ],
+  },
+  scope: {
+    h2: 'Cosa facciamo. E cosa no.',
+    includedTitle: 'Incluso nello sprint',
+    included: [
+      'Migrazione di prodotti, clienti e storico ordini',
+      'Redirect SEO 1:1 e SEO tecnica on-site',
+      'Tracking server-side e consent mode',
+      'Configurazione di pagamenti, spedizioni, email e delle piattaforme che già usi',
+      "Replica 1:1, bug fix, flusso d'acquisto ottimizzato",
+      'Go-live a zero downtime e 90 giorni di supporto',
+    ],
+    partnersTitle: 'Con partner dedicati, dopo il go-live',
+    partners: [
+      'Design su misura e rebranding',
+      'Advertising Meta e Google',
+      'Email marketing e CRM',
+      'Foto prodotto, copywriting, traduzioni',
+      'Marketplace, POS, portali B2B complessi',
+    ],
+    line: 'Sopra i limiti del tuo scaglione (prodotti, lingue, gestionale) si aggiungono add-on a prezzo fisso, mai un preventivo libero. Te li diciamo in call, prima di firmare.',
+  },
+  faq: {
+    h2: 'Domande frequenti',
+    cta: 'Candidati allo sprint',
+    items: [
+      {
+        question: 'Quanto tempo mi serve?',
+        answer:
+          'Circa 8 ore in tutto: 30 minuti di form, 90 di kickoff, 60 di review dello staging, 45 alla consegna, qualche Loom da 10 minuti, la reperibilità il giorno del go-live. Il resto lo facciamo noi.',
+      },
+      {
+        question: 'Il mio store resta online durante lo sprint?',
+        answer:
+          'Sì. Lavoriamo in staging, il tuo sito attuale non viene toccato. Il go-live lo fai quando decidi tu, tra il giorno 11 e il 30.',
+      },
+      {
+        question: 'Perdo posizioni su Google?',
+        answer:
+          'No, se la migrazione è gestita. Ogni URL con traffico ha il suo redirect 1:1, testato in automatico prima e dopo il lancio, e monitoriamo Search Console per 90 giorni. Se il traffico organico resta sotto la baseline a 90 giorni, lavoriamo gratis finché non torna.',
+      },
+      {
+        question: 'Il sito sarà uguale a prima?',
+        answer:
+          "Sì, ed è il punto. Replichiamo il tuo store 1:1, correggiamo bug ed errori e ottimizziamo il flusso d'acquisto con la nostra checklist di [[N]] impostazioni. Non è un redesign: se vuoi cambiare immagine, quello arriva dopo, con un partner.",
+      },
+      {
+        question: 'Da quali piattaforme migrate?',
+        answer:
+          'WooCommerce, PrestaShop, Magento, piattaforme custom, gestionali ed ERP con store integrato. Se sei già su Shopify e vuoi solo un restyling, non è lo sprint giusto.',
+      },
+      {
+        question: 'Cosa succede se non arrivano gli accessi in tempo?',
+        answer: 'Il kickoff slitta al lunedì successivo. Lo sprint parte solo quando può finire in 10 giorni.',
+      },
+      {
+        question: 'Cosa succede se il mio store supera i limiti dello scaglione?',
+        answer:
+          'Gli extra (lingue, valute, gestionale custom, blog molto grande) hanno un prezzo fisso a listino e te li diciamo in call, prima della firma. Nessun preventivo libero.',
+      },
+      {
+        question: 'Come si paga?',
+        answer:
+          'Quattro rate: la prima al kickoff, la seconda al go-live, la terza e la quarta nei due mesi di supporto. Prezzi IVA esclusa. Piano Shopify, tema e app li paghi direttamente a Shopify.',
+      },
+      {
+        question: 'Come funzionano le garanzie?',
+        answer:
+          'Sono quattro, misurate dalla dashboard: store pronto al giorno 10 o rimborso della prima rata; traffico organico sotto la baseline a 90 giorni e lavoriamo gratis finché non torna; store offline al lancio per colpa nostra e una rata la paghiamo noi; checkout che converte meno di prima a 90 giorni e lo ottimizziamo gratis finché non supera. Le condizioni stanno nel contratto, in una pagina.',
+      },
+      {
+        question: 'Cosa succede dopo i 90 giorni?',
+        answer:
+          'Lo store è tuo, solido, con dati puliti. Puoi continuare da solo, con un pacchetto ore, o con i partner per advertising, email e design. Nessun vincolo.',
+      },
+      {
+        question: 'Quando posso partire?',
+        answer:
+          'Il kickoff è sempre di lunedì. Candidati, ti rispondiamo entro 48 ore con lo scaglione e il primo lunedì disponibile.',
+      },
+      {
+        question: 'Perché il prezzo dipende dal fatturato della mia azienda?',
+        answer:
+          'Perché fatturato e complessità dello store vanno insieme: più prodotti, lingue, integrazioni e persone da allineare. È lo stesso criterio che usano le migliori consulenze prodottizzate. Il prezzo del tuo scaglione lo vedi qui, prima di parlarci.',
+      },
+    ],
+  },
+  finalCta: {
+    h2: 'Candidati allo sprint',
+    paragraph:
+      'Ti rispondiamo entro 48 ore, anche se la risposta è no. Se sei dentro i criteri, la risposta è lo scaglione, il prezzo e il primo lunedì disponibile.',
+    bullets: ['Kickoff sempre di lunedì', 'Store pronto al giorno 10', '90 giorni di supporto inclusi'],
+  },
+  form: {
+    progressLabel: 'Passo {step} di {total}',
+    replyNote: 'Ti rispondiamo entro 48 ore',
+    next: 'Avanti',
+    back: 'Indietro',
+    submit: 'Invia la candidatura',
+    submitting: 'Invio in corso...',
+    requiredMark: 'obbligatorio',
+    steps: [{ title: 'Il tuo store' }, { title: 'Dimensione' }, { title: 'Tempi e motivo' }, { title: 'Contatti' }],
+    step1: {
+      urlLabel: 'URL dello store',
+      urlPlaceholder: 'https://www.tuostore.it',
+      platformLabel: 'Piattaforma attuale',
+      platforms: [
+        { value: 'woocommerce', label: 'WooCommerce' },
+        { value: 'prestashop', label: 'PrestaShop' },
+        { value: 'magento', label: 'Magento' },
+        { value: 'custom', label: 'Custom' },
+        { value: 'erp', label: 'Gestionale/ERP' },
+        { value: 'other', label: 'Altro' },
+        { value: 'shopify', label: 'Shopify' },
+      ],
+      shopifyStop:
+        "Lo sprint è per chi arriva da un'altra piattaforma. Se vuoi solo migliorare uno store già su Shopify, scrivici dalla pagina contatti.",
+      shopifyStopLink: 'Vai alla pagina contatti',
+    },
+    step2: {
+      revenueLabel: 'Fatturato aziendale annuo',
+      revenues: [
+        { value: 'under300k', label: 'Sotto €300k' },
+        { value: '300k-2m', label: '€300k-2M' },
+        { value: '2m-20m', label: '€2M-20M' },
+        { value: 'over20m', label: 'Oltre €20M' },
+      ],
+      productsLabel: 'Prodotti attivi a catalogo',
+      products: [
+        { value: 'under2000', label: 'Sotto 2.000' },
+        { value: '2000-10000', label: '2.000-10.000' },
+        { value: 'over10000', label: 'Oltre 10.000' },
+      ],
+      languagesLabel: 'Lingue e valute',
+      languages: [
+        { value: '1', label: '1' },
+        { value: '2-3', label: '2-3' },
+        { value: '4plus', label: '4 o più' },
+      ],
+      erpLabel: 'Gestionale o ERP collegato',
+      erpNo: 'No',
+      erpYes: 'Sì',
+      erpWhichLabel: 'Quale?',
+      erpWhichPlaceholder: 'Nome del gestionale o ERP',
+      revenueStop: 'Sotto €300k lo sprint non conviene né a te né a noi. Ci risentiamo quando cresci.',
+    },
+    step3: {
+      timingLabel: 'Quando vuoi partire',
+      timings: [
+        { value: 'now', label: 'Subito' },
+        { value: '1-3months', label: 'Entro 1-3 mesi' },
+        { value: 'evaluating', label: 'Sto valutando' },
+      ],
+      reasonLabel: 'Perché vuoi passare a Shopify',
+      reasonPlaceholder: 'Piattaforma rigida, sito lento, paura di perdere SEO, tracking sballato... dillo con parole tue',
+      reasonCounter: '{count}/{max}',
+    },
+    step4: {
+      summaryTitle: 'Il tuo scaglione',
+      summary:
+        'In base a quello che ci hai detto, il tuo scaglione è {tier}: {price} in 4 rate da {installment}, IVA esclusa. Lo confermiamo in call.',
+      addonLine: 'Alcuni extra potrebbero avere un add-on a prezzo fisso: te lo diciamo in call.',
+      nameLabel: 'Nome e cognome',
+      namePlaceholder: 'Mario Rossi',
+      emailLabel: 'Email aziendale',
+      emailPlaceholder: 'nome@tuaazienda.it',
+      phoneLabel: 'Telefono (opzionale)',
+      phonePrefixLabel: 'Prefisso',
+      phonePlaceholder: '320 000 0000',
+      privacyBefore: 'Ho letto la ',
+      privacyLinkLabel: 'Privacy Policy',
+      tierLabel: 'Tier',
+    },
+    errors: {
+      url: "Inserisci l'URL dello store, ad esempio https://www.tuostore.it",
+      choice: "Scegli un'opzione",
+      erpName: 'Scrivi quale gestionale o ERP usi',
+      reason: 'Scrivi in due righe perché vuoi passare a Shopify',
+      reasonMax: 'Massimo 500 caratteri',
+      name: 'Inserisci nome e cognome',
+      email: 'Inserisci un indirizzo email valido',
+      emailFree: "Usa l'email aziendale, così sappiamo che sei tu",
+      phone: 'Controlla il numero di telefono',
+      privacy: 'Devi accettare la Privacy Policy',
+      generic: "Qualcosa non ha funzionato. Riprova: i dati inseriti sono ancora qui.",
+      network: 'Connessione assente. Riprova tra un attimo: i dati inseriti sono ancora qui.',
+    },
+    success: {
+      title: 'Candidatura ricevuta.',
+      text: 'Ti rispondiamo entro 48 ore da {email} con lo scaglione e il primo lunedì disponibile.',
+      dashboardCta: 'Guarda la dashboard che ricevi il giorno 1',
+    },
+    retry: 'Riprova',
+  },
+  footer: {
+    backToSite: 'Torna a noprob.agency',
+  },
+}

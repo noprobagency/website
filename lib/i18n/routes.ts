@@ -11,6 +11,7 @@ export type RouteKey =
   | 'aiAccelerator'
   | 'aiThankYou'
   | 'ambassador'
+  | 'zeroLossMigration'
   | 'blog'
   | 'contacts'
   | 'thankYou'
@@ -28,6 +29,10 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   aiThankYou:       { en: '/ai-accelerator/thank-you', it: '/it/ai-accelerator/grazie' },
   // Private ambassador playbook (noindex, not in the sitemap).
   ambassador:       { en: '/ambassador',         it: '/it/ambassador' },
+  // Zero-Loss Migration Sprint landing (ads / cold email / ambassador traffic).
+  // Product name, same slug in both locales. noindex + out of the sitemap until
+  // LP_ZERO_LOSS_INDEX=true (see components/sections/zero-loss/README.md).
+  zeroLossMigration: { en: '/zero-loss-migration', it: '/it/zero-loss-migration' },
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },
   thankYou:         { en: '/thank-you',          it: '/it/grazie' },

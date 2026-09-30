@@ -19,26 +19,41 @@ const cardVariants: Variants = {
   }),
 }
 
+export type TestimonialItem = { name: string; role: string; image: string; quote: string }
+
 export default function Testimonials({
   locale = 'en',
   heading,
+  items,
+  tone = 'dark',
+  className,
 }: {
   locale?: Locale
   /** Optional heading override (defaults to the shared dictionary heading). */
   heading?: string
+  /** Optional items override (defaults to the shared dictionary testimonials). */
+  items?: TestimonialItem[]
+  /** 'dark' = heading for a black section (default); 'light' = heading for the page background. */
+  tone?: 'dark' | 'light'
+  className?: string
 }) {
   const t = getDictionary(locale).about.testimonials
+  const list = items ?? t.items
 
   return (
-    <div className="mx-auto mt-16 max-w-[850px]">
+    <div className={className ?? 'mx-auto mt-16 max-w-[850px]'}>
       <div className="text-center">
-        <h3 className="font-sans text-[1.6rem] font-bold leading-[1.4em] tracking-[-0.04em] text-[#f9f9f9]">
+        <h3
+          className={`font-sans text-[1.6rem] font-bold leading-[1.4em] tracking-[-0.04em] ${
+            tone === 'light' ? 'text-np-dark' : 'text-[#f9f9f9]'
+          }`}
+        >
           {heading ?? t.heading}
         </h3>
       </div>
 
       <div className="mt-6 grid gap-3 xl:grid-cols-2">
-        {t.items.map((testimonial, i) => (
+        {list.map((testimonial, i) => (
           <motion.article
             key={testimonial.name}
             custom={i}
