@@ -276,7 +276,7 @@ const it: MigrazioneCopy = {
       'Niente esborso da migliaia di euro in anticipo: paghi mese per mese, mentre vedi lo store prendere forma. Il prezzo parte basso e sale man mano che acquisiamo nuovi clienti. Più aspetti, più costa.',
     tiers: [
       { price: '€1.100', slot: 'Primi 10 clienti', tag: 'Già acquisiti', state: 'completed' },
-      { price: '€1.350', slot: 'Clienti 11-20', tag: 'Disponibile ora', state: 'current' },
+      { price: '€1.450', slot: 'Clienti 11-20', tag: 'Disponibile ora', state: 'current' },
       { price: '€1.700', slot: 'Clienti 21-30', tag: 'Quasi al completo', state: 'upcoming' },
       { price: '€2.000', slot: 'Dal 31° in poi', tag: 'Prezzo a regime', state: 'upcoming' },
     ],
@@ -540,7 +540,7 @@ const en: MigrazioneCopy = {
       'No thousands of euros up front: you pay month by month, while you watch your store take shape. The price starts low and rises as we take on new clients. The longer you wait, the more it costs.',
     tiers: [
       { price: '€1,100', slot: 'First 10 clients', tag: 'Already taken', state: 'completed' },
-      { price: '€1,350', slot: 'Clients 11-20', tag: 'Available now', state: 'current' },
+      { price: '€1,450', slot: 'Clients 11-20', tag: 'Available now', state: 'current' },
       { price: '€1,700', slot: 'Clients 21-30', tag: 'Almost full', state: 'upcoming' },
       { price: '€2,000', slot: 'From the 31st on', tag: 'Standard price', state: 'upcoming' },
     ],
