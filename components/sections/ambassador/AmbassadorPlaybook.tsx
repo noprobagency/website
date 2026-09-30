@@ -1,7 +1,9 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import SectionLabel from '@/components/ui/SectionLabel'
 import { cn } from '@/lib/utils'
+import { siteAssets } from '@/lib/site'
 import { type Locale } from '@/lib/i18n'
 import {
   AMBASSADOR_TERMS as T,
@@ -131,6 +133,7 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
   const d = getAmbassadorCopy(locale)
   const eur = (n: number) => formatEur(n, locale)
   const commission = ambassadorCommission(T.monthlyPrice)
+  const landingHref = d.materials.links[0].href
 
   return (
     <main className="pb-10">
@@ -158,7 +161,7 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
             {d.hero.lead}
           </p>
 
-          <dl className="grid w-full max-w-[900px] grid-cols-2 gap-3 min-[810px]:grid-cols-4">
+          <dl className="grid w-full max-w-[900px] gap-3 min-[810px]:grid-cols-3">
             {d.hero.stats.map((s) => (
               <div key={s.label} className="flex flex-col gap-1 rounded-card border-card-thick bg-white p-4 shadow-card">
                 <dt className="order-2 font-sans text-[13px] font-medium leading-[1.4em] text-noprob-grey">
@@ -221,7 +224,11 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
           </span>
           <p className="max-w-[520px] font-sans text-body-lg font-medium text-[#f9f9f9]">{d.commission.rateNote}</p>
           <p className="mt-2 rounded-[10px] bg-white/10 px-4 py-3 font-sans text-body-sm font-semibold text-white">
-            {d.commission.formula}
+            {d.commission.formula.before}
+            <a href="#prezzo" className="underline underline-offset-4">
+              {d.commission.formula.linkLabel}
+            </a>
+            {d.commission.formula.after}
           </p>
         </div>
 
@@ -283,6 +290,23 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
           </ol>
         </article>
 
+        <Link
+          href={landingHref}
+          target="_blank"
+          className={cn(CARD_GREEN, 'group flex flex-col gap-1 transition-transform hover:-translate-y-[2px]')}
+        >
+          <span className="flex items-center justify-between gap-3 text-np-h3 text-noprob-text">
+            {d.offer.landingLabel}
+            <span aria-hidden className="text-noprob-grey transition-colors group-hover:text-np-dark">
+              ↗
+            </span>
+          </span>
+          <span className={BODY}>{d.offer.landingNote}</span>
+          <span className="mt-1 break-all font-sans text-[12px] font-medium text-noprob-grey">
+            noprob.agency{landingHref}
+          </span>
+        </Link>
+
         <div className="grid gap-4 min-[810px]:grid-cols-2">
           <article className={CARD}>
             <h3 className={CARD_TITLE}>{d.offer.platformsTitle}</h3>
@@ -295,6 +319,37 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
         </div>
       </Section>
 
+      {/* Materials */}
+      <Section
+        id="materiali"
+        label={d.materials.label}
+        heading={d.materials.heading}
+        headingEm={d.materials.headingEm}
+        intro={d.materials.intro}
+      >
+        <div className="grid gap-4 min-[810px]:grid-cols-2">
+          {d.materials.links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              className={cn(CARD, 'group flex flex-col gap-1 transition-transform hover:-translate-y-[2px]')}
+            >
+              <span className="flex items-center justify-between gap-3 text-np-h3 text-noprob-text">
+                {link.label}
+                <span aria-hidden className="text-noprob-grey transition-colors group-hover:text-np-dark">
+                  ↗
+                </span>
+              </span>
+              <span className={BODY}>{link.description}</span>
+              <span className="mt-1 break-all font-sans text-[12px] font-medium text-noprob-grey">
+                noprob.agency{link.href}
+              </span>
+            </Link>
+          ))}
+        </div>
+
+      </Section>
       {/* Pricing */}
       <Section id="prezzo" label={d.pricing.label} heading={d.pricing.heading} headingEm={d.pricing.headingEm}>
         <article className={cn(CARD, 'flex flex-col items-center gap-2 text-center')}>
@@ -309,56 +364,6 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
           </p>
           <div className="mt-4 w-full text-left">
             <CheckList items={d.pricing.points} />
-          </div>
-        </article>
-
-        <article className={CARD}>
-          <h3 className={CARD_TITLE}>{d.pricing.tiersTitle}</h3>
-          <div className="mt-4 flex flex-col gap-2">
-            <div className="hidden grid-cols-4 gap-3 px-4 font-sans text-[12px] font-semibold uppercase tracking-[0.04em] text-noprob-grey min-[810px]:grid">
-              <span>{d.pricing.tierColumns.level}</span>
-              <span>{d.pricing.tierColumns.monthly}</span>
-              <span>{d.pricing.tierColumns.total}</span>
-              <span>{d.pricing.tierColumns.commission}</span>
-            </div>
-            {T.tiers.map((price, i) => {
-              const total = price * T.months
-              const isCurrent = i === T.currentTier
-              const isPast = i < T.currentTier
-              const minApplied = total * T.rate < T.minCommission
-              return (
-                <div
-                  key={price}
-                  className={cn(
-                    'grid grid-cols-2 gap-3 rounded-[12px] border p-4 min-[810px]:grid-cols-4 min-[810px]:items-center',
-                    isCurrent ? 'border-np-dark bg-np-mark-green/40' : 'border-np-border',
-                    isPast && 'opacity-60'
-                  )}
-                >
-                  <div className="col-span-2 flex flex-wrap items-center gap-2 min-[810px]:col-span-1">
-                    <span className="font-sans text-body-sm font-semibold text-noprob-text">
-                      {d.pricing.tierLabels[i]}
-                    </span>
-                    <span
-                      className={cn(
-                        'rounded-[6px] px-2 py-[2px] font-sans text-[11px] font-bold',
-                        isCurrent ? 'bg-np-dark text-white' : 'bg-noprob-card-soft text-noprob-grey'
-                      )}
-                    >
-                      {d.pricing.tierStates[i]}
-                    </span>
-                  </div>
-                  <TierValue label={d.pricing.tierColumns.monthly} value={eur(price)} strike={isPast} />
-                  <TierValue label={d.pricing.tierColumns.total} value={eur(total)} strike={isPast} />
-                  <TierValue
-                    label={d.pricing.tierColumns.commission}
-                    value={eur(ambassadorCommission(price))}
-                    note={minApplied ? d.pricing.minApplied : undefined}
-                    strong
-                  />
-                </div>
-              )
-            })}
           </div>
         </article>
 
@@ -448,6 +453,10 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
         heading={d.prospecting.heading}
         headingEm={d.prospecting.headingEm}
       >
+        <article className={cn(CARD_YELLOW, 'flex flex-col gap-2')}>
+          <h3 className={CARD_TITLE}>{d.prospecting.idealTitle}</h3>
+          <p className={BODY}>{d.prospecting.ideal}</p>
+        </article>
         <div className="grid gap-4 min-[810px]:grid-cols-2">
           <article className={CARD}>
             <h3 className={CARD_TITLE}>{d.prospecting.signalsTitle}</h3>
@@ -477,6 +486,74 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
 
       {/* Pitch */}
       <Section id="pitch" label={d.pitch.label} heading={d.pitch.heading} headingEm={d.pitch.headingEm}>
+        <article className={cn(CARD, 'flex flex-col gap-6')}>
+          <div className="flex flex-col items-start gap-4 min-[810px]:flex-row min-[810px]:items-center min-[810px]:gap-8">
+            <Image
+              src="/images/shopify-partners.png"
+              alt={d.pitch.partnerAlt}
+              width={638}
+              height={192}
+              className="h-auto w-[200px] shrink-0 min-[810px]:w-[240px]"
+            />
+            <div className="flex flex-col gap-2">
+              <h3 className={CARD_TITLE}>{d.pitch.whoTitle}</h3>
+              <p className={BODY}>{d.pitch.partnerText}</p>
+            </div>
+          </div>
+          <dl className="grid grid-cols-2 gap-3 min-[810px]:grid-cols-4">
+            {d.pitch.authorityStats.map((s) => (
+              <div key={s.label} className="flex flex-col gap-1 rounded-[12px] bg-noprob-card-soft p-4">
+                <dt className="order-2 font-sans text-[13px] font-medium leading-[1.4em] text-noprob-grey">
+                  {s.label}
+                </dt>
+                <dd className="order-1 font-display text-[26px] font-bold tracking-[-0.04em] text-np-dark">
+                  {s.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </article>
+
+        <div className="grid gap-4 min-[810px]:grid-cols-2">
+          <article className={cn(CARD, 'flex flex-col gap-4')}>
+            <div className="flex items-center gap-4">
+              <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full bg-np-mark-green">
+                <Image
+                  src={siteAssets.heroAntonio}
+                  alt={d.pitch.antonio.name}
+                  fill
+                  sizes="72px"
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <p className="font-serif text-[24px] font-medium tracking-[-0.04em] text-noprob-text">
+                  {d.pitch.antonio.name}
+                </p>
+                <p className="font-sans text-[13px] font-medium text-noprob-grey">{d.pitch.antonio.role}</p>
+              </div>
+            </div>
+            <p className={BODY}>{d.pitch.antonio.bio}</p>
+            <CheckList items={d.pitch.antonio.points} />
+          </article>
+          <article className={cn(CARD_PURPLE, 'flex flex-col gap-4')}>
+            <h3 className="font-serif text-[24px] font-medium tracking-[-0.04em] text-noprob-text">
+              {d.pitch.team.title}
+            </h3>
+            <p className={BODY}>{d.pitch.team.description}</p>
+            <ul className="flex flex-wrap gap-2">
+              {d.pitch.team.skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="rounded-pill border border-np-border bg-white px-3 py-[6px] font-sans text-[13px] font-medium text-noprob-text"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </article>
+        </div>
+
         <article className={`${CARD_BASE} border-[6px] border-np-dark bg-np-dark`}>
           <h3 className="text-np-h3 text-white">{d.pitch.pitchTitle}</h3>
           <p className="mt-3 font-serif text-[19px] font-medium italic leading-[1.5em] tracking-[-0.02em] text-white min-[810px]:text-[21px]">
@@ -499,14 +576,6 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
           <article className={CARD}>
             <h3 className={CARD_TITLE}>{d.pitch.proofTitle}</h3>
             <p className={cn(BODY, 'mt-2')}>{d.pitch.proof}</p>
-            <dl className="mt-4 grid grid-cols-2 gap-2">
-              {d.pitch.proofStats.map((s) => (
-                <div key={s.label} className="rounded-[12px] bg-noprob-card-soft p-3">
-                  <dd className="font-display text-[22px] font-bold tracking-[-0.04em] text-np-dark">{s.value}</dd>
-                  <dt className="font-sans text-[12px] font-medium text-noprob-grey">{s.label}</dt>
-                </div>
-              ))}
-            </dl>
             <p className={cn(BODY, 'mt-4')}>{d.pitch.proofFoot}</p>
           </article>
         </div>
@@ -693,70 +762,17 @@ export default function AmbassadorPlaybook({ locale = 'it' }: { locale?: Locale 
         </div>
       </Section>
 
-      {/* Materials */}
-      <Section id="materiali" label={d.materials.label} heading={d.materials.heading} headingEm={d.materials.headingEm}>
-        <div className="grid gap-4 min-[810px]:grid-cols-2">
-          {d.materials.links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              className={cn(CARD, 'group flex flex-col gap-1 transition-transform hover:-translate-y-[2px]')}
-            >
-              <span className="flex items-center justify-between gap-3 text-np-h3 text-noprob-text">
-                {link.label}
-                <span aria-hidden className="text-noprob-grey transition-colors group-hover:text-np-dark">
-                  ↗
-                </span>
-              </span>
-              <span className={BODY}>{link.description}</span>
-              <span className="mt-1 break-all font-sans text-[12px] font-medium text-noprob-grey">
-                noprob.agency{link.href}
-              </span>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-6 flex max-w-[640px] flex-col items-center gap-2 text-center">
+      {/* Closing */}
+      <div className="container-noprob py-[40px]">
+        <div className="mx-auto flex max-w-[640px] flex-col items-center gap-2 text-center">
           <p className="font-sans text-body-lg font-medium text-noprob-text">{d.materials.closing}</p>
           <p className="font-serif text-[18px] font-medium italic text-noprob-text">{d.materials.signature}</p>
           <p className="mt-4 font-sans text-[12px] font-medium text-noprob-grey">
             {d.materials.updated} · {d.materials.terms}
           </p>
         </div>
-      </Section>
+      </div>
     </main>
   )
 }
 
-function TierValue({
-  label,
-  value,
-  note,
-  strike = false,
-  strong = false,
-}: {
-  label: string
-  value: string
-  note?: string
-  strike?: boolean
-  strong?: boolean
-}) {
-  return (
-    <div className="flex flex-col">
-      <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.04em] text-noprob-grey min-[810px]:hidden">
-        {label}
-      </span>
-      <span
-        className={cn(
-          'font-display tracking-[-0.03em] text-np-dark',
-          strong ? 'text-[20px] font-bold' : 'text-[17px] font-semibold',
-          strike && 'line-through'
-        )}
-      >
-        {value}
-      </span>
-      {note && <span className="font-sans text-[11px] font-medium text-noprob-grey">{note}</span>}
-    </div>
-  )
-}
