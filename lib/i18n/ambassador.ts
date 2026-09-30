@@ -14,12 +14,10 @@ export const AMBASSADOR_TERMS = {
   monthlyPrice: 1450,
   months: 4,
   rate: 0.2,
-  minCommission: 1000,
   referralValidityMonths: 6,
   payoutDays: 30,
   /** Monthly price per tier, same order as the migration landing tiers. */
   tiers: [1100, 1450, 1700, 2000],
-  currentTier: 1,
   contactEmail: 'antonio@noprob.agency',
   whatsappDisplay: '+39 320 406 3459',
   whatsappUrl: 'https://wa.me/393204063459',
@@ -27,7 +25,7 @@ export const AMBASSADOR_TERMS = {
 
 export function ambassadorCommission(monthlyPrice: number): number {
   const total = monthlyPrice * AMBASSADOR_TERMS.months
-  return Math.max(Math.round(total * AMBASSADOR_TERMS.rate), AMBASSADOR_TERMS.minCommission)
+  return Math.round(total * AMBASSADOR_TERMS.rate)
 }
 
 export function formatEur(value: number, locale: Locale): string {
@@ -57,7 +55,7 @@ export type AmbassadorCopy = {
     headingEm: string
     rateLabel: string
     rateNote: string
-    formula: string
+    formula: { before: string; linkLabel: string; after: string }
     simulationTitle: string
     simulationNote: string
     simulation: { count: number; label: string }[]
@@ -73,6 +71,8 @@ export type AmbassadorCopy = {
     included: string[]
     phasesTitle: string
     phases: { name: string; duration: string; description: string }[]
+    landingLabel: string
+    landingNote: string
     platformsTitle: string
     platforms: string
     whyTitle: string
@@ -86,11 +86,6 @@ export type AmbassadorCopy = {
     monthsSuffix: string
     totalLabel: string
     points: string[]
-    tiersTitle: string
-    tierColumns: { level: string; monthly: string; total: string; commission: string }
-    tierLabels: string[]
-    tierStates: string[]
-    minApplied: string
     externalTitle: string
     external: string
     externalLinkLabel: string
@@ -122,6 +117,8 @@ export type AmbassadorCopy = {
     label: string
     heading: string
     headingEm: string
+    idealTitle: string
+    ideal: string
     signalsTitle: string
     signals: string[]
     checkTitle: string
@@ -133,13 +130,18 @@ export type AmbassadorCopy = {
     label: string
     heading: string
     headingEm: string
+    whoTitle: string
+    partnerAlt: string
+    partnerText: string
+    authorityStats: { value: string; label: string }[]
+    antonio: { name: string; role: string; bio: string; points: string[] }
+    team: { title: string; description: string; skills: string[] }
     pitchTitle: string
     pitch: string
     messagesTitle: string
     messages: string[]
     proofTitle: string
     proof: string
-    proofStats: { value: string; label: string }[]
     proofFoot: string
     objectionsTitle: string
     objections: { question: string; answer: string }[]
@@ -194,6 +196,7 @@ export type AmbassadorCopy = {
     label: string
     heading: string
     headingEm: string
+    intro: string
     links: { label: string; description: string; href: string }[]
     closing: string
     signature: string
@@ -222,8 +225,7 @@ const it: AmbassadorCopy = {
       'Questo è il playbook completo per collaborare con me come ambassador: cosa vendiamo, a chi, quanto costa, come presentarlo e quanto guadagni per ogni cliente che arriva da te. Tutto scritto, niente sorprese.',
     stats: [
       { value: '20%', label: 'di commissione su ogni migrazione chiusa' },
-      { value: itEur(T.minCommission), label: 'minimo per ogni migrazione' },
-      { value: itEur(COMMISSION), label: 'quello che guadagni oggi per ogni cliente' },
+      { value: itEur(COMMISSION), label: `quello che guadagni oggi per ogni cliente (su un’offerta di ${itEur(TOTAL)})` },
       { value: '1ª rata', label: 'la commissione è confermata al primo pagamento del cliente' },
     ],
     tocLabel: 'In questo documento',
@@ -231,6 +233,7 @@ const it: AmbassadorCopy = {
       { id: 'come-funziona', label: 'Come funziona' },
       { id: 'commissioni', label: 'Commissioni' },
       { id: 'offerta', label: 'L’offerta' },
+      { id: 'materiali', label: 'Materiali' },
       { id: 'prezzo', label: 'Prezzo e costi' },
       { id: 'target', label: 'Il cliente giusto' },
       { id: 'problemi', label: 'I problemi del target' },
@@ -242,7 +245,6 @@ const it: AmbassadorCopy = {
       { id: 'regole', label: 'Regole di attribuzione' },
       { id: 'segnalare', label: 'Come segnalare' },
       { id: 'faq', label: 'Domande frequenti' },
-      { id: 'materiali', label: 'Materiali' },
     ],
   },
   summary: {
@@ -253,7 +255,7 @@ const it: AmbassadorCopy = {
       {
         title: 'Trovi un eCommerce in target',
         description:
-          'Un eCommerce già avviato, su una piattaforma diversa da Shopify, che vuole (o dovrebbe) passare a Shopify. In Italia, in Europa o nel resto del mondo.',
+          'Un eCommerce già avviato, su una piattaforma diversa da Shopify, che vuole passare a Shopify. Il meglio: chi ha già deciso e sta cercando un partner. In Italia, in Europa o nel resto del mondo.',
       },
       {
         title: 'Lo presenti o me lo passi',
@@ -267,7 +269,7 @@ const it: AmbassadorCopy = {
       },
       {
         title: 'Incassi il 20%',
-        description: `Il 20% del valore del progetto, con un minimo di ${itEur(T.minCommission)}. Oggi sono ${itEur(COMMISSION)} per ogni migrazione.`,
+        description: `Il 20% del valore del progetto. Oggi sono ${itEur(COMMISSION)} per ogni migrazione.`,
       },
     ],
   },
@@ -276,8 +278,12 @@ const it: AmbassadorCopy = {
     heading: 'Quanto guadagni ',
     headingEm: 'e quando.',
     rateLabel: '20%',
-    rateNote: `del valore del progetto, con un minimo di ${itEur(T.minCommission)} per ogni migrazione`,
-    formula: `Oggi: ${itEur(T.monthlyPrice)} × ${T.months} mesi = ${itEur(TOTAL)}. Il 20% sono ${itEur(COMMISSION)} per ogni migrazione.`,
+    rateNote: `del valore del progetto, su ogni migrazione chiusa. Oggi sono ${itEur(COMMISSION)} per ogni migrazione.`,
+    formula: {
+      before: 'Esempio: il prezzo minimo dell’',
+      linkLabel: 'offerta',
+      after: ` è di ${itEur(TOTAL)} (${itEur(T.monthlyPrice)} × ${T.months} mesi). Per ogni chiusura, il 20% sono ${itEur(COMMISSION)} in fattura.`,
+    },
     simulationTitle: 'Simulazione alla tariffa attuale',
     simulationNote: 'Commissioni una tantum, una per ogni migrazione chiusa.',
     simulation: [
@@ -286,7 +292,7 @@ const it: AmbassadorCopy = {
       { count: 5, label: '5 migrazioni' },
       { count: 10, label: '10 migrazioni' },
     ],
-    tierNote: `Quando il prezzo sale, sale anche la tua commissione: ${itEur(ambassadorCommission(T.tiers[2]))} a ${itEur(T.tiers[2])}/mese, ${itEur(ambassadorCommission(T.tiers[3]))} a ${itEur(T.tiers[3])}/mese.`,
+    tierNote: `Quando il prezzo sale, sale anche la tua commissione: ${itEur(ambassadorCommission(T.tiers[2]))} a ${itEur(T.tiers[2])}/mese, ${itEur(ambassadorCommission(T.tiers[3]))} a ${itEur(T.tiers[3])}/mese. E se chiudi tu la vendita a un prezzo più alto di ${itEur(TOTAL)}, il 20% si calcola sul prezzo effettivo: la commissione sale di conseguenza.`,
     rules: [
       {
         title: 'Quando è confermata',
@@ -305,12 +311,11 @@ const it: AmbassadorCopy = {
       {
         title: 'Su cosa si calcola',
         description:
-          'Sul prezzo del percorso di migrazione completo (4 rate), al netto di eventuali imposte. Sono esclusi i costi esterni, come l’abbonamento Shopify.',
+          'Sul prezzo effettivo del percorso di migrazione pagato dal cliente (4 rate), al netto di eventuali imposte. Sono esclusi i costi esterni, come l’abbonamento Shopify.',
       },
       {
-        title: 'Solo sul percorso completo',
-        description:
-          'La commissione vale per le migrazioni vendute al prezzo pieno del percorso di 4 mesi, secondo lo scaglione in vigore al momento della firma.',
+        title: `Prezzo minimo ${itEur(TOTAL)}`,
+        description: `La commissione vale per le migrazioni vendute almeno al prezzo in vigore del percorso di 4 mesi (oggi ${itEur(TOTAL)}). Sopra si può, sotto no.`,
       },
       {
         title: 'Come ti pago',
@@ -324,14 +329,15 @@ const it: AmbassadorCopy = {
     heading: 'Cosa vendi: ',
     headingEm: 'la Migrazione Shopify.',
     intro:
-      'Per ora il programma copre un solo servizio: la migrazione di un eCommerce esistente su Shopify. Non è “rifacciamo il sito”: è spostare un eCommerce che già vende su Shopify senza perdere vendite, clienti e posizionamento, e impostarlo per vendere meglio. Un percorso di 4 mesi, gestito da un team completo (sviluppo, SEO, tracciamento, design) con un solo interlocutore per il cliente.',
+      'Per ora il programma copre un solo servizio: la migrazione di un eCommerce esistente su Shopify. Non è “rifacciamo il sito”: è spostare un eCommerce che già vende su Shopify senza perdere vendite, clienti e posizionamento, e impostarlo per vendere meglio. Un percorso di 4 mesi, gestito da un team completo (sviluppo, SEO, tracciamento, UX) con un solo interlocutore per il cliente.',
     includedTitle: 'Cosa è incluso',
     included: [
       'Analisi completa dello store: dati, prodotti, ordini, clienti, URL, integrazioni, criticità SEO',
       'Migrazione di prodotti, clienti e storico ordini',
       'Piano redirect SEO 1:1 di tutti gli URL',
       'Lavoro in staging: il sito attuale non va mai offline',
-      'Design su misura e sviluppo dello store Shopify',
+      'Revisione della UX dello store per aumentare il conversion rate (non un restyling grafico completo)',
+      'Sviluppo dello store Shopify',
       'Tracciamento server-side, per avere dati affidabili su pubblicità e vendite',
       'SEO tecnica e monitoraggio continuo dopo il lancio',
       'Un report di conferma per ogni area di lavoro',
@@ -351,15 +357,17 @@ const it: AmbassadorCopy = {
         name: 'Operatività',
         duration: '~55 giorni',
         description:
-          'Migrazione dei dati, staging, redirect 1:1, tracciamento server-side, design e sviluppo. Ogni step viene inviato e confermato prima del lancio.',
+          'Migrazione dei dati, staging, redirect 1:1, tracciamento server-side, revisione UX e sviluppo. Ogni step viene inviato e confermato prima del lancio.',
       },
       {
         name: 'Monitoraggio',
         duration: '~50 giorni',
         description:
-          'Go-live e controllo continuo: il team resta su sviluppo, SEO, tracciamento e design per risolvere ogni collo di bottiglia.',
+          'Go-live e controllo continuo: il team resta su sviluppo, SEO, tracciamento e UX per risolvere ogni collo di bottiglia.',
       },
     ],
+    landingLabel: 'Apri la landing della Migrazione Shopify',
+    landingNote: 'Tienila sempre a portata di mano: è la pagina da girare al cliente.',
     platformsTitle: 'Da quali piattaforme',
     platforms:
       'WooCommerce, PrestaShop, Magento, piattaforme custom, CRM, ERP e gestionali con eCommerce integrato. In generale, qualsiasi piattaforma diversa da Shopify.',
@@ -378,19 +386,15 @@ const it: AmbassadorCopy = {
       'Nessun esborso in anticipo: il cliente paga mese per mese, mentre il lavoro avanza.',
       'Garanzia 30 giorni: se entro 30 giorni il progetto non lo convince, il cliente viene rimborsato, senza domande.',
       'Il prezzo è a scaglioni e sale con il numero di clienti acquisiti. Chi entra ora blocca la tariffa attuale.',
+      `${itEur(TOTAL)} è il prezzo minimo. Se chiudi tu la vendita puoi proporre un prezzo più alto (lo concordiamo prima di inviare la proposta): la tua commissione sale in proporzione.`,
     ],
-    tiersTitle: 'Gli scaglioni di prezzo e la tua commissione',
-    tierColumns: { level: 'Scaglione', monthly: 'Al mese', total: 'Totale', commission: 'La tua commissione' },
-    tierLabels: ['Primi 10 clienti', 'Clienti 11-20', 'Clienti 21-30', 'Dal 31° in poi'],
-    tierStates: ['Completo', 'Attuale', 'Prossimo', 'A regime'],
-    minApplied: 'minimo garantito',
     externalTitle: 'Costi esterni',
     external:
       'L’unico costo esterno è l’abbonamento Shopify, che il cliente paga direttamente a Shopify. Il piano dipende dalle dimensioni dello store e lo scegliamo insieme al cliente in fase di analisi. Nient’altro: niente costi nascosti, niente extra a consuntivo.',
     externalLinkLabel: 'Prezzi aggiornati dei piani Shopify',
     argumentTitle: 'Un argomento di vendita in più',
     argument:
-      'Ogni 10 clienti la tariffa sale. Per il cliente è un motivo concreto per decidere ora e non tra sei mesi. Per te significa che, quando il prezzo sale, sale anche la commissione.',
+      'Ogni 10 clienti la tariffa sale. Per il cliente è un motivo concreto per decidere ora e non tra sei mesi. (Per te, tra l’altro, significa che quando il prezzo sale, sale anche la commissione.)',
   },
   target: {
     label: 'il cliente giusto',
@@ -466,7 +470,7 @@ const it: AmbassadorCopy = {
       {
         title: 'Traffico che non converte',
         quote: '“Le visite ci sono, ma da mobile vende poco.”',
-        fix: 'Design su misura pensato per vendere e checkout Shopify, collaudato su milioni di store.',
+        fix: 'Revisione della UX pensata per aumentare il conversion rate e checkout Shopify, collaudato su milioni di store.',
       },
       {
         title: 'Preventivi alti e tutto in anticipo',
@@ -479,8 +483,13 @@ const it: AmbassadorCopy = {
     label: 'dove trovarli',
     heading: 'Come riconoscere ',
     headingEm: 'un cliente in target.',
+    idealTitle: 'Il contatto ideale: chi ha già deciso di migrare',
+    ideal:
+      'I contatti migliori sono quelli che vogliono già passare a Shopify e stanno cercando un partner che lo faccia. Conoscono già i costi e i vantaggi di Shopify: non devi convincerli di niente, devi solo presentare le persone giuste. Se puoi scegliere dove cercare, cerca soprattutto loro.',
     signalsTitle: 'Segnali da cogliere',
     signals: [
+      'Sta raccogliendo preventivi per passare a Shopify',
+      'Ti chiede se conosci qualcuno bravo su Shopify',
       'Si lamenta del sito: lento, instabile, difficile da aggiornare',
       'Sta cercando un nuovo developer o ha appena perso quello di prima',
       'Ha avuto problemi durante un picco di vendite (saldi, Black Friday, campagne)',
@@ -509,10 +518,46 @@ const it: AmbassadorCopy = {
     label: 'come presentarlo',
     heading: 'Cosa dire, ',
     headingEm: 'parola per parola.',
+    whoTitle: 'Chi c’è dietro',
+    partnerAlt: 'Shopify Partners',
+    partnerText:
+      'Siamo Shopify Partner e lavoriamo solo su Shopify, ogni giorno. È la prima cosa da dire: il cliente non parla con un’agenzia generalista, ma con specialisti della piattaforma su cui vuole andare.',
+    authorityStats: [
+      { value: '7', label: 'persone nel team, tutte specializzate su Shopify' },
+      { value: '7+ anni', label: 'di progetti eCommerce' },
+      { value: 'Decine', label: 'di progetti eCommerce seguiti' },
+      { value: '4,9', label: 'su Trustpilot' },
+    ],
+    antonio: {
+      name: 'Antonio Manitta',
+      role: 'Founder di noprob e referente unico del progetto',
+      bio: 'Il cliente ha un solo interlocutore dall’inizio alla fine: Antonio. Non un commerciale, ma il project manager ed esperto eCommerce che segue il progetto su tutto, dalla prima analisi al monitoraggio dopo il lancio.',
+      points: [
+        'Laureato in informatica',
+        'Da oltre 7 anni lavora su progetti eCommerce',
+        'Ultra specializzato su Shopify',
+        'Con il team sviluppa e lancia anche SaaS e applicazioni proprie',
+      ],
+    },
+    team: {
+      title: 'Un team di 7 specialisti Shopify',
+      description:
+        'Dietro Antonio c’è un team completo che copre ogni area della migrazione. Quando serve qualcosa, non si cerca il freelance giusto: c’è già qualcuno nel team che lo fa. E chi sviluppa SaaS e applicazioni proprie ha competenze tecniche che vanno ben oltre il classico “sito su tema”.',
+      skills: [
+        'Sviluppo Shopify',
+        'SEO e redirect',
+        'Tracciamento server-side',
+        'UX e conversion rate',
+        'Design',
+        'Integrazioni, ERP e gestionali',
+        'Migrazione dati',
+      ],
+    },
     pitchTitle: 'Il pitch in 30 secondi',
-    pitch: `“Conosco un team che porta eCommerce su Shopify senza fermare le vendite e senza perdere posizionamento su Google. È un percorso di 4 mesi con un solo referente: analisi, migrazione, design, tracciamento e SEO, poi monitoraggio dopo il lancio. Si paga mese per mese, ${itEur(T.monthlyPrice)} al mese, con garanzia di rimborso nei primi 30 giorni. Vuoi che ti metta in contatto con Antonio?”`,
-    messagesTitle: 'I 5 messaggi chiave',
+    pitch: `“Conosco un team di 7 specialisti Shopify, Shopify Partner, che porta eCommerce su Shopify senza fermare le vendite e senza perdere posizionamento su Google. Hai un solo referente, Antonio, e dietro un team che segue tutto: SEO, tracciamento, UX e sviluppo. È un percorso di 4 mesi: analisi, migrazione, lancio e monitoraggio dopo il lancio. Si paga mese per mese, ${itEur(T.monthlyPrice)} al mese, con garanzia di rimborso nei primi 30 giorni. Vuoi che ti metta in contatto con Antonio?”`,
+    messagesTitle: 'I 6 messaggi chiave',
     messages: [
+      'Shopify Partner, con un team di 7 persone specializzate solo su Shopify: SEO, tracciamento, UX, sviluppo.',
       'Nessuna vendita persa: il sito attuale resta online fino al go-live.',
       'Nessuna perdita SEO: redirect 1:1 e monitoraggio dopo il lancio.',
       'Un solo referente, con un team completo dietro.',
@@ -521,14 +566,8 @@ const it: AmbassadorCopy = {
     ],
     proofTitle: 'La prova da citare: Cumini',
     proof:
-      'Boutique di moda luxury multibrand, cliente da oltre 4 anni. Dopo la migrazione e il fisiologico assestamento, Google ha ritrovato tutto e il traffico organico è cresciuto. Dati reali da Search Console:',
-    proofStats: [
-      { value: '99,3K', label: 'clic' },
-      { value: '3,91 Mln', label: 'impressioni' },
-      { value: '2,5%', label: 'CTR medio' },
-      { value: '9,6', label: 'posizione media' },
-    ],
-    proofFoot: 'Più in generale: oltre 10 progetti fatti con questo metodo e 4,9 su Trustpilot.',
+      'Da oltre 4 anni seguiamo Cumini, boutique di moda luxury multibrand che vende in tutto il mondo, con milioni di euro di fatturato online. È il nome da citare per far capire il livello dei progetti.',
+    proofFoot: 'E come Cumini ci sono decine di altri progetti eCommerce seguiti dal team. Le recensioni dei clienti sono su Trustpilot (4,9).',
     objectionsTitle: 'Le obiezioni più comuni (e come rispondere)',
     objections: [
       {
@@ -606,7 +645,7 @@ const it: AmbassadorCopy = {
         steps: [
           'Presenti il servizio usando questo documento e la landing',
           'Se servono dettagli tecnici, organizzo una videochiamata con te e il cliente',
-          'Il cliente conferma: gli invio proposta e contratto',
+          'Il cliente conferma: gli invio proposta e contratto al prezzo che avete concordato',
           'Il cliente paga la prima rata e la tua commissione è confermata',
         ],
       },
@@ -738,7 +777,7 @@ const it: AmbassadorCopy = {
       {
         question: 'Posso fare uno sconto rinunciando a parte della commissione?',
         answer:
-          'No. Il prezzo è lo stesso per tutti e segue gli scaglioni pubblicati sulla landing.',
+          `No. ${itEur(TOTAL)} è il prezzo minimo del percorso: puoi proporre un prezzo più alto (e guadagnare di più), mai uno più basso.`,
       },
       {
         question: 'Posso usare il logo e i materiali di noprob?',
@@ -751,6 +790,7 @@ const it: AmbassadorCopy = {
     label: 'materiali',
     heading: 'Cosa puoi ',
     headingEm: 'girare al cliente.',
+    intro: 'Tienili sempre pronti: sono i link da mandare al cliente dopo la prima conversazione.',
     links: [
       {
         label: 'Landing Migrazione Shopify (IT)',
@@ -794,8 +834,7 @@ const en: AmbassadorCopy = {
       'This is the complete playbook for working with me as an ambassador: what we sell, to whom, what it costs, how to pitch it and how much you earn for every client who comes through you. All in writing, no surprises.',
     stats: [
       { value: '20%', label: 'commission on every closed migration' },
-      { value: enEur(T.minCommission), label: 'minimum per migration' },
-      { value: enEur(COMMISSION), label: 'what you earn today per client' },
+      { value: enEur(COMMISSION), label: `what you earn today per client (on a ${enEur(TOTAL)} offer)` },
       { value: '1st payment', label: 'your commission is confirmed when the client pays the first installment' },
     ],
     tocLabel: 'In this document',
@@ -803,6 +842,7 @@ const en: AmbassadorCopy = {
       { id: 'come-funziona', label: 'How it works' },
       { id: 'commissioni', label: 'Commission' },
       { id: 'offerta', label: 'The offer' },
+      { id: 'materiali', label: 'Materials' },
       { id: 'prezzo', label: 'Price and costs' },
       { id: 'target', label: 'The right client' },
       { id: 'problemi', label: 'Their problems' },
@@ -814,7 +854,6 @@ const en: AmbassadorCopy = {
       { id: 'regole', label: 'Attribution rules' },
       { id: 'segnalare', label: 'How to refer' },
       { id: 'faq', label: 'FAQ' },
-      { id: 'materiali', label: 'Materials' },
     ],
   },
   summary: {
@@ -825,7 +864,7 @@ const en: AmbassadorCopy = {
       {
         title: 'You find an eCommerce in target',
         description:
-          'An established eCommerce, on a platform other than Shopify, that wants (or should want) to move to Shopify. In Italy, Europe or anywhere else in the world.',
+          'An established eCommerce, on a platform other than Shopify, that wants to move to Shopify. Best of all: one that has already decided and is looking for a partner. In Italy, Europe or anywhere else in the world.',
       },
       {
         title: 'You pitch it or pass it to me',
@@ -839,7 +878,7 @@ const en: AmbassadorCopy = {
       },
       {
         title: 'You earn 20%',
-        description: `20% of the project value, with a minimum of ${enEur(T.minCommission)}. Today that’s ${enEur(COMMISSION)} per migration.`,
+        description: `20% of the project value. Today that’s ${enEur(COMMISSION)} per migration.`,
       },
     ],
   },
@@ -848,8 +887,12 @@ const en: AmbassadorCopy = {
     heading: 'How much you earn ',
     headingEm: 'and when.',
     rateLabel: '20%',
-    rateNote: `of the project value, with a minimum of ${enEur(T.minCommission)} per migration`,
-    formula: `Today: ${enEur(T.monthlyPrice)} × ${T.months} months = ${enEur(TOTAL)}. 20% is ${enEur(COMMISSION)} per migration.`,
+    rateNote: `of the project value, on every closed migration. Today that’s ${enEur(COMMISSION)} per migration.`,
+    formula: {
+      before: 'Example: the minimum price of the ',
+      linkLabel: 'offer',
+      after: ` is ${enEur(TOTAL)} (${enEur(T.monthlyPrice)} × ${T.months} months). For every close, 20% is ${enEur(COMMISSION)} on your invoice.`,
+    },
     simulationTitle: 'Simulation at the current rate',
     simulationNote: 'One-off commissions, one for each closed migration.',
     simulation: [
@@ -858,7 +901,7 @@ const en: AmbassadorCopy = {
       { count: 5, label: '5 migrations' },
       { count: 10, label: '10 migrations' },
     ],
-    tierNote: `When the price goes up, so does your commission: ${enEur(ambassadorCommission(T.tiers[2]))} at ${enEur(T.tiers[2])}/month, ${enEur(ambassadorCommission(T.tiers[3]))} at ${enEur(T.tiers[3])}/month.`,
+    tierNote: `When the price goes up, so does your commission: ${enEur(ambassadorCommission(T.tiers[2]))} at ${enEur(T.tiers[2])}/month, ${enEur(ambassadorCommission(T.tiers[3]))} at ${enEur(T.tiers[3])}/month. And if you close the sale yourself at a price above ${enEur(TOTAL)}, the 20% is calculated on the actual price: your commission goes up accordingly.`,
     rules: [
       {
         title: 'When it’s confirmed',
@@ -877,12 +920,11 @@ const en: AmbassadorCopy = {
       {
         title: 'What it’s calculated on',
         description:
-          'On the price of the full migration journey (4 installments), net of any taxes. External costs, like the Shopify subscription, are excluded.',
+          'On the actual price of the migration journey paid by the client (4 installments), net of any taxes. External costs, like the Shopify subscription, are excluded.',
       },
       {
-        title: 'Full journey only',
-        description:
-          'The commission applies to migrations sold at the full price of the 4-month journey, at the tier in force when the contract is signed.',
+        title: `Minimum price ${enEur(TOTAL)}`,
+        description: `The commission applies to migrations sold at least at the current price of the 4-month journey (today ${enEur(TOTAL)}). Above is fine, below is not.`,
       },
       {
         title: 'How I pay you',
@@ -896,14 +938,15 @@ const en: AmbassadorCopy = {
     heading: 'What you sell: ',
     headingEm: 'the Shopify Migration.',
     intro:
-      'For now the program covers one service only: migrating an existing eCommerce to Shopify. It’s not “we’ll rebuild your site”: it’s moving an eCommerce that already sells to Shopify without losing sales, customers or rankings, and setting it up to sell better. A 4-month journey, run by a full team (development, SEO, tracking, design) with one point of contact for the client.',
+      'For now the program covers one service only: migrating an existing eCommerce to Shopify. It’s not “we’ll rebuild your site”: it’s moving an eCommerce that already sells to Shopify without losing sales, customers or rankings, and setting it up to sell better. A 4-month journey, run by a full team (development, SEO, tracking, UX) with one point of contact for the client.',
     includedTitle: 'What’s included',
     included: [
       'Full store analysis: data, products, orders, customers, URLs, integrations, SEO issues',
       'Migration of products, customers and order history',
       '1:1 SEO redirect plan for every URL',
       'Work in staging: the current site never goes offline',
-      'Custom design and Shopify store development',
+      'A UX review of the store to raise the conversion rate (not a full visual redesign)',
+      'Shopify store development',
       'Server-side tracking, for reliable ad and sales data',
       'Technical SEO and continuous post-launch monitoring',
       'A confirmation report for every work area',
@@ -923,15 +966,17 @@ const en: AmbassadorCopy = {
         name: 'Execution',
         duration: '~55 days',
         description:
-          'Data migration, staging, 1:1 redirects, server-side tracking, design and development. Every step is shared and approved before launch.',
+          'Data migration, staging, 1:1 redirects, server-side tracking, UX review and development. Every step is shared and approved before launch.',
       },
       {
         name: 'Monitoring',
         duration: '~50 days',
         description:
-          'Go-live and continuous oversight: the team stays on development, SEO, tracking and design to fix every bottleneck.',
+          'Go-live and continuous oversight: the team stays on development, SEO, tracking and UX to fix every bottleneck.',
       },
     ],
+    landingLabel: 'Open the Shopify Migration landing page',
+    landingNote: 'Keep it at hand: it’s the page to send to the client.',
     platformsTitle: 'Which platforms',
     platforms:
       'WooCommerce, PrestaShop, Magento, custom platforms, CRM, ERP and management systems with a built-in eCommerce. In short, any platform other than Shopify.',
@@ -950,19 +995,15 @@ const en: AmbassadorCopy = {
       'Nothing up front: the client pays month by month, as the work progresses.',
       '30-day guarantee: if the client isn’t convinced within 30 days, they get a refund, no questions asked.',
       'The price is tiered and goes up as we take on clients. Whoever starts now locks in the current rate.',
+      `${enEur(TOTAL)} is the minimum price. If you close the sale yourself you can propose a higher price (we agree on it before the proposal goes out): your commission rises in proportion.`,
     ],
-    tiersTitle: 'Price tiers and your commission',
-    tierColumns: { level: 'Tier', monthly: 'Per month', total: 'Total', commission: 'Your commission' },
-    tierLabels: ['First 10 clients', 'Clients 11-20', 'Clients 21-30', 'From the 31st on'],
-    tierStates: ['Full', 'Current', 'Next', 'Standard'],
-    minApplied: 'minimum applies',
     externalTitle: 'External costs',
     external:
       'The only external cost is the Shopify subscription, which the client pays directly to Shopify. The plan depends on the size of the store and we choose it with the client during the analysis. Nothing else: no hidden costs, no surprise extras.',
     externalLinkLabel: 'Current Shopify plan prices',
     argumentTitle: 'One more selling point',
     argument:
-      'Every 10 clients the rate goes up. For the client it’s a concrete reason to decide now rather than in six months. For you it means that when the price goes up, so does your commission.',
+      'Every 10 clients the rate goes up. For the client it’s a concrete reason to decide now rather than in six months. (For you, by the way, it means that when the price goes up, so does your commission.)',
   },
   target: {
     label: 'the right client',
@@ -1038,7 +1079,7 @@ const en: AmbassadorCopy = {
       {
         title: 'Traffic that doesn’t convert',
         quote: '“We get visits, but mobile barely sells.”',
-        fix: 'Custom design built to sell and the Shopify checkout, proven on millions of stores.',
+        fix: 'A UX review built to raise the conversion rate and the Shopify checkout, proven on millions of stores.',
       },
       {
         title: 'High quotes, all up front',
@@ -1051,8 +1092,13 @@ const en: AmbassadorCopy = {
     label: 'where to find them',
     heading: 'How to spot ',
     headingEm: 'a client in target.',
+    idealTitle: 'The ideal contact: someone who has already decided to migrate',
+    ideal:
+      'The best contacts are those who already want to move to Shopify and are looking for a partner to do it. They already know the costs and the benefits of Shopify: you don’t need to convince them of anything, you just introduce the right people. If you can choose where to look, look for them first.',
     signalsTitle: 'Signals to look for',
     signals: [
+      'They’re collecting quotes to move to Shopify',
+      'They ask if you know someone good with Shopify',
       'They complain about the site: slow, unstable, hard to update',
       'They’re looking for a new developer or just lost the previous one',
       'They had problems during a sales peak (sales season, Black Friday, campaigns)',
@@ -1081,10 +1127,46 @@ const en: AmbassadorCopy = {
     label: 'how to pitch it',
     heading: 'What to say, ',
     headingEm: 'word for word.',
+    whoTitle: 'Who’s behind it',
+    partnerAlt: 'Shopify Partners',
+    partnerText:
+      'We’re Shopify Partners and we work only on Shopify, every day. It’s the first thing to say: the client isn’t talking to a generalist agency, but to specialists in the platform they want to move to.',
+    authorityStats: [
+      { value: '7', label: 'people on the team, all Shopify specialists' },
+      { value: '7+ years', label: 'of eCommerce projects' },
+      { value: 'Dozens', label: 'of eCommerce projects delivered' },
+      { value: '4.9', label: 'on Trustpilot' },
+    ],
+    antonio: {
+      name: 'Antonio Manitta',
+      role: 'Founder of noprob and single point of contact for the project',
+      bio: 'The client has one point of contact from start to finish: Antonio. Not a salesperson, but the project manager and eCommerce expert who oversees everything, from the first analysis to post-launch monitoring.',
+      points: [
+        'Degree in Computer Science',
+        'Over 7 years working on eCommerce projects',
+        'Deeply specialized in Shopify',
+        'With the team he also builds and launches proprietary SaaS and apps',
+      ],
+    },
+    team: {
+      title: 'A team of 7 Shopify specialists',
+      description:
+        'Behind Antonio there’s a full team covering every area of the migration. When something’s needed, nobody goes looking for the right freelancer: someone on the team already does it. And a team that builds its own SaaS and apps has technical skills that go far beyond the typical “theme-based site”.',
+      skills: [
+        'Shopify development',
+        'SEO and redirects',
+        'Server-side tracking',
+        'UX and conversion rate',
+        'Design',
+        'Integrations, ERP and back office',
+        'Data migration',
+      ],
+    },
     pitchTitle: 'The 30-second pitch',
-    pitch: `“I know a team that moves eCommerce stores to Shopify without stopping sales and without losing Google rankings. It’s a 4-month journey with one point of contact: analysis, migration, design, tracking and SEO, then post-launch monitoring. You pay month by month, ${enEur(T.monthlyPrice)} a month, with a money-back guarantee in the first 30 days. Want me to put you in touch with Antonio?”`,
-    messagesTitle: 'The 5 key messages',
+    pitch: `“I know a team of 7 Shopify specialists, Shopify Partners, that moves eCommerce stores to Shopify without stopping sales and without losing Google rankings. You get one point of contact, Antonio, and behind him a team that handles everything: SEO, tracking, UX and development. It’s a 4-month journey: analysis, migration, launch and post-launch monitoring. You pay month by month, ${enEur(T.monthlyPrice)} a month, with a money-back guarantee in the first 30 days. Want me to put you in touch with Antonio?”`,
+    messagesTitle: 'The 6 key messages',
     messages: [
+      'Shopify Partners, with a team of 7 people specialized only in Shopify: SEO, tracking, UX, development.',
       'No lost sales: the current site stays online until go-live.',
       'No SEO loss: 1:1 redirects and post-launch monitoring.',
       'One point of contact, with a full team behind it.',
@@ -1093,14 +1175,8 @@ const en: AmbassadorCopy = {
     ],
     proofTitle: 'The proof to quote: Cumini',
     proof:
-      'A luxury multibrand fashion boutique, a client for over 4 years. After the migration and the normal settling period, Google found everything again and organic traffic grew. Real Search Console data:',
-    proofStats: [
-      { value: '99.3K', label: 'clicks' },
-      { value: '3.91M', label: 'impressions' },
-      { value: '2.5%', label: 'avg CTR' },
-      { value: '9.6', label: 'avg position' },
-    ],
-    proofFoot: 'More broadly: 10+ projects delivered with this method and 4.9 on Trustpilot.',
+      'For over 4 years we’ve worked with Cumini, a luxury multibrand fashion boutique selling worldwide, with millions of euros in online revenue. It’s the name to quote to show the level of our projects.',
+    proofFoot: 'And like Cumini there are dozens of other eCommerce projects the team has worked on. Client reviews are on Trustpilot (4.9).',
     objectionsTitle: 'The most common objections (and how to answer)',
     objections: [
       {
@@ -1178,7 +1254,7 @@ const en: AmbassadorCopy = {
         steps: [
           'You present the service using this document and the landing page',
           'If technical details are needed, I set up a video call with you and the client',
-          'The client confirms: I send the proposal and contract',
+          'The client confirms: I send the proposal and contract at the price you agreed',
           'The client pays the first installment and your commission is confirmed',
         ],
       },
@@ -1308,7 +1384,7 @@ const en: AmbassadorCopy = {
       },
       {
         question: 'Can I give a discount by giving up part of my commission?',
-        answer: 'No. The price is the same for everyone and follows the tiers published on the landing page.',
+        answer: `No. ${enEur(TOTAL)} is the minimum price of the journey: you can propose a higher price (and earn more), never a lower one.`,
       },
       {
         question: 'Can I use the noprob logo and materials?',
@@ -1321,6 +1397,7 @@ const en: AmbassadorCopy = {
     label: 'materials',
     heading: 'What you can ',
     headingEm: 'share with the client.',
+    intro: 'Keep them ready: these are the links to send the client after the first conversation.',
     links: [
       {
         label: 'Shopify Migration landing (EN)',
