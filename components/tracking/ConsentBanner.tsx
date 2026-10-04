@@ -4,8 +4,13 @@ import { useEffect } from 'react'
 import * as CookieConsent from 'vanilla-cookieconsent'
 
 import { CONSENT_UPDATE_EVENT } from '@/lib/consent'
+import type { Locale } from '@/lib/i18n'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
-export default function ConsentBanner() {
+const policyLinks = (locale: Locale) =>
+  `<a href="${ROUTE_PATHS.privacyPolicy[locale]}">Privacy Policy</a><a href="${ROUTE_PATHS.cookiePolicy[locale]}">Cookie Policy</a>`
+
+export default function ConsentBanner({ locale = 'en' }: { locale?: Locale }) {
   useEffect(() => {
     void CookieConsent.run({
       mode: 'opt-in',
@@ -35,14 +40,16 @@ export default function ConsentBanner() {
         analytics: {
           enabled: false,
           readOnly: false,
+          autoClear: { cookies: [{ name: /^_ga/ }, { name: '_gid' }], reloadPage: true },
         },
         marketing: {
           enabled: false,
           readOnly: false,
+          autoClear: { cookies: [{ name: '_fbp' }, { name: '_fbc' }], reloadPage: true },
         },
       },
       language: {
-        default: 'en',
+        default: locale,
         translations: {
           en: {
             consentModal: {
@@ -52,6 +59,7 @@ export default function ConsentBanner() {
               acceptAllBtn: 'Accept all',
               acceptNecessaryBtn: 'Reject non-essential',
               showPreferencesBtn: 'Manage preferences',
+              footer: policyLinks('en'),
             },
             preferencesModal: {
               title: 'Privacy preferences',
@@ -86,12 +94,55 @@ export default function ConsentBanner() {
               ],
             },
           },
+          it: {
+            consentModal: {
+              title: 'Anche il tracking ha bisogno del tuo consenso',
+              description:
+                'Usiamo cookie essenziali per far funzionare il sito e cookie facoltativi di statistica e marketing per capire come vanno il sito e le campagne.',
+              acceptAllBtn: 'Accetta tutti',
+              acceptNecessaryBtn: 'Rifiuta i non essenziali',
+              showPreferencesBtn: 'Gestisci preferenze',
+              footer: policyLinks('it'),
+            },
+            preferencesModal: {
+              title: 'Preferenze privacy',
+              acceptAllBtn: 'Accetta tutti',
+              acceptNecessaryBtn: 'Rifiuta i non essenziali',
+              savePreferencesBtn: 'Salva preferenze',
+              closeIconLabel: 'Chiudi',
+              sections: [
+                {
+                  title: 'Uso dei cookie',
+                  description:
+                    'Teniamo attivi solo i cookie essenziali per il funzionamento del sito e ti lasciamo scegliere separatamente statistiche e misurazione delle campagne.',
+                },
+                {
+                  title: 'Strettamente necessari',
+                  description:
+                    'Servono per la navigazione, la sicurezza, il corretto invio dei form e per ricordare le tue scelte sul consenso.',
+                  linkedCategory: 'necessary',
+                },
+                {
+                  title: 'Statistica',
+                  description:
+                    'Attiva Google Analytics 4, così capiamo la qualità del traffico e miglioriamo il sito.',
+                  linkedCategory: 'analytics',
+                },
+                {
+                  title: 'Marketing',
+                  description:
+                    'Attiva Meta Pixel e le altre piattaforme pubblicitarie usate per misurare le campagne e fare remarketing.',
+                  linkedCategory: 'marketing',
+                },
+              ],
+            },
+          },
         },
       },
       onConsent: () => window.dispatchEvent(new Event(CONSENT_UPDATE_EVENT)),
       onChange: () => window.dispatchEvent(new Event(CONSENT_UPDATE_EVENT)),
     })
-  }, [])
+  }, [locale])
 
   return null
 }

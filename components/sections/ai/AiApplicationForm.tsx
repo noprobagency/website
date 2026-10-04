@@ -10,7 +10,6 @@ import { makeAiSchema } from '@/lib/schemas/aiAccelerator'
 import { ROUTE_PATHS } from '@/lib/i18n/routes'
 import { trackEvent } from '@/lib/analytics/events'
 
-const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
 
 type ChoiceField = 'businessType' | 'role' | 'aiUsage'
 
@@ -480,7 +479,7 @@ export default function AiApplicationForm({ locale = 'it' }: { locale?: Locale }
                       <span className="font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-text">
                         {d.step3.privacyBefore}
                         <a
-                          href={PRIVACY_URL}
+                          href={ROUTE_PATHS.privacyPolicy[locale]}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="underline transition-opacity hover:opacity-70"

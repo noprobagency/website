@@ -9,13 +9,17 @@ import { ClickTrackingDelegator } from './ClickTrackingDelegator'
 
 export function AnalyticsProvider() {
   return (
-    <ConsentGate>
-      <GoogleAnalytics />
-      <MetaPixel />
+    <>
+      <ConsentGate category="analytics">
+        <GoogleAnalytics />
+      </ConsentGate>
+      <ConsentGate category="marketing">
+        <MetaPixel />
+      </ConsentGate>
       <Suspense fallback={null}>
         <RouteChangeTracker />
       </Suspense>
       <ClickTrackingDelegator />
-    </ConsentGate>
+    </>
   )
 }

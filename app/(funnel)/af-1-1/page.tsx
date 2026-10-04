@@ -5,6 +5,7 @@ import Link from 'next/link'
 import ApplicationFunnel from '@/components/funnel/ApplicationFunnel'
 import PartnerLogos from '@/components/ui/PartnerLogos'
 import { siteAssets } from '@/lib/site'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
 export const metadata: Metadata = {
   title: 'Candidatura | Step 1',
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
-const COOKIE_URL = 'https://www.iubenda.com/privacy-policy/22342791/cookie-policy'
+const PRIVACY_URL = ROUTE_PATHS.privacyPolicy.it
+const COOKIE_URL = ROUTE_PATHS.cookiePolicy.it
 
 function Stars({ size = 12 }: { size?: number }) {
   return (

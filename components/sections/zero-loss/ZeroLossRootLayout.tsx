@@ -15,7 +15,7 @@ export default function ZeroLossRootLayout({ locale, children }: { locale: Local
     <html lang={locale}>
       <body className="bg-np-bg text-np-text font-sans antialiased overflow-x-hidden">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
-        <ConsentBanner />
+        <ConsentBanner locale={locale} />
         {children}
         <AnalyticsProvider />
       </body>

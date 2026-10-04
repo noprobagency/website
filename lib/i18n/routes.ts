@@ -15,6 +15,8 @@ export type RouteKey =
   | 'blog'
   | 'contacts'
   | 'thankYou'
+  | 'privacyPolicy'
+  | 'cookiePolicy'
 
 export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   home:             { en: '/',                   it: '/it' },
@@ -36,6 +38,9 @@ export const ROUTE_PATHS: Record<RouteKey, { en: string; it: string }> = {
   blog:             { en: '/blog',               it: '/it/blog' },
   contacts:         { en: '/contacts',           it: '/it/contatti' },
   thankYou:         { en: '/thank-you',          it: '/it/grazie' },
+  // In-house legal pages (copy in lib/i18n/legal.ts).
+  privacyPolicy:    { en: '/privacy-policy',     it: '/it/privacy-policy' },
+  cookiePolicy:     { en: '/cookie-policy',      it: '/it/cookie-policy' },
 }
 
 export function getRoutePath(key: RouteKey, locale: Locale): string {

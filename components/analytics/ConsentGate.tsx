@@ -2,16 +2,23 @@
 
 import { useEffect, useState } from 'react'
 
-export function ConsentGate({ children }: { children: React.ReactNode }) {
-  const [consentGranted, setConsentGranted] = useState(true) // TEMP: pass-through until Iubenda is installed
+import { CONSENT_UPDATE_EVENT, hasConsent, type ConsentCategory } from '@/lib/consent'
+
+/**
+ * Renders its children only once the visitor has accepted the given category
+ * in the cookie banner (`components/tracking/ConsentBanner.tsx`).
+ */
+export function ConsentGate({ category, children }: { category: ConsentCategory; children: React.ReactNode }) {
+  const [consentGranted, setConsentGranted] = useState(false)
 
   useEffect(() => {
-    // TODO when Iubenda Consent Solution is installed:
-    // 1. Change default state above to `false`
-    // 2. Listen to window._iub callbacks and flip consentGranted based on user choice
-    // 3. Implement Consent Mode v2: default denied, update on granted
-    // For now: pass-through mode (GA4 + Pixel always load)
-  }, [])
+    const syncConsent = () => setConsentGranted(hasConsent(category))
+
+    syncConsent()
+    window.addEventListener(CONSENT_UPDATE_EVENT, syncConsent)
+
+    return () => window.removeEventListener(CONSENT_UPDATE_EVENT, syncConsent)
+  }, [category])
 
   if (!consentGranted) return null
   return <>{children}</>
