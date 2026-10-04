@@ -6,8 +6,9 @@ import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { funnelSchema, type FunnelData } from '@/lib/schemas/funnel'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
-const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
+const PRIVACY_URL = ROUTE_PATHS.privacyPolicy.it
 const THANK_YOU_PATH = '/it/grazie'
 
 type Field = keyof Pick<

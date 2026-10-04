@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { siteConfig, siteAssets } from '@/lib/site'
 import { ServicesDropdown } from '@/components/layout/Navbar'
 import { getDictionary, type Locale } from '@/lib/i18n'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
 export default function Footer({
   locale = 'en',
@@ -69,21 +70,11 @@ export default function Footer({
         </div>
 
         <div className="flex flex-wrap items-center gap-4 text-[12px] font-medium tracking-[-0.04em] text-[#7c7c7c]">
-          <Link
-            href="https://www.iubenda.com/privacy-policy/22342791"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-[#989898]"
-          >
-            Privacy Policy
+          <Link href={ROUTE_PATHS.privacyPolicy[locale]} className="transition-colors hover:text-[#989898]">
+            {t.footer.privacyPolicy}
           </Link>
-          <Link
-            href="https://www.iubenda.com/privacy-policy/22342791/cookie-policy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-[#989898]"
-          >
-            Cookie Policy
+          <Link href={ROUTE_PATHS.cookiePolicy[locale]} className="transition-colors hover:text-[#989898]">
+            {t.footer.cookiePolicy}
           </Link>
           <span className="uppercase tracking-[0.12em] text-[#7c7c7c]">Version {siteConfig.version}</span>
         </div>

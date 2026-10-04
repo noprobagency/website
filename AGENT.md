@@ -135,8 +135,9 @@ Helper in `lib/analytics/events.ts`:
 
 ### GDPR / Consent
 
-- `ConsentGate` component currently in **pass-through mode** (analytics always load)
-- TODO: install Iubenda Consent Solution, change `consentGranted` default to `false`, wire `_iub` callbacks
+- Consent is handled in-house with `vanilla-cookieconsent` (`components/tracking/ConsentBanner.tsx`, IT + EN, opt-in). Iubenda is no longer used.
+- `ConsentGate category="analytics|marketing"` mounts GA4 / Meta Pixel only after the matching category is accepted; `trackEvent` sends Meta CAPI only with marketing consent. Revoking a category clears its cookies and reloads the page.
+- Privacy Policy and Cookie Policy are in-house pages (`/privacy-policy`, `/cookie-policy`, `/it/privacy-policy`, `/it/cookie-policy`) rendered by `components/sections/legal/LegalPage.tsx`; copy in `lib/i18n/legal.ts`. When a tool, form or cookie is added, update both locales there and bump `LEGAL_LAST_UPDATED`.
 
 ### Runbook - Adding a new indexable page
 

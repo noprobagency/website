@@ -32,7 +32,7 @@ export default function FunnelLayout({ children }: { children: React.ReactNode }
   return (
     <html lang="it">
       <body className="bg-np-bg text-np-text font-sans antialiased overflow-x-hidden">
-        <ConsentBanner />
+        <ConsentBanner locale="it" />
         {children}
         <AnalyticsProvider />
       </body>

@@ -22,7 +22,6 @@ import { readUtm, zlTrack } from '@/lib/zero-loss/tracking'
 import { ZL_FORM_FIRST_FIELD_ID, ZL_FORM_ID } from './ZlCta'
 import ZlDashboardLink from './ZlDashboardLink'
 
-const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
 const TOTAL_STEPS = 4
 const PHONE_PREFIXES = ['+39', '+41', '+44', '+33', '+34', '+49', '+43', '+31', '+32', '+351', '+1'] as const
 
@@ -634,7 +633,7 @@ export default function ZlApplicationForm({ locale, copy }: { locale: Locale; co
                 />
                 <span className="font-sans text-[13px] font-medium leading-[1.5em] tracking-[-0.02em] text-np-text">
                   {copy.step4.privacyBefore}
-                  <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="underline transition-opacity hover:opacity-70">
+                  <a href={ROUTE_PATHS.privacyPolicy[locale]} target="_blank" rel="noopener noreferrer" className="underline transition-opacity hover:opacity-70">
                     {copy.step4.privacyLinkLabel}
                   </a>
                   .

@@ -24,6 +24,8 @@ const ROUTE_DEFS: Array<{
   { key: 'aiAccelerator',    priority: 0.9, changeFrequency: 'monthly', hasIt: true },
   { key: 'blog',             priority: 0.7, changeFrequency: 'weekly',  hasIt: true },
   { key: 'contacts',         priority: 0.6, changeFrequency: 'yearly',  hasIt: true },
+  { key: 'privacyPolicy',    priority: 0.2, changeFrequency: 'yearly',  hasIt: true },
+  { key: 'cookiePolicy',     priority: 0.2, changeFrequency: 'yearly',  hasIt: true },
 ]
 
 // The Zero-Loss Migration Sprint landing enters the sitemap only when the

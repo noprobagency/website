@@ -1,3 +1,4 @@
+import { hasConsent } from '@/lib/consent'
 type EventName = 'PageView' | 'Lead' | 'ViewContent' | 'Contact'
 
 type EventParams = {
@@ -30,7 +31,9 @@ export async function trackEvent(name: EventName, params: EventParams = {}) {
     window.gtag('event', name.toLowerCase(), params)
   }
 
-  // 3. Fire server-side CAPI (deduplication via eventId)
+  // 3. Fire server-side CAPI (deduplication via eventId), marketing consent only
+  if (!hasConsent('marketing')) return
+
   try {
     await fetch('/api/meta-capi', {
       method: 'POST',

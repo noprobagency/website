@@ -8,8 +8,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { type Locale } from '@/lib/i18n'
 import { getMigrazioneCopy, type MigrazioneCopy } from '@/lib/i18n/migrazione'
 import { makeMigrazioneSchema, type MigrazioneFormData } from '@/lib/schemas/migrazione'
+import { ROUTE_PATHS } from '@/lib/i18n/routes'
 
-const PRIVACY_URL = 'https://www.iubenda.com/privacy-policy/22342791'
 
 const inputClass = (hasError: boolean) =>
   `w-full rounded-[12px] border bg-white p-[10px] font-sans text-[14px] font-medium leading-[1.2] tracking-[-0.02em] text-[#181818] placeholder:text-[#999999] focus:outline-none ${
@@ -228,7 +228,7 @@ export default function MigrazioneForm({
               <span className="font-sans text-[12px] font-medium leading-[1.5em] tracking-[-0.02em] text-noprob-text">
                 {d.privacyBefore}
                 <a
-                  href={PRIVACY_URL}
+                  href={ROUTE_PATHS.privacyPolicy[locale]}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline transition-opacity hover:opacity-70"
